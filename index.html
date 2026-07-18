@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="/assets/logo-sm.png">
+<link rel="icon" href="assets/logo-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -2476,7 +2476,7 @@ footer {
 <div class="app-shell">
   <header class="topbar">
     <div class="topbar-brand">
-      <img class="logo" src="/assets/logo.png" alt="Judo Cluster 2026">
+      <img class="logo" src="assets/logo.png" alt="Judo Cluster 2026">
       <div class="brand-text">
         <span class="brand-name">OP Dashboard</span>
         <span class="brand-sub">11th AIP Judo Cluster · Hyderabad</span>
@@ -2511,7 +2511,7 @@ footer {
       <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">ADM Staff</span><span class="nav-label-short">ADM</span></button>
     </nav>
     <div class="sidebar-foot">
-      <img src="/assets/vira.png" alt="Vira">
+      <img src="assets/vira.png" alt="Vira">
       <span>Vira</span>
     </div>
   </aside>
@@ -2975,9 +2975,26 @@ let admSelectedTask = '';
 let admOnboardQ = '';
 let admStayQ = '';
 let APP_MODE = 'edit'; // view | edit
+let IS_STATIC = false; // GitHub Pages — read-only data/bundle.json
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
 let saveInFlight = false;
-function isEdit(){ return APP_MODE === 'edit'; }
+
+function detectStaticHost(){
+  const q = new URLSearchParams(location.search);
+  if(q.has('static') || q.get('mode') === 'view-static') return true;
+  const host = (location.hostname || '').toLowerCase();
+  if(host.endsWith('github.io')) return true;
+  if(location.protocol === 'file:') return true;
+  return false;
+}
+
+function dataUrl(path){
+  const clean = String(path || '').replace(/^\//, '');
+  if(!IS_STATIC) return '/' + clean;
+  return clean;
+}
+
+function isEdit(){ return APP_MODE === 'edit' && !IS_STATIC; }
 
 const locClassKnown = {
   'TGPA': 'TGPA',
@@ -3056,7 +3073,11 @@ function sTotal(u){
 async function fetchData(){
   if(saveInFlight) return;
   try{
-    const res = await fetch('/api/data');
+    const url = IS_STATIC
+      ? dataUrl('data/bundle.json') + '?t=' + Date.now()
+      : '/api/data';
+    const res = await fetch(url, { cache: 'no-store' });
+    if(!res.ok) throw new Error('HTTP '+res.status);
     const fresh = await res.json();
     // Ignore stale responses that would wipe a newer local save
     if(data && data.updated_at && fresh.updated_at && fresh.updated_at < data.updated_at){
@@ -3065,6 +3086,9 @@ async function fetchData(){
     data = fresh;
     renderAll();
   }catch(e){
+    if(IS_STATIC && !data){
+      toast('Could not load data/bundle.json — push export_static.py output');
+    }
     /* keep last good data */
   }
 }
@@ -4890,25 +4914,40 @@ document.getElementById('btnImport').onclick = async ()=>{
 };
 
 async function applyMode(){
-  try{
-    const cfg = await fetch('/api/config').then(r=>r.json());
-    APP_MODE = cfg.mode === 'view' ? 'view' : 'edit';
-  }catch(e){
-    APP_MODE = 'edit';
+  IS_STATIC = detectStaticHost();
+  if(IS_STATIC){
+    APP_MODE = 'view';
+  } else {
+    try{
+      const cfg = await fetch('/api/config').then(r=>r.json());
+      APP_MODE = cfg.mode === 'view' ? 'view' : 'edit';
+    }catch(e){
+      APP_MODE = 'edit';
+    }
   }
-  document.body.classList.remove('mode-view','mode-edit');
+  document.body.classList.remove('mode-view','mode-edit','mode-static');
   document.body.classList.add('mode-'+APP_MODE);
-  document.title = (APP_MODE === 'edit' ? 'EDIT · ' : 'VIEW · ') + '11th All India Police Judo Cluster 2026';
+  if(IS_STATIC) document.body.classList.add('mode-static');
+  if(IS_STATIC && !document.querySelector('base[data-static]')){
+    let dir = location.pathname || '/';
+    if(!dir.endsWith('/')) dir = dir.replace(/\/[^/]*$/, '/');
+    if(!dir.endsWith('/')) dir += '/';
+    const base = document.createElement('base');
+    base.href = location.origin + dir;
+    base.setAttribute('data-static', '1');
+    document.head.insertBefore(base, document.head.firstChild);
+  }
+  document.title = (IS_STATIC ? 'VIEW · ' : (APP_MODE === 'edit' ? 'EDIT · ' : 'VIEW · ')) + '11th All India Police Judo Cluster 2026';
   const chip = document.getElementById('headerChip');
   if(chip){
     chip.hidden = false;
-    chip.textContent = APP_MODE === 'edit' ? 'EDIT' : 'VIEW';
-    chip.classList.toggle('is-edit', APP_MODE === 'edit');
-    chip.setAttribute('aria-label', APP_MODE === 'edit' ? 'Edit mode' : 'View only');
+    chip.textContent = IS_STATIC ? 'WEB' : (APP_MODE === 'edit' ? 'EDIT' : 'VIEW');
+    chip.classList.toggle('is-edit', !IS_STATIC && APP_MODE === 'edit');
+    chip.setAttribute('aria-label', IS_STATIC ? 'GitHub Pages view' : (APP_MODE === 'edit' ? 'Edit mode' : 'View only'));
   }
   const brand = document.querySelector('.topbar-brand .brand-name');
   if(brand){
-    brand.textContent = APP_MODE === 'edit' ? 'Ops Edit' : 'Judo Cluster';
+    brand.textContent = (!IS_STATIC && APP_MODE === 'edit') ? 'Ops Edit' : 'Judo Cluster';
   }
   const search = document.getElementById('navSearch');
   if(search && window.matchMedia('(max-width: 720px)').matches){
@@ -4919,7 +4958,8 @@ async function applyMode(){
 (async function boot(){
   await applyMode();
   await fetchData();
-  setInterval(fetchData, 10000);
+  // Static Pages: refresh less often (updates arrive via git push)
+  setInterval(fetchData, IS_STATIC ? 60000 : 10000);
 })();
 </script>
 </body>

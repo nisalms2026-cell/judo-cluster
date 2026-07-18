@@ -116,6 +116,32 @@ Then open a **new** Command Prompt (PATH refresh). Local `cloudflared.exe` in th
 
 ---
 
+## Permanent public View (GitHub Pages)
+
+Teams can open a **fixed** URL (no Cloudflare, no PC tunnel):
+
+**https://nisalms2026-cell.github.io/judo-cluster/**
+
+This is **View only**. It loads `data/bundle.json` from the repo.
+
+### Enable once (GitHub website)
+1. Open the repo → **Settings** → **Pages**
+2. **Source:** GitHub Actions  
+3. After the next push to `main`, open the URL above (first build may take 1–2 minutes)
+
+### Ops PC — keep Pages in sync
+`push_updates.bat` now runs `py export_static.py` (writes `data/bundle.json`) then commits `data\` and pushes.  
+That is enough for both the public Cloudflare PC **and** GitHub Pages.
+
+### LAN Edit vs GitHub View
+| | LAN Edit | GitHub Pages |
+|--|----------|--------------|
+| URL | localhost / LAN IP | `…github.io/judo-cluster/` |
+| Changes | Instant on save | After `push_updates.bat` + Pages deploy |
+| Write | Yes | No |
+
+---
+
 ## Two PCs: ops on LAN + public View (Git sync)
 
 Use this when the **ops / Edit PC** cannot run Cloudflare (firewall), but a second PC can host the public tunnel.
@@ -199,11 +225,12 @@ TGPA_Dashboard_LAN/
   start_view.bat
   start_edit.bat
   start_internet_view.bat
-  push_updates.bat         Ops PC: commit + push data\ to GitHub
+  push_updates.bat         Ops PC: export bundle + commit + push data\
   pull_updates.bat         Public PC: pull once from GitHub
   pull_updates_loop.bat    Public PC: auto-pull every 2 minutes
+  export_static.py         Builds data/bundle.json for GitHub Pages
   cloudflared.exe        (local only — not in git)
-  data/                  Live JSON (commit + push from ops PC)
+  data/                  Live JSON + bundle.json (push from ops PC)
   README.md              This file
 ```
 

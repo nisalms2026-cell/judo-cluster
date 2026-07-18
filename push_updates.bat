@@ -3,10 +3,18 @@ title Judo Cluster — Push ops updates to GitHub
 cd /d "%~dp0"
 
 echo ============================================================
-echo  Push data updates to GitHub (ops PC → public View PC)
+echo  Push data updates to GitHub
+echo  (LAN ops + GitHub Pages permanent View)
 echo ============================================================
 echo.
-echo This stages data\ (and shows other local changes).
+
+echo Building data\bundle.json for GitHub Pages ...
+py export_static.py
+if errorlevel 1 (
+  echo export_static.py failed.
+  pause
+  exit /b 1
+)
 echo.
 
 git status -sb
@@ -43,6 +51,9 @@ if errorlevel 1 (
 )
 
 echo.
-echo Pushed. On the public PC run pull_updates.bat (or the auto-pull loop).
+echo Pushed.
+echo   - Public PC: run pull_updates.bat if using Cloudflare View
+echo   - GitHub Pages View updates in ~1-2 minutes after first enable:
+echo     https://nisalms2026-cell.github.io/judo-cluster/
 echo.
 pause
