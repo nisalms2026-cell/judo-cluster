@@ -122,22 +122,25 @@ Teams can open a **fixed** URL (no Cloudflare, no PC tunnel):
 
 **https://nisalms2026-cell.github.io/judo-cluster/**
 
-This is **View only**. It loads `data/bundle.json` from the repo.
+This is **View only**. It serves the repo **`docs/`** folder (`index.html` + `docs/data/bundle.json`).
 
-### Enable once (GitHub website)
-1. Open the repo → **Settings** → **Pages**
-2. **Source:** GitHub Actions  
-3. After the next push to `main`, open the URL above (first build may take 1–2 minutes)
+### Enable once (required — this fixes the 404)
+
+1. Open: https://github.com/nisalms2026-cell/judo-cluster/settings/pages  
+2. **Build and deployment** → **Source:** **Deploy from a branch**  
+3. **Branch:** `main` · **Folder:** `/docs` → **Save**  
+4. Wait 1–2 minutes, then hard-refresh the link  
+
+(If you prefer Actions instead: Source = **GitHub Actions**. The earlier 404 was because Pages was not fully configured, so the Actions deploy failed at “Setup Pages”.)
 
 ### Ops PC — keep Pages in sync
-`push_updates.bat` now runs `py export_static.py` (writes `data/bundle.json`) then commits `data\` and pushes.  
-That is enough for both the public Cloudflare PC **and** GitHub Pages.
+`push_updates.bat` runs `py export_static.py` (updates `data/bundle.json` **and** `docs/`) then pushes.
 
 ### LAN Edit vs GitHub View
 | | LAN Edit | GitHub Pages |
 |--|----------|--------------|
 | URL | localhost / LAN IP | `…github.io/judo-cluster/` |
-| Changes | Instant on save | After `push_updates.bat` + Pages deploy |
+| Changes | Instant on save | After `push_updates.bat` (+ ~1 min) |
 | Write | Yes | No |
 
 ---

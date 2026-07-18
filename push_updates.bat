@@ -8,7 +8,7 @@ echo  (LAN ops + GitHub Pages permanent View)
 echo ============================================================
 echo.
 
-echo Building data\bundle.json for GitHub Pages ...
+echo Building static Pages site (data\bundle.json + docs\) ...
 py export_static.py
 if errorlevel 1 (
   echo export_static.py failed.
@@ -23,11 +23,11 @@ echo.
 set /p MSG=Commit message (Enter = "ops: update data"): 
 if "%MSG%"=="" set "MSG=ops: update data"
 
-git add data
+git add data docs
 git status -sb
 echo.
 
-set /p GO=Commit and push data\ now? [Y/N]: 
+set /p GO=Commit and push now? [Y/N]: 
 if /i not "%GO%"=="Y" (
   echo Cancelled.
   pause
@@ -37,7 +37,7 @@ if /i not "%GO%"=="Y" (
 git commit -m "%MSG%"
 if errorlevel 1 (
   echo.
-  echo Nothing to commit in data\ — or commit failed.
+  echo Nothing to commit — or commit failed.
   pause
   exit /b 1
 )
@@ -52,8 +52,7 @@ if errorlevel 1 (
 
 echo.
 echo Pushed.
-echo   - Public PC: run pull_updates.bat if using Cloudflare View
-echo   - GitHub Pages View updates in ~1-2 minutes after first enable:
-echo     https://nisalms2026-cell.github.io/judo-cluster/
+echo   Permanent View (after Pages /docs is enabled):
+echo   https://nisalms2026-cell.github.io/judo-cluster/
 echo.
 pause
