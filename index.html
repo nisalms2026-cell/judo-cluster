@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>11th All India Police Judo Cluster 2026 — Ops Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F172A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" href="/assets/logo-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,6 +140,13 @@ body.mode-view .dir-fields input {
   display: block;
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
 .topbar-brand .brand-name {
   font-family: var(--font);
   font-size: 18px;
@@ -143,6 +154,35 @@ body.mode-view .dir-fields input {
   letter-spacing: -0.02em;
   color: #FFFFFF;
   white-space: nowrap;
+}
+
+.topbar-brand .brand-sub {
+  display: none;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-chip {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #DBEAFE;
+  background: rgba(37, 99, 235, 0.35);
+  border: 1px solid rgba(147, 197, 253, 0.35);
 }
 
 .sidebar {
@@ -196,6 +236,9 @@ body.mode-view .dir-fields input {
   flex-shrink: 0;
   opacity: 0.8;
 }
+
+.nav-label-short { display: none; }
+.nav-label-full { display: inline; }
 
 .side-nav button[data-view].active .nav-ico,
 .side-nav button[data-view]:hover .nav-ico {
@@ -1912,7 +1955,7 @@ footer {
   letter-spacing: 0.06em;
 }
 
-/* Responsive */
+/* Responsive — tablet */
 @media (max-width: 960px) {
   .home-split,
   .mess-boards,
@@ -1924,13 +1967,8 @@ footer {
 
   .app-body { flex-direction: column; }
 
-  .topbar-brand {
-    min-width: 0;
-  }
-
-  .topbar-brand .brand-name {
-    font-size: 16px;
-  }
+  .topbar-brand { min-width: 0; }
+  .topbar-brand .brand-name { font-size: 16px; }
 
   .sidebar {
     width: 100%;
@@ -1952,6 +1990,7 @@ footer {
     gap: 2px;
     padding: 8px 12px;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .side-nav button[data-view] {
@@ -1978,7 +2017,21 @@ footer {
     gap: 12px;
   }
 
+  .topbar-brand {
+    flex: 1 1 auto;
+    order: 1;
+  }
+
+  .header-chip {
+    order: 2;
+    margin-left: auto;
+  }
+
   .header-meta { display: none; }
+
+  .header-chip {
+    display: inline-flex;
+  }
 
   .header-search {
     max-width: none;
@@ -1989,19 +2042,16 @@ footer {
 
   .search-shell { height: 44px; }
 
+  .topbar-brand .brand-sub { display: block; }
   .page-head h1 { font-size: 24px; }
 
   .arr-kpis { grid-template-columns: repeat(2, 1fr); }
   .arr-layout { grid-template-columns: 1fr; }
-  .arr-side {
-    position: static;
-    max-height: none;
-  }
+  .arr-side { position: static; max-height: none; }
   .arr-board { max-height: none; }
   .arr-controls-meta { margin-left: 0; width: 100%; }
 
   .arr-card { grid-template-columns: 72px 1fr; }
-
   .arr-card .side {
     grid-column: 1 / -1;
     flex-direction: row;
@@ -2009,25 +2059,414 @@ footer {
     justify-content: space-between;
     min-width: 0;
   }
+
+  .table-wrap,
+  .adm-table-wrap {
+    max-height: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-btns button,
+  .mode-tabs button,
+  .hub-pill {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
 }
 
-@media (max-width: 600px) {
+/* Phone-first — most internet viewers */
+@media (max-width: 720px) {
+  :root {
+    --chrome-h: 56px;
+    --bottom-nav-h: 64px;
+  }
+
+  html, body {
+    font-size: 15px;
+    overscroll-behavior-y: contain;
+  }
+
   .kpi-grid,
   .mess-kpis,
-  .arr-kpis { grid-template-columns: 1fr; }
+  .arr-kpis,
+  .adm-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  .wrap { padding: 16px 16px 64px; }
+  .wrap {
+    padding: 14px 14px calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px) + 28px);
+  }
 
-  .topbar { padding: 10px 12px; }
+  .topbar {
+    padding: 10px 14px 12px;
+    padding-top: max(10px, env(safe-area-inset-top, 0px));
+    gap: 10px 12px;
+    position: sticky;
+    align-items: center;
+    background:
+      linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.94) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
+  }
+
+  .topbar-brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 10px;
+    order: 1;
+  }
+
+  .topbar-brand img.logo {
+    height: 36px;
+    width: 36px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px;
+  }
+
+  .topbar-brand .brand-name {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .topbar-brand .brand-sub {
+    display: block;
+    max-width: 100%;
+  }
+
+  .header-chip {
+    display: inline-flex;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .header-chip.is-edit {
+    color: #FEF3C7;
+    background: rgba(245, 158, 11, 0.28);
+    border-color: rgba(252, 211, 77, 0.4);
+  }
+
+  .header-search {
+    order: 3;
+    flex: 1 1 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .search-shell {
+    height: 44px;
+    padding: 0 14px 0 12px;
+    gap: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .search-shell:focus-within {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .nav-search {
+    font-size: 16px; /* avoids iOS zoom on focus */
+    font-weight: 500;
+  }
+
+  .nav-search::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  .nav-search-results {
+    top: calc(100% + 6px);
+    max-height: min(52vh, 360px);
+    border-radius: 12px;
+  }
+
+  .nav-search-results button {
+    padding: 13px 14px;
+    min-height: 48px;
+  }
+
+  .page-head { margin-bottom: 12px; }
+  .page-head h1 { font-size: 22px; }
+
+  /* Bottom thumb nav */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+    z-index: 70;
+    border-bottom: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .side-nav {
+    height: var(--bottom-nav-h);
+    padding: 4px 4px 2px;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .side-nav button[data-view] {
+    flex: 1 0 auto;
+    min-width: 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 4px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.15;
+    border-radius: 10px;
+    border-bottom: none !important;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .side-nav button[data-view] .nav-ico {
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+  }
+
+  .side-nav button[data-view].active {
+    background: rgba(37, 99, 235, 0.35);
+    color: #fff;
+    border-bottom: none !important;
+    border-radius: 10px;
+  }
+
+  .side-nav button[data-view].active .nav-ico { opacity: 1; }
+
+  .nav-label-full { display: none; }
+  .nav-label-short { display: inline; }
+
+  .toast {
+    left: 14px;
+    right: 14px;
+    bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px) + 14px);
+  }
 
   .arr-card { grid-template-columns: 1fr; }
-
   .arr-card .time-block {
     text-align: left;
     display: flex;
     gap: 10px;
     align-items: baseline;
   }
+
+  .dir-grid { grid-template-columns: 1fr; }
+  .dir-card .phone { font-size: 16px; padding: 4px 0; }
+  .dir-card .phone a { display: inline-block; min-height: 44px; line-height: 44px; }
+
+  .arr-controls,
+  .controls,
+  .venue-bar {
+    gap: 8px;
+  }
+
+  .mode-tabs,
+  .filter-btns {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+  }
+
+  /* View mode: stack accommodation as mobile cards */
+  body.mode-view .acc-table colgroup,
+  body.mode-view .acc-table thead,
+  body.mode-view .acc-table td.c-act,
+  body.mode-view .acc-table th:last-child { display: none !important; }
+
+  body.mode-view .acc-table,
+  body.mode-view .acc-table tbody,
+  body.mode-view .acc-table tfoot {
+    display: block;
+    width: 100%;
+  }
+
+  body.mode-view .acc-table tfoot tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    background: var(--selected);
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    margin: 4px 0 12px;
+  }
+
+  body.mode-view .acc-table tfoot td {
+    display: none;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+  }
+
+  body.mode-view .acc-table tfoot td:first-child,
+  body.mode-view .acc-table tfoot td:nth-child(2),
+  body.mode-view .acc-table tfoot td:nth-child(9) {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    position: static;
+  }
+
+  body.mode-view .acc-table tfoot td:first-child { font-weight: 700; color: var(--text); }
+  body.mode-view .acc-table tfoot td:nth-child(9) {
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--warning);
+  }
+
+  body.mode-view .acc-table tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  body.mode-view .acc-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    text-align: left !important;
+    padding: 0;
+    border: none;
+    font-size: 13px;
+  }
+
+  body.mode-view .acc-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    flex-shrink: 0;
+  }
+
+  body.mode-view .acc-table td.org-name,
+  body.mode-view .acc-table td:nth-child(2) {
+    grid-column: 1 / -1;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  body.mode-view .acc-table td.org-name::before,
+  body.mode-view .acc-table td:nth-child(2)::before { display: none; }
+
+  body.mode-view .acc-table td.total-col {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  body.mode-view .table-wrap {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    overflow: visible;
+  }
+
+  /* View mode: mess tag roster as cards */
+  body.mode-view .mess-table colgroup,
+  body.mode-view .mess-table thead,
+  body.mode-view .mess-table td:last-child,
+  body.mode-view .mess-table th:last-child { display: none !important; }
+
+  body.mode-view .mess-table,
+  body.mode-view .mess-table tbody { display: block; width: 100%; }
+
+  body.mode-view .mess-table tr {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  body.mode-view .mess-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+    border: none;
+    text-align: left !important;
+  }
+
+  body.mode-view .mess-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+
+  body.mode-view .mess-table td:first-child {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  body.mode-view .mess-table td:first-child::before { display: none; }
+
+  /* ADM roster: keep horizontal scroll, larger phones */
+  .adm-table { min-width: 640px; }
+  .adm-table .mono a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .drawer {
+    width: 100%;
+    padding: 18px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .drawer .close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 420px) {
+  .kpi-grid,
+  .mess-kpis,
+  .arr-kpis { grid-template-columns: 1fr; }
+
+  .side-nav button[data-view] { min-width: 56px; font-size: 9px; }
 }
 </style>
 
@@ -2038,7 +2477,10 @@ footer {
   <header class="topbar">
     <div class="topbar-brand">
       <img class="logo" src="/assets/logo.png" alt="Judo Cluster 2026">
-      <span class="brand-name">OP Dashboard</span>
+      <div class="brand-text">
+        <span class="brand-name">OP Dashboard</span>
+        <span class="brand-sub">11th AIP Judo Cluster · Hyderabad</span>
+      </div>
     </div>
     <div class="header-search">
       <div class="search-shell">
@@ -2046,26 +2488,27 @@ footer {
           <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.75"/>
           <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
         </svg>
-        <input class="nav-search" id="navSearch" type="search" placeholder="Search teams, managers, phone…" autocomplete="off" aria-label="Search">
+        <input class="nav-search" id="navSearch" type="search" placeholder="Search teams, managers, phone…" autocomplete="off" enterkeyhint="search" aria-label="Search">
       </div>
       <div class="nav-search-results" id="navSearchResults"></div>
     </div>
-    <div class="header-meta">
+    <div class="header-meta" id="headerMeta">
       <strong>CISF Host</strong>
       Hyderabad
     </div>
+    <div class="header-chip" id="headerChip" hidden>VIEW</div>
   </header>
 
   <div class="app-body">
   <aside class="sidebar">
     <nav class="side-nav">
-      <button type="button" class="active" data-view="home"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>Home</button>
-      <button type="button" data-view="accommodation"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Accommodation</button>
-      <button type="button" data-view="mess"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M8 6V4M16 6V4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Mess</button>
-      <button type="button" data-view="arrival"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Arrival</button>
-      <button type="button" data-view="departure"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Departure</button>
-      <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>Directory</button>
-      <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>ADM Staff</button>
+      <button type="button" class="active" data-view="home"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg><span class="nav-label-full">Home</span><span class="nav-label-short">Home</span></button>
+      <button type="button" data-view="accommodation"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Accommodation</span><span class="nav-label-short">Stay</span></button>
+      <button type="button" data-view="mess"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M8 6V4M16 6V4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Mess</span><span class="nav-label-short">Mess</span></button>
+      <button type="button" data-view="arrival"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Arrival</span><span class="nav-label-short">Arrive</span></button>
+      <button type="button" data-view="departure"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Departure</span><span class="nav-label-short">Depart</span></button>
+      <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg><span class="nav-label-full">Directory</span><span class="nav-label-short">Contacts</span></button>
+      <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">ADM Staff</span><span class="nav-label-short">ADM</span></button>
     </nav>
     <div class="sidebar-foot">
       <img src="/assets/vira.png" alt="Vira">
@@ -2709,25 +3152,25 @@ function renderAccommodation(){
       ? `<select class="loc-select" data-field="location">${venueOptions(u.location)}</select>`
       : `<span class="loc-tag ${cls}">${u.location}</span>`;
     const nums = isEdit()
-      ? `<td><input class="num-input" data-field="gos_m" value="${s.gos_m||0}"></td>
-      <td><input class="num-input" data-field="sos_m" value="${s.sos_m||0}"></td>
-      <td><input class="num-input" data-field="ors_m" value="${s.ors_m||0}"></td>
-      <td><input class="num-input" data-field="gos_f" value="${s.gos_f||0}"></td>
-      <td><input class="num-input" data-field="sos_f" value="${s.sos_f||0}"></td>
-      <td><input class="num-input" data-field="ors_f" value="${s.ors_f||0}"></td>`
-      : `<td>${s.gos_m||0}</td><td>${s.sos_m||0}</td><td>${s.ors_m||0}</td>
-      <td>${s.gos_f||0}</td><td>${s.sos_f||0}</td><td>${s.ors_f||0}</td>`;
+      ? `<td data-label="GOs M"><input class="num-input" data-field="gos_m" value="${s.gos_m||0}"></td>
+      <td data-label="SOs M"><input class="num-input" data-field="sos_m" value="${s.sos_m||0}"></td>
+      <td data-label="ORs M"><input class="num-input" data-field="ors_m" value="${s.ors_m||0}"></td>
+      <td data-label="GOs F"><input class="num-input" data-field="gos_f" value="${s.gos_f||0}"></td>
+      <td data-label="SOs F"><input class="num-input" data-field="sos_f" value="${s.sos_f||0}"></td>
+      <td data-label="ORs F"><input class="num-input" data-field="ors_f" value="${s.ors_f||0}"></td>`
+      : `<td data-label="GOs M">${s.gos_m||0}</td><td data-label="SOs M">${s.sos_m||0}</td><td data-label="ORs M">${s.ors_m||0}</td>
+      <td data-label="GOs F">${s.gos_f||0}</td><td data-label="SOs F">${s.sos_f||0}</td><td data-label="ORs F">${s.ors_f||0}</td>`;
     const actions = isEdit()
-      ? `<td><div class="row-actions">
+      ? `<td class="c-act"><div class="row-actions">
         <button class="save" onclick="saveUnit('${safe}')">Save</button>
         <button class="del" onclick="deleteUnit('${safe}')">Del</button>
       </div></td>`
-      : `<td></td>`;
+      : `<td class="c-act"></td>`;
     return `<tr data-org="${u.org}">
-      <td class="org-name" onclick="openUnit('${safe}')">${u.org}</td>
-      <td>${locCell}</td>
+      <td class="org-name" data-label="Organisation" onclick="openUnit('${safe}')">${u.org}</td>
+      <td data-label="Location">${locCell}</td>
       ${nums}
-      <td class="total-col">${tot}</td>
+      <td class="total-col" data-label="Total">${tot}</td>
       ${actions}</tr>`;
   }).join('');
 
@@ -2829,13 +3272,13 @@ function renderMess(){
         })()
       : `<span class="mess-tag ${mcls}">${u.mess || 'Unassigned'}</span>`;
     const actions = isEdit()
-      ? `<td><div class="row-actions"><button class="save" onclick="saveMess('${safe}')">Save</button></div></td>`
-      : `<td></td>`;
+      ? `<td class="c-act"><div class="row-actions"><button class="save" onclick="saveMess('${safe}')">Save</button></div></td>`
+      : `<td class="c-act"></td>`;
     return `<tr data-org="${u.org}">
-      <td class="org-name" onclick="openUnit('${safe}')">${u.org}</td>
-      <td><span class="loc-tag ${cls}">${u.location}</span></td>
-      <td>${messCell}</td>
-      <td class="total-col c-str">${u.total||sTotal(u)}</td>
+      <td class="org-name" data-label="Organisation" onclick="openUnit('${safe}')">${u.org}</td>
+      <td data-label="Stay"><span class="loc-tag ${cls}">${u.location}</span></td>
+      <td data-label="Mess">${messCell}</td>
+      <td class="total-col c-str" data-label="Strength">${u.total||sTotal(u)}</td>
       ${actions}</tr>`;
   }).join('') : `<tr><td colspan="5" style="text-align:left;font-family:var(--font);color:var(--text-dim);padding:20px 8px;">No units match this mess filter.</td></tr>`;
 
@@ -3899,7 +4342,11 @@ function switchView(name){
   } else {
     document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-'+name));
   }
-  document.querySelectorAll('.side-nav button[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === name));
+  document.querySelectorAll('.side-nav button[data-view]').forEach(b => {
+    const on = b.dataset.view === name;
+    b.classList.toggle('active', on);
+    if(on && b.scrollIntoView) b.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+  });
   const titles = {
     home: 'Home',
     accommodation: 'Accommodation',
@@ -3915,6 +4362,7 @@ function switchView(name){
   applyGlobalSearch(document.getElementById('navSearch').value || '');
   if(name === 'arrival' || name === 'departure') renderTravel();
   if(name === 'adm') renderAdmStaff();
+  try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch(_) { window.scrollTo(0, 0); }
 }
 
 document.querySelectorAll('.side-nav button[data-view]').forEach(b=>{
@@ -4451,6 +4899,21 @@ async function applyMode(){
   document.body.classList.remove('mode-view','mode-edit');
   document.body.classList.add('mode-'+APP_MODE);
   document.title = (APP_MODE === 'edit' ? 'EDIT · ' : 'VIEW · ') + '11th All India Police Judo Cluster 2026';
+  const chip = document.getElementById('headerChip');
+  if(chip){
+    chip.hidden = false;
+    chip.textContent = APP_MODE === 'edit' ? 'EDIT' : 'VIEW';
+    chip.classList.toggle('is-edit', APP_MODE === 'edit');
+    chip.setAttribute('aria-label', APP_MODE === 'edit' ? 'Edit mode' : 'View only');
+  }
+  const brand = document.querySelector('.topbar-brand .brand-name');
+  if(brand){
+    brand.textContent = APP_MODE === 'edit' ? 'Ops Edit' : 'Judo Cluster';
+  }
+  const search = document.getElementById('navSearch');
+  if(search && window.matchMedia('(max-width: 720px)').matches){
+    search.placeholder = 'Search teams or phone…';
+  }
 }
 
 (async function boot(){

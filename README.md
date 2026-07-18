@@ -116,6 +116,42 @@ Then open a **new** Command Prompt (PATH refresh). Local `cloudflared.exe` in th
 
 ---
 
+## Two PCs: ops on LAN + public View (Git sync)
+
+Use this when the **ops / Edit PC** cannot run Cloudflare (firewall), but a second PC can host the public tunnel.
+
+| Machine | Role |
+|---------|------|
+| **Ops PC (LAN)** | Run Edit `:5001` (+ local View). Push updates to GitHub |
+| **Public PC** | Run View `:5000` + `start_internet_view.bat`. Pull from GitHub |
+
+Live ops data is in `data/*.json` (tracked in git). View re-reads those files on each request / ~10s browser poll — **no Flask restart** after a pull.
+
+### On the ops PC (after you change data)
+Double-click **`push_updates.bat`**, or manually:
+
+```bat
+cd path\to\judo-cluster
+git add data
+git commit -m "ops: update accommodation / arrival / …"
+git push origin main
+```
+
+(Include other files only if you changed them — UI, scripts, etc.)
+
+### On the public PC
+1. Start View: `start_view.bat` or `start_both.bat`  
+2. Start tunnel: `start_internet_view.bat`  
+3. Sync when ops has pushed:
+   - Once: **`pull_updates.bat`**
+   - Continuous: **`pull_updates_loop.bat`** (pulls every 2 minutes)
+
+Prefer `git pull --ff-only` so this PC does not invent merge commits. Avoid editing `data\` on the public PC.
+
+**First time on the ops PC:** `git pull` so you get `push_updates.bat` and this README section from GitHub.
+
+---
+
 ## Data files
 
 | File | Contents |
@@ -163,8 +199,11 @@ TGPA_Dashboard_LAN/
   start_view.bat
   start_edit.bat
   start_internet_view.bat
+  push_updates.bat         Ops PC: commit + push data\ to GitHub
+  pull_updates.bat         Public PC: pull once from GitHub
+  pull_updates_loop.bat    Public PC: auto-pull every 2 minutes
   cloudflared.exe        (local only — not in git)
-  data/                  Live JSON (commit if you want shared baseline)
+  data/                  Live JSON (commit + push from ops PC)
   README.md              This file
 ```
 
