@@ -9,7 +9,10 @@ env/
 # Local secrets / env
 .env
 .env.*
+data/access.json
 
+# Generated auth hash is published to Pages; plaintext password stays local only
+# data/auth.json is OK to commit (hash only)
 # Cloudflare Tunnel binary (download per machine — ~50 MB)
 cloudflared.exe
 cloudflared

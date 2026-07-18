@@ -116,6 +116,22 @@ Then open a **new** Command Prompt (PATH refresh). Local `cloudflared.exe` in th
 
 ---
 
+## Login (password)
+
+Dashboard requires a password (LAN Flask, Cloudflare View, and GitHub Pages).
+
+| | |
+|--|--|
+| **Default password** | `JudoCluster2026` |
+| **Change it** | Edit `data/access.json` (auto-created, **not** in git) or set env `DASHBOARD_PASSWORD` |
+| **Sign out** | Header **Sign out** |
+
+Example file to copy: `data/access.example.json`
+
+On GitHub Pages the password hash is published (not the plaintext). Use a strong password; this stops casual access, not a full enterprise SSO.
+
+---
+
 ## Permanent public View (GitHub Pages)
 
 Teams can open a **fixed** URL (no Cloudflare, no PC tunnel):

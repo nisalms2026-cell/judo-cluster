@@ -14,8 +14,9 @@ import argparse
 import os
 import threading
 
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, redirect, request, send_from_directory, session
 
+import authutil
 import store
 from import_excel import find_latest_workbook, import_workbook
 
@@ -27,13 +28,43 @@ APP_MODE = os.environ.get("DASHBOARD_MODE", "edit").lower()  # view | edit
 APP_PORT = int(os.environ.get("DASHBOARD_PORT", "5000"))
 
 app = Flask(__name__)
+app.secret_key = authutil.flask_secret()
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+)
 LOCK = threading.Lock()
 
 WRITE_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
+PUBLIC_PATHS = {
+    "/login",
+    "/login.html",
+    "/api/login",
+    "/api/auth/status",
+    "/api/config",
+}
 
 
 def is_edit_mode() -> bool:
     return APP_MODE == "edit"
+
+
+def is_logged_in() -> bool:
+    return bool(session.get("auth_ok"))
+
+
+@app.before_request
+def require_login():
+    path = request.path or "/"
+    if path.startswith("/assets/"):
+        return None
+    if path in PUBLIC_PATHS:
+        return None
+    if is_logged_in():
+        return None
+    if path.startswith("/api/"):
+        return jsonify({"error": "Login required", "login": "/login.html"}), 401
+    return redirect("/login.html")
 
 
 @app.before_request
@@ -56,9 +87,46 @@ def index():
     return resp
 
 
+@app.route("/login")
+@app.route("/login.html")
+def login_page():
+    if is_logged_in():
+        return redirect("/")
+    resp = send_from_directory(BASE, "login.html")
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    return resp
+
+
 @app.route("/assets/<path:filename>")
 def assets(filename):
     return send_from_directory(ASSETS, filename)
+
+
+@app.route("/api/auth/status", methods=["GET"])
+def api_auth_status():
+    return jsonify({
+        "ok": is_logged_in(),
+        "mode": APP_MODE,
+        "auth": "session",
+    })
+
+
+@app.route("/api/login", methods=["POST"])
+def api_login():
+    payload = request.get_json(silent=True) or {}
+    password = str(payload.get("password") or "")
+    if not authutil.check_password(password):
+        return jsonify({"ok": False, "error": "Invalid password"}), 401
+    session.clear()
+    session["auth_ok"] = True
+    session.permanent = True
+    return jsonify({"ok": True, "mode": APP_MODE})
+
+
+@app.route("/api/logout", methods=["POST"])
+def api_logout():
+    session.clear()
+    return jsonify({"ok": True})
 
 
 @app.route("/api/config", methods=["GET"])
@@ -68,6 +136,8 @@ def api_config():
         "port": APP_PORT,
         "editable": is_edit_mode(),
         "label": "EDIT MODE" if is_edit_mode() else "VIEW ONLY",
+        "auth_required": True,
+        "logged_in": is_logged_in(),
     })
 
 
@@ -361,12 +431,15 @@ def main():
 
     with LOCK:
         store.merge_bundle()
+    authutil.ensure_access_file()
+    app.secret_key = authutil.flask_secret()
 
     print("=" * 56)
     print("11th All India Police Judo Cluster 2026 — Ops Dashboard")
     print(f"Mode : {APP_MODE.upper()} ({'read-only' if APP_MODE == 'view' else 'editable'})")
     print(f"URL  : http://localhost:{APP_PORT}")
     print(f"LAN  : http://<this-PC-IP>:{APP_PORT}")
+    print("Login: password from data/access.json (or DASHBOARD_PASSWORD)")
     if APP_MODE == "view":
         print("Tip  : Start Edit on port 5001 for changes")
     else:

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign in — Judo Cluster 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F172A">
+<link rel="icon" href="assets/logo-sm.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B1220;
+  --panel: #111827;
+  --line: rgba(255,255,255,0.12);
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --accent: #38BDF8;
+  --accent-2: #F59E0B;
+  --danger: #F87171;
+  --font: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --display: "Source Serif 4", Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--ink);
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,0.18), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(245,158,11,0.12), transparent 50%),
+    linear-gradient(165deg, #0B1220 0%, #111827 48%, #0F172A 100%);
+}
+.card {
+  width: min(420px, 100%);
+  background: rgba(17, 24, 39, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  padding: 4px;
+}
+.brand h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.brand p {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.04);
+}
+.field:focus-within {
+  border-color: rgba(56,189,248,0.55);
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.15);
+}
+.field input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+}
+.field input::placeholder { color: #64748B; }
+button[type="submit"] {
+  width: 100%;
+  margin-top: 16px;
+  height: 48px;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #0B1220;
+  background: linear-gradient(180deg, #7DD3FC 0%, #38BDF8 100%);
+  cursor: pointer;
+}
+button[type="submit"]:hover { filter: brightness(1.05); }
+button[type="submit"]:disabled { opacity: 0.65; cursor: wait; }
+.err {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(248,113,113,0.12);
+  border: 1px solid rgba(248,113,113,0.35);
+  color: #FECACA;
+  font-size: 0.85rem;
+}
+.err.show { display: block; }
+.foot {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #64748B;
+}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Judo Cluster">
+      <div>
+        <h1>Ops Dashboard</h1>
+        <p>11th AIP Judo Cluster · Hyderabad</p>
+      </div>
+    </div>
+    <form id="loginForm" autocomplete="on">
+      <label for="password">Access password</label>
+      <div class="field">
+        <input id="password" name="password" type="password" placeholder="Enter password" required autofocus autocomplete="current-password">
+      </div>
+      <div class="err" id="err" role="alert"></div>
+      <button type="submit" id="btn">Sign in</button>
+    </form>
+    <p class="foot">Authorised personnel only · CISF Host</p>
+  </main>
+<script>
+const AUTH_KEY = 'judo_cluster_auth_v1';
+const IS_STATIC = (() => {
+  const host = (location.hostname || '').toLowerCase();
+  return host.endsWith('github.io') || location.protocol === 'file:' || new URLSearchParams(location.search).has('static');
+})();
+
+async function sha256Hex(text){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function goApp(){
+  location.replace('index.html');
+}
+
+async function alreadyIn(){
+  if(IS_STATIC){
+    const saved = localStorage.getItem(AUTH_KEY);
+    if(!saved) return false;
+    try{
+      const auth = await fetch('data/auth.json?t='+Date.now(), {cache:'no-store'}).then(r=>r.json());
+      return saved === auth.token;
+    }catch(_){ return false; }
+  }
+  try{
+    const s = await fetch('/api/auth/status', {credentials:'same-origin'}).then(r=>r.json());
+    return !!s.ok;
+  }catch(_){ return false; }
+}
+
+(async function boot(){
+  if(await alreadyIn()) goApp();
+})();
+
+document.getElementById('loginForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const err = document.getElementById('err');
+  const btn = document.getElementById('btn');
+  const password = document.getElementById('password').value;
+  err.classList.remove('show');
+  btn.disabled = true;
+  try{
+    if(IS_STATIC){
+      const auth = await fetch('data/auth.json?t='+Date.now(), {cache:'no-store'}).then(r=>{
+        if(!r.ok) throw new Error('Auth config missing');
+        return r.json();
+      });
+      const hex = await sha256Hex(password);
+      if(hex !== auth.pwhash){
+        err.textContent = 'Invalid password';
+        err.classList.add('show');
+        return;
+      }
+      localStorage.setItem(AUTH_KEY, auth.token);
+      goApp();
+      return;
+    }
+    const res = await fetch('/api/login', {
+      method:'POST',
+      credentials:'same-origin',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({password}),
+    });
+    const body = await res.json().catch(()=>({}));
+    if(!res.ok || !body.ok){
+      err.textContent = body.error || 'Invalid password';
+      err.classList.add('show');
+      return;
+    }
+    location.replace('/');
+  }catch(ex){
+    err.textContent = 'Could not sign in. Try again.';
+    err.classList.add('show');
+  }finally{
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

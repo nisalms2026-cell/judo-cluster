@@ -2,36 +2,49 @@
 Build static files for GitHub Pages (docs/).
 
 Writes:
-  data/bundle.json          — for local/Cloudflare View refresh
-  docs/index.html           — Pages site
-  docs/data/bundle.json
-  docs/assets/*             — logos etc.
+  data/bundle.json
+  data/auth.json            — password hash for Pages login (no plaintext)
+  docs/index.html, login.html, assets/, data/bundle.json, data/auth.json
 
 Used by push_updates.bat:
   py export_static.py
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import shutil
 import sys
 
+import authutil
 import store
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DATA_BUNDLE = os.path.join(BASE, "data", "bundle.json")
+DATA_AUTH = os.path.join(BASE, "data", "auth.json")
 DOCS = os.path.join(BASE, "docs")
 DOCS_DATA = os.path.join(DOCS, "data")
 DOCS_ASSETS = os.path.join(DOCS, "assets")
 ASSETS = os.path.join(BASE, "assets")
 
 
-def write_bundle(path: str, bundle: dict) -> None:
+def write_json(path: str, payload: dict) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(bundle, f, indent=2, ensure_ascii=False)
+        json.dump(payload, f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+
+def build_auth_payload() -> dict:
+    authutil.ensure_access_file()
+    pwhash = authutil.password_sha256()
+    token = hashlib.sha256(("judo-token:" + pwhash).encode("utf-8")).hexdigest()
+    return {
+        "pwhash": pwhash,
+        "token": token,
+        "hint": "Set password in data/access.json (gitignored) or DASHBOARD_PASSWORD",
+    }
 
 
 def main() -> int:
@@ -41,17 +54,22 @@ def main() -> int:
     bundle["static"] = True
     bundle["mode"] = "view"
 
-    write_bundle(DATA_BUNDLE, bundle)
+    auth = build_auth_payload()
+    write_json(DATA_BUNDLE, bundle)
+    write_json(DATA_AUTH, auth)
 
     os.makedirs(DOCS, exist_ok=True)
     os.makedirs(DOCS_DATA, exist_ok=True)
     os.makedirs(DOCS_ASSETS, exist_ok=True)
-
-    # Marker so GitHub Pages skips Jekyll processing
     open(os.path.join(DOCS, ".nojekyll"), "a", encoding="utf-8").close()
 
-    shutil.copy2(os.path.join(BASE, "index.html"), os.path.join(DOCS, "index.html"))
-    write_bundle(os.path.join(DOCS_DATA, "bundle.json"), bundle)
+    for name in ("index.html", "login.html"):
+        src = os.path.join(BASE, name)
+        if os.path.isfile(src):
+            shutil.copy2(src, os.path.join(DOCS, name))
+
+    write_json(os.path.join(DOCS_DATA, "bundle.json"), bundle)
+    write_json(os.path.join(DOCS_DATA, "auth.json"), auth)
 
     if os.path.isdir(ASSETS):
         for name in os.listdir(ASSETS):
@@ -61,6 +79,7 @@ def main() -> int:
 
     units = len(bundle.get("units") or [])
     print(f"Wrote {DATA_BUNDLE}")
+    print(f"Wrote {DATA_AUTH} (password hash only)")
     print(f"Wrote {DOCS}/ (Pages site, {units} units)")
     return 0
 

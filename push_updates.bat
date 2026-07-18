@@ -24,6 +24,8 @@ set /p MSG=Commit message (Enter = "ops: update data"):
 if "%MSG%"=="" set "MSG=ops: update data"
 
 git add data docs
+# Prefer not to miss login/export helpers when changed locally
+git add -u login.html index.html export_static.py authutil.py app.py push_updates.bat README.md 2>nul
 git status -sb
 echo.
 

@@ -185,6 +185,24 @@ body.mode-view .dir-fields input {
   border: 1px solid rgba(147, 197, 253, 0.35);
 }
 
+.header-logout {
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: transparent;
+  color: rgba(255,255,255,0.82);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.header-logout:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
@@ -2027,6 +2045,10 @@ footer {
     margin-left: auto;
   }
 
+  .header-logout {
+    order: 2;
+  }
+
   .header-meta { display: none; }
 
   .header-chip {
@@ -2497,6 +2519,7 @@ footer {
       Hyderabad
     </div>
     <div class="header-chip" id="headerChip" hidden>VIEW</div>
+    <button type="button" class="header-logout" id="btnLogout" title="Sign out">Sign out</button>
   </header>
 
   <div class="app-body">
@@ -4392,6 +4415,8 @@ function switchView(name){
 document.querySelectorAll('.side-nav button[data-view]').forEach(b=>{
   b.addEventListener('click', () => switchView(b.dataset.view));
 });
+const btnLogout = document.getElementById('btnLogout');
+if(btnLogout) btnLogout.addEventListener('click', () => logoutDashboard());
 document.getElementById('drawerClose').onclick = closeDrawer;
 document.getElementById('drawerBg').onclick = closeDrawer;
 
@@ -4957,10 +4982,49 @@ async function applyMode(){
 
 (async function boot(){
   await applyMode();
+  const authed = await ensureAuthGate();
+  if(!authed) return;
   await fetchData();
   // Static Pages: refresh less often (updates arrive via git push)
   setInterval(fetchData, IS_STATIC ? 60000 : 10000);
 })();
+
+const AUTH_KEY = 'judo_cluster_auth_v1';
+
+async function sha256Hex(text){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function ensureAuthGate(){
+  if(IS_STATIC){
+    try{
+      const auth = await fetch(dataUrl('data/auth.json')+'?t='+Date.now(), {cache:'no-store'}).then(r=>{
+        if(!r.ok) throw new Error('no auth');
+        return r.json();
+      });
+      if(localStorage.getItem(AUTH_KEY) === auth.token) return true;
+    }catch(_){ /* fall through */ }
+    location.replace('login.html');
+    return false;
+  }
+  try{
+    const s = await fetch('/api/auth/status', {credentials:'same-origin'}).then(r=>r.json());
+    if(s.ok) return true;
+  }catch(_){ /* fall through */ }
+  location.replace('/login.html');
+  return false;
+}
+
+async function logoutDashboard(){
+  if(IS_STATIC){
+    localStorage.removeItem(AUTH_KEY);
+    location.replace('login.html');
+    return;
+  }
+  try{ await fetch('/api/logout', {method:'POST', credentials:'same-origin'}); }catch(_){}
+  location.replace('/login.html');
+}
 </script>
 </body>
 </html>
