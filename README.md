@@ -124,6 +124,7 @@ Then open a **new** Command Prompt (PATH refresh). Local `cloudflared.exe` in th
 | `data/mess.json` | Mess tags + TGPA dining lists |
 | `data/arrival.json` | Arrival / departure travel, hubs |
 | `data/directory.json` | Managers & phones |
+| `data/adm_staff.json` | ADM staff persons, tasks, detailments |
 | `data/event.json` | Event meta |
 
 - Arrival plans: `travel` (+ optional `travel_extra`)  
@@ -140,8 +141,9 @@ Legacy: `event_data.json` / `roster_data.json` may exist from older versions; li
 
 1. On the control-room PC: run **`start_both.bat`**
 2. Work in **Edit** → http://localhost:5001  
-   - Accommodation / Mess / Arrival / Departure / Directory  
+   - Accommodation / Mess / Arrival / Departure / Directory / **ADM Staff**  
    - Departure: same rail / flight / bus planning as Arrival; saves to `travel_departure`
+   - **ADM Staff:** onboard persons (CISF No 9 digits, Mobile 10 digits) → create Tasks → Detail persons onto tasks (`data/adm_staff.json`)
 3. Share **View** on LAN: http://\<PC-IP\>:5000  
 4. Optional internet: run **`start_internet_view.bat`**, share the `https://….trycloudflare.com` link  
 5. Before full Excel import on Edit, know it can refresh travel/roster from the workbook — prefer arrival-only import when you only need travel updates

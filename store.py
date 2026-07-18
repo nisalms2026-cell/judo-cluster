@@ -7,12 +7,15 @@ data/
   mess.json           — mess tags + TGPA dining lists
   arrival.json        — travel / arrival plans
   directory.json      — team manager contacts
+  adm_staff.json      — ADM staff persons, tasks, detailments
 """
 from __future__ import annotations
 
 import datetime
 import json
 import os
+import re
+import uuid
 
 from import_excel import build_summary
 
@@ -26,6 +29,7 @@ FILES = {
     "mess": os.path.join(DATA_DIR, "mess.json"),
     "arrival": os.path.join(DATA_DIR, "arrival.json"),
     "directory": os.path.join(DATA_DIR, "directory.json"),
+    "adm_staff": os.path.join(DATA_DIR, "adm_staff.json"),
 }
 
 
@@ -112,6 +116,7 @@ def empty_bundle():
         "venues": list(DEFAULT_VENUES),
         "hubs": normalize_hubs(None),
         "tgpa_mess": {"dining_tgpa": [], "own_mess": [], "note": ""},
+        "adm_staff": {"persons": [], "tasks": [], "detailments": []},
         "summary": build_summary([]),
     }
 
@@ -196,6 +201,12 @@ def merge_bundle() -> dict:
     mess = _read(FILES["mess"], {"by_unit": [], "tgpa_mess": {"dining_tgpa": [], "own_mess": [], "note": ""}})
     arrival = _read(FILES["arrival"], {"rows": []})
     directory = _read(FILES["directory"], {"rows": []})
+    adm = _read(FILES["adm_staff"], {"persons": [], "tasks": [], "detailments": []})
+    adm_staff = {
+        "persons": adm.get("persons") or [],
+        "tasks": adm.get("tasks") or [],
+        "detailments": adm.get("detailments") or [],
+    }
 
     mess_map = {r["org"]: r.get("mess", "") for r in mess.get("by_unit") or []}
     arr_map = {r["org"]: r for r in arrival.get("rows") or []}
@@ -251,6 +262,7 @@ def merge_bundle() -> dict:
         mess.get("updated_at"),
         arrival.get("updated_at"),
         directory.get("updated_at"),
+        adm.get("updated_at"),
     ]
     stamps = [s for s in stamps if s]
     updated_at = max(stamps) if stamps else _now()
@@ -278,6 +290,7 @@ def merge_bundle() -> dict:
         "venues": venues,
         "hubs": hubs,
         "tgpa_mess": mess.get("tgpa_mess") or {"dining_tgpa": [], "own_mess": [], "note": ""},
+        "adm_staff": adm_staff,
         "summary": build_summary(units),
         "files": {
             "accommodation": FILES["accommodation"],
@@ -285,6 +298,7 @@ def merge_bundle() -> dict:
             "arrival": FILES["arrival"],
             "directory": FILES["directory"],
             "event": FILES["event"],
+            "adm_staff": FILES["adm_staff"],
         },
     }
 
@@ -513,3 +527,222 @@ def save_imported_bundle(data: dict) -> dict:
     with open(LEGACY_FILE, "w", encoding="utf-8") as f:
         json.dump(mirror, f, indent=2, ensure_ascii=False)
     return merge_bundle()
+
+
+# ── ADM Staff (persons / tasks / detailments) ───────────────
+
+def _new_id(prefix: str) -> str:
+    return f"{prefix}_{uuid.uuid4().hex[:10]}"
+
+
+def _adm_doc() -> dict:
+    return _read(FILES["adm_staff"], {"persons": [], "tasks": [], "detailments": []})
+
+
+def _write_adm(doc: dict) -> dict:
+    _write(FILES["adm_staff"], {
+        "persons": doc.get("persons") or [],
+        "tasks": doc.get("tasks") or [],
+        "detailments": doc.get("detailments") or [],
+    })
+    return merge_bundle()
+
+
+def _digits_only(value: str) -> str:
+    return re.sub(r"\D", "", str(value or ""))
+
+
+def validate_person_fields(payload: dict, *, require_all: bool = True) -> dict:
+    """Return cleaned person fields or raise ValueError."""
+    cisf_no = _digits_only(payload.get("cisf_no", ""))
+    mobile = _digits_only(payload.get("mobile", ""))
+    name = (payload.get("name") or "").strip()
+    rank = (payload.get("rank") or "").strip()
+    unit = (payload.get("unit") or "").strip()
+    stay = (payload.get("stay") or payload.get("location") or "").strip()
+    room = (payload.get("room") or "").strip()
+
+    if require_all or "cisf_no" in payload:
+        if cisf_no and len(cisf_no) != 9:
+            raise ValueError("CISF No must be exactly 9 digits")
+        # Blank CISF allowed when not yet known; uniqueness only among non-blank
+    if require_all or "mobile" in payload:
+        if mobile and len(mobile) != 10:
+            raise ValueError("Mobile No must be exactly 10 digits")
+        if require_all and not mobile:
+            # Allow blank on bulk onboard; ops can fill later
+            mobile = ""
+    if require_all and not name:
+        raise ValueError("Name is required")
+    if require_all and not rank:
+        raise ValueError("Rank is required")
+    if require_all and not unit:
+        raise ValueError("Unit is required")
+    # Stay is optional at onboard — blank means not allotted yet
+
+    out = {}
+    if require_all or "cisf_no" in payload:
+        out["cisf_no"] = cisf_no
+    if require_all or "name" in payload:
+        out["name"] = name
+    if require_all or "rank" in payload:
+        out["rank"] = rank
+    if require_all or "unit" in payload:
+        out["unit"] = unit
+    if require_all or "mobile" in payload:
+        out["mobile"] = mobile
+    if require_all or "stay" in payload or "location" in payload:
+        out["stay"] = stay
+    if require_all or "room" in payload:
+        out["room"] = room
+    return out
+
+
+def save_adm_person(payload: dict, person_id: str | None = None) -> dict:
+    doc = _adm_doc()
+    persons = doc.get("persons") or []
+    fields = validate_person_fields(payload, require_all=not person_id)
+
+    if person_id:
+        found = None
+        for p in persons:
+            if p.get("id") == person_id:
+                found = p
+                break
+        if not found:
+            raise KeyError(person_id)
+        # Merge then re-validate full record
+        merged = {**found, **fields}
+        fields = validate_person_fields(merged, require_all=True)
+        if fields.get("cisf_no"):
+            for p in persons:
+                if p.get("id") != person_id and p.get("cisf_no") == fields["cisf_no"]:
+                    raise ValueError(f"CISF No {fields['cisf_no']} already onboarded")
+        found.update(fields)
+    else:
+        if fields.get("cisf_no"):
+            for p in persons:
+                if p.get("cisf_no") == fields["cisf_no"]:
+                    raise ValueError(f"CISF No {fields['cisf_no']} already onboarded")
+        persons.append({"id": _new_id("p"), **fields})
+
+    doc["persons"] = persons
+    return _write_adm(doc)
+
+
+def delete_adm_person(person_id: str) -> dict:
+    doc = _adm_doc()
+    persons = doc.get("persons") or []
+    before = len(persons)
+    doc["persons"] = [p for p in persons if p.get("id") != person_id]
+    if len(doc["persons"]) == before:
+        raise KeyError(person_id)
+    # Drop detailments for this person
+    doc["detailments"] = [
+        d for d in (doc.get("detailments") or []) if d.get("person_id") != person_id
+    ]
+    return _write_adm(doc)
+
+
+def save_adm_task(payload: dict, task_id: str | None = None) -> dict:
+    doc = _adm_doc()
+    tasks = doc.get("tasks") or []
+    title = (payload.get("title") or "").strip()
+    if not title:
+        raise ValueError("Task title is required")
+    fields = {
+        "title": title,
+        "location": (payload.get("location") or "").strip(),
+        "from_date": (payload.get("from_date") or "").strip(),
+        "to_date": (payload.get("to_date") or "").strip(),
+        "notes": (payload.get("notes") or "").strip(),
+        "status": (payload.get("status") or "open").strip().lower() or "open",
+    }
+    if fields["status"] not in ("open", "closed"):
+        fields["status"] = "open"
+
+    if task_id:
+        found = None
+        for t in tasks:
+            if t.get("id") == task_id:
+                found = t
+                break
+        if not found:
+            raise KeyError(task_id)
+        found.update(fields)
+    else:
+        tasks.append({"id": _new_id("t"), **fields})
+
+    doc["tasks"] = tasks
+    return _write_adm(doc)
+
+
+def delete_adm_task(task_id: str) -> dict:
+    doc = _adm_doc()
+    tasks = doc.get("tasks") or []
+    before = len(tasks)
+    doc["tasks"] = [t for t in tasks if t.get("id") != task_id]
+    if len(doc["tasks"]) == before:
+        raise KeyError(task_id)
+    doc["detailments"] = [
+        d for d in (doc.get("detailments") or []) if d.get("task_id") != task_id
+    ]
+    return _write_adm(doc)
+
+
+def save_adm_detailment(payload: dict, detailment_id: str | None = None) -> dict:
+    doc = _adm_doc()
+    persons = {p["id"]: p for p in (doc.get("persons") or []) if p.get("id")}
+    tasks = {t["id"]: t for t in (doc.get("tasks") or []) if t.get("id")}
+    detailments = doc.get("detailments") or []
+
+    task_id = (payload.get("task_id") or "").strip()
+    person_id = (payload.get("person_id") or "").strip()
+    if not task_id or task_id not in tasks:
+        raise ValueError("Valid task is required")
+    if not person_id or person_id not in persons:
+        raise ValueError("Valid person is required")
+
+    fields = {
+        "task_id": task_id,
+        "person_id": person_id,
+        "role": (payload.get("role") or "").strip(),
+        "from_date": (payload.get("from_date") or "").strip(),
+        "to_date": (payload.get("to_date") or "").strip(),
+        "notes": (payload.get("notes") or "").strip(),
+    }
+
+    if detailment_id:
+        found = None
+        for d in detailments:
+            if d.get("id") == detailment_id:
+                found = d
+                break
+        if not found:
+            raise KeyError(detailment_id)
+        for d in detailments:
+            if (
+                d.get("id") != detailment_id
+                and d.get("task_id") == fields["task_id"]
+                and d.get("person_id") == fields["person_id"]
+            ):
+                raise ValueError("This person is already detailed on that task")
+        found.update(fields)
+    else:
+        for d in detailments:
+            if d.get("task_id") == fields["task_id"] and d.get("person_id") == fields["person_id"]:
+                raise ValueError("This person is already detailed on that task")
+        detailments.append({"id": _new_id("d"), **fields})
+
+    doc["detailments"] = detailments
+    return _write_adm(doc)
+
+
+def delete_adm_detailment(detailment_id: str) -> dict:
+    doc = _adm_doc()
+    detailments = doc.get("detailments") or []
+    before = len(detailments)
+    doc["detailments"] = [d for d in detailments if d.get("id") != detailment_id]
+    if len(doc["detailments"]) == before:
+        raise KeyError(detailment_id)
+    return _write_adm(doc)

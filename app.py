@@ -170,6 +170,88 @@ def put_directory(org):
         return jsonify(store.save_directory_row(org, mgr))
 
 
+# ── ADM Staff ──────────────────────────────────────────────
+@app.route("/api/adm/persons", methods=["POST"])
+def post_adm_person():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_adm_person(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/adm/persons/<person_id>", methods=["PUT"])
+def put_adm_person(person_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_adm_person(payload, person_id=person_id))
+        except KeyError:
+            return jsonify({"error": "Person not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/adm/persons/<person_id>", methods=["DELETE"])
+def delete_adm_person(person_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_adm_person(person_id))
+        except KeyError:
+            return jsonify({"error": "Person not found"}), 404
+
+
+@app.route("/api/adm/tasks", methods=["POST"])
+def post_adm_task():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_adm_task(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/adm/tasks/<task_id>", methods=["PUT"])
+def put_adm_task(task_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_adm_task(payload, task_id=task_id))
+        except KeyError:
+            return jsonify({"error": "Task not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/adm/tasks/<task_id>", methods=["DELETE"])
+def delete_adm_task(task_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_adm_task(task_id))
+        except KeyError:
+            return jsonify({"error": "Task not found"}), 404
+
+
+@app.route("/api/adm/detailments", methods=["POST"])
+def post_adm_detailment():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_adm_detailment(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/adm/detailments/<detailment_id>", methods=["DELETE"])
+def delete_adm_detailment(detailment_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_adm_detailment(detailment_id))
+        except KeyError:
+            return jsonify({"error": "Detailment not found"}), 404
+
+
 # ── Units add / delete ─────────────────────────────────────
 @app.route("/api/units", methods=["POST"])
 def add_unit():

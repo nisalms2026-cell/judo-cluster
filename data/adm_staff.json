@@ -1,0 +1,463 @@
+{
+  "persons": [
+    {
+      "id": "p_1e5654d4af",
+      "cisf_no": "061480030",
+      "name": "Prashanta Mondal",
+      "rank": "HC/GD",
+      "unit": "NEZ-II HQ Kolkata",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_ce9391fb81",
+      "cisf_no": "150108924",
+      "name": "Balram Kari",
+      "rank": "CT/GD",
+      "unit": "9th RB Deoli",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_c39e2231c3",
+      "cisf_no": "130104975",
+      "name": "Subankar Shil",
+      "rank": "CT/GD",
+      "unit": "SMP Kolkata",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_1876a8196b",
+      "cisf_no": "110802033",
+      "name": "N Venkatesh",
+      "rank": "CT/GD",
+      "unit": "BDL Hyderabad",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_70b8e27f97",
+      "cisf_no": "031730035",
+      "name": "Pundlik Lamani",
+      "rank": "CT/GD",
+      "unit": "RTC Thakkolam",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_f5cf29bd1a",
+      "cisf_no": "032300080",
+      "name": "Dinesh Kumar Borkar",
+      "rank": "CT/Mali",
+      "unit": "3rd RB Bhilai",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_396a28b5b6",
+      "cisf_no": "170103866",
+      "name": "Raju Biswas",
+      "rank": "CT/GD",
+      "unit": "DMRC Delhi",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_dc09dbef97",
+      "cisf_no": "120710971",
+      "name": "Amit Kumar",
+      "rank": "CT/GD",
+      "unit": "DMRC Delhi",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_be10497147",
+      "cisf_no": "180700543",
+      "name": "M K Mishra",
+      "rank": "CT/GD",
+      "unit": "SJVNL Jharkhi",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_21f2c1b126",
+      "cisf_no": "934652616",
+      "name": "Bharat Bhushan",
+      "rank": "ASI/Exe",
+      "unit": "TBA",
+      "mobile": "7999739490",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_a5525eec63",
+      "cisf_no": "170701969",
+      "name": "Pankaj Kumar",
+      "rank": "ASI/Exe",
+      "unit": "TBA",
+      "mobile": "9829310606",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_82dd94a681",
+      "cisf_no": "170802693",
+      "name": "Sushil Kumar",
+      "rank": "ASI/Exe",
+      "unit": "TBA",
+      "mobile": "8979772371",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_213bd65f58",
+      "cisf_no": "062302438",
+      "name": "Kailash Singh Yadav",
+      "rank": "HC/GD",
+      "unit": "TBA",
+      "mobile": "9479094620",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_a720e6e101",
+      "cisf_no": "077241414",
+      "name": "Jitender",
+      "rank": "HC/GD",
+      "unit": "TBA",
+      "mobile": "8280094154",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_afef199dbe",
+      "cisf_no": "932310345",
+      "name": "Tekkali Kanna Rao",
+      "rank": "HC/Swpr",
+      "unit": "TBA",
+      "mobile": "9949246249",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_e89a70e74d",
+      "cisf_no": "210612668",
+      "name": "Rajan Kumar Sharma",
+      "rank": "CT/Swpr",
+      "unit": "TBA",
+      "mobile": "7079556601",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_b9c25113cf",
+      "cisf_no": "094690088",
+      "name": "Ramaala Nagaraju",
+      "rank": "HC/GD",
+      "unit": "DAE (K)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_104f60fb6a",
+      "cisf_no": "012070109",
+      "name": "Pramod Singh",
+      "rank": "HC/GD",
+      "unit": "DAE (K)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_0702ee3726",
+      "cisf_no": "944502499",
+      "name": "Beerpal Singh",
+      "rank": "ASI/Exe",
+      "unit": "DAE (K)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_ed649c235b",
+      "cisf_no": "210511590",
+      "name": "Bansode Ganesh Shrikrushna",
+      "rank": "CT/Swpr",
+      "unit": "DAE (K)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_669dc30032",
+      "cisf_no": "240705114",
+      "name": "Chavda Kaujhik Nathabhai",
+      "rank": "CT/Swpr",
+      "unit": "DAE (K)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_dbc715c78f",
+      "cisf_no": "190703442",
+      "name": "Sushil Kumar",
+      "rank": "CT/Dvr",
+      "unit": "NPC Kaiga",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_feea3bf226",
+      "cisf_no": "904730458",
+      "name": "D Chandra Sekhar",
+      "rank": "ASI/Exe",
+      "unit": "NFC (H)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_96a77237ad",
+      "cisf_no": "931404063",
+      "name": "Gabbi Lal Ahirwar",
+      "rank": "ASI/Exe",
+      "unit": "NFC (H)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_77cf05efbb",
+      "cisf_no": "072810079",
+      "name": "Perdeep Kumar",
+      "rank": "HC/Dvr",
+      "unit": "NFC (H)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_48558af63f",
+      "cisf_no": "170739892",
+      "name": "Mukesh Kumar Salvi",
+      "rank": "CT/Dvr",
+      "unit": "NFC (H)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_6f571c13f7",
+      "cisf_no": "953550203",
+      "name": "Chandre Gowda A G",
+      "rank": "HC/Swpr",
+      "unit": "NFC (H)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_51f96be626",
+      "cisf_no": "210814372",
+      "name": "Ankit Kumar",
+      "rank": "CT/Swpr",
+      "unit": "NFC (H)",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_cc14c0cf8d",
+      "cisf_no": "130100030",
+      "name": "Mithun Rarhi",
+      "rank": "CT/GD",
+      "unit": "BRBNMPL NNP, Salboni",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_a6718cb832",
+      "cisf_no": "130511342",
+      "name": "Shiek Ajgar Ali",
+      "rank": "CT/Fire",
+      "unit": "RSTPP, Ramagundam",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_9be0bf7c08",
+      "cisf_no": "210600894",
+      "name": "Shubham Kumar Singh",
+      "rank": "CT/GD",
+      "unit": "KHEP Badshahibag, Saharanpur",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_bd72837371",
+      "cisf_no": "170516510",
+      "name": "Jayram Anubham",
+      "rank": "CT/GD",
+      "unit": "Taj Mahal, Agra",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_31e96d6bd1",
+      "cisf_no": "130110107",
+      "name": "Jamir Khan",
+      "rank": "CT/GD",
+      "unit": "RIL, Jamnagar",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_e24c5f0be9",
+      "cisf_no": "190800152",
+      "name": "Manoj Mathapati",
+      "rank": "CT/Mali",
+      "unit": "9th RB, Deoli",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_008fe7fcf2",
+      "cisf_no": "240707194",
+      "name": "Darshan Patil",
+      "rank": "CT/Mali",
+      "unit": "CGBS, New Delhi",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_a7cb9c109e",
+      "cisf_no": "062260127",
+      "name": "Ruby Kawatra",
+      "rank": "L/Insp/Exe",
+      "unit": "DAMEL Delhi (on TD at RTC Behror)",
+      "mobile": "9092941194",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_e9c9e2cb23",
+      "cisf_no": "",
+      "name": "Pradeep",
+      "rank": "Insp/Exe",
+      "unit": "FHQ",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_df577e8585",
+      "cisf_no": "120208838",
+      "name": "Durgesh Sahu",
+      "rank": "SI/Exe",
+      "unit": "ASG Indore (on TD at RTC Barwaha)",
+      "mobile": "9999264640",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_4d02868330",
+      "cisf_no": "",
+      "name": "Aarti Sharma",
+      "rank": "L/SI/Exe",
+      "unit": "PHC New Delhi",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    },
+    {
+      "id": "p_550d8d01ac",
+      "cisf_no": "",
+      "name": "Nazish",
+      "rank": "L/SI/Exe",
+      "unit": "FHQ",
+      "mobile": "",
+      "stay": "TGPA",
+      "room": ""
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t_a0522c42a3",
+      "title": "Commentry",
+      "location": "TGPA / Event venue",
+      "from_date": "",
+      "to_date": "",
+      "notes": "Commentary duty",
+      "status": "open"
+    }
+  ],
+  "detailments": [
+    {
+      "id": "d_f66cfbbfea",
+      "task_id": "t_a0522c42a3",
+      "person_id": "p_a7cb9c109e",
+      "role": "Commentry",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_eb2359d5ba",
+      "task_id": "t_a0522c42a3",
+      "person_id": "p_e9c9e2cb23",
+      "role": "Commentry",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_328ff1a47c",
+      "task_id": "t_a0522c42a3",
+      "person_id": "p_df577e8585",
+      "role": "Commentry",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_b6e4296547",
+      "task_id": "t_a0522c42a3",
+      "person_id": "p_4d02868330",
+      "role": "Commentry",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_c10e90c574",
+      "task_id": "t_a0522c42a3",
+      "person_id": "p_550d8d01ac",
+      "role": "Commentry",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-07-18T12:46:26"
+}

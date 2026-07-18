@@ -44,7 +44,7 @@
         "mode": "bus",
         "station": "Bus Alighting Point",
         "arrival": "",
-        "details": "By Bus",
+        "details": "By Bus — K Victor",
         "status": "planned",
         "team_label": "ANDHRA POLICE",
         "bus_role": "alighting"
@@ -120,10 +120,11 @@
     {
       "org": "CHANDIGARH POLICE",
       "travel": {
-        "station": "",
-        "arrival": "",
-        "details": "",
-        "status": "awaited",
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/2100 hrs",
+        "details": "Tr. No. 12214 Duronto Express, approx. 21:00 hrs Secunderabad Jn",
+        "status": "planned",
         "team_label": "CHANDIGARH POLICE"
       },
       "travel_extra": []
@@ -236,7 +237,7 @@
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "21.07.26/ 1600 hrs",
-        "details": "Train no. 12724  secunderabad",
+        "details": "Train no. 12724 secunderabad",
         "status": "planned",
         "team_label": "Punjab"
       },
@@ -245,7 +246,7 @@
           "mode": "rail",
           "station": "Secunderabad Jn",
           "arrival": "22.07.2026/ 0300 hrs",
-          "details": "Train no.12722  secunderabad",
+          "details": "Train no.12722 secunderabad",
           "status": "planned",
           "team_label": "Punjab"
         },
@@ -375,11 +376,13 @@
     {
       "org": "GOA",
       "travel": {
-        "station": "",
+        "mode": "bus",
+        "station": "Bus Alighting Point",
         "arrival": "",
-        "details": "",
-        "status": "awaited",
-        "team_label": "GOA"
+        "details": "By Bus — Vaibhav Jalmi",
+        "status": "planned",
+        "team_label": "GOA",
+        "bus_role": "alighting"
       },
       "travel_extra": []
     },
@@ -388,7 +391,7 @@
       "travel": {
         "station": "",
         "arrival": "",
-        "details": "",
+        "details": "Travel plan awaited",
         "status": "awaited",
         "team_label": "NSG"
       },
@@ -397,10 +400,11 @@
     {
       "org": "JHARKHAND",
       "travel": {
-        "station": "",
-        "arrival": "",
-        "details": "",
-        "status": "awaited",
+        "mode": "rail",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "21.07.2026/0645 hrs",
+        "details": "Arrival at Charlapalli Rly. Station Train No. 20809 / SBP NED SF — 21.07.2026 / 0645 hrs",
+        "status": "planned",
         "team_label": "JHARKHAND"
       },
       "travel_extra": []
@@ -430,9 +434,9 @@
       "org": "CRPF",
       "travel": {
         "mode": "rail",
-        "station": "Hyderabad Rly. Station",
+        "station": "Secunderabad Jn",
         "arrival": "21.07.2026/0500 hrs",
-        "details": "07019/Hyderabad decan Arrival 5am 21 July 26 .",
+        "details": "07194 Hyderabad Deccan arrival 5am 21 July — Secunderabad Jn",
         "status": "planned",
         "team_label": "CRPF"
       },
@@ -468,8 +472,8 @@
         {
           "mode": "flight",
           "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "",
-          "details": "Air India 2899, Travel date- 21/07, Expected Time of Arrival- 1445 hrs, Hyderabad Airport, One Officer,",
+          "arrival": "21.07.2026/1445 hrs",
+          "details": "Air India arrival 21.07.2026 / 1445 hrs Hyderabad Airport (6 A)",
           "status": "planned",
           "team_label": "SSB"
         }
@@ -480,8 +484,8 @@
       "travel": {
         "mode": "rail",
         "station": "Charlapalli Rly. Stn.",
-        "arrival": "20.07.2026/1730 hrs",
-        "details": "Arrive on 20/07/2026 at 17:30 hrs. at Charlapalli Railway Station by SRC CHZ SPL (07222) Train",
+        "arrival": "20.07.2026/1750 hrs",
+        "details": "Arrive on 20/07/2026 at 17:50 hrs at Charlapalli Railway Station",
         "status": "planned",
         "team_label": "West Bengal Police"
       },
@@ -570,7 +574,7 @@
         "mode": "bus",
         "station": "Bus Alighting Point",
         "arrival": "",
-        "details": "By Bus",
+        "details": "By Bus — Katta Dayanand",
         "status": "planned",
         "team_label": "Telangana Police",
         "bus_role": "alighting"
@@ -590,5 +594,5 @@
       "travel_extra": []
     }
   ],
-  "updated_at": "2026-07-18T10:20:45"
+  "updated_at": "2026-07-18T10:54:32"
 }

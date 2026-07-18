@@ -482,7 +482,7 @@ body.mode-view .dir-fields input {
 /* KPI grid */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 24px;
   margin-bottom: 32px;
 }
@@ -1524,6 +1524,264 @@ tfoot td:nth-child(2) {
 .dir-card .phone a { color: inherit; text-decoration: none; }
 .dir-card .mgr { font-size: 13px; color: var(--secondary); }
 
+/* ADM Staff — 3 pillars: Onboarding · Detailment · Stay */
+.adm-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.adm-hero h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.adm-hero p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--secondary);
+  max-width: 520px;
+  line-height: 1.45;
+}
+.adm-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (max-width: 900px) {
+  .adm-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.adm-kpi {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.adm-kpi::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--primary);
+}
+.adm-kpi.warn::before { background: var(--warning); }
+.adm-kpi.ok::before { background: var(--success); }
+.adm-kpi .l { font-size: 11px; color: var(--secondary); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+.adm-kpi .v { font-size: 26px; font-weight: 700; color: var(--text); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.adm-kpi .s { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+.adm-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+@media (max-width: 800px) {
+  .adm-pillars { grid-template-columns: 1fr; }
+}
+.adm-pillar {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.adm-pillar:hover { border-color: #BFDBFE; box-shadow: 0 4px 14px rgba(37,99,235,.08); }
+.adm-pillar.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+.adm-pillar .step {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.adm-pillar .ttl { display: block; margin-top: 4px; font-size: 15px; font-weight: 700; color: var(--text); }
+.adm-pillar .sub { display: block; margin-top: 4px; font-size: 12px; color: var(--secondary); line-height: 1.4; }
+.adm-panel { display: none; }
+.adm-panel.active { display: block; }
+.adm-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.adm-search {
+  flex: 1 1 220px;
+  max-width: 320px;
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+  background: var(--card);
+  color: var(--text);
+}
+.adm-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  align-items: end;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.adm-form .form-head {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.adm-form .form-head strong { font-size: 14px; color: var(--text); }
+.adm-form .form-head span { font-size: 12px; color: var(--secondary); }
+.adm-form label {
+  font-size: 10px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 600;
+}
+.adm-form input, .adm-form select, .adm-form textarea {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.adm-form textarea { min-height: 60px; font-family: var(--font); }
+.adm-form .form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding-top: 4px;
+}
+.adm-form .hint { font-size: 11px; color: var(--text-dim); }
+.adm-form input.invalid { border-color: var(--danger); background: #FEF2F2; }
+.adm-dash {
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  letter-spacing: .12em;
+  font-weight: 500;
+}
+.adm-table-wrap {
+  overflow: auto;
+  max-height: min(62vh, 720px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+.adm-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.adm-table th, .adm-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+.adm-table th {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--secondary);
+  background: #F1F5F9;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: 700;
+}
+.adm-table tr:hover td { background: #F8FBFF; }
+.adm-table .mono { font-family: var(--font-mono); font-size: 12px; }
+.adm-table .name-cell { font-weight: 600; color: var(--text); }
+.adm-table .acts { white-space: nowrap; }
+.adm-table .acts .btn { padding: 4px 8px; font-size: 11px; margin-right: 4px; }
+.adm-empty {
+  padding: 36px 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.adm-empty strong { color: var(--text); }
+.adm-split {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: 14px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .adm-split { grid-template-columns: 1fr; }
+}
+.adm-side-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+.adm-side-card h3 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--secondary);
+}
+.adm-task-list { display: flex; flex-direction: column; gap: 8px; max-height: 420px; overflow: auto; }
+.adm-task-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background: #fff;
+}
+.adm-task-item:hover, .adm-task-item.active { border-color: var(--primary); background: var(--selected); }
+.adm-task-item .t { font-weight: 700; font-size: 13px; color: var(--text); }
+.adm-task-item .m { font-size: 11px; color: var(--secondary); margin-top: 3px; }
+.adm-stay-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.adm-stay-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+.adm-stay-card .vn { font-weight: 700; font-size: 14px; }
+.adm-stay-card .cn { font-size: 28px; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.adm-stay-card .pending { color: var(--warning); }
+
 /* Arrival edit panel */
 .arr-edit-panel {
   display: none;
@@ -1807,6 +2065,7 @@ footer {
       <button type="button" data-view="arrival"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Arrival</button>
       <button type="button" data-view="departure"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Departure</button>
       <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>Directory</button>
+      <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>ADM Staff</button>
     </nav>
     <div class="sidebar-foot">
       <img src="/assets/vira.png" alt="Vira">
@@ -2044,6 +2303,204 @@ footer {
     <div class="dir-grid" id="dirGrid"></div>
   </section>
 
+  <!-- ADM STAFF -->
+  <section class="view" id="view-adm">
+    <div class="adm-hero">
+      <div>
+        <h2>ADM Staff</h2>
+        <p>Three ops angles — <strong>Onboard</strong> identity, then allot <strong>Detailment</strong> and <strong>Stay</strong>. Until allotted, those fields show as —.</p>
+      </div>
+      <span class="file-hint" style="align-self:center;">SAVES TO DATA/ADM_STAFF.JSON</span>
+    </div>
+    <div class="adm-kpis" id="admKpis"></div>
+    <div class="adm-pillars" id="admPillars">
+      <button type="button" class="adm-pillar active" data-adm="onboard">
+        <span class="step">01</span>
+        <span class="ttl">Onboarding</span>
+        <span class="sub">CISF No · Name · Rank · Unit · Mobile</span>
+      </button>
+      <button type="button" class="adm-pillar" data-adm="detailment">
+        <span class="step">02</span>
+        <span class="ttl">Detailment</span>
+        <span class="sub">Create tasks · assign staff · roles</span>
+      </button>
+      <button type="button" class="adm-pillar" data-adm="stay">
+        <span class="step">03</span>
+        <span class="ttl">Stay</span>
+        <span class="sub">Allot venue · room / block</span>
+      </button>
+    </div>
+
+    <div class="adm-panel active" id="admPanelOnboard">
+      <div class="adm-form edit-only" id="admPersonForm">
+        <div class="form-head">
+          <strong id="admPersonFormTitle">Onboard individual</strong>
+          <span id="admPersonFormSub">Identity + mobile · Task optional (— until allotted)</span>
+        </div>
+        <input type="hidden" id="admPersonId" value="">
+        <label>CISF No (9 digits, unique)
+          <input id="admCisf" inputmode="numeric" maxlength="9" placeholder="Optional if unknown" autocomplete="off">
+        </label>
+        <label>Name
+          <input id="admName" placeholder="Full name" autocomplete="off">
+        </label>
+        <label>Rank
+          <input id="admRank" placeholder="e.g. SI / ASI / HC" autocomplete="off">
+        </label>
+        <label>Unit
+          <input id="admUnit" placeholder="Unit / Battalion" autocomplete="off">
+        </label>
+        <label>Mobile No (10 digits)
+          <input id="admMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+        </label>
+        <label>Task (detailment)
+          <select id="admPersonTask">
+            <option value="">— Not detailed —</option>
+          </select>
+        </label>
+        <label>Role on task
+          <input id="admPersonRole" placeholder="e.g. In-charge" autocomplete="off">
+        </label>
+        <div class="form-actions">
+          <button type="button" class="btn primary" id="admPersonSave">Onboard</button>
+          <button type="button" class="btn" id="admPersonReset">Clear</button>
+          <span class="hint" id="admPersonHint">Mobile &amp; Task editable here · leave Task as — if not allotted</span>
+        </div>
+      </div>
+      <div class="adm-toolbar">
+        <input class="adm-search" id="admOnboardSearch" type="search" placeholder="Search name, CISF, rank, unit…" autocomplete="off">
+        <span class="hint" id="admOnboardCount"></span>
+      </div>
+      <div class="adm-table-wrap">
+        <table class="adm-table">
+          <thead>
+            <tr>
+              <th>#</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Mobile</th><th>Detailment</th><th>Stay</th><th class="edit-only">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admPersonBody"></tbody>
+        </table>
+        <div class="adm-empty" id="admPersonEmpty" hidden>No staff onboarded yet.</div>
+      </div>
+    </div>
+
+    <div class="adm-panel" id="admPanelDetailment">
+      <div class="adm-split">
+        <div class="adm-side-card">
+          <h3>Tasks</h3>
+          <div class="adm-form edit-only" id="admTaskForm" style="margin:0 0 12px;padding:12px;box-shadow:none;">
+            <input type="hidden" id="admTaskId" value="">
+            <label style="grid-column:1/-1">Task title
+              <input id="admTaskTitle" placeholder="e.g. Commentry" autocomplete="off">
+            </label>
+            <label>Location
+              <input id="admTaskLoc" placeholder="Venue" autocomplete="off">
+            </label>
+            <label>Status
+              <select id="admTaskStatus"><option value="open">Open</option><option value="closed">Closed</option></select>
+            </label>
+            <label>From
+              <input id="admTaskFrom" type="date">
+            </label>
+            <label>To
+              <input id="admTaskTo" type="date">
+            </label>
+            <label style="grid-column:1/-1">Notes
+              <textarea id="admTaskNotes" placeholder="Brief ops notes"></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="button" class="btn primary" id="admTaskSave">Save task</button>
+              <button type="button" class="btn" id="admTaskReset">Clear</button>
+            </div>
+          </div>
+          <div class="adm-task-list" id="admTaskList"></div>
+          <div class="adm-empty" id="admTaskEmpty" hidden style="padding:16px;">No tasks yet.</div>
+        </div>
+        <div>
+          <div class="adm-form edit-only" id="admDetailForm">
+            <div class="form-head">
+              <strong>Detail staff on task</strong>
+              <span>Pick task + person · until then Detailment shows —</span>
+            </div>
+            <label>Task
+              <select id="admDetTask"></select>
+            </label>
+            <label>Person
+              <select id="admDetPerson"></select>
+            </label>
+            <label>Role / duty
+              <input id="admDetRole" placeholder="e.g. In-charge" autocomplete="off">
+            </label>
+            <label>From
+              <input id="admDetFrom" type="date">
+            </label>
+            <label>To
+              <input id="admDetTo" type="date">
+            </label>
+            <label>Notes
+              <input id="admDetNotes" placeholder="Optional" autocomplete="off">
+            </label>
+            <div class="form-actions">
+              <button type="button" class="btn primary" id="admDetailSave">Detail person</button>
+            </div>
+          </div>
+          <div class="adm-toolbar">
+            <span class="hint" id="admDetailCount"></span>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>Task</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Role</th><th>Period</th><th>Stay</th><th class="edit-only">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admDetailBody"></tbody>
+            </table>
+            <div class="adm-empty" id="admDetailEmpty" hidden>No detailments yet. Create a task, then assign staff.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="adm-panel" id="admPanelStay">
+      <div class="adm-stay-grid" id="admStaySummary"></div>
+      <div class="adm-form edit-only" id="admStayForm">
+        <div class="form-head">
+          <strong>Allot stay</strong>
+          <span>Default is — until venue is assigned</span>
+        </div>
+        <label>Person
+          <select id="admStayPerson"></select>
+        </label>
+        <label>Venue
+          <select id="admStay"></select>
+        </label>
+        <label>Room / block
+          <input id="admRoom" placeholder="e.g. Block A / R-12" autocomplete="off">
+        </label>
+        <div class="form-actions">
+          <button type="button" class="btn primary" id="admStaySave">Save stay</button>
+          <button type="button" class="btn" id="admStayClear">Clear stay (—)</button>
+        </div>
+      </div>
+      <div class="adm-toolbar">
+        <div class="filter-btns" id="admStayFilters"></div>
+        <input class="adm-search" id="admStaySearch" type="search" placeholder="Search staff…" autocomplete="off">
+      </div>
+      <div class="adm-table-wrap">
+        <table class="adm-table">
+          <thead>
+            <tr>
+              <th>#</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Stay</th><th>Room</th><th>Detailment</th><th class="edit-only">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admStayBody"></tbody>
+        </table>
+        <div class="adm-empty" id="admStayEmpty" hidden>No staff to allot.</div>
+      </div>
+    </div>
+  </section>
+
   <footer>11TH ALL INDIA POLICE JUDO CLUSTER 2026 · CISF HOST · HYDERABAD · LAN OPS DASHBOARD</footer>
 </main>
   </div><!-- .app-main -->
@@ -2069,6 +2526,11 @@ let arrHub = 'ALL';
 let arrSearch = '';
 let travelPage = 'arrival'; // arrival | departure
 let dirSearch = '';
+let admTab = 'onboard'; // onboard | detailment | stay
+let admStayFilter = 'ALL';
+let admSelectedTask = '';
+let admOnboardQ = '';
+let admStayQ = '';
 let APP_MODE = 'edit'; // view | edit
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
 let saveInFlight = false;
@@ -2171,6 +2633,7 @@ function renderAll(){
   renderMess();
   renderTravel();
   renderDirectory();
+  renderAdmStaff();
   // Refresh org dropdown while editing, but never reset date/time mid-edit
   const panel = document.getElementById('arrEditPanel');
   if(panel && panel.classList.contains('open')){
@@ -2180,11 +2643,17 @@ function renderAll(){
 
 function renderHome(){
   const sum = data.summary || {};
+  const adm = (data && data.adm_staff) || {persons:[], tasks:[], detailments:[]};
+  const admPersons = adm.persons || [];
+  const admDets = adm.detailments || [];
+  const admDetailed = new Set(admDets.map(d => d.person_id));
+  const admPending = admPersons.filter(p => !admDetailed.has(p.id)).length;
   document.getElementById('homeKpis').innerHTML = `
     <button class="kpi" data-go="accommodation"><div class="accent"></div><div class="label">Total teams</div><div class="value">${sum.teams||0}</div><div class="sub">contingents in Hyderabad</div></button>
     <button class="kpi" data-go="accommodation"><div class="accent"></div><div class="label">Total strength</div><div class="value">${sum.strength||0}</div><div class="sub">all locations</div></button>
     <button class="kpi" data-go="mess"><div class="accent"></div><div class="label">Mess @ TGPA</div><div class="value">${(sum.by_mess&&sum.by_mess.TGPA)||0}</div><div class="sub">tagged TGPA mess</div></button>
-    <button class="kpi" data-go="arrival"><div class="accent"></div><div class="label">Arrival awaited</div><div class="value">${sum.travel_awaited||0}</div><div class="sub">${sum.travel_planned||0} plans received</div></button>`;
+    <button class="kpi" data-go="arrival"><div class="accent"></div><div class="label">Arrival awaited</div><div class="value">${sum.travel_awaited||0}</div><div class="sub">${sum.travel_planned||0} plans received</div></button>
+    <button class="kpi" data-go="adm"><div class="accent"></div><div class="label">ADM Staff</div><div class="value">${admPersons.length}</div><div class="sub">${admPending ? admPending + ' detailment pending' : (admDets.length + ' assigned')}</div></button>`;
 
   document.querySelectorAll('#homeKpis .kpi').forEach(btn=>{
     btn.onclick = () => switchView(btn.dataset.go);
@@ -2840,6 +3309,549 @@ function renderDirectory(){
   }).join('');
 }
 
+function getAdm(){
+  return (data && data.adm_staff) || {persons:[], tasks:[], detailments:[]};
+}
+function digitsOnly(v){ return String(v||'').replace(/\D/g,''); }
+function validCisf(v){ return /^\d{9}$/.test(digitsOnly(v)); }
+function validMobile(v){ return /^\d{10}$/.test(digitsOnly(v)); }
+function admDash(v){
+  const s = (v == null ? '' : String(v)).trim();
+  return s ? escHtml(s) : '<span class="adm-dash">—</span>';
+}
+function personStay(p){ return ((p && (p.stay || p.location)) || '').trim(); }
+function personHasStay(p){ return !!personStay(p); }
+function personDetailLabels(p, tasks, detailments){
+  const ids = (detailments||[]).filter(d => d.person_id === p.id).map(d => d.task_id);
+  if(!ids.length) return '';
+  const map = Object.fromEntries((tasks||[]).map(t => [t.id, t.title || t.id]));
+  return ids.map(id => map[id] || id).join(', ');
+}
+
+function setAdmTab(tab){
+  admTab = tab;
+  document.querySelectorAll('#admPillars .adm-pillar').forEach(b => b.classList.toggle('active', b.dataset.adm === tab));
+  document.getElementById('admPanelOnboard').classList.toggle('active', tab === 'onboard');
+  document.getElementById('admPanelDetailment').classList.toggle('active', tab === 'detailment');
+  document.getElementById('admPanelStay').classList.toggle('active', tab === 'stay');
+}
+
+function resetAdmPersonForm(){
+  document.getElementById('admPersonId').value = '';
+  document.getElementById('admCisf').value = '';
+  document.getElementById('admName').value = '';
+  document.getElementById('admRank').value = '';
+  document.getElementById('admUnit').value = '';
+  document.getElementById('admMobile').value = '';
+  fillAdmPersonTaskOptions('');
+  document.getElementById('admPersonRole').value = '';
+  document.getElementById('admCisf').classList.remove('invalid');
+  document.getElementById('admMobile').classList.remove('invalid');
+  const title = document.getElementById('admPersonFormTitle');
+  const sub = document.getElementById('admPersonFormSub');
+  if(title) title.textContent = 'Onboard individual';
+  if(sub) sub.textContent = 'Identity + mobile · Task optional (— until allotted)';
+  document.getElementById('admPersonHint').textContent = 'Mobile & Task editable here · leave Task as — if not allotted';
+  document.getElementById('admPersonSave').textContent = 'Onboard';
+}
+
+function fillAdmPersonTaskOptions(selectedTaskId){
+  const sel = document.getElementById('admPersonTask');
+  if(!sel) return;
+  const tasks = (getAdm().tasks || []).slice().sort((a,b)=> (a.title||'').localeCompare(b.title||''));
+  sel.innerHTML = '<option value="">— Not detailed —</option>' + tasks.map(t =>
+    `<option value="${escHtml(t.id)}">${escHtml(t.title||t.id)}${t.status==='closed'?' (closed)':''}</option>`
+  ).join('');
+  if(selectedTaskId && [...sel.options].some(o => o.value === selectedTaskId)) sel.value = selectedTaskId;
+  else sel.value = '';
+}
+
+function fillAdmPersonForm(p){
+  document.getElementById('admPersonId').value = p.id || '';
+  document.getElementById('admCisf').value = p.cisf_no || '';
+  document.getElementById('admName').value = p.name || '';
+  document.getElementById('admRank').value = p.rank || '';
+  document.getElementById('admUnit').value = p.unit || '';
+  document.getElementById('admMobile').value = p.mobile || '';
+  const dets = (getAdm().detailments || []).filter(d => d.person_id === p.id);
+  const primary = dets[0] || null;
+  fillAdmPersonTaskOptions(primary ? primary.task_id : '');
+  document.getElementById('admPersonRole').value = primary ? (primary.role || '') : '';
+  const title = document.getElementById('admPersonFormTitle');
+  const sub = document.getElementById('admPersonFormSub');
+  if(title) title.textContent = 'Edit individual';
+  if(sub) sub.textContent = 'Update mobile, task / detailment, and identity';
+  document.getElementById('admPersonSave').textContent = 'Save changes';
+  setAdmTab('onboard');
+}
+
+function fillAdmStayOptions(selected, allowEmpty){
+  const sel = document.getElementById('admStay');
+  if(!sel) return;
+  const venues = getVenues();
+  const cur = selected == null ? (sel.value || '') : selected;
+  let html = allowEmpty ? '<option value="">— Not allotted —</option>' : '';
+  html += venues.map(v =>
+    `<option value="${String(v).replace(/"/g,'&quot;')}">${escHtml(v)}</option>`
+  ).join('');
+  sel.innerHTML = html;
+  if(cur && [...sel.options].some(o => o.value === cur)) sel.value = cur;
+  else if(allowEmpty) sel.value = '';
+  else if(venues.length) sel.value = venues[0];
+}
+
+function resetAdmTaskForm(){
+  document.getElementById('admTaskId').value = '';
+  document.getElementById('admTaskTitle').value = '';
+  document.getElementById('admTaskLoc').value = '';
+  document.getElementById('admTaskFrom').value = '';
+  document.getElementById('admTaskTo').value = '';
+  document.getElementById('admTaskStatus').value = 'open';
+  document.getElementById('admTaskNotes').value = '';
+  document.getElementById('admTaskSave').textContent = 'Save task';
+}
+
+function fillAdmTaskForm(t){
+  document.getElementById('admTaskId').value = t.id || '';
+  document.getElementById('admTaskTitle').value = t.title || '';
+  document.getElementById('admTaskLoc').value = t.location || '';
+  document.getElementById('admTaskFrom').value = t.from_date || '';
+  document.getElementById('admTaskTo').value = t.to_date || '';
+  document.getElementById('admTaskStatus').value = t.status === 'closed' ? 'closed' : 'open';
+  document.getElementById('admTaskNotes').value = t.notes || '';
+  document.getElementById('admTaskSave').textContent = 'Update task';
+  admSelectedTask = t.id || '';
+  setAdmTab('detailment');
+  renderAdmStaff();
+}
+
+function renderAdmStaff(){
+  if(!data) return;
+  const adm = getAdm();
+  const persons = adm.persons || [];
+  const tasks = adm.tasks || [];
+  const detailments = adm.detailments || [];
+  const personMap = Object.fromEntries(persons.map(p => [p.id, p]));
+  const taskMap = Object.fromEntries(tasks.map(t => [t.id, t]));
+  const detailedIds = new Set(detailments.map(d => d.person_id));
+  const pendingStay = persons.filter(p => !personHasStay(p)).length;
+  const pendingDet = persons.filter(p => !detailedIds.has(p.id)).length;
+
+  const kpis = document.getElementById('admKpis');
+  if(kpis){
+    kpis.innerHTML = `
+      <div class="adm-kpi"><div class="l">Onboarded</div><div class="v">${persons.length}</div><div class="s">individuals</div></div>
+      <div class="adm-kpi warn"><div class="l">Stay pending</div><div class="v">${pendingStay}</div><div class="s">showing —</div></div>
+      <div class="adm-kpi warn"><div class="l">Detailment pending</div><div class="v">${pendingDet}</div><div class="s">showing —</div></div>
+      <div class="adm-kpi ok"><div class="l">Open tasks</div><div class="v">${tasks.filter(t=>t.status!=='closed').length}</div><div class="s">${detailments.length} assigned</div></div>`;
+  }
+
+  setAdmTab(admTab);
+  const taskSel = document.getElementById('admPersonTask');
+  if(taskSel) fillAdmPersonTaskOptions(taskSel.value);
+
+  // —— Onboarding roster ——
+  const q = (admOnboardQ || '').toLowerCase().trim();
+  const body = document.getElementById('admPersonBody');
+  const empty = document.getElementById('admPersonEmpty');
+  const countEl = document.getElementById('admOnboardCount');
+  if(body){
+    let list = persons.slice().sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+    if(q){
+      list = list.filter(p => `${p.cisf_no||''} ${p.name||''} ${p.rank||''} ${p.unit||''} ${p.mobile||''}`.toLowerCase().includes(q));
+    }
+    if(countEl) countEl.textContent = `${list.length} of ${persons.length} staff`;
+    if(!list.length){
+      body.innerHTML = '';
+      if(empty){ empty.hidden = false; empty.innerHTML = persons.length ? 'No match for this search.' : 'No staff onboarded yet.'; }
+    } else {
+      if(empty) empty.hidden = true;
+      body.innerHTML = list.map((p, i)=>{
+        const det = personDetailLabels(p, tasks, detailments);
+        const stay = personStay(p);
+        const actCell = `<td class="acts edit-only">
+          <button type="button" class="btn" data-edit-person="${escHtml(p.id)}">Edit</button>
+          <button type="button" class="btn" data-del-person="${escHtml(p.id)}">Remove</button>
+        </td>`;
+        return `<tr>
+          <td class="mono">${i+1}</td>
+          <td class="mono">${admDash(p.cisf_no)}</td>
+          <td class="name-cell">${escHtml(p.name||'')}</td>
+          <td>${escHtml(p.rank||'')}</td>
+          <td>${escHtml(p.unit||'')}</td>
+          <td class="mono">${p.mobile?`<a href="tel:${escHtml(p.mobile)}">${escHtml(p.mobile)}</a>`:admDash('')}</td>
+          <td>${det ? escHtml(det) : admDash('')}</td>
+          <td>${stay ? `<span class="loc-tag ${locClass(stay)}">${escHtml(stay)}</span>` : admDash('')}</td>
+          ${actCell}
+        </tr>`;
+      }).join('');
+      body.querySelectorAll('[data-edit-person]').forEach(btn=>{
+        btn.onclick = ()=>{
+          const p = persons.find(x => x.id === btn.dataset.editPerson);
+          if(p) fillAdmPersonForm(p);
+        };
+      });
+      body.querySelectorAll('[data-del-person]').forEach(btn=>{
+        btn.onclick = () => deleteAdmPerson(btn.dataset.delPerson);
+      });
+    }
+  }
+
+  // —— Detailment ——
+  const taskList = document.getElementById('admTaskList');
+  const taskEmpty = document.getElementById('admTaskEmpty');
+  if(taskList){
+    if(!tasks.length){
+      taskList.innerHTML = '';
+      if(taskEmpty) taskEmpty.hidden = false;
+    } else {
+      if(taskEmpty) taskEmpty.hidden = true;
+      if(!admSelectedTask || !tasks.some(t => t.id === admSelectedTask)) admSelectedTask = tasks[0].id;
+      taskList.innerHTML = tasks.map(t=>{
+        const n = detailments.filter(d => d.task_id === t.id).length;
+        return `<div class="adm-task-item ${admSelectedTask===t.id?'active':''}" data-task="${escHtml(t.id)}">
+          <div class="t">${escHtml(t.title||'')}</div>
+          <div class="m">${escHtml(t.location||'Location —')} · ${n} detailed · ${escHtml(t.status||'open')}</div>
+        </div>`;
+      }).join('');
+      taskList.querySelectorAll('.adm-task-item').forEach(el=>{
+        el.onclick = ()=>{
+          admSelectedTask = el.dataset.task;
+          const t = tasks.find(x => x.id === admSelectedTask);
+          if(t){
+            document.getElementById('admDetTask').value = t.id;
+          }
+          renderAdmStaff();
+        };
+      });
+    }
+  }
+
+  const detTask = document.getElementById('admDetTask');
+  const detPerson = document.getElementById('admDetPerson');
+  if(detTask){
+    detTask.innerHTML = tasks.length
+      ? tasks.map(t => `<option value="${escHtml(t.id)}">${escHtml(t.title||t.id)}</option>`).join('')
+      : '<option value="">No tasks — create one first</option>';
+    if(admSelectedTask && [...detTask.options].some(o=>o.value===admSelectedTask)) detTask.value = admSelectedTask;
+  }
+  if(detPerson){
+    const sorted = persons.slice().sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+    detPerson.innerHTML = sorted.length
+      ? sorted.map(p => `<option value="${escHtml(p.id)}">${escHtml(p.name||'')} · ${escHtml(p.cisf_no||'—')} · ${escHtml(p.rank||'')}</option>`).join('')
+      : '<option value="">No persons onboarded</option>';
+  }
+
+  const dbody = document.getElementById('admDetailBody');
+  const dempty = document.getElementById('admDetailEmpty');
+  const dcount = document.getElementById('admDetailCount');
+  if(dbody){
+    let dets = detailments.slice();
+    if(admSelectedTask) dets = dets.filter(d => d.task_id === admSelectedTask);
+    if(dcount) dcount.textContent = admSelectedTask
+      ? `${dets.length} detailed on selected task`
+      : `${detailments.length} detailments`;
+    if(!dets.length){
+      dbody.innerHTML = '';
+      if(dempty) dempty.hidden = false;
+    } else {
+      if(dempty) dempty.hidden = true;
+      dbody.innerHTML = dets.map(d=>{
+        const p = personMap[d.person_id] || {};
+        const t = taskMap[d.task_id] || {};
+        const period = [d.from_date, d.to_date].filter(Boolean).join(' → ');
+        const stay = personStay(p);
+        return `<tr>
+          <td>${escHtml(t.title||d.task_id||'')}</td>
+          <td class="mono">${admDash(p.cisf_no)}</td>
+          <td class="name-cell">${escHtml(p.name||'')}</td>
+          <td>${escHtml(p.rank||'')}</td>
+          <td>${escHtml(p.unit||'')}</td>
+          <td>${admDash(d.role)}</td>
+          <td>${admDash(period)}</td>
+          <td>${stay ? `<span class="loc-tag ${locClass(stay)}">${escHtml(stay)}</span>` : admDash('')}</td>
+          <td class="acts edit-only"><button type="button" class="btn" data-del-det="${escHtml(d.id)}">Remove</button></td>
+        </tr>`;
+      }).join('');
+      dbody.querySelectorAll('[data-del-det]').forEach(btn=>{
+        btn.onclick = () => deleteAdmDetailment(btn.dataset.delDet);
+      });
+    }
+  }
+
+  // —— Stay ——
+  fillAdmStayOptions('', true);
+  const stayPerson = document.getElementById('admStayPerson');
+  if(stayPerson){
+    const cur = stayPerson.value;
+    const sorted = persons.slice().sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+    stayPerson.innerHTML = sorted.map(p => {
+      const st = personStay(p) || '—';
+      return `<option value="${escHtml(p.id)}">${escHtml(p.name||'')} · ${escHtml(st)}</option>`;
+    }).join('') || '<option value="">No persons</option>';
+    if(cur && [...stayPerson.options].some(o=>o.value===cur)) stayPerson.value = cur;
+  }
+
+  const staySummary = document.getElementById('admStaySummary');
+  if(staySummary){
+    const venues = getVenues();
+    const counts = {};
+    persons.forEach(p=>{
+      const s = personStay(p) || '—';
+      counts[s] = (counts[s]||0)+1;
+    });
+    const cards = [
+      `<div class="adm-stay-card"><div class="vn">Not allotted</div><div class="cn pending">${counts['—']||0}</div></div>`,
+      ...venues.map(v => `<div class="adm-stay-card"><div class="vn">${escHtml(v)}</div><div class="cn">${counts[v]||0}</div></div>`)
+    ];
+    staySummary.innerHTML = cards.join('');
+  }
+
+  const stayFilters = document.getElementById('admStayFilters');
+  if(stayFilters){
+    const venues = getVenues();
+    const counts = {ALL: persons.length, '—': persons.filter(p => !personHasStay(p)).length};
+    venues.forEach(v => { counts[v] = persons.filter(p => personStay(p) === v).length; });
+    const keys = ['ALL', '—', ...venues];
+    stayFilters.innerHTML = keys.map(k=>{
+      const label = k === 'ALL' ? 'All' : (k === '—' ? 'Pending —' : k);
+      return `<button type="button" class="${admStayFilter===k?'active':''}" data-stay="${String(k).replace(/"/g,'&quot;')}">${escHtml(label)} (${counts[k]||0})</button>`;
+    }).join('');
+  }
+
+  const sbody = document.getElementById('admStayBody');
+  const sempty = document.getElementById('admStayEmpty');
+  if(sbody){
+    const sq = (admStayQ || '').toLowerCase().trim();
+    let list = persons.slice().sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+    if(admStayFilter === '—') list = list.filter(p => !personHasStay(p));
+    else if(admStayFilter !== 'ALL') list = list.filter(p => personStay(p) === admStayFilter);
+    if(sq) list = list.filter(p => `${p.cisf_no||''} ${p.name||''} ${p.rank||''} ${p.unit||''}`.toLowerCase().includes(sq));
+    if(!list.length){
+      sbody.innerHTML = '';
+      if(sempty) sempty.hidden = false;
+    } else {
+      if(sempty) sempty.hidden = true;
+      sbody.innerHTML = list.map((p,i)=>{
+        const stay = personStay(p);
+        const det = personDetailLabels(p, tasks, detailments);
+        return `<tr>
+          <td class="mono">${i+1}</td>
+          <td class="mono">${admDash(p.cisf_no)}</td>
+          <td class="name-cell">${escHtml(p.name||'')}</td>
+          <td>${escHtml(p.rank||'')}</td>
+          <td>${escHtml(p.unit||'')}</td>
+          <td>${stay ? `<span class="loc-tag ${locClass(stay)}">${escHtml(stay)}</span>` : admDash('')}</td>
+          <td>${admDash(p.room)}</td>
+          <td>${det ? escHtml(det) : admDash('')}</td>
+          <td class="acts edit-only"><button type="button" class="btn" data-allot="${escHtml(p.id)}">Allot</button></td>
+        </tr>`;
+      }).join('');
+      sbody.querySelectorAll('[data-allot]').forEach(btn=>{
+        btn.onclick = ()=>{
+          const p = persons.find(x => x.id === btn.dataset.allot);
+          if(!p) return;
+          document.getElementById('admStayPerson').value = p.id;
+          fillAdmStayOptions(personStay(p), true);
+          document.getElementById('admRoom').value = p.room || '';
+          setAdmTab('stay');
+        };
+      });
+    }
+  }
+}
+
+async function saveAdmPerson(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const id = document.getElementById('admPersonId').value;
+  const cisf = digitsOnly(document.getElementById('admCisf').value);
+  const mobile = digitsOnly(document.getElementById('admMobile').value);
+  document.getElementById('admCisf').value = cisf;
+  document.getElementById('admMobile').value = mobile;
+  document.getElementById('admCisf').classList.toggle('invalid', cisf && !validCisf(cisf));
+  document.getElementById('admMobile').classList.toggle('invalid', mobile && !validMobile(mobile));
+  if(cisf && !validCisf(cisf)){ toast('CISF No must be exactly 9 digits (or leave blank)'); return; }
+  if(mobile && !validMobile(mobile)){ toast('Mobile No must be exactly 10 digits'); return; }
+  const existing = id ? (getAdm().persons||[]).find(p => p.id === id) : null;
+  const taskId = document.getElementById('admPersonTask').value;
+  const role = document.getElementById('admPersonRole').value.trim();
+  const payload = {
+    cisf_no: cisf,
+    name: document.getElementById('admName').value.trim(),
+    rank: document.getElementById('admRank').value.trim(),
+    unit: document.getElementById('admUnit').value.trim(),
+    mobile,
+    stay: existing ? (existing.stay || '') : '',
+    room: existing ? (existing.room || '') : '',
+  };
+  if(!payload.name || !payload.rank || !payload.unit){
+    toast('Name, Rank and Unit are required');
+    return;
+  }
+  const url = id ? '/api/adm/persons/'+encodeURIComponent(id) : '/api/adm/persons';
+  const method = id ? 'PUT' : 'POST';
+  const res = await fetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  if(!res.ok){
+    toast((body && body.error) || 'Save failed');
+    return;
+  }
+  data = body;
+  // Resolve person id after create
+  let personId = id;
+  if(!personId){
+    const match = (data.adm_staff.persons||[]).find(p =>
+      p.name === payload.name && p.rank === payload.rank && p.unit === payload.unit &&
+      (p.cisf_no||'') === (payload.cisf_no||'') && (p.mobile||'') === (payload.mobile||'')
+    );
+    personId = match ? match.id : '';
+  }
+  // Sync primary detailment from Task field
+  if(personId){
+    const existingDets = (data.adm_staff.detailments||[]).filter(d => d.person_id === personId);
+    if(taskId){
+      const already = existingDets.find(d => d.task_id === taskId);
+      if(!already){
+        // Remove other primary detailments for a clean single-task assign from this form
+        for(const d of existingDets){
+          if(d.task_id === taskId) continue;
+          const del = await fetch('/api/adm/detailments/'+encodeURIComponent(d.id), {method:'DELETE'});
+          if(del.ok) data = await del.json();
+        }
+        const detRes = await fetch('/api/adm/detailments', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({task_id: taskId, person_id: personId, role})
+        });
+        let detBody = null; try{ detBody = await detRes.json(); }catch(e){}
+        if(detRes.ok) data = detBody;
+        else toast((detBody && detBody.error) || 'Person saved; task assign failed');
+      } else if(role && already.role !== role){
+        // Role-only change: remove + re-add (no PUT for detailment)
+        const del = await fetch('/api/adm/detailments/'+encodeURIComponent(already.id), {method:'DELETE'});
+        if(del.ok) data = await del.json();
+        const detRes = await fetch('/api/adm/detailments', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({task_id: taskId, person_id: personId, role})
+        });
+        if(detRes.ok) data = await detRes.json();
+      }
+    } else if(existingDets.length){
+      // Task set to — → clear detailments for this person
+      for(const d of existingDets){
+        const del = await fetch('/api/adm/detailments/'+encodeURIComponent(d.id), {method:'DELETE'});
+        if(del.ok) data = await del.json();
+      }
+    }
+  }
+  resetAdmPersonForm();
+  toast(id ? 'Person updated' : 'Person onboarded');
+  renderAll();
+}
+
+async function deleteAdmPerson(id){
+  if(!isEdit()) return;
+  if(!confirm('Remove this person and their detailments?')) return;
+  const res = await fetch('/api/adm/persons/'+encodeURIComponent(id), {method:'DELETE'});
+  if(res.ok){ data = await res.json(); toast('Person removed'); renderAll(); }
+  else toast('Remove failed');
+}
+
+async function saveAdmTask(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const id = document.getElementById('admTaskId').value;
+  const payload = {
+    title: document.getElementById('admTaskTitle').value.trim(),
+    location: document.getElementById('admTaskLoc').value.trim(),
+    from_date: document.getElementById('admTaskFrom').value,
+    to_date: document.getElementById('admTaskTo').value,
+    status: document.getElementById('admTaskStatus').value,
+    notes: document.getElementById('admTaskNotes').value.trim(),
+  };
+  if(!payload.title){ toast('Task title is required'); return; }
+  const url = id ? '/api/adm/tasks/'+encodeURIComponent(id) : '/api/adm/tasks';
+  const method = id ? 'PUT' : 'POST';
+  const res = await fetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  if(res.ok){
+    data = body;
+    const saved = (data.adm_staff.tasks||[]).find(t => t.title === payload.title) || (data.adm_staff.tasks||[]).slice(-1)[0];
+    if(saved) admSelectedTask = saved.id;
+    resetAdmTaskForm();
+    toast(id ? 'Task updated' : 'Task created');
+    renderAll();
+  } else toast((body && body.error) || 'Save failed');
+}
+
+async function deleteAdmTask(id){
+  if(!isEdit()) return;
+  if(!confirm('Delete this task and its detailments?')) return;
+  const res = await fetch('/api/adm/tasks/'+encodeURIComponent(id), {method:'DELETE'});
+  if(res.ok){
+    data = await res.json();
+    if(admSelectedTask === id) admSelectedTask = '';
+    toast('Task deleted');
+    renderAll();
+  } else toast('Delete failed');
+}
+
+async function saveAdmDetailment(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const payload = {
+    task_id: document.getElementById('admDetTask').value,
+    person_id: document.getElementById('admDetPerson').value,
+    role: document.getElementById('admDetRole').value.trim(),
+    from_date: document.getElementById('admDetFrom').value,
+    to_date: document.getElementById('admDetTo').value,
+    notes: document.getElementById('admDetNotes').value.trim(),
+  };
+  if(!payload.task_id || !payload.person_id){ toast('Pick a task and a person'); return; }
+  const res = await fetch('/api/adm/detailments', {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+  });
+  let body = null; try{ body = await res.json(); }catch(e){}
+  if(res.ok){
+    data = body;
+    admSelectedTask = payload.task_id;
+    document.getElementById('admDetRole').value = '';
+    document.getElementById('admDetNotes').value = '';
+    toast('Detailment saved');
+    renderAll();
+  } else toast((body && body.error) || 'Detailment failed');
+}
+
+async function deleteAdmDetailment(id){
+  if(!isEdit()) return;
+  if(!confirm('Remove this detailment?')) return;
+  const res = await fetch('/api/adm/detailments/'+encodeURIComponent(id), {method:'DELETE'});
+  if(res.ok){ data = await res.json(); toast('Detailment removed'); renderAll(); }
+  else toast('Remove failed');
+}
+
+async function saveAdmStay(clear){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const pid = document.getElementById('admStayPerson').value;
+  const p = (getAdm().persons||[]).find(x => x.id === pid);
+  if(!p){ toast('Pick a person'); return; }
+  const payload = {
+    cisf_no: p.cisf_no || '',
+    name: p.name || '',
+    rank: p.rank || '',
+    unit: p.unit || '',
+    mobile: p.mobile || '',
+    stay: clear ? '' : (document.getElementById('admStay').value || ''),
+    room: clear ? '' : document.getElementById('admRoom').value.trim(),
+  };
+  const res = await fetch('/api/adm/persons/'+encodeURIComponent(pid), {
+    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+  });
+  let body = null; try{ body = await res.json(); }catch(e){}
+  if(res.ok){
+    data = body;
+    toast(clear ? 'Stay cleared (—)' : 'Stay allotted');
+    renderAll();
+  } else toast((body && body.error) || 'Stay save failed');
+}
+
 function openUnit(org){
   const u = (data.units||[]).find(x => x.org === org);
   if(!u) return;
@@ -2895,12 +3907,14 @@ function switchView(name){
     arrival: 'Arrival',
     departure: 'Departure',
     directory: 'Directory',
+    adm: 'ADM Staff',
   };
   const titleEl = document.getElementById('pageTitle');
   if(titleEl) titleEl.textContent = titles[name] || name;
   closeNavSearch();
   applyGlobalSearch(document.getElementById('navSearch').value || '');
   if(name === 'arrival' || name === 'departure') renderTravel();
+  if(name === 'adm') renderAdmStaff();
 }
 
 document.querySelectorAll('.side-nav button[data-view]').forEach(b=>{
@@ -2908,6 +3922,47 @@ document.querySelectorAll('.side-nav button[data-view]').forEach(b=>{
 });
 document.getElementById('drawerClose').onclick = closeDrawer;
 document.getElementById('drawerBg').onclick = closeDrawer;
+
+document.getElementById('admPillars').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-adm]');
+  if(!btn) return;
+  setAdmTab(btn.dataset.adm);
+});
+document.getElementById('admStayFilters').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-stay]');
+  if(!btn) return;
+  admStayFilter = btn.dataset.stay;
+  renderAdmStaff();
+});
+document.getElementById('admPersonSave').onclick = saveAdmPerson;
+document.getElementById('admPersonReset').onclick = resetAdmPersonForm;
+document.getElementById('admTaskSave').onclick = saveAdmTask;
+document.getElementById('admTaskReset').onclick = resetAdmTaskForm;
+document.getElementById('admDetailSave').onclick = saveAdmDetailment;
+document.getElementById('admStaySave').onclick = () => saveAdmStay(false);
+document.getElementById('admStayClear').onclick = () => saveAdmStay(true);
+document.getElementById('admOnboardSearch').addEventListener('input', e=>{
+  admOnboardQ = e.target.value || '';
+  renderAdmStaff();
+});
+document.getElementById('admStaySearch').addEventListener('input', e=>{
+  admStayQ = e.target.value || '';
+  renderAdmStaff();
+});
+document.getElementById('admStayPerson').addEventListener('change', ()=>{
+  const p = (getAdm().persons||[]).find(x => x.id === document.getElementById('admStayPerson').value);
+  if(!p) return;
+  fillAdmStayOptions(personStay(p), true);
+  document.getElementById('admRoom').value = p.room || '';
+});
+['admCisf','admMobile'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('input', ()=>{
+    el.value = digitsOnly(el.value).slice(0, id==='admCisf'?9:10);
+    el.classList.toggle('invalid', el.value && !(id==='admCisf'?validCisf(el.value):validMobile(el.value)));
+  });
+});
 
 document.getElementById('locFilters').addEventListener('click', e=>{
   if(e.target.tagName !== 'BUTTON') return;
