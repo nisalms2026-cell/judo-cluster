@@ -679,11 +679,13 @@ body.mode-view .dir-fields input {
   box-shadow: var(--shadow);
 }
 
-.rank-row { margin-bottom: 14px; }
+.rank-row { margin-bottom: 16px; }
 
 .rank-row .top {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
   font-size: 13px;
   margin-bottom: 6px;
   color: var(--text);
@@ -697,16 +699,35 @@ body.mode-view .dir-fields input {
   letter-spacing: 0.05em;
 }
 
-.rank-track {
-  height: 8px;
-  border-radius: 4px;
-  background: var(--border);
-  overflow: hidden;
-  display: flex;
+.rank-row .counts {
+  font-variant-numeric: tabular-nums;
+  color: var(--body);
+  white-space: nowrap;
 }
 
-.rank-track .m { background: var(--info); }
-.rank-track .f { background: var(--warning); }
+.rank-row .counts strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.rank-track {
+  height: 10px;
+  width: 100%;
+  border-radius: 5px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.rank-fill {
+  height: 100%;
+  min-width: 6px;
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.rank-fill .m { background: var(--info); height: 100%; }
+.rank-fill .f { background: var(--warning); height: 100%; }
 
 .alert-list { list-style: none; margin: 0; padding: 0; }
 
@@ -1586,6 +1607,242 @@ tfoot td:nth-child(2) {
 .dir-card .mgr { font-size: 13px; color: var(--secondary); }
 
 /* ADM Staff — 3 pillars: Onboarding · Detailment · Stay */
+.adm-lead {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--secondary);
+  max-width: 52ch;
+}
+
+.adm-table select.lo-team-select {
+  width: 100%;
+  max-width: 280px;
+  min-height: 36px;
+  font-size: 13px;
+}
+
+/* LO view — minimal read-only roster */
+.lo-view-only { display: none; }
+body.mode-view .lo-view-only,
+body.mode-static .lo-view-only { display: block; }
+body.mode-view .lo-edit-block,
+body.mode-static .lo-edit-block { display: none !important; }
+
+.lo-view-lead {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--secondary);
+}
+.lo-view-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.lo-view-search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 360px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--text);
+}
+.lo-view-search:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+.lo-view-meta {
+  font-size: 12px;
+  color: var(--secondary);
+  font-variant-numeric: tabular-nums;
+}
+.lo-view-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+.lo-view-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.lo-roster-table {
+  table-layout: fixed;
+  min-width: 720px;
+}
+.lo-roster-table col.c-team { width: 30%; }
+.lo-roster-table col.c-lo { width: 28%; }
+.lo-roster-table col.c-rank { width: 14%; }
+.lo-roster-table col.c-mobile { width: 112px; }
+.lo-view-table thead {
+  background: var(--bg);
+}
+.lo-view-table th {
+  text-align: left;
+  padding: 11px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.lo-view-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  vertical-align: middle;
+  text-align: left;
+}
+.lo-view-table tbody tr:last-child td { border-bottom: none; }
+.lo-view-table tbody tr:nth-child(even) { background: rgba(248, 250, 252, 0.75); }
+.lo-roster-table tbody tr.lo-pending .lo-team { color: var(--secondary); font-weight: 600; }
+.lo-roster-table .lo-team {
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  word-break: break-word;
+}
+.lo-roster-table .lo-name {
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.lo-roster-table .lo-rank {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.lo-roster-table .lo-mobile {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.lo-view-table .lo-mobile a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.lo-view-table .lo-mobile a:hover { text-decoration: underline; }
+.lo-dash { color: var(--text-dim); font-weight: 400; }
+.lo-view-empty {
+  padding: 36px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+/* Technical Committee */
+.tc-view-only { display: none; }
+body.mode-view .tc-view-only,
+body.mode-static .tc-view-only { display: block; }
+body.mode-view .tc-edit-block,
+body.mode-static .tc-edit-block { display: none !important; }
+
+.tc-lead {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--secondary);
+}
+.tc-game-tabs { margin-bottom: 10px; }
+.tc-game-title {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+.tc-officials-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 780px;
+}
+.tc-officials-table col.c-name { width: 22%; }
+.tc-officials-table col.c-pos { width: 15%; }
+.tc-officials-table col.c-mobile { width: 108px; }
+.tc-officials-table col.c-date { width: 128px; }
+.tc-officials-table col.c-email { width: auto; }
+.tc-officials-table th,
+.tc-officials-table td {
+  text-align: left;
+  padding: 11px 14px;
+  vertical-align: middle;
+}
+.tc-officials-table th {
+  white-space: nowrap;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+.tc-officials-table tbody tr:nth-child(even) { background: rgba(248, 250, 252, 0.8); }
+.tc-officials-table .lo-name {
+  min-width: 0;
+  width: auto;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.tc-officials-table .tc-pos {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 13px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+.tc-officials-table .tc-date {
+  font-variant-numeric: tabular-nums;
+  color: var(--secondary);
+  font-size: 12px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+.tc-officials-table .lo-mobile {
+  width: auto;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.tc-officials-table .lo-mobile a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+}
+.tc-officials-table .lo-mobile a:hover { text-decoration: underline; }
+.tc-officials-table .tc-email {
+  min-width: 0;
+  line-height: 1.4;
+}
+.tc-officials-table .tc-email a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 12px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.tc-officials-table .tc-email a:hover { text-decoration: underline; }
+
+.tc-edit-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.tc-edit-table col.c-name { width: 18%; }
+.tc-edit-table col.c-pos { width: 13%; }
+.tc-edit-table col.c-mobile { width: 100px; }
+.tc-edit-table col.c-date { width: 118px; }
+.tc-edit-table col.c-email { width: 20%; }
+.tc-edit-table col.c-act { width: 132px; }
+.tc-edit-table td,
+.tc-edit-table th { text-align: left; padding: 8px 10px; vertical-align: middle; }
+.tc-edit-table .tc-email a { overflow-wrap: break-word; word-break: break-word; font-size: 12px; }
+
 .adm-hero {
   display: flex;
   flex-wrap: wrap;
@@ -2290,6 +2547,24 @@ footer {
   .dir-card .phone { font-size: 16px; padding: 4px 0; }
   .dir-card .phone a { display: inline-block; min-height: 44px; line-height: 44px; }
 
+  .lo-view-bar { flex-direction: column; align-items: stretch; }
+  .lo-view-search { max-width: none; width: 100%; }
+  .lo-view-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lo-view-table { min-width: 520px; }
+  .lo-roster-table { min-width: 640px; }
+  .tc-officials-table { min-width: 680px; }
+  .tc-officials-table th,
+  .tc-officials-table td { padding: 10px 12px; }
+  .tc-officials-table col.c-date { width: 112px; }
+  .lo-view-table .lo-mobile a {
+    display: inline-block;
+    min-height: 44px;
+    line-height: 44px;
+  }
+
   .arr-controls,
   .controls,
   .venue-bar {
@@ -2530,8 +2805,10 @@ footer {
       <button type="button" data-view="mess"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M8 6V4M16 6V4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Mess</span><span class="nav-label-short">Mess</span></button>
       <button type="button" data-view="arrival"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Arrival</span><span class="nav-label-short">Arrive</span></button>
       <button type="button" data-view="departure"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Departure</span><span class="nav-label-short">Depart</span></button>
-      <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg><span class="nav-label-full">Directory</span><span class="nav-label-short">Contacts</span></button>
       <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">ADM Staff</span><span class="nav-label-short">ADM</span></button>
+      <button type="button" data-view="lo"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.761 0-5 1.567-5 3.5V19h10v-2.5C13 14.567 10.761 13 8 13zM16 13c-.775 0-1.5.13-2.15.36C15.813 14.28 17 15.646 17 17.5V19h7v-2.5c0-1.933-2.239-3.5-5-3.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg><span class="nav-label-full">Liaison Officers</span><span class="nav-label-short">LO</span></button>
+      <button type="button" data-view="tc"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Tech Committee</span><span class="nav-label-short">TC</span></button>
+      <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg><span class="nav-label-full">Directory</span><span class="nav-label-short">Contacts</span></button>
     </nav>
     <div class="sidebar-foot">
       <img src="assets/vira.png" alt="Vira">
@@ -2554,9 +2831,9 @@ footer {
 
     <div class="home-split">
       <div class="panel">
-        <div class="section-title" style="margin-bottom:16px;">Ranked athlete strength <span>GOs · SOs · ORs</span></div>
+        <div class="section-title" style="margin-bottom:16px;">Strength by rank <span>GOs · SOs · ORs</span></div>
         <div id="homeRanks"></div>
-        <div style="display:flex;gap:18px;margin-top:8px;font-size:11px;color:var(--text-dim);">
+        <div style="display:flex;gap:18px;margin-top:10px;font-size:11px;color:var(--text-dim);">
           <span><span style="display:inline-block;width:8px;height:8px;background:var(--cyan);border-radius:2px;margin-right:5px;"></span>Male</span>
           <span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:5px;"></span>Female</span>
         </div>
@@ -2771,13 +3048,7 @@ footer {
 
   <!-- ADM STAFF -->
   <section class="view" id="view-adm">
-    <div class="adm-hero">
-      <div>
-        <h2>ADM Staff</h2>
-        <p>Three ops angles — <strong>Onboard</strong> identity, then allot <strong>Detailment</strong> and <strong>Stay</strong>. Until allotted, those fields show as —.</p>
-      </div>
-      <span class="file-hint" style="align-self:center;">SAVES TO DATA/ADM_STAFF.JSON</span>
-    </div>
+    <p class="adm-lead">Onboard identity, then allot detailment and stay. Until allotted, those fields show as —.</p>
     <div class="adm-kpis" id="admKpis"></div>
     <div class="adm-pillars" id="admPillars">
       <button type="button" class="adm-pillar active" data-adm="onboard">
@@ -2967,6 +3238,209 @@ footer {
     </div>
   </section>
 
+  <!-- LIAISON OFFICERS -->
+  <section class="view" id="view-lo">
+    <div class="lo-view-only">
+      <p class="lo-view-lead">Liaison officer allotted to each contingent team.</p>
+      <div class="lo-view-bar">
+        <input class="lo-view-search" id="loViewSearch" type="search" placeholder="Search team, liaison officer, rank, mobile…" autocomplete="off">
+        <span class="lo-view-meta" id="loViewMeta"></span>
+      </div>
+      <div class="lo-view-wrap">
+        <table class="lo-view-table lo-roster-table">
+          <colgroup>
+            <col class="c-team"><col class="c-lo"><col class="c-rank"><col class="c-mobile">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Team</th>
+              <th>Liaison officer</th>
+              <th>Rank</th>
+              <th>Mobile</th>
+            </tr>
+          </thead>
+          <tbody id="loViewBody"></tbody>
+        </table>
+        <div class="lo-view-empty" id="loViewEmpty" hidden>No teams match this search.</div>
+      </div>
+    </div>
+
+    <div class="lo-edit-block">
+    <p class="adm-lead">Onboard liaison officers, then assign one LO to each contingent team.</p>
+    <div class="adm-kpis" id="loKpis"></div>
+    <div class="adm-pillars" id="loPillars">
+      <button type="button" class="adm-pillar active" data-lo="onboard">
+        <span class="step">01</span>
+        <span class="ttl">Onboarding</span>
+        <span class="sub">CISF No · Name · Rank · Unit · Mobile</span>
+      </button>
+      <button type="button" class="adm-pillar" data-lo="assign">
+        <span class="step">02</span>
+        <span class="ttl">Team assignment</span>
+        <span class="sub">Allot LO to each team · — until assigned</span>
+      </button>
+    </div>
+
+    <div class="adm-panel active" id="loPanelOnboard">
+      <div class="adm-form edit-only" id="loOfficerForm">
+        <div class="form-head">
+          <strong id="loOfficerFormTitle">Onboard LO</strong>
+          <span>Identity for liaison duty</span>
+        </div>
+        <input type="hidden" id="loOfficerId" value="">
+        <label>CISF No (9 digits)
+          <input id="loCisf" inputmode="numeric" maxlength="9" placeholder="9-digit CISF No" autocomplete="off">
+        </label>
+        <label>Name
+          <input id="loName" placeholder="Full name" autocomplete="off">
+        </label>
+        <label>Rank
+          <input id="loRank" placeholder="e.g. SI / ASI / HC" autocomplete="off">
+        </label>
+        <label>Unit
+          <input id="loUnit" placeholder="Unit / Battalion" autocomplete="off">
+        </label>
+        <label>Mobile No (10 digits)
+          <input id="loMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+        </label>
+        <div class="form-actions">
+          <button type="button" class="btn primary" id="loOfficerSave">Onboard</button>
+          <button type="button" class="btn" id="loOfficerReset">Clear</button>
+        </div>
+      </div>
+      <div class="adm-toolbar">
+        <input class="adm-search" id="loOnboardSearch" type="search" placeholder="Search name, CISF, rank, unit…" autocomplete="off">
+        <span class="hint" id="loOnboardCount"></span>
+      </div>
+      <div class="adm-table-wrap">
+        <table class="adm-table">
+          <thead>
+            <tr>
+              <th>#</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Mobile</th><th>Teams</th><th class="edit-only">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="loOfficerBody"></tbody>
+        </table>
+        <div class="adm-empty" id="loOfficerEmpty" hidden>No liaison officers yet.</div>
+      </div>
+    </div>
+
+    <div class="adm-panel" id="loPanelAssign">
+      <div class="adm-toolbar">
+        <div class="filter-btns" id="loAssignFilters">
+          <button type="button" class="active" data-lo-filter="ALL">All teams</button>
+          <button type="button" data-lo-filter="pending">Unassigned</button>
+          <button type="button" data-lo-filter="assigned">Assigned</button>
+        </div>
+        <input class="adm-search" id="loAssignSearch" type="search" placeholder="Search team…" autocomplete="off">
+        <span class="hint" id="loAssignCount"></span>
+      </div>
+      <div class="adm-table-wrap">
+        <table class="adm-table lo-assign-table">
+          <thead>
+            <tr>
+              <th>Team</th><th>Stay</th><th>Strength</th><th>Liaison officer</th><th>Mobile</th><th>DOA</th><th>LO location</th>
+            </tr>
+          </thead>
+          <tbody id="loAssignBody"></tbody>
+        </table>
+        <div class="adm-empty" id="loAssignEmpty" hidden>No teams found.</div>
+      </div>
+    </div>
+    </div><!-- .lo-edit-block -->
+  </section>
+
+  <!-- TECHNICAL COMMITTEE -->
+  <section class="view" id="view-tc">
+    <p class="tc-lead">Technical committee members for each game discipline.</p>
+    <div class="filter-btns tc-game-tabs" id="tcGameTabs"></div>
+    <h2 class="tc-game-title" id="tcGameTitle"></h2>
+
+    <div class="tc-view-only">
+      <div class="lo-view-bar">
+        <input class="lo-view-search" id="tcViewSearch" type="search" placeholder="Search name, position, mobile, email…" autocomplete="off">
+        <span class="lo-view-meta" id="tcViewMeta"></span>
+      </div>
+      <div class="lo-view-wrap">
+        <table class="lo-view-table tc-officials-table">
+          <colgroup>
+            <col class="c-name"><col class="c-pos"><col class="c-mobile">
+            <col class="c-date"><col class="c-date"><col class="c-email">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Mobile</th>
+              <th>Arrival</th>
+              <th>Departure</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody id="tcViewBody"></tbody>
+        </table>
+        <div class="lo-view-empty" id="tcViewEmpty" hidden>No members added for this game yet.</div>
+      </div>
+    </div>
+
+    <div class="tc-edit-block">
+      <div class="adm-form" id="tcMemberForm">
+        <div class="form-head">
+          <strong id="tcMemberFormTitle">Add member</strong>
+          <span id="tcMemberFormHint">Saves to data/tech_committee.json</span>
+        </div>
+        <input type="hidden" id="tcMemberId" value="">
+        <label>Game
+          <select id="tcMemberGame"></select>
+        </label>
+        <label>Name
+          <input id="tcMemberName" placeholder="Full name" autocomplete="off">
+        </label>
+        <label>Position
+          <input id="tcMemberRole" placeholder="e.g. Technical Official / Jury / TTO" autocomplete="off">
+        </label>
+        <label>Mobile No (10 digits)
+          <input id="tcMemberMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+        </label>
+        <label>Arrival
+          <input id="tcMemberArrival" placeholder="DD/MM/YYYY or with time" autocomplete="off">
+        </label>
+        <label>Departure
+          <input id="tcMemberDeparture" placeholder="DD/MM/YYYY or with time" autocomplete="off">
+        </label>
+        <label>Email
+          <input id="tcMemberEmail" type="email" placeholder="email@example.com" autocomplete="off">
+        </label>
+        <input type="hidden" id="tcMemberUnit" value="">
+        <input type="hidden" id="tcMemberGender" value="">
+        <input type="hidden" id="tcMemberRank" value="">
+        <div class="form-actions">
+          <button type="button" class="btn primary" id="tcMemberSave">Add member</button>
+          <button type="button" class="btn" id="tcMemberReset">Clear</button>
+        </div>
+      </div>
+      <div class="adm-toolbar">
+        <input class="adm-search" id="tcEditSearch" type="search" placeholder="Search members…" autocomplete="off">
+        <span class="hint" id="tcEditCount"></span>
+      </div>
+      <div class="adm-table-wrap">
+        <table class="adm-table tc-edit-table">
+          <colgroup>
+            <col class="c-name"><col class="c-pos"><col class="c-mobile">
+            <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Name</th><th>Position</th><th>Mobile</th><th>Arrival</th><th>Departure</th><th>Email</th><th class="edit-only">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tcEditBody"></tbody>
+        </table>
+        <div class="adm-empty" id="tcEditEmpty" hidden>No members for this game yet.</div>
+      </div>
+    </div>
+  </section>
+
   <footer>11TH ALL INDIA POLICE JUDO CLUSTER 2026 · CISF HOST · HYDERABAD · LAN OPS DASHBOARD</footer>
 </main>
   </div><!-- .app-main -->
@@ -2997,6 +3471,15 @@ let admStayFilter = 'ALL';
 let admSelectedTask = '';
 let admOnboardQ = '';
 let admStayQ = '';
+let loTab = 'onboard';
+let loOnboardQ = '';
+let loAssignFilter = 'ALL';
+let loAssignQ = '';
+let loViewQ = '';
+const TC_GAMES = ['Pencak Silat', 'Judo', 'Wushu', 'Taekwondo', 'Karate'];
+let tcGame = 'Pencak Silat';
+let tcSearchQ = '';
+let tcEditQ = '';
 let APP_MODE = 'edit'; // view | edit
 let IS_STATIC = false; // GitHub Pages — read-only data/bundle.json
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
@@ -3149,6 +3632,8 @@ function renderAll(){
   renderTravel();
   renderDirectory();
   renderAdmStaff();
+  renderLoStaff();
+  renderTechCommittee();
   // Refresh org dropdown while editing, but never reset date/time mid-edit
   const panel = document.getElementById('arrEditPanel');
   if(panel && panel.classList.contains('open')){
@@ -3188,13 +3673,24 @@ function renderHome(){
     {name:'ORs', m:d.ors_m||0, f:d.ors_f||0},
   ];
   const maxV = Math.max(...ranks.map(r=>r.m+r.f), 1);
-  document.getElementById('homeRanks').innerHTML = ranks.map(r=>{
-    const tot = r.m+r.f || 1;
-    const w = ((r.m+r.f)/maxV*100).toFixed(1);
-    const pm = (r.m/tot*100).toFixed(1);
-    return `<div class="rank-row"><div class="top"><span class="name">${r.name}</span><span>${r.m} M / ${r.f} F (${r.m+r.f})</span></div>
-      <div class="rank-track" style="width:${w}%"><div class="m" style="width:${pm}%"></div><div class="f" style="width:${100-pm}%"></div></div></div>`;
-  }).join('');
+  const homeRanks = document.getElementById('homeRanks');
+  if(homeRanks){
+    homeRanks.innerHTML = ranks.map(r=>{
+      const tot = r.m + r.f;
+      const share = Math.max(tot ? (tot / maxV * 100) : 0, tot ? 2 : 0).toFixed(1);
+      const pm = tot ? (r.m / tot * 100) : 0;
+      const pf = tot ? (100 - pm) : 0;
+      return `<div class="rank-row">
+        <div class="top"><span class="name">${r.name}</span><span class="counts">${r.m} M · ${r.f} F · <strong>${tot}</strong></span></div>
+        <div class="rank-track" title="${tot} of max ${maxV}">
+          <div class="rank-fill" style="width:${share}%">
+            <div class="m" style="width:${pm.toFixed(1)}%"></div>
+            <div class="f" style="width:${pf.toFixed(1)}%"></div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
 
   const awaited = (data.units||[]).filter(u => (u.travel||{}).status !== 'planned').slice(0, 8);
   document.getElementById('homeAlerts').innerHTML = awaited.length
@@ -3828,6 +4324,255 @@ function renderDirectory(){
 function getAdm(){
   return (data && data.adm_staff) || {persons:[], tasks:[], detailments:[]};
 }
+function isLiaisonTaskTitle(title){
+  return /liaison|liaision/i.test(String(title || ''));
+}
+function getLo(){
+  return (data && data.lo) || {officers:[], assignments:[]};
+}
+
+function getTc(){
+  const tc = (data && data.tech_committee) || {games: TC_GAMES.slice(), members: []};
+  return {
+    games: (tc.games && tc.games.length) ? tc.games : TC_GAMES.slice(),
+    members: tc.members || [],
+  };
+}
+
+function tcGames(){
+  return getTc().games || TC_GAMES.slice();
+}
+
+function setTcGame(game){
+  if(!game) return;
+  tcGame = game;
+  const sel = document.getElementById('tcMemberGame');
+  if(sel) sel.value = game;
+  renderTechCommittee();
+}
+
+function tcSortMembers(list){
+  return list.slice().sort((a,b)=>{
+    const sa = Number(a.sno) || 9999;
+    const sb = Number(b.sno) || 9999;
+    if(sa !== sb) return sa - sb;
+    return (a.name||'').localeCompare(b.name||'');
+  });
+}
+
+function tcDisplayPosition(m){
+  return (m.role || m.rank || '').trim();
+}
+
+function tcSearchHay(m){
+  return `${m.name||''} ${tcDisplayPosition(m)} ${m.arrival||''} ${m.departure||''} ${m.mobile||''} ${m.email||''}`.toLowerCase();
+}
+
+function resetTcMemberForm(){
+  document.getElementById('tcMemberId').value = '';
+  document.getElementById('tcMemberName').value = '';
+  document.getElementById('tcMemberRank').value = '';
+  document.getElementById('tcMemberRole').value = '';
+  document.getElementById('tcMemberGender').value = '';
+  document.getElementById('tcMemberUnit').value = '';
+  document.getElementById('tcMemberArrival').value = '';
+  document.getElementById('tcMemberDeparture').value = '';
+  document.getElementById('tcMemberEmail').value = '';
+  document.getElementById('tcMemberMobile').value = '';
+  document.getElementById('tcMemberMobile').classList.remove('invalid');
+  document.getElementById('tcMemberGame').value = tcGame;
+  document.getElementById('tcMemberFormTitle').textContent = 'Add member';
+  document.getElementById('tcMemberSave').textContent = 'Add member';
+}
+
+function fillTcMemberForm(m){
+  document.getElementById('tcMemberId').value = m.id || '';
+  document.getElementById('tcMemberGame').value = m.game || tcGame;
+  document.getElementById('tcMemberName').value = m.name || '';
+  document.getElementById('tcMemberRank').value = m.rank || '';
+  document.getElementById('tcMemberRole').value = m.role || '';
+  document.getElementById('tcMemberGender').value = m.gender || '';
+  document.getElementById('tcMemberUnit').value = m.unit || '';
+  document.getElementById('tcMemberArrival').value = m.arrival || '';
+  document.getElementById('tcMemberDeparture').value = m.departure || '';
+  document.getElementById('tcMemberEmail').value = m.email || '';
+  document.getElementById('tcMemberMobile').value = m.mobile || '';
+  document.getElementById('tcMemberFormTitle').textContent = 'Edit member';
+  document.getElementById('tcMemberSave').textContent = 'Save changes';
+  if(m.game) tcGame = m.game;
+}
+
+function renderTcGameTabs(){
+  const tabs = document.getElementById('tcGameTabs');
+  const games = tcGames();
+  if(!tabs) return;
+  if(!games.includes(tcGame)) tcGame = games[0] || TC_GAMES[0];
+  tabs.innerHTML = games.map(g =>
+    `<button type="button" data-tc-game="${escHtml(g)}" class="${g===tcGame?'active':''}">${escHtml(g)}</button>`
+  ).join('');
+  tabs.querySelectorAll('[data-tc-game]').forEach(btn=>{
+    btn.onclick = () => setTcGame(btn.dataset.tcGame);
+  });
+  const title = document.getElementById('tcGameTitle');
+  if(title) title.textContent = tcGame;
+  const gameSel = document.getElementById('tcMemberGame');
+  if(gameSel){
+    gameSel.innerHTML = games.map(g =>
+      `<option value="${escHtml(g)}"${g===tcGame?' selected':''}>${escHtml(g)}</option>`
+    ).join('');
+  }
+}
+
+function renderTechCommittee(){
+  if(!data) return;
+  renderTcGameTabs();
+  const tc = getTc();
+  const members = tc.members || [];
+  const gameMembers = members.filter(m => m.game === tcGame);
+  const q = (tcSearchQ || '').toLowerCase().trim();
+  let vlist = tcSortMembers(gameMembers);
+  if(q) vlist = vlist.filter(m => tcSearchHay(m).includes(q));
+
+  const vmeta = document.getElementById('tcViewMeta');
+  if(vmeta) vmeta.textContent = `${gameMembers.length} official${gameMembers.length===1?'':'s'}`;
+
+  const vbody = document.getElementById('tcViewBody');
+  const vempty = document.getElementById('tcViewEmpty');
+  const vwrap = vbody && vbody.closest('.lo-view-wrap');
+  if(vbody){
+    if(!vlist.length){
+      vbody.innerHTML = '';
+      if(vempty){
+        vempty.hidden = false;
+        vempty.textContent = q ? 'No members match this search.' : 'No members added for this game yet.';
+      }
+      const tbl = vwrap && vwrap.querySelector('.lo-view-table');
+      if(tbl) tbl.hidden = true;
+    } else {
+      if(vempty) vempty.hidden = true;
+      const tbl = vwrap && vwrap.querySelector('.lo-view-table');
+      if(tbl) tbl.hidden = false;
+      vbody.innerHTML = vlist.map(m=>{
+        const mobile = m.mobile
+          ? `<a href="tel:${escHtml(m.mobile)}">${escHtml(m.mobile)}</a>`
+          : '<span class="lo-dash">—</span>';
+        const email = m.email
+          ? `<a href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>`
+          : '<span class="lo-dash">—</span>';
+        const pos = tcDisplayPosition(m);
+        return `<tr>
+          <td class="lo-name">${escHtml(m.name||'')}</td>
+          <td class="tc-pos">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
+          <td class="lo-mobile">${mobile}</td>
+          <td class="tc-date">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
+          <td class="tc-date">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
+          <td class="tc-email">${email}</td>
+        </tr>`;
+      }).join('');
+    }
+  }
+
+  if(!isEdit()) return;
+
+  const eq = (tcEditQ || '').toLowerCase().trim();
+  let elist = tcSortMembers(gameMembers);
+  if(eq) elist = elist.filter(m => tcSearchHay(m).includes(eq));
+  const ecount = document.getElementById('tcEditCount');
+  if(ecount) ecount.textContent = `${elist.length} of ${gameMembers.length} official${gameMembers.length===1?'':'s'}`;
+  const ebody = document.getElementById('tcEditBody');
+  const eempty = document.getElementById('tcEditEmpty');
+  if(!ebody) return;
+  if(!elist.length){
+    ebody.innerHTML = '';
+    if(eempty){
+      eempty.hidden = false;
+      eempty.textContent = gameMembers.length ? 'No members match this search.' : 'No members for this game yet.';
+    }
+  } else {
+    if(eempty) eempty.hidden = true;
+    ebody.innerHTML = elist.map(m=>{
+      const phone = m.mobile
+        ? `<a href="tel:${escHtml(m.mobile)}">${escHtml(m.mobile)}</a>`
+        : admDash('');
+      const email = m.email
+        ? `<a href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>`
+        : admDash('');
+      const pos = tcDisplayPosition(m);
+      return `<tr>
+        <td class="name-cell">${escHtml(m.name||'')}</td>
+        <td>${pos ? escHtml(pos) : admDash('')}</td>
+        <td class="mono">${phone}</td>
+        <td class="mono">${m.arrival ? escHtml(m.arrival) : admDash('')}</td>
+        <td class="mono">${m.departure ? escHtml(m.departure) : admDash('')}</td>
+        <td>${email}</td>
+        <td class="acts edit-only">
+          <button type="button" class="btn" data-edit-tc="${escHtml(m.id)}">Edit</button>
+          <button type="button" class="btn" data-del-tc="${escHtml(m.id)}">Remove</button>
+        </td>
+      </tr>`;
+    }).join('');
+    ebody.querySelectorAll('[data-edit-tc]').forEach(btn=>{
+      btn.onclick = ()=>{
+        const m = members.find(x => x.id === btn.dataset.editTc);
+        if(m) fillTcMemberForm(m);
+      };
+    });
+    ebody.querySelectorAll('[data-del-tc]').forEach(btn=>{
+      btn.onclick = () => deleteTcMember(btn.dataset.delTc);
+    });
+  }
+}
+
+async function saveTcMember(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const id = document.getElementById('tcMemberId').value;
+  const mobile = digitsOnly(document.getElementById('tcMemberMobile').value);
+  document.getElementById('tcMemberMobile').value = mobile;
+  document.getElementById('tcMemberMobile').classList.toggle('invalid', mobile && !validMobile(mobile));
+  if(mobile && !validMobile(mobile)){ toast('Mobile No must be exactly 10 digits'); return; }
+  const payload = {
+    game: document.getElementById('tcMemberGame').value,
+    name: document.getElementById('tcMemberName').value.trim(),
+    rank: document.getElementById('tcMemberRank').value.trim(),
+    role: document.getElementById('tcMemberRole').value.trim(),
+    gender: document.getElementById('tcMemberGender').value.trim(),
+    unit: document.getElementById('tcMemberUnit').value.trim(),
+    arrival: document.getElementById('tcMemberArrival').value.trim(),
+    departure: document.getElementById('tcMemberDeparture').value.trim(),
+    email: document.getElementById('tcMemberEmail').value.trim(),
+    mobile,
+  };
+  if(!payload.name){
+    toast('Name is required');
+    return;
+  }
+  tcGame = payload.game || tcGame;
+  const url = id ? '/api/tc/members/'+encodeURIComponent(id) : '/api/tc/members';
+  const method = id ? 'PUT' : 'POST';
+  saveInFlight = true;
+  const res = await apiFetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Save failed'); return; }
+  data = body;
+  toast(id ? 'Member updated' : 'Member added');
+  resetTcMemberForm();
+  renderTechCommittee();
+}
+
+async function deleteTcMember(id){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  if(!confirm('Remove this technical committee member?')) return;
+  saveInFlight = true;
+  const res = await apiFetch('/api/tc/members/'+encodeURIComponent(id), {method:'DELETE'});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Delete failed'); return; }
+  data = body;
+  toast('Member removed');
+  renderTechCommittee();
+}
+
 function digitsOnly(v){ return String(v||'').replace(/\D/g,''); }
 function validCisf(v){ return /^\d{9}$/.test(digitsOnly(v)); }
 function validMobile(v){ return /^\d{10}$/.test(digitsOnly(v)); }
@@ -3874,7 +4619,9 @@ function resetAdmPersonForm(){
 function fillAdmPersonTaskOptions(selectedTaskId){
   const sel = document.getElementById('admPersonTask');
   if(!sel) return;
-  const tasks = (getAdm().tasks || []).slice().sort((a,b)=> (a.title||'').localeCompare(b.title||''));
+  const tasks = (getAdm().tasks || []).slice()
+    .filter(t => !isLiaisonTaskTitle(t.title))
+    .sort((a,b)=> (a.title||'').localeCompare(b.title||''));
   sel.innerHTML = '<option value="">— Not detailed —</option>' + tasks.map(t =>
     `<option value="${escHtml(t.id)}">${escHtml(t.title||t.id)}${t.status==='closed'?' (closed)':''}</option>`
   ).join('');
@@ -3945,7 +4692,7 @@ function renderAdmStaff(){
   if(!data) return;
   const adm = getAdm();
   const persons = adm.persons || [];
-  const tasks = adm.tasks || [];
+  const tasks = (adm.tasks || []).filter(t => !isLiaisonTaskTitle(t.title));
   const detailments = adm.detailments || [];
   const personMap = Object.fromEntries(persons.map(p => [p.id, p]));
   const taskMap = Object.fromEntries(tasks.map(t => [t.id, t]));
@@ -4175,6 +4922,296 @@ function renderAdmStaff(){
       });
     }
   }
+}
+
+function setLoTab(tab){
+  loTab = tab;
+  document.querySelectorAll('#loPillars .adm-pillar').forEach(b => b.classList.toggle('active', b.dataset.lo === tab));
+  document.getElementById('loPanelOnboard').classList.toggle('active', tab === 'onboard');
+  document.getElementById('loPanelAssign').classList.toggle('active', tab === 'assign');
+}
+
+function resetLoOfficerForm(){
+  document.getElementById('loOfficerId').value = '';
+  document.getElementById('loCisf').value = '';
+  document.getElementById('loName').value = '';
+  document.getElementById('loRank').value = '';
+  document.getElementById('loUnit').value = '';
+  document.getElementById('loMobile').value = '';
+  document.getElementById('loCisf').classList.remove('invalid');
+  document.getElementById('loMobile').classList.remove('invalid');
+  const title = document.getElementById('loOfficerFormTitle');
+  if(title) title.textContent = 'Onboard LO';
+  document.getElementById('loOfficerSave').textContent = 'Onboard';
+}
+
+function fillLoOfficerForm(o){
+  document.getElementById('loOfficerId').value = o.id || '';
+  document.getElementById('loCisf').value = o.cisf_no || '';
+  document.getElementById('loName').value = o.name || '';
+  document.getElementById('loRank').value = o.rank || '';
+  document.getElementById('loUnit').value = o.unit || '';
+  document.getElementById('loMobile').value = o.mobile || '';
+  document.getElementById('loOfficerFormTitle').textContent = 'Edit LO';
+  document.getElementById('loOfficerSave').textContent = 'Save changes';
+  setLoTab('onboard');
+}
+
+function loOfficerSelectHtml(selectedId){
+  const officers = (getLo().officers || []).slice().sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+  let html = '<option value="">— Not assigned —</option>';
+  html += officers.map(o =>
+    `<option value="${escHtml(o.id)}"${o.id===selectedId?' selected':''}>${escHtml(o.rank||'')} ${escHtml(o.name||'')} · ${escHtml(o.cisf_no||'')}</option>`
+  ).join('');
+  return html;
+}
+
+function renderLoViewTable(teams, assignByTeam, officerMap, assignedTeams, pendingTeams){
+  const q = (loViewQ || '').toLowerCase().trim();
+  let tlist = teams.slice();
+  if(q){
+    tlist = tlist.filter(u=>{
+      const asn = assignByTeam[u.org];
+      const off = asn && asn.officer_id ? officerMap[asn.officer_id] : null;
+      const hay = `${u.org} ${off ? (off.rank||'')+' '+(off.name||'')+' '+(off.mobile||'') : ''}`.toLowerCase();
+      return hay.includes(q);
+    });
+  }
+  const meta = document.getElementById('loViewMeta');
+  if(meta) meta.textContent = `${assignedTeams} assigned · ${pendingTeams} pending · ${teams.length} teams`;
+  const body = document.getElementById('loViewBody');
+  const empty = document.getElementById('loViewEmpty');
+  const wrap = body && body.closest('.lo-view-wrap');
+  if(!body) return;
+  if(!tlist.length){
+    body.innerHTML = '';
+    if(empty) empty.hidden = false;
+    const tbl = wrap && wrap.querySelector('.lo-view-table');
+    if(tbl) tbl.hidden = true;
+    return;
+  }
+  if(empty) empty.hidden = true;
+  const tbl = wrap && wrap.querySelector('.lo-view-table');
+  if(tbl) tbl.hidden = false;
+  body.innerHTML = tlist.map(u=>{
+    const asn = assignByTeam[u.org];
+    const off = asn && asn.officer_id ? officerMap[asn.officer_id] : null;
+    const dash = '<span class="lo-dash">—</span>';
+    const rank = off && off.rank ? escHtml(off.rank) : dash;
+    const name = off && off.name ? escHtml(off.name) : dash;
+    const mobile = off && off.mobile
+      ? `<a href="tel:${escHtml(off.mobile)}">${escHtml(off.mobile)}</a>`
+      : dash;
+    return `<tr class="${off ? '' : 'lo-pending'}">
+      <td class="lo-team">${escHtml(u.org)}</td>
+      <td class="lo-name">${name}</td>
+      <td class="lo-rank">${rank}</td>
+      <td class="lo-mobile">${mobile}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderLoStaff(){
+  if(!data) return;
+  const lo = getLo();
+  const officers = lo.officers || [];
+  const assignments = lo.assignments || [];
+  const officerMap = Object.fromEntries(officers.map(o => [o.id, o]));
+  const assignByTeam = Object.fromEntries(assignments.map(a => [a.team_org, a]));
+  const teams = (data.units || []).slice().sort((a,b)=> a.org.localeCompare(b.org));
+  const assignedTeams = teams.filter(u => (assignByTeam[u.org] || {}).officer_id).length;
+  const pendingTeams = teams.length - assignedTeams;
+
+  if(!isEdit()){
+    renderLoViewTable(teams, assignByTeam, officerMap, assignedTeams, pendingTeams);
+    return;
+  }
+
+  const kpis = document.getElementById('loKpis');
+  if(kpis){
+    kpis.innerHTML = `
+      <div class="adm-kpi"><div class="l">LO onboarded</div><div class="v">${officers.length}</div><div class="s">liaison officers</div></div>
+      <div class="adm-kpi ok"><div class="l">Teams assigned</div><div class="v">${assignedTeams}</div><div class="s">of ${teams.length} contingents</div></div>
+      <div class="adm-kpi warn"><div class="l">Teams pending</div><div class="v">${pendingTeams}</div><div class="s">showing —</div></div>
+      <div class="adm-kpi"><div class="l">LO available</div><div class="v">${officers.length}</div><div class="s">in pool</div></div>`;
+  }
+
+  setLoTab(loTab);
+
+  const q = (loOnboardQ || '').toLowerCase().trim();
+  const obody = document.getElementById('loOfficerBody');
+  const oempty = document.getElementById('loOfficerEmpty');
+  const ocount = document.getElementById('loOnboardCount');
+  if(obody){
+    let list = officers.slice().sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+    if(q) list = list.filter(o => `${o.cisf_no||''} ${o.name||''} ${o.rank||''} ${o.unit||''} ${o.mobile||''}`.toLowerCase().includes(q));
+    if(ocount) ocount.textContent = `${list.length} of ${officers.length} LO`;
+    if(!list.length){
+      obody.innerHTML = '';
+      if(oempty){ oempty.hidden = false; oempty.textContent = officers.length ? 'No match for this search.' : 'No liaison officers yet.'; }
+    } else {
+      if(oempty) oempty.hidden = true;
+      obody.innerHTML = list.map((o, i)=>{
+        const teamCount = assignments.filter(a => a.officer_id === o.id).length;
+        const act = `<td class="acts edit-only">
+          <button type="button" class="btn" data-edit-lo="${escHtml(o.id)}">Edit</button>
+          <button type="button" class="btn" data-del-lo="${escHtml(o.id)}">Remove</button>
+        </td>`;
+        return `<tr>
+          <td class="mono">${i+1}</td>
+          <td class="mono">${admDash(o.cisf_no)}</td>
+          <td class="name-cell">${escHtml(o.name||'')}</td>
+          <td>${escHtml(o.rank||'')}</td>
+          <td>${escHtml(o.unit||'')}</td>
+          <td class="mono">${o.mobile?`<a href="tel:${escHtml(o.mobile)}">${escHtml(o.mobile)}</a>`:admDash('')}</td>
+          <td>${teamCount ? escHtml(String(teamCount)) : admDash('')}</td>
+          ${act}
+        </tr>`;
+      }).join('');
+      obody.querySelectorAll('[data-edit-lo]').forEach(btn=>{
+        btn.onclick = ()=>{
+          const o = officers.find(x => x.id === btn.dataset.editLo);
+          if(o) fillLoOfficerForm(o);
+        };
+      });
+      obody.querySelectorAll('[data-del-lo]').forEach(btn=>{
+        btn.onclick = () => deleteLoOfficer(btn.dataset.delLo);
+      });
+    }
+  }
+
+  const filters = document.getElementById('loAssignFilters');
+  if(filters){
+    filters.querySelectorAll('button[data-lo-filter]').forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.loFilter === loAssignFilter);
+    });
+  }
+
+  const aq = (loAssignQ || '').toLowerCase().trim();
+  const abody = document.getElementById('loAssignBody');
+  const aempty = document.getElementById('loAssignEmpty');
+  const acount = document.getElementById('loAssignCount');
+  if(abody){
+    let tlist = teams.slice();
+    if(loAssignFilter === 'pending') tlist = tlist.filter(u => !(assignByTeam[u.org] || {}).officer_id);
+    else if(loAssignFilter === 'assigned') tlist = tlist.filter(u => (assignByTeam[u.org] || {}).officer_id);
+    if(aq) tlist = tlist.filter(u => u.org.toLowerCase().includes(aq));
+    if(acount) acount.textContent = `${tlist.length} team${tlist.length===1?'':'s'}`;
+    if(!tlist.length){
+      abody.innerHTML = '';
+      if(aempty) aempty.hidden = false;
+    } else {
+      if(aempty) aempty.hidden = true;
+      abody.innerHTML = tlist.map(u=>{
+        const asn = assignByTeam[u.org];
+        const oid = asn ? (asn.officer_id || '') : '';
+        const off = oid ? officerMap[oid] : null;
+        const loc = u.location || '';
+        const strength = u.total || sTotal(u);
+        let loCell;
+        if(isEdit()){
+          loCell = `<select class="lo-team-select" data-team="${escHtml(u.org)}">${loOfficerSelectHtml(oid)}</select>`;
+        } else {
+          loCell = off ? `${escHtml(off.rank||'')} ${escHtml(off.name||'')}` : admDash('');
+        }
+        const phone = off && off.mobile
+          ? `<a href="tel:${escHtml(off.mobile)}">${escHtml(off.mobile)}</a>`
+          : admDash('');
+        const doa = asn && asn.doa ? escHtml(asn.doa) : admDash('');
+        const loLoc = asn && asn.location ? `<span class="loc-tag ${locClass(asn.location)}">${escHtml(asn.location)}</span>` : admDash('');
+        return `<tr>
+          <td class="name-cell">${escHtml(u.org)}</td>
+          <td><span class="loc-tag ${locClass(loc)}">${escHtml(loc)}</span></td>
+          <td class="mono">${strength}</td>
+          <td>${loCell}</td>
+          <td class="mono">${phone}</td>
+          <td class="mono">${doa}</td>
+          <td>${loLoc}</td>
+        </tr>`;
+      }).join('');
+      if(isEdit()){
+        abody.querySelectorAll('.lo-team-select').forEach(sel=>{
+          sel.onchange = () => saveLoTeamAssignment(sel.dataset.team, sel.value);
+        });
+      }
+    }
+  }
+}
+
+async function saveLoOfficer(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const id = document.getElementById('loOfficerId').value;
+  const cisf = digitsOnly(document.getElementById('loCisf').value);
+  const mobile = digitsOnly(document.getElementById('loMobile').value);
+  document.getElementById('loCisf').value = cisf;
+  document.getElementById('loMobile').value = mobile;
+  document.getElementById('loCisf').classList.toggle('invalid', cisf && !validCisf(cisf));
+  document.getElementById('loMobile').classList.toggle('invalid', mobile && !validMobile(mobile));
+  if(cisf && !validCisf(cisf)){ toast('CISF No must be exactly 9 digits'); return; }
+  if(mobile && !validMobile(mobile)){ toast('Mobile No must be exactly 10 digits'); return; }
+  const payload = {
+    cisf_no: cisf,
+    name: document.getElementById('loName').value.trim(),
+    rank: document.getElementById('loRank').value.trim(),
+    unit: document.getElementById('loUnit').value.trim(),
+    mobile,
+  };
+  if(!payload.name || !payload.rank || !payload.unit){
+    toast('Name, Rank and Unit are required');
+    return;
+  }
+  const url = id ? '/api/lo/officers/'+encodeURIComponent(id) : '/api/lo/officers';
+  const method = id ? 'PUT' : 'POST';
+  saveInFlight = true;
+  const res = await apiFetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Save failed'); return; }
+  data = body;
+  toast(id ? 'LO updated' : 'LO onboarded');
+  resetLoOfficerForm();
+  renderLoStaff();
+}
+
+async function deleteLoOfficer(id){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  if(!confirm('Remove this liaison officer? Team assignments will be cleared.')) return;
+  saveInFlight = true;
+  const res = await apiFetch('/api/lo/officers/'+encodeURIComponent(id), {method:'DELETE'});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Delete failed'); return; }
+  data = body;
+  toast('LO removed');
+  renderLoStaff();
+}
+
+async function saveLoTeamAssignment(teamOrg, officerId){
+  if(!isEdit()) return;
+  saveInFlight = true;
+  const lo = getLo();
+  const existing = (lo.assignments || []).find(a => a.team_org === teamOrg);
+  const payload = { team_org: teamOrg, officer_id: officerId || '' };
+  let url = '/api/lo/assignments';
+  let method = 'POST';
+  if(existing && officerId){
+    url = '/api/lo/assignments/'+encodeURIComponent(existing.id);
+    method = 'PUT';
+  } else if(existing && !officerId){
+    const res = await apiFetch('/api/lo/assignments/'+encodeURIComponent(existing.id), {method:'DELETE'});
+    let body = null; try{ body = await res.json(); }catch(e){}
+    saveInFlight = false;
+    if(!res.ok){ toast((body && body.error) || 'Clear failed'); renderLoStaff(); return; }
+    data = body;
+    renderLoStaff();
+    return;
+  }
+  const res = await apiFetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Assignment failed'); renderLoStaff(); return; }
+  data = body;
+  renderLoStaff();
 }
 
 async function saveAdmPerson(){
@@ -4428,6 +5465,8 @@ function switchView(name){
     departure: 'Departure',
     directory: 'Directory',
     adm: 'ADM Staff',
+    lo: 'Liaison Officers',
+    tc: 'Technical Committee',
   };
   const titleEl = document.getElementById('pageTitle');
   if(titleEl) titleEl.textContent = titles[name] || name;
@@ -4435,6 +5474,8 @@ function switchView(name){
   applyGlobalSearch(document.getElementById('navSearch').value || '');
   if(name === 'arrival' || name === 'departure') renderTravel();
   if(name === 'adm') renderAdmStaff();
+  if(name === 'lo') renderLoStaff();
+  if(name === 'tc') renderTechCommittee();
   try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch(_) { window.scrollTo(0, 0); }
 }
 
@@ -4450,6 +5491,51 @@ document.getElementById('admPillars').addEventListener('click', e=>{
   const btn = e.target.closest('button[data-adm]');
   if(!btn) return;
   setAdmTab(btn.dataset.adm);
+});
+document.getElementById('loPillars').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-lo]');
+  if(!btn) return;
+  setLoTab(btn.dataset.lo);
+});
+document.getElementById('loAssignFilters').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-lo-filter]');
+  if(!btn) return;
+  loAssignFilter = btn.dataset.loFilter;
+  renderLoStaff();
+});
+document.getElementById('loOfficerSave').onclick = saveLoOfficer;
+document.getElementById('loOfficerReset').onclick = resetLoOfficerForm;
+document.getElementById('loOnboardSearch').addEventListener('input', e=>{
+  loOnboardQ = e.target.value || '';
+  renderLoStaff();
+});
+document.getElementById('loAssignSearch').addEventListener('input', e=>{
+  loAssignQ = e.target.value || '';
+  renderLoStaff();
+});
+const loViewSearchEl = document.getElementById('loViewSearch');
+if(loViewSearchEl) loViewSearchEl.addEventListener('input', e=>{
+  loViewQ = e.target.value || '';
+  renderLoStaff();
+});
+const tcViewSearchEl = document.getElementById('tcViewSearch');
+if(tcViewSearchEl) tcViewSearchEl.addEventListener('input', e=>{
+  tcSearchQ = e.target.value || '';
+  renderTechCommittee();
+});
+const tcEditSearchEl = document.getElementById('tcEditSearch');
+if(tcEditSearchEl) tcEditSearchEl.addEventListener('input', e=>{
+  tcEditQ = e.target.value || '';
+  renderTechCommittee();
+});
+const tcMemberSaveEl = document.getElementById('tcMemberSave');
+if(tcMemberSaveEl) tcMemberSaveEl.onclick = saveTcMember;
+const tcMemberResetEl = document.getElementById('tcMemberReset');
+if(tcMemberResetEl) tcMemberResetEl.onclick = resetTcMemberForm;
+const tcMemberGameEl = document.getElementById('tcMemberGame');
+if(tcMemberGameEl) tcMemberGameEl.addEventListener('change', e=>{
+  tcGame = e.target.value || tcGame;
+  renderTechCommittee();
 });
 document.getElementById('admStayFilters').addEventListener('click', e=>{
   const btn = e.target.closest('button[data-stay]');

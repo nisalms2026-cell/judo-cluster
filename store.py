@@ -8,6 +8,8 @@ data/
   arrival.json        — travel / arrival plans
   directory.json      — team manager contacts
   adm_staff.json      — ADM staff persons, tasks, detailments
+  lo.json             — liaison officers + team assignments
+  tech_committee.json — technical committee members by game
 """
 from __future__ import annotations
 
@@ -30,7 +32,11 @@ FILES = {
     "arrival": os.path.join(DATA_DIR, "arrival.json"),
     "directory": os.path.join(DATA_DIR, "directory.json"),
     "adm_staff": os.path.join(DATA_DIR, "adm_staff.json"),
+    "lo": os.path.join(DATA_DIR, "lo.json"),
+    "tech_committee": os.path.join(DATA_DIR, "tech_committee.json"),
 }
+
+TC_GAMES = ["Pencak Silat", "Judo", "Wushu", "Taekwondo", "Karate"]
 
 
 def _now():
@@ -117,6 +123,8 @@ def empty_bundle():
         "hubs": normalize_hubs(None),
         "tgpa_mess": {"dining_tgpa": [], "own_mess": [], "note": ""},
         "adm_staff": {"persons": [], "tasks": [], "detailments": []},
+        "lo": {"officers": [], "assignments": []},
+        "tech_committee": {"games": list(TC_GAMES), "members": []},
         "summary": build_summary([]),
     }
 
@@ -201,11 +209,22 @@ def merge_bundle() -> dict:
     mess = _read(FILES["mess"], {"by_unit": [], "tgpa_mess": {"dining_tgpa": [], "own_mess": [], "note": ""}})
     arrival = _read(FILES["arrival"], {"rows": []})
     directory = _read(FILES["directory"], {"rows": []})
+    _migrate_lo_from_adm()
     adm = _read(FILES["adm_staff"], {"persons": [], "tasks": [], "detailments": []})
     adm_staff = {
         "persons": adm.get("persons") or [],
         "tasks": adm.get("tasks") or [],
         "detailments": adm.get("detailments") or [],
+    }
+    lo = _read(FILES["lo"], {"officers": [], "assignments": []})
+    lo_data = {
+        "officers": lo.get("officers") or [],
+        "assignments": lo.get("assignments") or [],
+    }
+    tc = _read(FILES["tech_committee"], {"games": list(TC_GAMES), "members": []})
+    tc_data = {
+        "games": tc.get("games") or list(TC_GAMES),
+        "members": tc.get("members") or [],
     }
 
     mess_map = {r["org"]: r.get("mess", "") for r in mess.get("by_unit") or []}
@@ -263,6 +282,8 @@ def merge_bundle() -> dict:
         arrival.get("updated_at"),
         directory.get("updated_at"),
         adm.get("updated_at"),
+        lo.get("updated_at"),
+        tc.get("updated_at"),
     ]
     stamps = [s for s in stamps if s]
     updated_at = max(stamps) if stamps else _now()
@@ -291,6 +312,8 @@ def merge_bundle() -> dict:
         "hubs": hubs,
         "tgpa_mess": mess.get("tgpa_mess") or {"dining_tgpa": [], "own_mess": [], "note": ""},
         "adm_staff": adm_staff,
+        "lo": lo_data,
+        "tech_committee": tc_data,
         "summary": build_summary(units),
         "files": {
             "accommodation": FILES["accommodation"],
@@ -299,6 +322,8 @@ def merge_bundle() -> dict:
             "directory": FILES["directory"],
             "event": FILES["event"],
             "adm_staff": FILES["adm_staff"],
+            "lo": FILES["lo"],
+            "tech_committee": FILES["tech_committee"],
         },
     }
 
@@ -746,3 +771,314 @@ def delete_adm_detailment(detailment_id: str) -> dict:
     if len(doc["detailments"]) == before:
         raise KeyError(detailment_id)
     return _write_adm(doc)
+
+
+# ── Liaison Officers (LO) ─────────────────────────────────────
+
+def _is_liaison_task(title: str) -> bool:
+    return "liaison" in (title or "").lower() or "liaision" in (title or "").lower()
+
+
+def _lo_doc() -> dict:
+    return _read(FILES["lo"], {"officers": [], "assignments": []})
+
+
+def _write_lo(doc: dict) -> dict:
+    _write(FILES["lo"], {
+        "officers": doc.get("officers") or [],
+        "assignments": doc.get("assignments") or [],
+    })
+    return merge_bundle()
+
+
+def _migrate_lo_from_adm() -> None:
+    """Move Liaison officer task from ADM Staff into lo.json (once)."""
+    lo = _lo_doc()
+    if lo.get("officers"):
+        return
+    adm = _adm_doc()
+    tasks = adm.get("tasks") or []
+    liaison_ids = {t["id"] for t in tasks if _is_liaison_task(t.get("title", ""))}
+    if not liaison_ids:
+        return
+    detailments = adm.get("detailments") or []
+    lo_person_ids = {d["person_id"] for d in detailments if d.get("task_id") in liaison_ids}
+    if not lo_person_ids:
+        return
+    persons = {p["id"]: p for p in (adm.get("persons") or []) if p.get("id")}
+    id_map: dict[str, str] = {}
+    officers = []
+    for pid in lo_person_ids:
+        p = persons.get(pid)
+        if not p:
+            continue
+        new_id = _new_id("lo")
+        id_map[pid] = new_id
+        officers.append({
+            "id": new_id,
+            "cisf_no": p.get("cisf_no") or "",
+            "name": p.get("name") or "",
+            "rank": p.get("rank") or "",
+            "unit": p.get("unit") or "",
+            "mobile": p.get("mobile") or "",
+        })
+    officers.sort(key=lambda x: (x.get("name") or "").lower())
+    _write(FILES["lo"], {"officers": officers, "assignments": []})
+    remaining_dets = [d for d in detailments if d.get("task_id") not in liaison_ids]
+    remaining_tasks = [t for t in tasks if t.get("id") not in liaison_ids]
+    other_det_persons = {d["person_id"] for d in remaining_dets}
+    remaining_persons = [
+        p for p in (adm.get("persons") or [])
+        if p.get("id") not in lo_person_ids or p.get("id") in other_det_persons
+    ]
+    _write(FILES["adm_staff"], {
+        "persons": remaining_persons,
+        "tasks": remaining_tasks,
+        "detailments": remaining_dets,
+    })
+
+
+def validate_lo_officer_fields(payload: dict, *, require_all: bool = True) -> dict:
+    cisf_no = _digits_only(payload.get("cisf_no", ""))
+    mobile = _digits_only(payload.get("mobile", ""))
+    name = (payload.get("name") or "").strip()
+    rank = (payload.get("rank") or "").strip()
+    unit = (payload.get("unit") or "").strip()
+    if require_all or "cisf_no" in payload:
+        if cisf_no and len(cisf_no) != 9:
+            raise ValueError("CISF No must be exactly 9 digits")
+    if require_all or "mobile" in payload:
+        if mobile and len(mobile) != 10:
+            raise ValueError("Mobile No must be exactly 10 digits")
+    if require_all and not name:
+        raise ValueError("Name is required")
+    if require_all and not rank:
+        raise ValueError("Rank is required")
+    if require_all and not unit:
+        raise ValueError("Unit is required")
+    out = {}
+    if require_all or "cisf_no" in payload:
+        out["cisf_no"] = cisf_no
+    if require_all or "name" in payload:
+        out["name"] = name
+    if require_all or "rank" in payload:
+        out["rank"] = rank
+    if require_all or "unit" in payload:
+        out["unit"] = unit
+    if require_all or "mobile" in payload:
+        out["mobile"] = mobile
+    return out
+
+
+def save_lo_officer(payload: dict, officer_id: str | None = None) -> dict:
+    doc = _lo_doc()
+    officers = doc.get("officers") or []
+    fields = validate_lo_officer_fields(payload, require_all=not officer_id)
+    if officer_id:
+        found = None
+        for o in officers:
+            if o.get("id") == officer_id:
+                found = o
+                break
+        if not found:
+            raise KeyError(officer_id)
+        merged = {**found, **fields}
+        fields = validate_lo_officer_fields(merged, require_all=True)
+        if fields.get("cisf_no"):
+            for o in officers:
+                if o.get("id") != officer_id and o.get("cisf_no") == fields["cisf_no"]:
+                    raise ValueError(f"CISF No {fields['cisf_no']} already onboarded")
+        found.update(fields)
+    else:
+        if fields.get("cisf_no"):
+            for o in officers:
+                if o.get("cisf_no") == fields["cisf_no"]:
+                    raise ValueError(f"CISF No {fields['cisf_no']} already onboarded")
+        officers.append({"id": _new_id("lo"), **fields})
+    doc["officers"] = officers
+    return _write_lo(doc)
+
+
+def delete_lo_officer(officer_id: str) -> dict:
+    doc = _lo_doc()
+    officers = doc.get("officers") or []
+    before = len(officers)
+    doc["officers"] = [o for o in officers if o.get("id") != officer_id]
+    if len(doc["officers"]) == before:
+        raise KeyError(officer_id)
+    doc["assignments"] = [
+        a for a in (doc.get("assignments") or []) if a.get("officer_id") != officer_id
+    ]
+    return _write_lo(doc)
+
+
+def save_lo_assignment(payload: dict, assignment_id: str | None = None) -> dict:
+    doc = _lo_doc()
+    officers = {o["id"]: o for o in (doc.get("officers") or []) if o.get("id")}
+    assignments = doc.get("assignments") or []
+    team_org = (payload.get("team_org") or payload.get("org") or "").strip().upper()
+    officer_id = (payload.get("officer_id") or "").strip()
+    notes = (payload.get("notes") or "").strip()
+    doa = (payload.get("doa") or "").strip()
+    location = (payload.get("location") or "").strip()
+    if location.upper() == "TOWER":
+        location = "Sport Tower"
+    elif location.upper() == "OWN":
+        location = "Own Location"
+    if not team_org:
+        raise ValueError("Team is required")
+    if officer_id and officer_id not in officers:
+        raise ValueError("Valid liaison officer is required")
+    fields = {
+        "team_org": team_org,
+        "officer_id": officer_id,
+        "doa": doa,
+        "location": location,
+        "notes": notes,
+    }
+    if assignment_id:
+        found = None
+        for a in assignments:
+            if a.get("id") == assignment_id:
+                found = a
+                break
+        if not found:
+            raise KeyError(assignment_id)
+        for a in assignments:
+            if (
+                a.get("id") != assignment_id
+                and a.get("team_org") == team_org
+                and officer_id
+                and a.get("officer_id") == officer_id
+            ):
+                raise ValueError("This officer is already assigned to that team")
+        found.update(fields)
+    else:
+        existing = next((a for a in assignments if a.get("team_org") == team_org), None)
+        if existing:
+            existing.update(fields)
+        else:
+            assignments.append({"id": _new_id("la"), **fields})
+    doc["assignments"] = assignments
+    return _write_lo(doc)
+
+
+def delete_lo_assignment(assignment_id: str) -> dict:
+    doc = _lo_doc()
+    assignments = doc.get("assignments") or []
+    before = len(assignments)
+    doc["assignments"] = [a for a in assignments if a.get("id") != assignment_id]
+    if len(doc["assignments"]) == before:
+        raise KeyError(assignment_id)
+    return _write_lo(doc)
+
+
+# ── Technical Committee ───────────────────────────────────────
+
+def _normalize_tc_game(game: str) -> str:
+    g = (game or "").strip()
+    if not g:
+        raise ValueError("Game is required")
+    for known in TC_GAMES:
+        if known.lower() == g.lower():
+            return known
+    raise ValueError(f"Game must be one of: {', '.join(TC_GAMES)}")
+
+
+def _tc_doc() -> dict:
+    doc = _read(FILES["tech_committee"], {"games": list(TC_GAMES), "members": []})
+    games = doc.get("games") or list(TC_GAMES)
+    out_games = []
+    for g in games + list(TC_GAMES):
+        name = (g or "").strip()
+        if name and name not in out_games:
+            out_games.append(name)
+    doc["games"] = out_games or list(TC_GAMES)
+    doc["members"] = doc.get("members") or []
+    return doc
+
+
+def _write_tc(doc: dict) -> dict:
+    _write(FILES["tech_committee"], {
+        "games": doc.get("games") or list(TC_GAMES),
+        "members": doc.get("members") or [],
+    })
+    return merge_bundle()
+
+
+def validate_tc_member_fields(payload: dict, *, require_all: bool = True) -> dict:
+    mobile = _digits_only(payload.get("mobile", ""))
+    name = (payload.get("name") or "").strip()
+    rank = (payload.get("rank") or "").strip()
+    unit = (payload.get("unit") or "").strip()
+    role = (payload.get("role") or "").strip()
+    email = (payload.get("email") or "").strip()
+    arrival = (payload.get("arrival") or "").strip()
+    departure = (payload.get("departure") or "").strip()
+    sno_raw = payload.get("sno", "")
+    sno = int(sno_raw) if str(sno_raw).strip().isdigit() else 0
+    gender = (payload.get("gender") or "").strip().upper()
+    if gender and gender not in ("M", "F"):
+        raise ValueError("Gender must be M or F")
+    if require_all or "mobile" in payload:
+        if mobile and len(mobile) != 10:
+            raise ValueError("Mobile No must be exactly 10 digits")
+    if require_all and not name:
+        raise ValueError("Name is required")
+    if email and "@" not in email:
+        raise ValueError("Email address looks invalid")
+    out = {}
+    if "game" in payload or require_all:
+        out["game"] = _normalize_tc_game(payload.get("game", ""))
+    if require_all or "name" in payload:
+        out["name"] = name
+    if require_all or "rank" in payload:
+        out["rank"] = rank
+    if require_all or "unit" in payload:
+        out["unit"] = unit
+    if require_all or "role" in payload:
+        out["role"] = role
+    if require_all or "mobile" in payload:
+        out["mobile"] = mobile
+    if require_all or "email" in payload:
+        out["email"] = email
+    if require_all or "arrival" in payload:
+        out["arrival"] = arrival
+    if require_all or "departure" in payload:
+        out["departure"] = departure
+    if require_all or "sno" in payload:
+        out["sno"] = sno
+    if require_all or "gender" in payload:
+        out["gender"] = gender
+    return out
+
+
+def save_tc_member(payload: dict, member_id: str | None = None) -> dict:
+    doc = _tc_doc()
+    members = doc.get("members") or []
+    fields = validate_tc_member_fields(payload, require_all=not member_id)
+    if member_id:
+        found = None
+        for m in members:
+            if m.get("id") == member_id:
+                found = m
+                break
+        if not found:
+            raise KeyError(member_id)
+        merged = {**found, **fields}
+        fields = validate_tc_member_fields(merged, require_all=True)
+        found.update(fields)
+    else:
+        members.append({"id": _new_id("tc"), **fields})
+    doc["members"] = members
+    return _write_tc(doc)
+
+
+def delete_tc_member(member_id: str) -> dict:
+    doc = _tc_doc()
+    members = doc.get("members") or []
+    before = len(members)
+    doc["members"] = [m for m in members if m.get("id") != member_id]
+    if len(doc["members"]) == before:
+        raise KeyError(member_id)
+    return _write_tc(doc)

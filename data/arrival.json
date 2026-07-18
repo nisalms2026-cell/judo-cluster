@@ -289,10 +289,11 @@
       "travel": {
         "mode": "flight",
         "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-        "arrival": "",
+        "arrival": "21.07.2026/2100 hrs",
         "details": "Air India Express lx_2893 date 21 July 26",
         "status": "planned",
-        "team_label": "Sikkim (02)"
+        "team_label": "Sikkim (02)",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -594,5 +595,5 @@
       "travel_extra": []
     }
   ],
-  "updated_at": "2026-07-18T10:54:32"
+  "updated_at": "2026-07-18T19:26:02"
 }
