@@ -3001,6 +3001,7 @@ let APP_MODE = 'edit'; // view | edit
 let IS_STATIC = false; // GitHub Pages — read-only data/bundle.json
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
 let saveInFlight = false;
+const AUTH_KEY = 'judo_cluster_auth_v1';
 
 function detectStaticHost(){
   const q = new URLSearchParams(location.search);
@@ -3009,6 +3010,25 @@ function detectStaticHost(){
   if(host.endsWith('github.io')) return true;
   if(location.protocol === 'file:') return true;
   return false;
+}
+
+function authHeaders(extra){
+  const h = Object.assign({}, extra || {});
+  try{
+    const t = localStorage.getItem(AUTH_KEY);
+    if(t) h['Authorization'] = 'Bearer ' + t;
+  }catch(_){}
+  return h;
+}
+
+/** All dashboard API calls — cookies + Bearer token (LAN cookie-safe). */
+function apiFetch(url, opts){
+  opts = opts || {};
+  const headers = authHeaders(opts.headers);
+  return fetch(url, Object.assign({}, opts, {
+    credentials: 'same-origin',
+    headers,
+  }));
 }
 
 function dataUrl(path){
@@ -3099,7 +3119,12 @@ async function fetchData(){
     const url = IS_STATIC
       ? dataUrl('data/bundle.json') + '?t=' + Date.now()
       : '/api/data';
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await (IS_STATIC ? fetch(url, { cache: 'no-store' }) : apiFetch(url, { cache: 'no-store' }));
+    if(res.status === 401){
+      try{ localStorage.removeItem(AUTH_KEY); }catch(_){}
+      location.replace('/login.html');
+      return;
+    }
     if(!res.ok) throw new Error('HTTP '+res.status);
     const fresh = await res.json();
     // Ignore stale responses that would wipe a newer local save
@@ -4181,7 +4206,7 @@ async function saveAdmPerson(){
   }
   const url = id ? '/api/adm/persons/'+encodeURIComponent(id) : '/api/adm/persons';
   const method = id ? 'PUT' : 'POST';
-  const res = await fetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  const res = await apiFetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
   let body = null; try{ body = await res.json(); }catch(e){}
   if(!res.ok){
     toast((body && body.error) || 'Save failed');
@@ -4206,10 +4231,10 @@ async function saveAdmPerson(){
         // Remove other primary detailments for a clean single-task assign from this form
         for(const d of existingDets){
           if(d.task_id === taskId) continue;
-          const del = await fetch('/api/adm/detailments/'+encodeURIComponent(d.id), {method:'DELETE'});
+          const del = await apiFetch('/api/adm/detailments/'+encodeURIComponent(d.id), {method:'DELETE'});
           if(del.ok) data = await del.json();
         }
-        const detRes = await fetch('/api/adm/detailments', {
+        const detRes = await apiFetch('/api/adm/detailments', {
           method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({task_id: taskId, person_id: personId, role})
         });
@@ -4218,9 +4243,9 @@ async function saveAdmPerson(){
         else toast((detBody && detBody.error) || 'Person saved; task assign failed');
       } else if(role && already.role !== role){
         // Role-only change: remove + re-add (no PUT for detailment)
-        const del = await fetch('/api/adm/detailments/'+encodeURIComponent(already.id), {method:'DELETE'});
+        const del = await apiFetch('/api/adm/detailments/'+encodeURIComponent(already.id), {method:'DELETE'});
         if(del.ok) data = await del.json();
-        const detRes = await fetch('/api/adm/detailments', {
+        const detRes = await apiFetch('/api/adm/detailments', {
           method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({task_id: taskId, person_id: personId, role})
         });
@@ -4229,7 +4254,7 @@ async function saveAdmPerson(){
     } else if(existingDets.length){
       // Task set to — → clear detailments for this person
       for(const d of existingDets){
-        const del = await fetch('/api/adm/detailments/'+encodeURIComponent(d.id), {method:'DELETE'});
+        const del = await apiFetch('/api/adm/detailments/'+encodeURIComponent(d.id), {method:'DELETE'});
         if(del.ok) data = await del.json();
       }
     }
@@ -4242,7 +4267,7 @@ async function saveAdmPerson(){
 async function deleteAdmPerson(id){
   if(!isEdit()) return;
   if(!confirm('Remove this person and their detailments?')) return;
-  const res = await fetch('/api/adm/persons/'+encodeURIComponent(id), {method:'DELETE'});
+  const res = await apiFetch('/api/adm/persons/'+encodeURIComponent(id), {method:'DELETE'});
   if(res.ok){ data = await res.json(); toast('Person removed'); renderAll(); }
   else toast('Remove failed');
 }
@@ -4261,7 +4286,7 @@ async function saveAdmTask(){
   if(!payload.title){ toast('Task title is required'); return; }
   const url = id ? '/api/adm/tasks/'+encodeURIComponent(id) : '/api/adm/tasks';
   const method = id ? 'PUT' : 'POST';
-  const res = await fetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  const res = await apiFetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
   let body = null; try{ body = await res.json(); }catch(e){}
   if(res.ok){
     data = body;
@@ -4276,7 +4301,7 @@ async function saveAdmTask(){
 async function deleteAdmTask(id){
   if(!isEdit()) return;
   if(!confirm('Delete this task and its detailments?')) return;
-  const res = await fetch('/api/adm/tasks/'+encodeURIComponent(id), {method:'DELETE'});
+  const res = await apiFetch('/api/adm/tasks/'+encodeURIComponent(id), {method:'DELETE'});
   if(res.ok){
     data = await res.json();
     if(admSelectedTask === id) admSelectedTask = '';
@@ -4296,7 +4321,7 @@ async function saveAdmDetailment(){
     notes: document.getElementById('admDetNotes').value.trim(),
   };
   if(!payload.task_id || !payload.person_id){ toast('Pick a task and a person'); return; }
-  const res = await fetch('/api/adm/detailments', {
+  const res = await apiFetch('/api/adm/detailments', {
     method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
   });
   let body = null; try{ body = await res.json(); }catch(e){}
@@ -4313,7 +4338,7 @@ async function saveAdmDetailment(){
 async function deleteAdmDetailment(id){
   if(!isEdit()) return;
   if(!confirm('Remove this detailment?')) return;
-  const res = await fetch('/api/adm/detailments/'+encodeURIComponent(id), {method:'DELETE'});
+  const res = await apiFetch('/api/adm/detailments/'+encodeURIComponent(id), {method:'DELETE'});
   if(res.ok){ data = await res.json(); toast('Detailment removed'); renderAll(); }
   else toast('Remove failed');
 }
@@ -4332,7 +4357,7 @@ async function saveAdmStay(clear){
     stay: clear ? '' : (document.getElementById('admStay').value || ''),
     room: clear ? '' : document.getElementById('admRoom').value.trim(),
   };
-  const res = await fetch('/api/adm/persons/'+encodeURIComponent(pid), {
+  const res = await apiFetch('/api/adm/persons/'+encodeURIComponent(pid), {
     method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
   });
   let body = null; try{ body = await res.json(); }catch(e){}
@@ -4475,7 +4500,7 @@ document.getElementById('messFilters').addEventListener('click', e=>{
 document.getElementById('btnAddVenue').onclick = async ()=>{
   const name = (document.getElementById('newVenue').value || '').trim();
   if(!name){ toast('Enter a venue name'); return; }
-  const res = await fetch('/api/venues', {
+  const res = await apiFetch('/api/venues', {
     method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name})
   });
   const body = await res.json();
@@ -4491,7 +4516,7 @@ document.getElementById('newVenue').addEventListener('keydown', e=>{
 });
 async function removeVenue(name){
   if(!confirm('Remove venue "'+name+'"? Units must be moved first.')) return;
-  const res = await fetch('/api/venues/'+encodeURIComponent(name), {method:'DELETE'});
+  const res = await apiFetch('/api/venues/'+encodeURIComponent(name), {method:'DELETE'});
   const body = await res.json();
   if(res.ok){ data = body; toast('Venue removed'); if(activeLoc===name) activeLoc='ALL'; renderAll(); }
   else toast(body.error || 'Cannot remove venue');
@@ -4641,7 +4666,7 @@ document.getElementById('saveAdd').onclick = async ()=>{
     ors_f: +document.getElementById('newORsF').value||0,
   };
   if(!payload.org.trim()){ toast('Enter organisation name'); return; }
-  const res = await fetch('/api/units', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  const res = await apiFetch('/api/units', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
   if(res.ok){
     data = await res.json(); toast(payload.org.toUpperCase()+' added');
     document.getElementById('addForm').classList.remove('open');
@@ -4659,7 +4684,7 @@ async function saveUnit(org){
   const locSel = tr.querySelector('.loc-select');
   if(locSel) payload.location = locSel.value;
   editing = true;
-  const res = await fetch('/api/accommodation/'+encodeURIComponent(org), {
+  const res = await apiFetch('/api/accommodation/'+encodeURIComponent(org), {
     method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
   });
   editing = false;
@@ -4670,7 +4695,7 @@ async function saveUnit(org){
 async function saveMess(org){
   const tr = document.querySelector(`#messBody tr[data-org="${CSS.escape(org)}"]`);
   const sel = tr.querySelector('.mess-select');
-  const res = await fetch('/api/mess/'+encodeURIComponent(org), {
+  const res = await apiFetch('/api/mess/'+encodeURIComponent(org), {
     method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({mess: sel.value})
   });
   if(res.ok){ data = await res.json(); toast(org+' → mess.json'); renderAll(); }
@@ -4681,7 +4706,7 @@ async function saveDirectory(org){
   const card = document.querySelector(`.dir-card[data-org="${CSS.escape(org)}"]`);
   const payload = {};
   card.querySelectorAll('[data-field]').forEach(inp => { payload[inp.dataset.field] = inp.value; });
-  const res = await fetch('/api/directory/'+encodeURIComponent(org), {
+  const res = await apiFetch('/api/directory/'+encodeURIComponent(org), {
     method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
   });
   if(res.ok){ data = await res.json(); toast(org+' → directory.json'); renderAll(); }
@@ -4778,7 +4803,7 @@ async function saveArrivalEdit(){
       field: travelPage === 'departure' ? 'travel_departure' : 'travel',
       direction: travel.direction,
     };
-    const res = await fetch('/api/arrival/'+encodeURIComponent(org), {
+    const res = await apiFetch('/api/arrival/'+encodeURIComponent(org), {
       method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
     });
     let body = null;
@@ -4912,7 +4937,7 @@ async function saveHubsEdit(){
     if(idx >= 0) list[idx] = {...list[idx], ...item};
     else list.push(item);
   });
-  const res = await fetch('/api/hubs', {
+  const res = await apiFetch('/api/hubs', {
     method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({hubs})
   });
   if(res.ok){ data = await res.json(); toast('Hubs saved'); renderAll(); }
@@ -4921,7 +4946,7 @@ async function saveHubsEdit(){
 
 async function deleteUnit(org){
   if(!confirm('Remove '+org+' from the roster?')) return;
-  const res = await fetch('/api/units/'+encodeURIComponent(org), {method:'DELETE'});
+  const res = await apiFetch('/api/units/'+encodeURIComponent(org), {method:'DELETE'});
   if(res.ok){ data = await res.json(); toast(org+' removed'); renderAll(); }
   else toast('Delete failed');
 }
@@ -4930,7 +4955,7 @@ document.getElementById('btnImport').onclick = async ()=>{
   if(!confirm('Re-import from Total_Team_Final Excel? This refreshes units, mess and travel from the workbook.')) return;
   document.getElementById('btnImport').disabled = true;
   try{
-    const res = await fetch('/api/import', {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
+    const res = await apiFetch('/api/import', {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
     const body = await res.json();
     if(res.ok){ data = body; toast('Imported '+data.units.length+' units'); renderAll(); }
     else toast(body.error||'Import failed');
@@ -4945,7 +4970,7 @@ async function applyMode(){
     APP_MODE = 'view';
   } else {
     try{
-      const cfg = await fetch('/api/config').then(r=>r.json());
+      const cfg = await apiFetch('/api/config').then(r=>r.json());
       APP_MODE = cfg.mode === 'view' ? 'view' : 'edit';
     }catch(e){
       APP_MODE = 'edit';
@@ -4990,8 +5015,6 @@ async function applyMode(){
   setInterval(fetchData, IS_STATIC ? 60000 : 10000);
 })();
 
-const AUTH_KEY = 'judo_cluster_auth_v1';
-
 async function sha256Hex(text){
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
@@ -5010,20 +5033,21 @@ async function ensureAuthGate(){
     return false;
   }
   try{
-    const s = await fetch('/api/auth/status', {credentials:'same-origin'}).then(r=>r.json());
+    const s = await apiFetch('/api/auth/status').then(r=>r.json());
     if(s.ok) return true;
   }catch(_){ /* fall through */ }
+  try{ localStorage.removeItem(AUTH_KEY); }catch(_){}
   location.replace('/login.html');
   return false;
 }
 
 async function logoutDashboard(){
+  try{ localStorage.removeItem(AUTH_KEY); }catch(_){}
   if(IS_STATIC){
-    localStorage.removeItem(AUTH_KEY);
     location.replace('login.html');
     return;
   }
-  try{ await fetch('/api/logout', {method:'POST', credentials:'same-origin'}); }catch(_){}
+  try{ await apiFetch('/api/logout', {method:'POST'}); }catch(_){}
   location.replace('/login.html');
 }
 </script>

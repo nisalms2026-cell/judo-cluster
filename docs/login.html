@@ -236,6 +236,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e)=>{
       err.classList.add('show');
       return;
     }
+    if(body.token) localStorage.setItem(AUTH_KEY, body.token);
     location.replace('/');
   }catch(ex){
     err.textContent = 'Could not sign in. Try again.';

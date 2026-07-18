@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-18T12:46:26",
+  "updated_at": "2026-07-18T18:09:42",
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -680,8 +680,8 @@
       "travel": {
         "mode": "flight",
         "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-        "arrival": "",
-        "details": "1 person (Manager) only                                             Flight - Akasa Air No. QP -1406 Dt. 21.07.2026",
+        "arrival": "21.07.2026",
+        "details": "1 person (Manager) only — Flight Akasa Air QP-1406 Dt. 21.07.2026",
         "status": "planned",
         "team_label": "Mizoram Police"
       }
@@ -2344,7 +2344,7 @@
         "name": "Beerpal Singh",
         "rank": "ASI/Exe",
         "unit": "DAE (K)",
-        "mobile": "",
+        "mobile": "8440809321",
         "stay": "TGPA",
         "room": ""
       },
@@ -2384,7 +2384,7 @@
         "name": "D Chandra Sekhar",
         "rank": "ASI/Exe",
         "unit": "NFC (H)",
-        "mobile": "",
+        "mobile": "8555098728",
         "stay": "TGPA",
         "room": ""
       },
@@ -2519,16 +2519,6 @@
         "room": ""
       },
       {
-        "id": "p_e9c9e2cb23",
-        "cisf_no": "",
-        "name": "Pradeep",
-        "rank": "Insp/Exe",
-        "unit": "FHQ",
-        "mobile": "",
-        "stay": "TGPA",
-        "room": ""
-      },
-      {
         "id": "p_df577e8585",
         "cisf_no": "120208838",
         "name": "Durgesh Sahu",
@@ -2539,23 +2529,753 @@
         "room": ""
       },
       {
-        "id": "p_4d02868330",
-        "cisf_no": "",
-        "name": "Aarti Sharma",
-        "rank": "L/SI/Exe",
-        "unit": "PHC New Delhi",
-        "mobile": "",
-        "stay": "TGPA",
+        "id": "p_04eea5623e",
+        "cisf_no": "924470174",
+        "name": "Arun Chettri",
+        "rank": "ASI/EXE",
+        "unit": "RSP Rourkela",
+        "mobile": "8287191747",
+        "stay": "",
         "room": ""
       },
       {
-        "id": "p_550d8d01ac",
-        "cisf_no": "",
-        "name": "Nazish",
-        "rank": "L/SI/Exe",
-        "unit": "FHQ",
+        "id": "p_d0cee78a5d",
+        "cisf_no": "101080222",
+        "name": "Nikam Shrikant C",
+        "rank": "CT/GD",
+        "unit": "5th RB GZB",
         "mobile": "",
-        "stay": "TGPA",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_13b99ed33b",
+        "cisf_no": "104384208",
+        "name": "Dhage D R",
+        "rank": "CT/GD",
+        "unit": "5th RB GZB",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_44e042fa5d",
+        "cisf_no": "150400743",
+        "name": "Shreepal Parihar",
+        "rank": "CT/GD/BM",
+        "unit": "5th RB GZB",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_a794c4ac54",
+        "cisf_no": "220406613",
+        "name": "Lydia Chingbiaksiam",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_7d1575ca90",
+        "cisf_no": "220407658",
+        "name": "P Harshasri",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_bea43112b4",
+        "cisf_no": "220406077",
+        "name": "Monika Devi",
+        "rank": "L/CT/GD",
+        "unit": "IOCL Paradip",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_3238cbebe5",
+        "cisf_no": "220406871",
+        "name": "Dodde Sindhu Sri",
+        "rank": "L/CT/GD",
+        "unit": "ASG Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_9e2ab14c2e",
+        "cisf_no": "220405890",
+        "name": "J Jayshree",
+        "rank": "L/CT/GD",
+        "unit": "NTPC Unchahar",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_07ead7d6d0",
+        "cisf_no": "220408082",
+        "name": "Anjana Dutta",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_6bf5613b54",
+        "cisf_no": "220406312",
+        "name": "Ningngaihmawi",
+        "rank": "L/CT/GD",
+        "unit": "11th RB Noida",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_20c398e4fd",
+        "cisf_no": "220407782",
+        "name": "Gaddam Sruthi",
+        "rank": "L/CT/GD",
+        "unit": "ISRO Sadiqnagar",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_a8fcf4c7f5",
+        "cisf_no": "220406349",
+        "name": "Hiramoni Boruah",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_2c5b475b5f",
+        "cisf_no": "220406084",
+        "name": "Vaishali Thakur",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_2eda3166b0",
+        "cisf_no": "220405076",
+        "name": "Anjana R P",
+        "rank": "L/CT/GD",
+        "unit": "ASG Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_ed0384a180",
+        "cisf_no": "220403999",
+        "name": "Dolly Verma",
+        "rank": "L/CT/GD",
+        "unit": "IOCL Haldia",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_230c93ff1d",
+        "cisf_no": "220406543",
+        "name": "Drishya M",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_dce7a8e609",
+        "cisf_no": "220407162",
+        "name": "Maddika Mounca",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_616dac575d",
+        "cisf_no": "220401566",
+        "name": "Sapna",
+        "rank": "L/CT/GD",
+        "unit": "DSTPS Andal",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_10c8bc106e",
+        "cisf_no": "220403388",
+        "name": "Akanksha Gond",
+        "rank": "L/CT/GD",
+        "unit": "MRPL Mangalore",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_a1486376d3",
+        "cisf_no": "210406599",
+        "name": "Rigzen Yangdol",
+        "rank": "L/CT/GD",
+        "unit": "NLC Neyveli",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_fbebbb08a3",
+        "cisf_no": "220406233",
+        "name": "Martha Chinngainiang",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_2935a9d29a",
+        "cisf_no": "220406482",
+        "name": "Purnima Devi",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_cbf10343dd",
+        "cisf_no": "220406260",
+        "name": "Raginee Pardhi",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_888e484f3c",
+        "cisf_no": "220406039",
+        "name": "Reshma R R",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_f23559eb7c",
+        "cisf_no": "170402101",
+        "name": "Rupali Gupta",
+        "rank": "L/CT/GD",
+        "unit": "ASG Chennai",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_24f9afbb10",
+        "cisf_no": "093250865",
+        "name": "Upasana",
+        "rank": "L/HC/GD",
+        "unit": "PPA Paradip",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_9c3558ea7e",
+        "cisf_no": "220404633",
+        "name": "Anita D",
+        "rank": "L/CT/GD",
+        "unit": "ASG Chennai",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_0cf59425ab",
+        "cisf_no": "220405915",
+        "name": "Subbalakshmi",
+        "rank": "L/CT/GD",
+        "unit": "NTPC Unchahar",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_956837f380",
+        "cisf_no": "170412214",
+        "name": "Bhanupriya Bhoi",
+        "rank": "L/CT/GD",
+        "unit": "ASG Ranchi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_02643dcc97",
+        "cisf_no": "093170879",
+        "name": "Neetu Aheer",
+        "rank": "L/HC/GD",
+        "unit": "PGCIL Wagoora",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_8fd625f592",
+        "cisf_no": "220408073",
+        "name": "Kukila Bore Deori",
+        "rank": "L/CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_cae634edd1",
+        "cisf_no": "220406002",
+        "name": "Fulmani Kujur",
+        "rank": "L/CT/GD",
+        "unit": "ASG Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_9a9acbb3e5",
+        "cisf_no": "220405508",
+        "name": "Sanika Patil",
+        "rank": "L/CT/GD",
+        "unit": "RAPS HWP Rawatbhata",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_f7f6f7acae",
+        "cisf_no": "170401786",
+        "name": "Kavita",
+        "rank": "L/CT/GD",
+        "unit": "ASG Mumbai",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_d7a4af21b0",
+        "cisf_no": "220406561",
+        "name": "Anisha Goala",
+        "rank": "L/CT/GD",
+        "unit": "ASG Mumbai",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_82710c81e3",
+        "cisf_no": "130204239",
+        "name": "Om Prakash Dixit",
+        "rank": "SI/Exe",
+        "unit": "CGBS New Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_f53d75d707",
+        "cisf_no": "180701579",
+        "name": "Putesh P Lamani",
+        "rank": "CT/GD",
+        "unit": "DMRC Delhi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_273850c326",
+        "cisf_no": "081750496",
+        "name": "Kirdat H. Maruti",
+        "rank": "HC/GD",
+        "unit": "JNPA Sheva",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_ed0cfa9811",
+        "cisf_no": "081681488",
+        "name": "Ravi Kumar G",
+        "rank": "HC/GD",
+        "unit": "HPCL VR Vizag",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_e69258697d",
+        "cisf_no": "120605068",
+        "name": "Kolli Tulsi Das",
+        "rank": "CT/GD",
+        "unit": "RC/RTC Thakkolam",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_4eb1e31280",
+        "cisf_no": "150807405",
+        "name": "Niladri Ghosh",
+        "rank": "CT/TM",
+        "unit": "CHPA Chennai",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_1555e41f1b",
+        "cisf_no": "190502126",
+        "name": "Varun A.P.",
+        "rank": "CT/GD",
+        "unit": "IOCL Paradip",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_53da361888",
+        "cisf_no": "210110294",
+        "name": "D.D. Chaitanya",
+        "rank": "CT/GD",
+        "unit": "5th R B Ghaziabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_8ecdf916c6",
+        "cisf_no": "093200268",
+        "name": "Rajender",
+        "rank": "Insp/Exe",
+        "unit": "SVP NPA Hyd",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_72f9f22da0",
+        "cisf_no": "220203821",
+        "name": "Amit Kumar",
+        "rank": "SI/Exe",
+        "unit": "NTPC Kaniha",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_0fd4e093b3",
+        "cisf_no": "110402347",
+        "name": "Mohan Rao",
+        "rank": "SI/Exe",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_27120e9c22",
+        "cisf_no": "992301174",
+        "name": "Mahesh Chand",
+        "rank": "HC/GD",
+        "unit": "FACT Udyogmandal",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_560d902af6",
+        "cisf_no": "074340769",
+        "name": "Jeevana Rao Dumpala",
+        "rank": "HC/GD",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_acd8b2a3b0",
+        "cisf_no": "130715498",
+        "name": "Gummadi Rajesh",
+        "rank": "CT/GD",
+        "unit": "BBIL Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_81f6002a64",
+        "cisf_no": "140202957",
+        "name": "Deepak Sangwan",
+        "rank": "SI/Exe",
+        "unit": "ASG Cochin",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_eb8d4340e8",
+        "cisf_no": "160404195",
+        "name": "Kamal Sharma",
+        "rank": "SI/Exe",
+        "unit": "KRTC Mundali",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_34be3b9af0",
+        "cisf_no": "170728920",
+        "name": "Pawan Kumar",
+        "rank": "CT/GD",
+        "unit": "2nd RB Ranchi",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_fb5a62e141",
+        "cisf_no": "034550032",
+        "name": "Siva Kumar V",
+        "rank": "Insp/Exe",
+        "unit": "Oil Duliajan",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_1eb5e43b46",
+        "cisf_no": "140201462",
+        "name": "Dharamvir",
+        "rank": "SI/Exe",
+        "unit": "ISP Burnpur",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_d735aedb92",
+        "cisf_no": "102380208",
+        "name": "Sunil Kumar",
+        "rank": "ASI/EXE",
+        "unit": "Chhatrapati Sambhajinagar Airport",
+        "mobile": "6371780539",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_867e662fcb",
+        "cisf_no": "130719005",
+        "name": "S K Bijloya",
+        "rank": "CT/DVR",
+        "unit": "SCL Mohali",
+        "mobile": "8949592323",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_52c4ab8a18",
+        "cisf_no": "103670348",
+        "name": "Rakesh Kumar",
+        "rank": "SI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "8130255042",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_46b64a8ba6",
+        "cisf_no": "964652190",
+        "name": "Jay Prakash Singh",
+        "rank": "ASI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_1d77e9f90c",
+        "cisf_no": "170517397",
+        "name": "Unwar Ganesh Rameshwar",
+        "rank": "ASI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_f9b7e66355",
+        "cisf_no": "941401214",
+        "name": "Ravi Kumar",
+        "rank": "ASI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_39f79d864d",
+        "cisf_no": "891402372",
+        "name": "Vannampally Raveendar",
+        "rank": "ASI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_4f4fefd239",
+        "cisf_no": "170709800",
+        "name": "Ankit Anil Wase",
+        "rank": "ASI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_9b6947b512",
+        "cisf_no": "160801871",
+        "name": "Nagendra",
+        "rank": "ASI/EXE",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_8181a0a59a",
+        "cisf_no": "085271924",
+        "name": "Satyendra Das",
+        "rank": "HC/GD",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_91d7b9da52",
+        "cisf_no": "014400137",
+        "name": "Sunil Kumar",
+        "rank": "HC/GD",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_50deb39d5f",
+        "cisf_no": "034610097",
+        "name": "Pramar Mahendra Kumar",
+        "rank": "HC/GD",
+        "unit": "ASG Hyderabad",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_144f6bbc4b",
+        "cisf_no": "140504679",
+        "name": "K Nagarajuna",
+        "rank": "CT/GD",
+        "unit": "HPCL Vizag",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_bca7895314",
+        "cisf_no": "932330844",
+        "name": "Basavaraj Patil",
+        "rank": "ASI/EXE",
+        "unit": "RSTPS (R)",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_9dfdd0b165",
+        "cisf_no": "081750788",
+        "name": "Gosavi Anil B",
+        "rank": "HC/GD",
+        "unit": "RSTPS (R)",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_f431a745af",
+        "cisf_no": "097251765",
+        "name": "Manoj Gupta",
+        "rank": "ASI/EXE",
+        "unit": "VSP Vizag",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_fe48136fd9",
+        "cisf_no": "120702176",
+        "name": "Prasad Sirki",
+        "rank": "CT/GD",
+        "unit": "VSP Vizag",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_1accb78ff8",
+        "cisf_no": "945022714",
+        "name": "Basudev Behera",
+        "rank": "ASI/EXE",
+        "unit": "VPA Vizag",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_987688a681",
+        "cisf_no": "082430128",
+        "name": "Karim Basha Shaik",
+        "rank": "HC/GD",
+        "unit": "VPA Vizag",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_93e1773e0d",
+        "cisf_no": "943440970",
+        "name": "Dharavath Sanjeeva",
+        "rank": "ASI/EXE",
+        "unit": "IG Mint",
+        "mobile": "9699451859",
+        "stay": "",
         "room": ""
       }
     ],
@@ -2568,6 +3288,96 @@
         "to_date": "",
         "notes": "Commentary duty",
         "status": "open"
+      },
+      {
+        "id": "t_f56672a10d",
+        "title": "Liaison officer",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_d435021562",
+        "title": "Ex-Player",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_32871d447e",
+        "title": "PR Cell",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_429e388fea",
+        "title": "Driver",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_7e216ae85a",
+        "title": "Sweeper",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_91b460feea",
+        "title": "Decoration",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_b39848aabb",
+        "title": "Band Staff",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_54cb49ef3a",
+        "title": "Medical Staff",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_86e0d95e98",
+        "title": "Orchestra",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "",
+        "status": "open"
+      },
+      {
+        "id": "t_12582acd3d",
+        "title": "Band Party",
+        "location": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Band Party contingent",
+        "status": "open"
       }
     ],
     "detailments": [
@@ -2575,15 +3385,6 @@
         "id": "d_f66cfbbfea",
         "task_id": "t_a0522c42a3",
         "person_id": "p_a7cb9c109e",
-        "role": "Commentry",
-        "from_date": "",
-        "to_date": "",
-        "notes": ""
-      },
-      {
-        "id": "d_eb2359d5ba",
-        "task_id": "t_a0522c42a3",
-        "person_id": "p_e9c9e2cb23",
         "role": "Commentry",
         "from_date": "",
         "to_date": "",
@@ -2599,19 +3400,784 @@
         "notes": ""
       },
       {
-        "id": "d_b6e4296547",
-        "task_id": "t_a0522c42a3",
-        "person_id": "p_4d02868330",
-        "role": "Commentry",
+        "id": "d_0ab5fc66b5",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_d0cee78a5d",
+        "role": "Band Party",
         "from_date": "",
         "to_date": "",
         "notes": ""
       },
       {
-        "id": "d_c10e90c574",
-        "task_id": "t_a0522c42a3",
-        "person_id": "p_550d8d01ac",
-        "role": "Commentry",
+        "id": "d_ca9a2307a3",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_13b99ed33b",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_388683835c",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_44e042fa5d",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_4c5d8c19ff",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_a794c4ac54",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_bc173eaae5",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_7d1575ca90",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_c29a29c551",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_bea43112b4",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_895986182d",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_3238cbebe5",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_62dad64af0",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_9e2ab14c2e",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_daf9b7c445",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_07ead7d6d0",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_115bb97b4a",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_6bf5613b54",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_f72862eb87",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_20c398e4fd",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_58eee8083a",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_a8fcf4c7f5",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_1198f74ea7",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_2c5b475b5f",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_93bc510ce4",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_2eda3166b0",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_a7b3d5240d",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_ed0384a180",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_cff99acbec",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_230c93ff1d",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_2f5694da41",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_dce7a8e609",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_6abf59a29d",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_616dac575d",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_f78b9bcddd",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_10c8bc106e",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_fc873f43f3",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_a1486376d3",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_f5cf1cedfd",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_fbebbb08a3",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_4789bce7f3",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_2935a9d29a",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_64d63c8c69",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_cbf10343dd",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_cf0f4d7ad3",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_888e484f3c",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_f8977f446a",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_f23559eb7c",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_224464309c",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_24f9afbb10",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_ec514058ed",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_9c3558ea7e",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_ccc6d3146f",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_0cf59425ab",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_09f25d0800",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_956837f380",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_182f197257",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_02643dcc97",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_79cc638b48",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_8fd625f592",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_9717481ace",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_cae634edd1",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_dc0e45d05e",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_9a9acbb3e5",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_c65ba9dd2a",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_f7f6f7acae",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_1505c4d5fe",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_d7a4af21b0",
+        "role": "Band Party",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_eb70a05d3c",
+        "task_id": "t_32871d447e",
+        "person_id": "p_82710c81e3",
+        "role": "Party I/C",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Party I/C"
+      },
+      {
+        "id": "d_c300b38140",
+        "task_id": "t_32871d447e",
+        "person_id": "p_f53d75d707",
+        "role": "PR Cell",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_1a9601d0e1",
+        "task_id": "t_32871d447e",
+        "person_id": "p_273850c326",
+        "role": "Videographer",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Videographer"
+      },
+      {
+        "id": "d_810fd4c9e1",
+        "task_id": "t_32871d447e",
+        "person_id": "p_ed0cfa9811",
+        "role": "Videographer",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Videographer"
+      },
+      {
+        "id": "d_58c67971f3",
+        "task_id": "t_32871d447e",
+        "person_id": "p_e69258697d",
+        "role": "Videographer",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Videographer"
+      },
+      {
+        "id": "d_8ee6e7c984",
+        "task_id": "t_32871d447e",
+        "person_id": "p_4eb1e31280",
+        "role": "Photographer",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Photographer"
+      },
+      {
+        "id": "d_8dd65df048",
+        "task_id": "t_32871d447e",
+        "person_id": "p_1555e41f1b",
+        "role": "Photographer",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Photographer"
+      },
+      {
+        "id": "d_edd78288aa",
+        "task_id": "t_32871d447e",
+        "person_id": "p_53da361888",
+        "role": "Photographer",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Photographer"
+      },
+      {
+        "id": "d_6967db7d88",
+        "task_id": "t_32871d447e",
+        "person_id": "p_8ecdf916c6",
+        "role": "PR Related activities",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Related activities"
+      },
+      {
+        "id": "d_a9cbe1d645",
+        "task_id": "t_32871d447e",
+        "person_id": "p_72f9f22da0",
+        "role": "PR Related activities",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Related activities"
+      },
+      {
+        "id": "d_28e49c2f35",
+        "task_id": "t_32871d447e",
+        "person_id": "p_0fd4e093b3",
+        "role": "PR Related activities",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Related activities"
+      },
+      {
+        "id": "d_16d1221ff4",
+        "task_id": "t_32871d447e",
+        "person_id": "p_27120e9c22",
+        "role": "PR Related activities",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Related activities"
+      },
+      {
+        "id": "d_d7a08ba6f5",
+        "task_id": "t_32871d447e",
+        "person_id": "p_560d902af6",
+        "role": "PR Related activities",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Related activities"
+      },
+      {
+        "id": "d_12ae4cdde6",
+        "task_id": "t_32871d447e",
+        "person_id": "p_acd8b2a3b0",
+        "role": "PR Related activities",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Related activities"
+      },
+      {
+        "id": "d_8f0eb03bca",
+        "task_id": "t_32871d447e",
+        "person_id": "p_81f6002a64",
+        "role": "Party I/C",
+        "from_date": "",
+        "to_date": "",
+        "notes": "Party I/C"
+      },
+      {
+        "id": "d_01cda932e8",
+        "task_id": "t_32871d447e",
+        "person_id": "p_eb8d4340e8",
+        "role": "PR Cell",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Cell"
+      },
+      {
+        "id": "d_0838109404",
+        "task_id": "t_32871d447e",
+        "person_id": "p_34be3b9af0",
+        "role": "PR Cell",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Cell"
+      },
+      {
+        "id": "d_096e82390e",
+        "task_id": "t_32871d447e",
+        "person_id": "p_fb5a62e141",
+        "role": "PR Cell",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Cell"
+      },
+      {
+        "id": "d_0a6b158734",
+        "task_id": "t_32871d447e",
+        "person_id": "p_1eb5e43b46",
+        "role": "PR Cell",
+        "from_date": "",
+        "to_date": "",
+        "notes": "PR Cell"
+      },
+      {
+        "id": "d_d3c74ba0c4",
+        "task_id": "t_d435021562",
+        "person_id": "p_d735aedb92",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_ea063d1144",
+        "task_id": "t_d435021562",
+        "person_id": "p_867e662fcb",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_cd339d3fcf",
+        "task_id": "t_12582acd3d",
+        "person_id": "p_04eea5623e",
+        "role": "Band Party IC",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_fb097afbad",
+        "task_id": "t_91b460feea",
+        "person_id": "p_cc14c0cf8d",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_da95145c8b",
+        "task_id": "t_91b460feea",
+        "person_id": "p_a6718cb832",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_97bda4dc2f",
+        "task_id": "t_91b460feea",
+        "person_id": "p_9be0bf7c08",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_20e7a48a9a",
+        "task_id": "t_91b460feea",
+        "person_id": "p_bd72837371",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_07d2c8aeb5",
+        "task_id": "t_91b460feea",
+        "person_id": "p_31e96d6bd1",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_5ea709d2c4",
+        "task_id": "t_91b460feea",
+        "person_id": "p_e24c5f0be9",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_2186acef95",
+        "task_id": "t_91b460feea",
+        "person_id": "p_008fe7fcf2",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_3e2faf8d28",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_52c4ab8a18",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_f6251400bb",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_46b64a8ba6",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_c6ac266bca",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_1d77e9f90c",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_2d83e88fea",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_f9b7e66355",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_377db713f7",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_39f79d864d",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_78d2f76b11",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_4f4fefd239",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_0b80364a22",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_9b6947b512",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_857358ccf2",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_8181a0a59a",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_45776c5576",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_91d7b9da52",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_daa5bb2ba4",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_50deb39d5f",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_187337e446",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_b9c25113cf",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_26b6288b54",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_104f60fb6a",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_e02e8ca35a",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_0702ee3726",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_eaea80315c",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_feea3bf226",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_b9e8349099",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_96a77237ad",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_7b6e31d717",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_144f6bbc4b",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_b3b1bd6a65",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_bca7895314",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_31ca98b640",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_9dfdd0b165",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_ec45cfc251",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_f431a745af",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_1981d6102f",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_fe48136fd9",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_a3aec44534",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_1accb78ff8",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_cdde7bc31b",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_987688a681",
+        "role": "Liaison Officer",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_d293b0d55d",
+        "task_id": "t_f56672a10d",
+        "person_id": "p_93e1773e0d",
+        "role": "Liaison Officer",
         "from_date": "",
         "to_date": "",
         "notes": ""
