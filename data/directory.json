@@ -1,0 +1,293 @@
+{
+  "rows": [
+    {
+      "org": "ANDHRA POLICE",
+      "manager": {
+        "name": "K Victor",
+        "rank": "Inspector",
+        "phone": "9866930369"
+      }
+    },
+    {
+      "org": "ARUNACHAL PRADESH",
+      "manager": {
+        "name": "Rotom Echu",
+        "rank": "Inspector",
+        "phone": "8798672953"
+      }
+    },
+    {
+      "org": "ASSAM POLICE",
+      "manager": {
+        "name": "Alpana Boro",
+        "rank": "Inspector",
+        "phone": "9707015867"
+      }
+    },
+    {
+      "org": "ASSAM RIFLES",
+      "manager": {
+        "name": "W/O Prabin Rai",
+        "rank": "Warrant Officer",
+        "phone": "8837408679"
+      }
+    },
+    {
+      "org": "BIHAR POLICE",
+      "manager": {
+        "name": "Raju Kumar",
+        "rank": "Inspector",
+        "phone": "9472972929"
+      }
+    },
+    {
+      "org": "CHANDIGARH POLICE",
+      "manager": {
+        "name": "Bhim singh",
+        "rank": "ASI",
+        "phone": "9463881916"
+      }
+    },
+    {
+      "org": "DELHI POLICE",
+      "manager": {
+        "name": "Sumit Malik",
+        "rank": "Inspector",
+        "phone": "9868144277"
+      }
+    },
+    {
+      "org": "GUJARAT POLICE",
+      "manager": {
+        "name": "M A RAVAL",
+        "rank": "P.I",
+        "phone": "9924527265"
+      }
+    },
+    {
+      "org": "HIMACHAL PRADESH POLICE",
+      "manager": {
+        "name": "Kamal Kishore HPS",
+        "rank": "Dy.SP",
+        "phone": "9418484672"
+      }
+    },
+    {
+      "org": "J&K POLICE",
+      "manager": {
+        "name": "Anjana",
+        "rank": "Dy.SP",
+        "phone": "9622089944"
+      }
+    },
+    {
+      "org": "KARNATAKA POLICE",
+      "manager": {
+        "name": "Hamja Hussain",
+        "rank": "Commandant",
+        "phone": "9448545925"
+      }
+    },
+    {
+      "org": "MAHARASHTRA POLICE",
+      "manager": {
+        "name": "Santosh Kamble, Assistant Sports Officer",
+        "rank": "ASO",
+        "phone": "9325154416"
+      }
+    },
+    {
+      "org": "MIZORAM POLICE",
+      "manager": {
+        "name": "Fanai Lalhmingliana MPS",
+        "rank": "Dy. Commandant",
+        "phone": "9612142704"
+      }
+    },
+    {
+      "org": "PUNJAB POLICE",
+      "manager": {
+        "name": "Rajwinder kaur",
+        "rank": "Inspector",
+        "phone": "8146577701"
+      }
+    },
+    {
+      "org": "RAJASTHAN POLICE",
+      "manager": {
+        "name": "Bahadur Singh Meena",
+        "rank": "Inspector",
+        "phone": "9983199959"
+      }
+    },
+    {
+      "org": "UTTARAKHAND POLICE",
+      "manager": {
+        "name": "Shri Yogendra Singh Dev",
+        "rank": "Inspector",
+        "phone": "7017974765"
+      }
+    },
+    {
+      "org": "SIKKIM POLICE",
+      "manager": {
+        "name": "ASI Tenzing Sherpa",
+        "rank": "ASI",
+        "phone": "9609873532"
+      }
+    },
+    {
+      "org": "CHATTISGARH",
+      "manager": {
+        "name": "Inspector Shri Amber Singh Bhardwaj",
+        "rank": "Inspector",
+        "phone": "8870840045"
+      }
+    },
+    {
+      "org": "UTTARPRADESH",
+      "manager": {
+        "name": "Virbhadur Thapa",
+        "rank": "ACP",
+        "phone": "7011550465"
+      }
+    },
+    {
+      "org": "HARYANA",
+      "manager": {
+        "name": "ASI Sunil, 5/101",
+        "rank": "ASI",
+        "phone": "9467130300"
+      }
+    },
+    {
+      "org": "ITBP",
+      "manager": {
+        "name": "DC Sh.Virender Singh",
+        "rank": "DC(GD)",
+        "phone": "9891618409"
+      }
+    },
+    {
+      "org": "TAMILNADU",
+      "manager": {
+        "name": "A. HASEN BATCHA",
+        "rank": "Assistant Commandant",
+        "phone": "9965445421"
+      }
+    },
+    {
+      "org": "GOA",
+      "manager": {
+        "name": "Vaibhav Jalmi",
+        "rank": "Sub-Inspector",
+        "phone": "7776836317"
+      }
+    },
+    {
+      "org": "NSG",
+      "manager": {
+        "name": "KULDEEP",
+        "rank": "Constable",
+        "phone": "8607137299"
+      }
+    },
+    {
+      "org": "JHARKHAND",
+      "manager": {
+        "name": "Rajat Manik Baxla",
+        "rank": "DSP",
+        "phone": "8252966659"
+      }
+    },
+    {
+      "org": "BSF",
+      "manager": {
+        "name": "Virpal Singh Kushwah,Dc",
+        "rank": "Deputy Commandant",
+        "phone": "9439456054"
+      }
+    },
+    {
+      "org": "CRPF",
+      "manager": {
+        "name": "H. Thoibinao chanu",
+        "rank": "Deputy Commandant",
+        "phone": "9625626883"
+      }
+    },
+    {
+      "org": "SSB",
+      "manager": {
+        "name": "Durgesh Sharma",
+        "rank": "Assistant Commandant",
+        "phone": "9017409009"
+      }
+    },
+    {
+      "org": "WEST BENGAL POLICE",
+      "manager": {
+        "name": "Shri Goutam Chakraborty, Inspector of Police",
+        "rank": "Inspector of Police",
+        "phone": "9433803233"
+      }
+    },
+    {
+      "org": "ORISSA POLICE",
+      "manager": {
+        "name": "Bijay Kumar Muduli",
+        "rank": "Inspector (A)",
+        "phone": "9776501157"
+      }
+    },
+    {
+      "org": "MADHYA PRADESH POLICE",
+      "manager": {
+        "name": "GOPIKRISHNA SHRIDHARAN",
+        "rank": "Inspector",
+        "phone": "9425149743"
+      }
+    },
+    {
+      "org": "MANIPUR POLICE",
+      "manager": {
+        "name": "RK Dhanajit Singh",
+        "rank": "Jemadar",
+        "phone": "8974102910"
+      }
+    },
+    {
+      "org": "KERALA POLICE",
+      "manager": {
+        "name": "Vinod I V",
+        "rank": "Deputy Commandant",
+        "phone": "8281382896"
+      }
+    },
+    {
+      "org": "CISF",
+      "manager": {
+        "name": "Vimal Singh Khatri",
+        "rank": "Asstt. Commandant",
+        "phone": "9873932998"
+      }
+    },
+    {
+      "org": "TELANGANA POLICE",
+      "manager": {
+        "name": "KATTA DAYANAND",
+        "rank": "ASI",
+        "phone": "9440474691"
+      }
+    },
+    {
+      "org": "RPF",
+      "manager": {
+        "name": "Sanjit Sarkar",
+        "rank": "ASC/RPF/DMV",
+        "phone": "9862153714"
+      }
+    }
+  ],
+  "updated_at": "2026-07-17T19:58:37"
+}

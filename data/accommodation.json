@@ -1,0 +1,1271 @@
+{
+  "venues": [
+    "TGPA",
+    "Sport Tower",
+    "NITHM",
+    "Own Location"
+  ],
+  "rows": [
+    {
+      "org": "ANDHRA POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 17,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3
+      },
+      "total": 22,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "ARUNACHAL PRADESH",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 13,
+        "gos_f": 0,
+        "sos_f": 2,
+        "ors_f": 4
+      },
+      "total": 26,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "ASSAM POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 30,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 20
+      },
+      "total": 61,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 1
+      },
+      "support": {
+        "male": 4,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "ASSAM RIFLES",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 52,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 42
+      },
+      "total": 109,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 7,
+        "female": 3
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "BIHAR POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3
+      },
+      "total": 17,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "CHANDIGARH POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 8,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 8
+      },
+      "total": 19,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "DELHI POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 7
+      },
+      "total": 18,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "GUJARAT POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 17,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 5
+      },
+      "total": 24,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "HIMACHAL PRADESH POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 6,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 5
+      },
+      "total": 12,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "J&K POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 37,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 9
+      },
+      "total": 52,
+      "count_gos": {
+        "male": 0,
+        "female": 1
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "KARNATAKA POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 14,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3
+      },
+      "total": 23,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "MAHARASHTRA POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 44,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 39
+      },
+      "total": 98,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 5,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 5,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "MIZORAM POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 5,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 7,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "PUNJAB POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 4,
+        "ors_m": 20,
+        "gos_f": 0,
+        "sos_f": 4,
+        "ors_f": 17
+      },
+      "total": 50,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 4,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "RAJASTHAN POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 4,
+        "ors_m": 10,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 10
+      },
+      "total": 31,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 5,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "UTTARAKHAND POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 20,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 5
+      },
+      "total": 30,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 1
+      },
+      "doctor": 0
+    },
+    {
+      "org": "SIKKIM POLICE",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 1,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 2,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "CHATTISGARH",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 20,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 9
+      },
+      "total": 32,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "UTTARPRADESH",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 56,
+        "gos_f": 0,
+        "sos_f": 6,
+        "ors_f": 38
+      },
+      "total": 117,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 7,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 2,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "HARYANA",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 4,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 1
+      },
+      "total": 8,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 1
+      },
+      "doctor": 0
+    },
+    {
+      "org": "ITBP",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 1,
+        "sos_m": 1,
+        "ors_m": 65,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 40
+      },
+      "total": 112,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 1
+    },
+    {
+      "org": "TAMILNADU",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 40,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 20
+      },
+      "total": 73,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 6,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 5
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "GOA",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 8,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 0
+      },
+      "total": 12,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "NSG",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 2
+      },
+      "total": 2,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "JHARKHAND",
+      "location": "TGPA",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 25,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 10
+      },
+      "total": 41,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "BSF",
+      "location": "NITHM",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 55,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 37
+      },
+      "total": 101,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 1
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 5
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "CRPF",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 48,
+        "gos_f": 1,
+        "sos_f": 1,
+        "ors_f": 28
+      },
+      "total": 95,
+      "count_gos": {
+        "male": 0,
+        "female": 1
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 4,
+        "female": 1
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 1,
+        "sos": 1,
+        "ors": 2
+      },
+      "doctor": 1
+    },
+    {
+      "org": "SSB",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 56,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 46
+      },
+      "total": 114,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 2,
+        "ors": 6
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 2
+      },
+      "doctor": 0
+    },
+    {
+      "org": "WEST BENGAL POLICE",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 5,
+        "ors_m": 40,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 14
+      },
+      "total": 70,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 5,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 3,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "ORISSA POLICE",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 8
+      },
+      "total": 21,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "MADHYA PRADESH POLICE",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 13,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 4
+      },
+      "total": 18,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "MANIPUR POLICE",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 36,
+        "gos_f": 1,
+        "sos_f": 0,
+        "ors_f": 4
+      },
+      "total": 49,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 2,
+        "ors": 1
+      },
+      "doctor": 0
+    },
+    {
+      "org": "KERALA POLICE",
+      "location": "Sport Tower",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 30,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 33,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "CISF",
+      "location": "Own Location",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 14,
+        "ors_m": 31,
+        "gos_f": 0,
+        "sos_f": 12,
+        "ors_f": 29
+      },
+      "total": 92,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 2,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 2,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "TELANGANA POLICE",
+      "location": "Own Location",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 32,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 33,
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0
+    },
+    {
+      "org": "RPF",
+      "location": "Own Location",
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 11,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 2
+      },
+      "total": 21,
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 1
+      },
+      "doctor": 0
+    }
+  ],
+  "updated_at": "2026-07-17T18:18:37"
+}

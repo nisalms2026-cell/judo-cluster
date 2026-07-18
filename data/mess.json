@@ -1,0 +1,356 @@
+{
+  "by_unit": [
+    {
+      "org": "ANDHRA POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "ARUNACHAL PRADESH",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "ASSAM POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "ASSAM RIFLES",
+      "mess": "TGPA"
+    },
+    {
+      "org": "BIHAR POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "CHANDIGARH POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "DELHI POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "GUJARAT POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "HIMACHAL PRADESH POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "J&K POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "KARNATAKA POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "MAHARASHTRA POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "MIZORAM POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "PUNJAB POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "RAJASTHAN POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "UTTARAKHAND POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "SIKKIM POLICE",
+      "mess": "TGPA"
+    },
+    {
+      "org": "CHATTISGARH",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "UTTARPRADESH",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "HARYANA",
+      "mess": "TGPA"
+    },
+    {
+      "org": "ITBP",
+      "mess": "TGPA"
+    },
+    {
+      "org": "TAMILNADU",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "GOA",
+      "mess": "TGPA"
+    },
+    {
+      "org": "NSG",
+      "mess": "TGPA"
+    },
+    {
+      "org": "JHARKHAND",
+      "mess": "TGPA"
+    },
+    {
+      "org": "BSF",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "CRPF",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "SSB",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "WEST BENGAL POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "ORISSA POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "MADHYA PRADESH POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "MANIPUR POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "KERALA POLICE",
+      "mess": "Own Arrangement"
+    },
+    {
+      "org": "CISF",
+      "mess": ""
+    },
+    {
+      "org": "TELANGANA POLICE",
+      "mess": ""
+    },
+    {
+      "org": "RPF",
+      "mess": ""
+    }
+  ],
+  "tgpa_mess": {
+    "dining_tgpa": [
+      {
+        "org": "ASSAM RIFLES",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 45,
+        "sotc": 62,
+        "total": 109
+      },
+      {
+        "org": "JAMMU & KASHMIR",
+        "iom": 1,
+        "jom1": 1,
+        "jom2": 9,
+        "sotc": 41,
+        "total": 52
+      },
+      {
+        "org": "HIMACHAL PRADESH POLICE",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 5,
+        "sotc": 6,
+        "total": 12
+      },
+      {
+        "org": "ANDHRA PRADESH POLICE",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 4,
+        "sotc": 17,
+        "total": 23
+      },
+      {
+        "org": "CHANDIGARH POLICE",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 8,
+        "sotc": 10,
+        "total": 19
+      },
+      {
+        "org": "ITBP",
+        "iom": 3,
+        "jom1": 1,
+        "jom2": 40,
+        "sotc": 68,
+        "total": 112
+      },
+      {
+        "org": "Haryana",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 2,
+        "sotc": 4,
+        "total": 8
+      },
+      {
+        "org": "BIHAR",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 4,
+        "sotc": 11,
+        "total": 17
+      },
+      {
+        "org": "Sikkim",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 0,
+        "sotc": 0,
+        "total": 2
+      },
+      {
+        "org": "Punjab",
+        "iom": 0,
+        "jom1": 9,
+        "jom2": 21,
+        "sotc": 20,
+        "total": 50
+      },
+      {
+        "org": "Jharkhand",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 11,
+        "sotc": 29,
+        "total": 41
+      },
+      {
+        "org": "NSG",
+        "iom": 0,
+        "jom1": 0,
+        "jom2": 0,
+        "sotc": 2,
+        "total": 2
+      },
+      {
+        "org": "Gujrat",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 5,
+        "sotc": 17,
+        "total": 24
+      },
+      {
+        "org": "GOA",
+        "iom": 0,
+        "jom1": 3,
+        "jom2": 1,
+        "sotc": 8,
+        "total": 12
+      },
+      {
+        "org": "DELHI POLICE",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 7,
+        "sotc": 9,
+        "total": 18
+      }
+    ],
+    "own_mess": [
+      {
+        "org": "ARUNACHAL PRADESH",
+        "iom": 0,
+        "jom1": 4,
+        "jom2": 6,
+        "sotc": 16,
+        "total": 26
+      },
+      {
+        "org": "ASSAM POLICE",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 22,
+        "sotc": 38,
+        "total": 61
+      },
+      {
+        "org": "KARNATAKA POLICE",
+        "iom": 1,
+        "jom1": 1,
+        "jom2": 4,
+        "sotc": 17,
+        "total": 23
+      },
+      {
+        "org": "MAHARASHTRA POLICE",
+        "iom": 0,
+        "jom1": 6,
+        "jom2": 40,
+        "sotc": 52,
+        "total": 98
+      },
+      {
+        "org": "MIZORAM POLICE",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 0,
+        "sotc": 6,
+        "total": 7
+      },
+      {
+        "org": "RAJASTHAN POLICE",
+        "iom": 0,
+        "jom1": 5,
+        "jom2": 10,
+        "sotc": 16,
+        "total": 31
+      },
+      {
+        "org": "UTTARAKHAND POLICE",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 7,
+        "sotc": 22,
+        "total": 30
+      },
+      {
+        "org": "CHATTISGARH",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 9,
+        "sotc": 22,
+        "total": 32
+      },
+      {
+        "org": "UTTARPRADESH",
+        "iom": 1,
+        "jom1": 5,
+        "jom2": 44,
+        "sotc": 67,
+        "total": 117
+      },
+      {
+        "org": "TAMILNADU",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 21,
+        "sotc": 51,
+        "total": 73
+      }
+    ],
+    "note": "BSF stay at NITHM · Own mess arrangement"
+  },
+  "updated_at": "2026-07-17T17:44:04"
+}

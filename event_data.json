@@ -1,0 +1,2060 @@
+{
+  "updated_at": "2026-07-17T17:41:04",
+  "source_file": "Total_Team_Final 17.07.2026.xlsx",
+  "event": {
+    "title": "11th All India Police Judo Cluster 2026",
+    "host": "CISF",
+    "city": "Hyderabad",
+    "mascot": "Vira"
+  },
+  "units": [
+    {
+      "org": "ANDHRA POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "K Victor",
+        "rank": "Inspector",
+        "phone": "9866930369"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 17,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3
+      },
+      "total": 23,
+      "mess": "TGPA",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "By Bus",
+        "status": "awaited",
+        "team_label": "ANDHRA POLICE"
+      }
+    },
+    {
+      "org": "ARUNACHAL PRADESH",
+      "location": "TGPA",
+      "manager": {
+        "name": "Rotom Echu",
+        "rank": "Inspector",
+        "phone": "8798672953"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 13,
+        "gos_f": 0,
+        "sos_f": 2,
+        "ors_f": 4
+      },
+      "total": 26,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "ARUNACHAL PRADESH"
+      }
+    },
+    {
+      "org": "ASSAM POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Alpana Boro",
+        "rank": "Inspector",
+        "phone": "9707015867"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 1
+      },
+      "support": {
+        "male": 4,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 30,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 20
+      },
+      "total": 61,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "18.07.2026/1720 hrs",
+        "details": "Arrival on July 18,2026. Time: 17:20 ( evening) Train no.& Name- 18045 East Coast exp. Station - Charlapalli.",
+        "status": "planned",
+        "team_label": "Assam Police"
+      },
+      "travel_extra": [
+        {
+          "station": "Flight / Airport",
+          "arrival": "",
+          "details": "Arrival on July 20,2026. Time: 23:00 ( night)at Shamshabad Rajiv Gandhi, T- NA",
+          "status": "planned",
+          "team_label": "Assam Police"
+        }
+      ]
+    },
+    {
+      "org": "ASSAM RIFLES",
+      "location": "TGPA",
+      "manager": {
+        "name": "W/O Prabin Rai",
+        "rank": "Warrant Officer",
+        "phone": "8837408679"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 7,
+        "female": 3
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 52,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 42
+      },
+      "total": 109,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1900 hrs\n21.07.2026/1715 hrs",
+        "details": "1) Train No 12214 Arr Date 21 June Time 19:00 HRs At secundrabad Jn\n2)Train No. 22692 Are Date 21 June Time 17:15 HRs at Secundrabad Jn",
+        "status": "planned",
+        "team_label": "Assam Rifles"
+      }
+    },
+    {
+      "org": "BIHAR POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Raju Kumar",
+        "rank": "Inspector",
+        "phone": "9472972929"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3
+      },
+      "total": 17,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "20.07.2026/2100 hrs",
+        "details": "Train No.12792, Boarding date 19.07.2026, PNR 660-6679990 (Danapur to secunderabad) 16 member",
+        "status": "planned",
+        "team_label": "Bihar"
+      }
+    },
+    {
+      "org": "CHANDIGARH POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Bhim singh",
+        "rank": "ASI",
+        "phone": "9463881916"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 8,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 8
+      },
+      "total": 19,
+      "mess": "TGPA",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "CHANDIGARH POLICE"
+      }
+    },
+    {
+      "org": "DELHI POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Ajit Kumar",
+        "rank": "Inspector",
+        "phone": "9910190643"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 7
+      },
+      "total": 18,
+      "mess": "TGPA",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "DELHI POLICE"
+      }
+    },
+    {
+      "org": "GUJARAT POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "M A RAVAL",
+        "rank": "P.I",
+        "phone": "9924527265"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 17,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 5
+      },
+      "total": 24,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0730 hrs",
+        "details": "PBR SC SF EXP TRAIN NO 20968 22.07.2026 AT 0730, SECUNDERABAD STATION",
+        "status": "planned",
+        "team_label": "GUJRAT"
+      }
+    },
+    {
+      "org": "HIMACHAL PRADESH POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Kamal Kishore HPS",
+        "rank": "Dy.SP",
+        "phone": "9418484672"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 6,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 5
+      },
+      "total": 12,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1715 hrs",
+        "details": "Train No. 22692 Date-20.07.2026 Time 1660, Railway Station- Secunderabaad (Date-21.07.2026 Time-17:15), 01 Adult",
+        "status": "planned",
+        "team_label": "Himachal Pradesh Police \n(Half Team)"
+      },
+      "travel_extra": [
+        {
+          "station": "Hyderabad Rly. Station",
+          "arrival": "21.07.2026/1715 hrs",
+          "details": "Train No. 12722, Date-19-07-2026, Time 1670 from Nizamudin, Railway Station-Hyderabad (Date-21-07-2026, Time 3:50), 11 adults",
+          "status": "planned",
+          "team_label": "Himachal Pradesh Police\n(Half Team)"
+        }
+      ]
+    },
+    {
+      "org": "J&K POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Anjana",
+        "rank": "Dy.SP",
+        "phone": "9622089944"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 1
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 37,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 9
+      },
+      "total": 52,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1555hrs",
+        "details": "12724 Telangana Exp",
+        "status": "planned",
+        "team_label": "J&K POLICE"
+      },
+      "travel_extra": [
+        {
+          "station": "Flight / Airport",
+          "arrival": "",
+          "details": "Arrival on July 21,2026. Indigo 6E 2491 DXN-HYD Time: 17:00hrs at Shamshabad Rajiv Gandhi, T- NA",
+          "status": "planned",
+          "team_label": "J&K (1)"
+        }
+      ]
+    },
+    {
+      "org": "KARNATAKA POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Hamja Hussain",
+        "rank": "Commandant",
+        "phone": "9448545925"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 14,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3
+      },
+      "total": 23,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0700 hrs",
+        "details": "Train 22691, Rajdhani Exp, 22.07.2026 at 07.00 hrs.Secundrabad. 23 persons.",
+        "status": "planned",
+        "team_label": "Karnataka State Police"
+      }
+    },
+    {
+      "org": "MAHARASHTRA POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Santosh Kamble, Assistant Sports Officer",
+        "rank": "ASO",
+        "phone": "9325154416"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 5,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 5,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 44,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 39
+      },
+      "total": 98,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Hyderabad Rly. Station",
+        "arrival": "21.07.2026/0430hrs",
+        "details": "Date 20-7-26 at 14:10 Train no 22732 CSMT to Hyderabad 04:30 Am 21-7-26",
+        "status": "planned",
+        "team_label": "Maharashtra Police"
+      }
+    },
+    {
+      "org": "MIZORAM POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Fanai Lalhmingliana MPS",
+        "rank": "Dy. Commandant",
+        "phone": "9612142704"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 5,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 7,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Flight / Airport",
+        "arrival": "",
+        "details": "1 person (Manager) only                                             Flight - Akasa Air No. QP -1406 Dt. 21.07.2026\nDeparture Delhi 1410 hrs\nArrival Hyderabad - 1630 hrs\nOthers 1 Coach + 5 Players Dt. 21.07.2026 Indigo Flight No. 6E6528 Departure Kolkata 1700 hrs\nArrival Hyderabad 1910 hrs",
+        "status": "planned",
+        "team_label": "Mizoram Police"
+      }
+    },
+    {
+      "org": "PUNJAB POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Rajwinder kaur",
+        "rank": "Inspector",
+        "phone": "8146577701"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 4,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 4,
+        "ors_m": 20,
+        "gos_f": 0,
+        "sos_f": 4,
+        "ors_f": 17
+      },
+      "total": 50,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.26/ 1600 hrs\n\n22.07.2026/ 0300 hrs",
+        "details": "Train no. 12724  secunderabad \n\n Train no.12722  secunderabad",
+        "status": "planned",
+        "team_label": "Punjab"
+      },
+      "travel_extra": [
+        {
+          "station": "Flight / Airport",
+          "arrival": "",
+          "details": "6E 2491 (A320) 22/07/26 Rajiv gandhi international airport hydrabad one person",
+          "status": "planned",
+          "team_label": "Punjab"
+        }
+      ]
+    },
+    {
+      "org": "RAJASTHAN POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Bahadur Singh Meena",
+        "rank": "Inspector",
+        "phone": "9983199959"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 5,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 4,
+        "ors_m": 10,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 10
+      },
+      "total": 31,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Hyderabad Rly. Station",
+        "arrival": "21.07.2026/0500 hrs",
+        "details": "Date 19/07/26 departure jaipur 15:30 pm\nArival 21/07/26 05:00 am hydrabad 31 member",
+        "status": "planned",
+        "team_label": "Rajasthan"
+      }
+    },
+    {
+      "org": "UTTARAKHAND POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "Shri Yogendra Singh Dev",
+        "rank": "Inspector",
+        "phone": "7017974765"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 1
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 20,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 5
+      },
+      "total": 30,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0250 hrs",
+        "details": "Arrival 22-07-2026, 12722/DAKSHIN EXP 02.50 Secunderabad JN (SC)",
+        "status": "planned",
+        "team_label": "Uttarakhand"
+      }
+    },
+    {
+      "org": "SIKKIM POLICE",
+      "location": "TGPA",
+      "manager": {
+        "name": "ASI Tenzing Sherpa",
+        "rank": "ASI",
+        "phone": "9609873532"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 1,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 2,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Flight / Airport",
+        "arrival": "",
+        "details": "Air India Express lx_2893 date 21 July 26",
+        "status": "planned",
+        "team_label": "Sikkim (02)"
+      }
+    },
+    {
+      "org": "CHATTISGARH",
+      "location": "TGPA",
+      "manager": {
+        "name": "Inspector Shri Amber Singh Bhardwaj",
+        "rank": "Inspector",
+        "phone": "8870840045"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 20,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 9
+      },
+      "total": 32,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0830 hrs",
+        "details": "Train no. 12772 R SC SF Express, arrival timing - 0830 am Dt. 22.07.2026 Secunderabad",
+        "status": "planned",
+        "team_label": "Chhattisgarh"
+      }
+    },
+    {
+      "org": "UTTARPRADESH",
+      "location": "TGPA",
+      "manager": {
+        "name": "Virbhadur Thapa",
+        "rank": "ACP",
+        "phone": "7011550465"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 7,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 2,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 56,
+        "gos_f": 0,
+        "sos_f": 6,
+        "ors_f": 38
+      },
+      "total": 117,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/0250 hrs",
+        "details": "12722/DAKSHIN EXP SECUNDERABAD JN (SC) Arrival* 02:50 21-Jul-2026",
+        "status": "planned",
+        "team_label": "UTTARPRADESH"
+      }
+    },
+    {
+      "org": "HARYANA",
+      "location": "TGPA",
+      "manager": {
+        "name": "ASI Sunil, 5/101",
+        "rank": "ASI",
+        "phone": "9467130300"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 1
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 4,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 1
+      },
+      "total": 8,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1555 hrs",
+        "details": "Telangana Express Arrival on 21.07.2026 at 15:55 at Secunderabad Junction",
+        "status": "planned",
+        "team_label": "Haryana Police"
+      }
+    },
+    {
+      "org": "ITBP",
+      "location": "TGPA",
+      "manager": {
+        "name": "DC Sh.Virender Singh",
+        "rank": "DC(GD)",
+        "phone": "9891618409"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 1,
+      "strength": {
+        "gos_m": 1,
+        "sos_m": 1,
+        "ors_m": 65,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 40
+      },
+      "total": 112,
+      "mess": "TGPA",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "20.07.2026/1340 hrs",
+        "details": "TRAIN NO 12438, HZ. NIZAMUDIN TO SECUNDERABAD JN. \nDATE OF ARRIVAL AT SECUNDERABAD JN. - 20-07-26, TIME- 13:40 COACH 02 PLAYERS 27, PHYSIO 01",
+        "status": "planned",
+        "team_label": "ITBP WUSHU TEAM"
+      },
+      "travel_extra": [
+        {
+          "station": "Secunderabad Jn",
+          "arrival": "20.07.2026/2210 hrs",
+          "details": "Duronto12214 date- 20-07-2026 time- 2210 Delhi to secendrabaad 19 players",
+          "status": "planned",
+          "team_label": "ITBP"
+        },
+        {
+          "station": "Secunderabad Jn",
+          "arrival": "21.07.2026/1435 hrs",
+          "details": "Train no. 12286 Duronto Express ,Date of arrival 21-07-26 Time 14:35 at Secunderabad JN",
+          "status": "planned",
+          "team_label": "ITBP"
+        }
+      ]
+    },
+    {
+      "org": "TAMILNADU",
+      "location": "TGPA",
+      "manager": {
+        "name": "A. HASEN BATCHA",
+        "rank": "Assistant Commandant",
+        "phone": "9965445421"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 6,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 5
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 40,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 20
+      },
+      "total": 73,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Hyderabad Rly. Station",
+        "arrival": "22.07.2026/0810 hrs",
+        "details": "By CHARMINAR SF EXP (Train No. 12759) on 22.07.2026 @ 08:10 Hrs., at Hyderabad Deccan Railway Station",
+        "status": "planned",
+        "team_label": "TAMIL NADU"
+      }
+    },
+    {
+      "org": "GOA",
+      "location": "TGPA",
+      "manager": {
+        "name": "Vaibhav Jalmi",
+        "rank": "Sub-Inspector",
+        "phone": "7776836317"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 8,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 0
+      },
+      "total": 12,
+      "mess": "TGPA",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "GOA"
+      }
+    },
+    {
+      "org": "NSG",
+      "location": "TGPA",
+      "manager": {
+        "name": "KULDEEP",
+        "rank": "Constable",
+        "phone": "8607137299"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 2
+      },
+      "total": 2,
+      "mess": "TGPA",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "NSG"
+      }
+    },
+    {
+      "org": "JHARKHAND",
+      "location": "TGPA",
+      "manager": {
+        "name": "Rajat Manik Baxla",
+        "rank": "DSP",
+        "phone": "8252966659"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 1,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 25,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 10
+      },
+      "total": 41,
+      "mess": "TGPA",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "JHARKHAND"
+      }
+    },
+    {
+      "org": "BSF",
+      "location": "NITHM",
+      "manager": {
+        "name": "Virpal Singh Kushwah,Dc",
+        "rank": "Deputy Commandant",
+        "phone": "9439456054"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 1
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 5
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 55,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 37
+      },
+      "total": 101,
+      "mess": "NITHM",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1412 hrs\n22.07.2026/1555 hrs",
+        "details": "(1.) T/No.12286 Duranto Exp ,Date of arrival 21/7/16,Time of arrival -1412 hrs at Sikandarabad R/Station . Total players-94\n\n(2.)T/No.12724 Telangana Exp, Date of arrival 22/7/26,Time of arrival 1555 hrs at Sikandarabad r/station. Total players- 12(Men-5, women-7)",
+        "status": "planned",
+        "team_label": "Border Security Force"
+      }
+    },
+    {
+      "org": "CRPF",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "H. Thoibinao chanu",
+        "rank": "Deputy Commandant",
+        "phone": "9625626883"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 1
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 4,
+        "female": 1
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 3
+      },
+      "coach_female": {
+        "gos": 1,
+        "sos": 1,
+        "ors": 2
+      },
+      "doctor": 1,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 48,
+        "gos_f": 1,
+        "sos_f": 1,
+        "ors_f": 28
+      },
+      "total": 95,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/0500 hrs",
+        "details": "07019/Hyderabad decan Arrival 5am 21 July 26 .",
+        "status": "planned",
+        "team_label": "CRPF"
+      }
+    },
+    {
+      "org": "SSB",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "Durgesh Sharma",
+        "rank": "Assistant Commandant",
+        "phone": "9017409009"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 1,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 2,
+        "ors": 6
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 2
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 56,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 46
+      },
+      "total": 114,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/0350 hrs\n21.07.2026/1030 hrs\n22.07.2026/1715 hrs",
+        "details": "12722, Date- 21/07, Time- 0350 , Station- Secunderabad, Personnel- 16\n12703, Date- 21/07, Time- 1030, Station- Secunderabad, Personnel- 20\n22692, Date- 22/07, Time- 1715 , Station- Secunderabad, Personnel- 66",
+        "status": "planned",
+        "team_label": "SSB"
+      },
+      "travel_extra": [
+        {
+          "station": "Flight / Airport",
+          "arrival": "",
+          "details": "Air India 2899, Travel date- 21/07, Expected Time of Arrival- 1445 hrs, Hyderabad Airport, One Officer,",
+          "status": "planned",
+          "team_label": "SSB"
+        }
+      ]
+    },
+    {
+      "org": "WEST BENGAL POLICE",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "Shri Goutam Chakraborty, Inspector of Police",
+        "rank": "Inspector of Police",
+        "phone": "9433803233"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 5,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 3,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 5,
+        "ors_m": 40,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 14
+      },
+      "total": 70,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "20.07.2026/1730 hrs",
+        "details": "Arrive on 20/07/2026 at 17:30 hrs. at Charlapalli Railway Station by SRC CHZ SPL (07222) Train",
+        "status": "planned",
+        "team_label": "West Bengal Police"
+      }
+    },
+    {
+      "org": "ORISSA POLICE",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "Bijay Kumar Muduli",
+        "rank": "Inspector (A)",
+        "phone": "9776501157"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 8
+      },
+      "total": 21,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/0745 hrs",
+        "details": "BBSR - Secunderabad \nDOJ. 20.07.2026 at 08.40 AM\nVisakha Express \nTrain No. 17015\nArrival at Secunderabad on 21.07.2026 at 07.45 AM",
+        "status": "planned",
+        "team_label": "Odisha"
+      }
+    },
+    {
+      "org": "MADHYA PRADESH POLICE",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "GOPIKRISHNA SHRIDHARAN",
+        "rank": "Inspector",
+        "phone": "9425149743"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 13,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 4
+      },
+      "total": 18,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Kacheguda Station",
+        "arrival": "21.07.2026/1545 hrs",
+        "details": "TRAIN NO.17606, BGKT KCG EXPRESS, Arrival Date 21. Jul. 2026 KACHEGUDA STATION",
+        "status": "planned",
+        "team_label": "Madhya Pradesh"
+      }
+    },
+    {
+      "org": "MANIPUR POLICE",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "RK Dhanajit Singh",
+        "rank": "Jemadar",
+        "phone": "8974102910"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 4
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 2,
+        "ors": 1
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 36,
+        "gos_f": 1,
+        "sos_f": 0,
+        "ors_f": 4
+      },
+      "total": 49,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Flight / Airport",
+        "arrival": "",
+        "details": "Indigo flight no. 6E187 date 21, Time 23.30 Rajiv Gandhi International airport",
+        "status": "planned",
+        "team_label": "Manipur Police"
+      }
+    },
+    {
+      "org": "KERALA POLICE",
+      "location": "Sport Tower",
+      "manager": {
+        "name": "Vinod I V",
+        "rank": "Deputy Commandant",
+        "phone": "8281382896"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 30,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 33,
+      "mess": "Own Arrangement",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1555 hrs",
+        "details": "07194, 21.07.2026, 15.55 Hrs, Secandrabad",
+        "status": "planned",
+        "team_label": "KERALA POLICE"
+      }
+    },
+    {
+      "org": "CISF",
+      "location": "Own Location",
+      "manager": {
+        "name": "Vimal Singh Khatri",
+        "rank": "Asstt. Commandant",
+        "phone": "9873932998"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 2,
+        "ors": 1
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 2,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 14,
+        "ors_m": 31,
+        "gos_f": 0,
+        "sos_f": 12,
+        "ors_f": 29
+      },
+      "total": 92,
+      "mess": "",
+      "travel": {
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1435 hrs \n\n21.07.2026/2250 hrs",
+        "details": "Teams of Judo, Krate, Wushu and Penchek Silate by tr Duranato exp dep from Delhi 1555 hrs on 20July arr at 1435 hrs on 21July, Taekwando team by tr Dakshin exp at 2250 hrs",
+        "status": "planned",
+        "team_label": "CISF"
+      },
+      "travel_extra": [
+        {
+          "station": "Flight / Airport",
+          "arrival": "",
+          "details": "Team coaches of judo,taekwando by air 20July 26 dep from Delhi 1410  hrs arr Hyd 1630 hrs ,Manager CISF by air 20July 26 dep from Delhi 1615 hrs arr Hyd 1830 hrs",
+          "status": "planned",
+          "team_label": "CISF"
+        }
+      ]
+    },
+    {
+      "org": "TELANGANA POLICE",
+      "location": "Own Location",
+      "manager": {
+        "name": "KATTA DAYANAND",
+        "rank": "ASI",
+        "phone": "9440474691"
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 1,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 32,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 33,
+      "mess": "",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "team_label": "Telangana Police"
+      }
+    },
+    {
+      "org": "RPF",
+      "location": "Own Location",
+      "manager": {
+        "name": "Sanjit Sarkar",
+        "rank": "ASC/RPF/DMV",
+        "phone": "9862153714"
+      },
+      "count_gos": {
+        "male": 1,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 2,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 1,
+        "ors": 2
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 1
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 11,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 2
+      },
+      "total": 21,
+      "mess": "",
+      "travel": {
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "19.07.2026/2045 hrs",
+        "details": "TAIN NO- 07029 FROM GHY TO CSZ",
+        "status": "planned",
+        "team_label": "RPF"
+      }
+    }
+  ],
+  "tgpa_mess": {
+    "dining_tgpa": [
+      {
+        "org": "ASSAM RIFLES",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 45,
+        "sotc": 62,
+        "total": 109
+      },
+      {
+        "org": "JAMMU & KASHMIR",
+        "iom": 1,
+        "jom1": 1,
+        "jom2": 9,
+        "sotc": 41,
+        "total": 52
+      },
+      {
+        "org": "HIMACHAL PRADESH POLICE",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 5,
+        "sotc": 6,
+        "total": 12
+      },
+      {
+        "org": "ANDHRA PRADESH POLICE",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 4,
+        "sotc": 17,
+        "total": 23
+      },
+      {
+        "org": "CHANDIGARH POLICE",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 8,
+        "sotc": 10,
+        "total": 19
+      },
+      {
+        "org": "ITBP",
+        "iom": 3,
+        "jom1": 1,
+        "jom2": 40,
+        "sotc": 68,
+        "total": 112
+      },
+      {
+        "org": "Haryana",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 2,
+        "sotc": 4,
+        "total": 8
+      },
+      {
+        "org": "BIHAR",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 4,
+        "sotc": 11,
+        "total": 17
+      },
+      {
+        "org": "Sikkim",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 0,
+        "sotc": 0,
+        "total": 2
+      },
+      {
+        "org": "Punjab",
+        "iom": 0,
+        "jom1": 9,
+        "jom2": 21,
+        "sotc": 20,
+        "total": 50
+      },
+      {
+        "org": "Jharkhand",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 11,
+        "sotc": 29,
+        "total": 41
+      },
+      {
+        "org": "NSG",
+        "iom": 0,
+        "jom1": 0,
+        "jom2": 0,
+        "sotc": 2,
+        "total": 2
+      },
+      {
+        "org": "Gujrat",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 5,
+        "sotc": 17,
+        "total": 24
+      },
+      {
+        "org": "GOA",
+        "iom": 0,
+        "jom1": 3,
+        "jom2": 1,
+        "sotc": 8,
+        "total": 12
+      },
+      {
+        "org": "DELHI POLICE",
+        "iom": 0,
+        "jom1": 2,
+        "jom2": 7,
+        "sotc": 9,
+        "total": 18
+      }
+    ],
+    "own_mess": [
+      {
+        "org": "ARUNACHAL PRADESH",
+        "iom": 0,
+        "jom1": 4,
+        "jom2": 6,
+        "sotc": 16,
+        "total": 26
+      },
+      {
+        "org": "ASSAM POLICE",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 22,
+        "sotc": 38,
+        "total": 61
+      },
+      {
+        "org": "KARNATAKA POLICE",
+        "iom": 1,
+        "jom1": 1,
+        "jom2": 4,
+        "sotc": 17,
+        "total": 23
+      },
+      {
+        "org": "MAHARASHTRA POLICE",
+        "iom": 0,
+        "jom1": 6,
+        "jom2": 40,
+        "sotc": 52,
+        "total": 98
+      },
+      {
+        "org": "MIZORAM POLICE",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 0,
+        "sotc": 6,
+        "total": 7
+      },
+      {
+        "org": "RAJASTHAN POLICE",
+        "iom": 0,
+        "jom1": 5,
+        "jom2": 10,
+        "sotc": 16,
+        "total": 31
+      },
+      {
+        "org": "UTTARAKHAND POLICE",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 7,
+        "sotc": 22,
+        "total": 30
+      },
+      {
+        "org": "CHATTISGARH",
+        "iom": 0,
+        "jom1": 1,
+        "jom2": 9,
+        "sotc": 22,
+        "total": 32
+      },
+      {
+        "org": "UTTARPRADESH",
+        "iom": 1,
+        "jom1": 5,
+        "jom2": 44,
+        "sotc": 67,
+        "total": 117
+      },
+      {
+        "org": "TAMILNADU",
+        "iom": 1,
+        "jom1": 0,
+        "jom2": 21,
+        "sotc": 51,
+        "total": 73
+      }
+    ],
+    "note": "BSF stay at NITHM · Own mess arrangement"
+  },
+  "summary": {
+    "teams": 36,
+    "strength": 1646,
+    "male": 940,
+    "female": 505,
+    "gos": 3,
+    "sos": 79,
+    "ors": 1363,
+    "by_location": {
+      "TGPA": {
+        "teams": 25,
+        "strength": 999
+      },
+      "NITHM": {
+        "teams": 1,
+        "strength": 101
+      },
+      "Sport Tower": {
+        "teams": 7,
+        "strength": 400
+      },
+      "Own Location": {
+        "teams": 3,
+        "strength": 146
+      }
+    },
+    "by_mess": {
+      "TGPA": 501,
+      "Own Arrangement": 898,
+      "NITHM": 101,
+      "Unassigned": 146
+    },
+    "travel_planned": 28,
+    "travel_awaited": 8,
+    "strength_detail": {
+      "gos_m": 1,
+      "sos_m": 48,
+      "ors_m": 891,
+      "gos_f": 2,
+      "sos_f": 31,
+      "ors_f": 472
+    }
+  }
+}

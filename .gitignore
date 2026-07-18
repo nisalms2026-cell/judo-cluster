@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Local secrets / env
+.env
+.env.*
+
+# Cloudflare Tunnel binary (download per machine — ~50 MB)
+cloudflared.exe
+cloudflared
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# Local scratch / exports
+*.log
+*.tmp
+_backup/

@@ -1,0 +1,365 @@
+{
+  "updated_at": "2026-07-17T07:07:16",
+  "rows": [
+    [
+      "ANDHRA POLICE",
+      "TGPA",
+      0,
+      2,
+      17,
+      0,
+      1,
+      3
+    ],
+    [
+      "ARUNACHAL PRADESH",
+      "TGPA",
+      0,
+      4,
+      16,
+      0,
+      2,
+      4
+    ],
+    [
+      "ASSAM POLICE",
+      "TGPA",
+      0,
+      1,
+      38,
+      0,
+      2,
+      20
+    ],
+    [
+      "ASSAM RIFLES",
+      "TGPA",
+      0,
+      2,
+      62,
+      0,
+      0,
+      45
+    ],
+    [
+      "BIHAR POLICE",
+      "TGPA",
+      0,
+      2,
+      11,
+      0,
+      1,
+      3
+    ],
+    [
+      "CHANDIGARH POLICE",
+      "TGPA",
+      0,
+      1,
+      10,
+      0,
+      0,
+      8
+    ],
+    [
+      "DELHI POLICE",
+      "TGPA",
+      0,
+      2,
+      9,
+      0,
+      0,
+      7
+    ],
+    [
+      "GUJARAT POLICE",
+      "TGPA",
+      0,
+      2,
+      17,
+      0,
+      0,
+      5
+    ],
+    [
+      "HIMACHAL PRADESH POLICE",
+      "TGPA",
+      1,
+      0,
+      6,
+      0,
+      0,
+      5
+    ],
+    [
+      "J&K POLICE",
+      "TGPA",
+      0,
+      1,
+      41,
+      1,
+      0,
+      9
+    ],
+    [
+      "KARNATAKA POLICE",
+      "TGPA",
+      1,
+      1,
+      17,
+      0,
+      1,
+      3
+    ],
+    [
+      "MAHARASHTRA POLICE",
+      "TGPA",
+      0,
+      6,
+      52,
+      0,
+      1,
+      39
+    ],
+    [
+      "MIZORAM POLICE",
+      "TGPA",
+      1,
+      0,
+      6,
+      0,
+      0,
+      0
+    ],
+    [
+      "PUNJAB POLICE",
+      "TGPA",
+      0,
+      9,
+      20,
+      0,
+      4,
+      17
+    ],
+    [
+      "RAJASTHAN POLICE",
+      "TGPA",
+      0,
+      5,
+      16,
+      0,
+      0,
+      10
+    ],
+    [
+      "UTTARAKHAND POLICE",
+      "TGPA",
+      0,
+      1,
+      22,
+      0,
+      1,
+      6
+    ],
+    [
+      "SIKKIM POLICE",
+      "TGPA",
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      "CHATTISGARH",
+      "TGPA",
+      0,
+      1,
+      22,
+      0,
+      0,
+      9
+    ],
+    [
+      "UTTAR PRADESH",
+      "TGPA",
+      1,
+      5,
+      67,
+      0,
+      6,
+      38
+    ],
+    [
+      "HARYANA",
+      "TGPA",
+      0,
+      3,
+      4,
+      0,
+      0,
+      2
+    ],
+    [
+      "ITBP",
+      "TGPA",
+      3,
+      1,
+      68,
+      0,
+      0,
+      40
+    ],
+    [
+      "BSF",
+      "TGPA",
+      1,
+      0,
+      62,
+      0,
+      0,
+      38
+    ],
+    [
+      "TAMIL NADU",
+      "TGPA",
+      1,
+      0,
+      51,
+      0,
+      1,
+      20
+    ],
+    [
+      "GOA",
+      "TGPA",
+      0,
+      3,
+      8,
+      0,
+      1,
+      0
+    ],
+    [
+      "NSG",
+      "TGPA",
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    [
+      "JHARKHAND",
+      "TGPA",
+      1,
+      0,
+      29,
+      0,
+      1,
+      10
+    ],
+    [
+      "CRPF",
+      "Sport Tower",
+      1,
+      3,
+      55,
+      3,
+      2,
+      31
+    ],
+    [
+      "SSB",
+      "Sport Tower",
+      1,
+      2,
+      63,
+      0,
+      0,
+      48
+    ],
+    [
+      "WEST BENGAL POLICE",
+      "Sport Tower",
+      0,
+      9,
+      46,
+      0,
+      1,
+      14
+    ],
+    [
+      "ORISSA POLICE",
+      "Sport Tower",
+      0,
+      2,
+      11,
+      0,
+      0,
+      8
+    ],
+    [
+      "MADHYA PRADESH POLICE",
+      "Sport Tower",
+      0,
+      1,
+      13,
+      0,
+      0,
+      4
+    ],
+    [
+      "MANIPUR POLICE",
+      "Sport Tower",
+      0,
+      1,
+      40,
+      1,
+      2,
+      5
+    ],
+    [
+      "KERALA POLICE",
+      "Sport Tower",
+      1,
+      1,
+      31,
+      0,
+      0,
+      0
+    ],
+    [
+      "CISF",
+      "Own Location",
+      1,
+      16,
+      32,
+      0,
+      14,
+      29
+    ],
+    [
+      "TELANGANA POLICE",
+      "Own Location",
+      0,
+      1,
+      32,
+      0,
+      0,
+      0
+    ],
+    [
+      "RPF",
+      "Own Location",
+      1,
+      2,
+      15,
+      0,
+      0,
+      3
+    ]
+  ]
+}

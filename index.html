@@ -1,0 +1,3408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>11th All India Police Judo Cluster 2026 — Ops Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/assets/logo-sm.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Enterprise Ops palette */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --header: #0F172A;
+  --sidebar: #0F172A;
+  --sidebar-hover: #1E293B;
+  --sidebar-active: #2563EB;
+  --bg: #F8FBFF;
+  --card: #FFFFFF;
+  --text: #111827;
+  --body: #374151;
+  --secondary: #6B7280;
+  --border: #E5E7EB;
+  --hover: #DBEAFE;
+  --selected: #EFF6FF;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #0EA5E9;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --radius-card: 12px;
+  --radius-ctrl: 10px;
+  --chrome-h: 72px;
+  --sidebar-w: 240px;
+
+  /* Legacy aliases for JS inline styles */
+  --sky: var(--primary);
+  --sky-soft: var(--primary-hover);
+  --sky-dim: rgba(37, 99, 235, 0.12);
+  --orange: var(--warning);
+  --green: var(--success);
+  --red: var(--danger);
+  --cyan: var(--info);
+  --text-dim: var(--secondary);
+  --panel: var(--card);
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --radius: var(--radius-card);
+  --accent-ink: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color-scheme: light;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* View / edit mode */
+body.mode-view .edit-only { display: none !important; }
+
+body.mode-view input.num-input,
+body.mode-view select.loc-select,
+body.mode-view select.mess-select,
+body.mode-view .dir-fields input {
+  pointer-events: none;
+  opacity: 0.95;
+  border-color: transparent;
+  background: transparent;
+}
+
+/* App shell — full-width header, sidebar below (no chrome collision) */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.topbar {
+  height: var(--chrome-h);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--header);
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  flex-shrink: 0;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  min-width: 200px;
+}
+
+.topbar-brand img.logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.topbar-brand .brand-name {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--sidebar);
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: sticky;
+  top: var(--chrome-h);
+  height: calc(100vh - var(--chrome-h));
+  z-index: 40;
+  align-self: flex-start;
+}
+
+.sidebar-brand { display: none; }
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  padding: 16px 12px;
+  overflow: auto;
+}
+
+.side-nav button[data-view] {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 11px 14px;
+  cursor: pointer;
+  border-radius: var(--radius-ctrl);
+  text-align: left;
+  transition: background 0.18s ease, color 0.18s ease;
+  width: 100%;
+  border-left: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.side-nav button[data-view] .nav-ico {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.side-nav button[data-view].active .nav-ico,
+.side-nav button[data-view]:hover .nav-ico {
+  opacity: 1;
+}
+
+.side-nav button[data-view]:hover {
+  color: #FFFFFF;
+  background: var(--sidebar-hover);
+}
+
+.side-nav button[data-view].active {
+  color: #FFFFFF;
+  background: var(--sidebar-active);
+  font-weight: 600;
+  border-left-color: transparent;
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  padding: 14px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-foot img { height: 28px; width: auto; }
+
+.sidebar-foot span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Main area */
+.app-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.page-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.page-head .page-sub {
+  font-size: 14px;
+  color: var(--secondary);
+  font-weight: 400;
+}
+
+.header-search {
+  position: relative;
+  flex: 1;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-shell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;
+  padding: 0 16px 0 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-ctrl);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.search-shell:focus-within {
+  border-color: #93C5FD;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.25);
+}
+
+.search-shell .search-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.55);
+  display: block;
+}
+
+.search-shell:focus-within .search-icon { color: #93C5FD; }
+
+.nav-search {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  padding: 0;
+  outline: none;
+}
+
+.nav-search::placeholder { color: rgba(255, 255, 255, 0.45); font-weight: 400; }
+.nav-search::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.nav-search-results {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 45;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+  max-height: 340px;
+  overflow: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), var(--shadow);
+}
+
+.nav-search-results.open { display: block; }
+
+.nav-search-results .ns-label {
+  padding: 10px 14px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.nav-search-results button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  padding: 11px 14px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 13px;
+  transition: background 0.12s ease;
+}
+
+.nav-search-results button:hover { background: var(--hover); }
+
+.nav-search-results .ns-org { font-weight: 600; display: block; }
+.nav-search-results .ns-meta { font-size: 11px; color: var(--secondary); margin-top: 3px; }
+.nav-search-results .ns-empty { padding: 16px 14px; font-size: 13px; color: var(--secondary); }
+
+.header-meta {
+  margin-left: 0;
+  flex-shrink: 0;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.45;
+  min-width: 120px;
+}
+
+.header-meta strong {
+  display: block;
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-ctrl);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.btn:hover {
+  border-color: var(--primary);
+  background: var(--hover);
+  color: var(--primary);
+}
+
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--accent-ink);
+  font-weight: 500;
+}
+
+.btn.primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: var(--accent-ink);
+}
+
+.btn.secondary {
+  background: var(--card);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn.secondary:hover {
+  background: var(--hover);
+}
+
+.btn.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #FFFFFF;
+}
+
+.btn.danger:hover {
+  background: #DC2626;
+  border-color: #DC2626;
+  color: #FFFFFF;
+}
+
+.btn.success {
+  background: var(--success);
+  border-color: var(--success);
+  color: #FFFFFF;
+}
+
+.btn.success:hover {
+  background: #16A34A;
+  border-color: #16A34A;
+  color: #FFFFFF;
+}
+
+/* Content layout */
+.wrap {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 28px 32px 80px;
+  width: 100%;
+}
+
+.view { display: none; }
+.view.active {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view.active { animation: none; }
+}
+
+/* KPI grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  text-align: left;
+  width: 100%;
+  color: var(--text);
+  font-family: inherit;
+  box-shadow: var(--shadow);
+}
+
+.kpi:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+}
+
+.kpi .label {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+
+.kpi .value {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.kpi .sub { font-size: 12px; color: var(--secondary); margin-top: 6px; }
+
+.kpi .accent {
+  height: 2px;
+  width: 28px;
+  background: var(--primary);
+  border-radius: 1px;
+  margin-bottom: 12px;
+}
+
+/* Section titles */
+.section-title {
+  font-family: var(--font);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-title span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--secondary);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Location cards */
+.loc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.loc-grid.dynamic { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+.loc-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.loc-card h3 {
+  font-family: var(--font);
+  font-size: 18px;
+  margin: 0 0 4px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.loc-card .meta { font-size: 12px; color: var(--secondary); margin-bottom: 12px; }
+
+.loc-card .num {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.loc-card .num span {
+  font-size: 12px;
+  color: var(--secondary);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+/* Home split panels */
+.home-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.rank-row { margin-bottom: 14px; }
+
+.rank-row .top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.rank-row .name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rank-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border);
+  overflow: hidden;
+  display: flex;
+}
+
+.rank-track .m { background: var(--info); }
+.rank-track .f { background: var(--warning); }
+
+.alert-list { list-style: none; margin: 0; padding: 0; }
+
+.alert-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text);
+}
+
+.alert-list li:last-child { border-bottom: none; }
+
+/* Badges */
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.badge.warn { background: rgba(245, 158, 11, 0.14); color: #B45309; }
+.badge.ok { background: rgba(34, 197, 94, 0.14); color: #15803D; }
+.badge.info { background: rgba(14, 165, 233, 0.14); color: #0369A1; }
+.badge.mess { background: var(--selected); color: var(--primary); }
+
+/* Controls & filters */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.filter-btns button {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 7px 12px;
+  border-radius: var(--radius-ctrl);
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.filter-btns button:hover {
+  border-color: var(--primary);
+  background: var(--hover);
+}
+
+.filter-btns button.active {
+  background: var(--selected);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Tables */
+.table-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 4px 12px;
+  max-height: 560px;
+  overflow: auto;
+  color: var(--text);
+  scrollbar-gutter: stable;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--text);
+  table-layout: fixed;
+}
+
+thead th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  text-align: right;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  z-index: 2;
+}
+
+thead th:first-child,
+thead th:nth-child(2) { text-align: left; }
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--body);
+  vertical-align: middle;
+}
+
+tbody td:first-child,
+tbody td:nth-child(2) {
+  text-align: left;
+  font-family: var(--font);
+}
+
+tbody tr:hover { background: var(--hover); }
+
+tfoot td {
+  padding: 12px 8px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+}
+
+tfoot td:first-child,
+tfoot td:nth-child(2) {
+  text-align: left;
+  font-family: var(--font);
+}
+
+.acc-table { table-layout: fixed; width: 100%; }
+.acc-table col.c-org { width: 22%; }
+.acc-table col.c-loc { width: 14%; }
+.acc-table col.c-n { width: 7.5%; }
+.acc-table col.c-tot { width: 8%; }
+.acc-table col.c-act { width: 9%; }
+.acc-table .total-col { font-weight: 600; color: var(--text); }
+
+/* Mess table */
+.mess-table { table-layout: fixed; width: 100%; }
+.mess-table col.c-org { width: 36%; }
+.mess-table col.c-stay { width: 18%; }
+.mess-table col.c-mess { width: 24%; }
+.mess-table col.c-str { width: 12%; }
+.mess-table col.c-act { width: 10%; }
+
+.mess-table thead th,
+.mess-table tbody td { text-align: left; font-family: var(--font); }
+
+.mess-table thead th.c-str,
+.mess-table tbody td.c-str,
+.mess-table thead th:nth-child(4),
+.mess-table tbody td:nth-child(4) {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.mess-table thead th:nth-child(5),
+.mess-table tbody td:nth-child(5) { text-align: right; }
+
+.mess-table tbody td:nth-child(1) { font-weight: 600; }
+
+.org-name { font-weight: 600; cursor: pointer; color: var(--text); }
+.org-name:hover { color: var(--primary); }
+
+.loc-tag, .mess-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.loc-tag.TGPA { background: var(--selected); color: var(--primary); }
+.loc-tag.Sport { background: rgba(14, 165, 233, 0.12); color: #0369A1; }
+.loc-tag.Own { background: rgba(245, 158, 11, 0.12); color: #B45309; }
+.loc-tag.NITHM { background: rgba(99, 102, 241, 0.12); color: #4338CA; }
+.loc-tag.v0 { background: var(--selected); color: var(--primary); }
+.loc-tag.v1 { background: rgba(14, 165, 233, 0.12); color: #0369A1; }
+.loc-tag.v2 { background: rgba(245, 158, 11, 0.12); color: #B45309; }
+.loc-tag.v3 { background: rgba(34, 197, 94, 0.12); color: #15803D; }
+.loc-tag.v4 { background: rgba(168, 85, 247, 0.12); color: #7E22CE; }
+.loc-tag.v5 { background: rgba(236, 72, 153, 0.12); color: #BE185D; }
+
+.mess-tag { background: var(--bg); color: var(--secondary); }
+.mess-tag.TGPA { background: var(--selected); color: var(--primary); }
+.mess-tag.Own { background: rgba(34, 197, 94, 0.12); color: #15803D; }
+.mess-tag.NITHM { background: rgba(14, 165, 233, 0.12); color: #0369A1; }
+.mess-tag.none { background: rgba(239, 68, 68, 0.1); color: #B91C1C; }
+
+/* Venue bar */
+.venue-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+
+.venue-bar .hint { font-size: 12px; color: var(--secondary); margin-right: auto; }
+
+.venue-bar input[type="text"] {
+  font-family: var(--font);
+  font-size: 13px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 7px 10px;
+  border-radius: var(--radius-ctrl);
+  min-width: 180px;
+}
+
+/* Add form */
+.add-form {
+  display: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 14px;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.add-form.open { display: flex; }
+
+.add-form label {
+  font-size: 11px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.add-form input,
+.add-form select {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: var(--radius-ctrl);
+}
+
+/* Mess view */
+.mess-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mess-hero h2 {
+  font-family: var(--font);
+  font-size: 32px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.mess-hero p {
+  margin: 6px 0 0;
+  color: var(--body);
+  font-size: 13px;
+  max-width: 52ch;
+}
+
+.mess-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.mess-kpi {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.mess-kpi .l {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 6px;
+}
+
+.mess-kpi .v {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mess-kpi .v.accent { color: var(--primary); }
+.mess-kpi .v.ok { color: var(--success); }
+.mess-kpi .v.warn { color: var(--danger); }
+.mess-kpi .s { font-size: 11px; color: var(--secondary); margin-top: 4px; }
+
+.mess-boards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.mess-board {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  box-shadow: var(--shadow);
+}
+
+.mess-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.mess-board-head h3 { margin: 0; font-size: 15px; font-weight: 700; color: var(--text); }
+
+.mess-board-head .tot {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--selected);
+  padding: 4px 8px;
+  border-radius: var(--radius-ctrl);
+}
+
+.mess-board-body { padding: 4px 8px 10px; overflow: auto; max-height: 420px; flex: 1; }
+
+.mess-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+}
+
+.mess-row:hover { background: var(--hover); }
+.mess-row .org { font-weight: 600; font-size: 13px; color: var(--text); }
+.mess-row .chips { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+
+.mess-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--secondary);
+}
+
+.mess-chip.tot {
+  background: var(--selected);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Arrival view — ops dashboard */
+.arr-kpis {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.arr-kpi {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.arr-kpi .l {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 6px;
+}
+
+.arr-kpi .v {
+  font-family: var(--font);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+.arr-kpi .v.warn { color: var(--danger); }
+.arr-kpi .v.ok { color: var(--success); }
+.arr-kpi .v.accent { color: var(--primary); }
+.arr-kpi .s { font-size: 12px; color: var(--secondary); margin-top: 4px; }
+
+.arr-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+
+.arr-controls .mode-tabs { margin: 0; }
+.arr-controls .filter-btns { flex: 1; min-width: 200px; }
+
+.arr-controls-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.arr-controls-meta #arrFilterHint {
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.arr-controls-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.mode-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.mode-tabs button {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: var(--radius-ctrl);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--secondary);
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.mode-tabs button:hover {
+  border-color: var(--primary);
+  background: var(--hover);
+  color: var(--primary);
+}
+
+.mode-tabs button.active {
+  background: var(--selected);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.mode-tabs button .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 6px;
+  opacity: 0.85;
+}
+
+.hub-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.hub-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--body);
+  transition: border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
+  box-shadow: var(--shadow);
+}
+
+.hub-pill:hover { border-color: var(--primary); color: var(--primary); }
+.hub-pill.active {
+  background: var(--selected);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.hub-pill .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--bg);
+  color: var(--secondary);
+  padding: 2px 7px;
+  border-radius: 999px;
+  min-width: 22px;
+  text-align: center;
+}
+
+.hub-pill.active .n {
+  background: var(--primary);
+  color: #fff;
+}
+
+.arr-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+.arr-main {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  min-width: 0;
+  overflow: visible;
+}
+
+.arr-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.arr-board-head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.arr-board-count {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+}
+
+.arr-board {
+  padding: 12px 14px 20px;
+  min-height: 200px;
+}
+
+.arr-hub-block {
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.arr-hub-block:last-child { border-bottom: none; }
+
+.arr-day-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 6px 8px;
+}
+
+.arr-day-head h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.arr-day-head .count {
+  font-size: 11px;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+}
+
+.arr-day-label {
+  margin: 10px 6px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.arr-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.arr-card {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+  padding: 12px 14px;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.arr-card:hover {
+  border-color: var(--primary);
+  background: var(--selected);
+}
+
+.arr-card .time-block { text-align: center; }
+
+.arr-card .time {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.arr-card .ampm {
+  font-size: 10px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.arr-card .org {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 6px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.arr-card .org:hover { color: var(--primary); }
+
+.arr-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.arr-card .meta {
+  font-size: 12px;
+  color: var(--secondary);
+  margin-top: 6px;
+  line-height: 1.35;
+}
+
+.arr-card .side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  text-align: right;
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.arr-card .pax {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.arr-card .mgr-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.arr-card .mgr-phone {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.arr-card .mgr-phone:hover { text-decoration: underline; }
+.arr-card .mgr-phone.muted { color: var(--secondary); font-weight: 400; }
+
+.arr-card .details-full {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 12px;
+  color: var(--body);
+  line-height: 1.45;
+}
+
+.arr-card.expanded .details-full { display: block; }
+
+.arr-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.arr-side {
+  position: sticky;
+  top: calc(var(--chrome-h) + 16px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 0;
+  border-top: 3px solid var(--danger);
+  box-shadow: var(--shadow);
+  max-height: calc(100vh - var(--chrome-h) - 32px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.arr-side-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px 0;
+}
+
+.arr-side h3 {
+  font-family: var(--font);
+  font-size: 15px;
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.arr-side .side-sub {
+  font-size: 12px;
+  color: var(--secondary);
+  margin: 4px 16px 0;
+}
+
+.await-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0 8px 12px;
+  overflow: auto;
+  flex: 1;
+}
+
+.await-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: var(--radius-ctrl);
+  border-bottom: 1px solid var(--border);
+}
+
+.await-list li:hover { background: var(--hover); }
+.await-list li:last-child { border-bottom: none; }
+
+.await-list .ao { font-weight: 600; font-size: 13px; cursor: pointer; color: var(--text); }
+.await-list .ao:hover { color: var(--primary); }
+.await-list .am { font-size: 12px; color: var(--secondary); line-height: 1.35; }
+.await-list .ap { font-family: var(--font-mono); font-size: 12px; margin-top: 2px; }
+.await-list .ap a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+.station-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--secondary);
+}
+
+.station-pill.rail { background: var(--selected); color: var(--primary); }
+.station-pill.flight { background: rgba(14, 165, 233, 0.12); color: #0369A1; }
+.station-pill.bus { background: rgba(245, 158, 11, 0.12); color: #B45309; }
+
+/* Directory */
+.dir-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.dir-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: var(--shadow);
+}
+
+.dir-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+
+.dir-card h4 { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+
+.dir-card .phone {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--primary);
+  margin: 10px 0 4px;
+}
+
+.dir-card .phone a { color: inherit; text-decoration: none; }
+.dir-card .mgr { font-size: 13px; color: var(--secondary); }
+
+/* Arrival edit panel */
+.arr-edit-panel {
+  display: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.arr-edit-panel.open { display: flex; }
+
+.arr-edit-panel label {
+  font-size: 10px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.arr-edit-panel input,
+.arr-edit-panel select,
+.arr-edit-panel textarea {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: var(--radius-ctrl);
+  min-width: 140px;
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(400px, 100%);
+  height: 100%;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  z-index: 90;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  padding: 24px;
+  overflow-y: auto;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+}
+
+.drawer.open { transform: translateX(0); }
+
+.drawer h3 {
+  font-family: var(--font);
+  font-size: 22px;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.drawer .close {
+  float: right;
+  background: none;
+  border: none;
+  color: var(--secondary);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.drawer dl {
+  margin: 18px 0;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px 12px;
+  font-size: 13px;
+}
+
+.drawer dt {
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 3px;
+}
+
+.drawer dd { margin: 0; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: var(--radius-ctrl);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--secondary);
+  letter-spacing: 0.06em;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .home-split,
+  .mess-boards,
+  .loc-grid { grid-template-columns: 1fr; }
+
+  .mess-kpis,
+  .kpi-grid,
+  .arr-kpis { grid-template-columns: repeat(2, 1fr); }
+
+  .app-body { flex-direction: column; }
+
+  .topbar-brand {
+    min-width: 0;
+  }
+
+  .topbar-brand .brand-name {
+    font-size: 16px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: var(--chrome-h);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--sidebar);
+  }
+
+  .side-nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex: 1;
+    gap: 2px;
+    padding: 8px 12px;
+    overflow-x: auto;
+  }
+
+  .side-nav button[data-view] {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-left: none;
+    white-space: nowrap;
+  }
+
+  .side-nav button[data-view].active {
+    border-left: none;
+    border-bottom: 2px solid #93C5FD;
+    border-radius: var(--radius-ctrl) var(--radius-ctrl) 0 0;
+  }
+
+  .sidebar-foot { display: none; }
+
+  .topbar {
+    height: auto;
+    min-height: var(--chrome-h);
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-meta { display: none; }
+
+  .header-search {
+    max-width: none;
+    flex: 1 1 100%;
+    order: 3;
+    margin: 0;
+  }
+
+  .search-shell { height: 44px; }
+
+  .page-head h1 { font-size: 24px; }
+
+  .arr-kpis { grid-template-columns: repeat(2, 1fr); }
+  .arr-layout { grid-template-columns: 1fr; }
+  .arr-side {
+    position: static;
+    max-height: none;
+  }
+  .arr-board { max-height: none; }
+  .arr-controls-meta { margin-left: 0; width: 100%; }
+
+  .arr-card { grid-template-columns: 72px 1fr; }
+
+  .arr-card .side {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .kpi-grid,
+  .mess-kpis,
+  .arr-kpis { grid-template-columns: 1fr; }
+
+  .wrap { padding: 16px 16px 64px; }
+
+  .topbar { padding: 10px 12px; }
+
+  .arr-card { grid-template-columns: 1fr; }
+
+  .arr-card .time-block {
+    text-align: left;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="app-shell">
+  <header class="topbar">
+    <div class="topbar-brand">
+      <img class="logo" src="/assets/logo.png" alt="Judo Cluster 2026">
+      <span class="brand-name">OP Dashboard</span>
+    </div>
+    <div class="header-search">
+      <div class="search-shell">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.75"/>
+          <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+        <input class="nav-search" id="navSearch" type="search" placeholder="Search teams, managers, phone…" autocomplete="off" aria-label="Search">
+      </div>
+      <div class="nav-search-results" id="navSearchResults"></div>
+    </div>
+    <div class="header-meta">
+      <strong>CISF Host</strong>
+      Hyderabad
+    </div>
+  </header>
+
+  <div class="app-body">
+  <aside class="sidebar">
+    <nav class="side-nav">
+      <button type="button" class="active" data-view="home"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>Home</button>
+      <button type="button" data-view="accommodation"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Accommodation</button>
+      <button type="button" data-view="mess"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M8 6V4M16 6V4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Mess</button>
+      <button type="button" data-view="arrival"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Arrival</button>
+      <button type="button" data-view="departure"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Departure</button>
+      <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>Directory</button>
+    </nav>
+    <div class="sidebar-foot">
+      <img src="/assets/vira.png" alt="Vira">
+      <span>Vira</span>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <main class="wrap">
+    <div class="page-head">
+      <h1 id="pageTitle">Home</h1>
+    </div>
+
+  <!-- HOME -->
+  <section class="view active" id="view-home">
+    <div class="kpi-grid" id="homeKpis"></div>
+
+    <div class="section-title">Stay by location <span>VENUES GROW AS YOU ADD THEM</span></div>
+    <div class="loc-grid dynamic" id="homeLocs"></div>
+
+    <div class="home-split">
+      <div class="panel">
+        <div class="section-title" style="margin-bottom:16px;">Ranked athlete strength <span>GOs · SOs · ORs</span></div>
+        <div id="homeRanks"></div>
+        <div style="display:flex;gap:18px;margin-top:8px;font-size:11px;color:var(--text-dim);">
+          <span><span style="display:inline-block;width:8px;height:8px;background:var(--cyan);border-radius:2px;margin-right:5px;"></span>Male</span>
+          <span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:5px;"></span>Female</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="section-title" style="margin-bottom:12px;">Needs attention <span>TRAVEL AWAITED</span></div>
+        <ul class="alert-list" id="homeAlerts"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOMMODATION -->
+  <section class="view" id="view-accommodation">
+    <div class="section-title">Accommodation roster <span id="accMeta">SAVES TO ACCOMMODATION.JSON</span></div>
+    <div class="venue-bar edit-only">
+      <span class="hint">Venues / stay locations</span>
+      <input type="text" id="newVenue" placeholder="Add venue e.g. Gachibowli Hostel">
+      <button type="button" class="btn primary" id="btnAddVenue">+ Add Venue</button>
+      <div class="venue-chips" id="venueChips"></div>
+    </div>
+    <div class="venue-bar view-only-venues" id="venueBarView" style="display:none;">
+      <span class="hint">Venues</span>
+      <div class="venue-chips" id="venueChipsView"></div>
+    </div>
+    <div class="controls">
+      <div class="filter-btns" id="locFilters"></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <button type="button" class="btn edit-only" id="btnImport" title="Reload from Excel">Import Excel</button>
+        <button type="button" class="btn primary edit-only" id="toggleAdd">+ Add Unit</button>
+      </div>
+    </div>
+    <div class="add-form" id="addForm">
+      <label>Organisation<input type="text" id="newOrg"></label>
+      <label>Location
+        <select id="newLoc"></select>
+      </label>
+      <label>GOs M<input class="num-field" type="number" id="newGOsM" value="0" min="0"></label>
+      <label>SOs M<input class="num-field" type="number" id="newSOsM" value="0" min="0"></label>
+      <label>ORs M<input class="num-field" type="number" id="newORsM" value="0" min="0"></label>
+      <label>GOs F<input class="num-field" type="number" id="newGOsF" value="0" min="0"></label>
+      <label>SOs F<input class="num-field" type="number" id="newSOsF" value="0" min="0"></label>
+      <label>ORs F<input class="num-field" type="number" id="newORsF" value="0" min="0"></label>
+      <button type="button" class="btn primary" id="saveAdd">Save</button>
+    </div>
+    <div class="table-wrap">
+      <table class="acc-table">
+        <colgroup>
+          <col class="c-org">
+          <col class="c-loc">
+          <col class="c-n"><col class="c-n"><col class="c-n">
+          <col class="c-n"><col class="c-n"><col class="c-n">
+          <col class="c-tot">
+          <col class="c-act">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Organisation</th><th>Location</th>
+            <th>GOs M</th><th>SOs M</th><th>ORs M</th>
+            <th>GOs F</th><th>SOs F</th><th>ORs F</th>
+            <th>Total</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="accBody"></tbody>
+        <tfoot><tr id="accFoot"></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- MESS -->
+  <section class="view" id="view-mess">
+    <div class="mess-hero">
+      <div>
+        <h2>Mess</h2>
+        <p>Dining load at TGPA and own arrangements — unit mess tags for ops allocation.</p>
+      </div>
+    </div>
+
+    <div class="mess-kpis" id="messKpis"></div>
+
+    <div class="mess-boards">
+      <div class="mess-board">
+        <div class="mess-board-head">
+          <h3>Dining at TGPA mess</h3>
+          <span class="tot" id="messLeftTot">0 PAX</span>
+        </div>
+        <div class="mess-board-body" id="messDining"></div>
+      </div>
+      <div class="mess-board">
+        <div class="mess-board-head">
+          <h3>Own mess arrangement</h3>
+          <span class="tot" id="messRightTot">0 PAX</span>
+        </div>
+        <div class="mess-board-body" id="messOwn"></div>
+      </div>
+    </div>
+
+    <div class="section-title">Unit mess tags <span id="messTagMeta">ASSIGNMENT</span></div>
+    <div class="mess-toolbar">
+      <div class="filter-btns" id="messFilters"></div>
+      <span class="hint" id="messFilterHint">All units</span>
+    </div>
+    <div class="table-wrap">
+      <table class="mess-table">
+        <colgroup>
+          <col class="c-org">
+          <col class="c-stay">
+          <col class="c-mess">
+          <col class="c-str">
+          <col class="c-act">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Organisation</th>
+            <th>Stay</th>
+            <th>Mess</th>
+            <th class="c-str">Strength</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="messBody"></tbody>
+      </table>
+    </div>
+    <div class="mess-note" id="messNote"></div>
+  </section>
+
+  <!-- ARRIVAL / DEPARTURE (shared board; page set by sidebar) -->
+  <section class="view" id="view-travel">
+    <div class="arr-kpis" id="arrKpis"></div>
+
+    <div class="arr-controls">
+      <div class="mode-tabs" id="arrTransportTabs"></div>
+      <div class="filter-btns" id="arrDayFilters"></div>
+      <div class="arr-controls-meta">
+        <span id="arrFilterHint">All hubs · All days</span>
+        <div class="arr-controls-actions edit-only">
+          <button type="button" class="btn" id="toggleHubEdit">Edit hubs</button>
+          <button type="button" class="btn primary" id="toggleArrEdit">Edit movement</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hub-pills" id="arrHubStrip"></div>
+
+    <div class="arr-edit-panel edit-only" id="hubEditPanel">
+      <div style="grid-column:1/-1;font-size:12px;color:var(--text-dim);margin-bottom:4px;" id="hubEditHint">Hubs for this page</div>
+      <div class="hub-edit" id="hubEditFields" style="grid-column:1/-1;"></div>
+      <button type="button" class="btn primary" id="hubEditSave">Save hubs</button>
+      <span class="file-hint">Saves data/arrival.json hubs</span>
+    </div>
+
+    <div class="arr-edit-panel edit-only" id="arrEditPanel">
+      <label>Organisation
+        <select id="arrEditOrg"></select>
+      </label>
+      <label>Mode
+        <select id="arrEditMode">
+          <option value="rail">Railways</option>
+          <option value="flight">Flight</option>
+          <option value="bus">Bus</option>
+        </select>
+      </label>
+      <label>Hub / point
+        <select id="arrEditHub"></select>
+      </label>
+      <label>Status
+        <select id="arrEditStatus">
+          <option value="planned">Planned</option>
+          <option value="awaited">Awaited</option>
+        </select>
+      </label>
+      <div class="dt-row" style="flex:1 1 100%;">
+        <label>Date
+          <input id="arrEditDate" type="date">
+        </label>
+        <label>Time
+          <input id="arrEditTime" type="time" step="60">
+        </label>
+        <div class="dt-actions">
+          <button type="button" class="btn" id="arrEditClearDt" title="Clear date &amp; time">Clear</button>
+        </div>
+        <div class="dt-preview" id="arrEditDtPreview">No date/time — TBA</div>
+      </div>
+      <label>Details<textarea id="arrEditDetails" placeholder="Train / flight / bus notes"></textarea></label>
+      <button type="button" class="btn primary" id="arrEditSave">Save</button>
+      <span class="file-hint" id="arrEditSaveHint">Saves arrival plan in data/arrival.json</span>
+    </div>
+
+    <div class="arr-layout" id="arrLayout">
+      <div class="arr-main">
+        <div class="arr-board-head">
+          <h3 id="arrBoardTitle">Movement board</h3>
+          <span class="arr-board-count" id="arrBoardCount"></span>
+        </div>
+        <div class="arr-board" id="arrBoard"></div>
+      </div>
+      <aside class="arr-side">
+        <div class="arr-side-head">
+          <h3 id="arrSideTitle">Chase list</h3>
+          <span class="badge warn" id="arrAwaitedBadge">0</span>
+        </div>
+        <div class="side-sub" id="arrAwaitedSub">Plans not yet received</div>
+        <ul class="await-list" id="arrAwaitedList"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- DIRECTORY -->
+  <section class="view" id="view-directory">
+    <div class="section-title">Team managers <span>SAVES TO DIRECTORY.JSON</span></div>
+    <div class="dir-grid" id="dirGrid"></div>
+  </section>
+
+  <footer>11TH ALL INDIA POLICE JUDO CLUSTER 2026 · CISF HOST · HYDERABAD · LAN OPS DASHBOARD</footer>
+</main>
+  </div><!-- .app-main -->
+  </div><!-- .app-body -->
+</div><!-- .app-shell -->
+
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer">
+  <button type="button" class="close" id="drawerClose" aria-label="Close">&times;</button>
+  <div id="drawerBody"></div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+let data = null;
+let editing = false;
+let activeLoc = 'ALL';
+let searchTerm = '';
+let messFilter = 'ALL'; // ALL | TGPA | Own Arrangement | NITHM | UNASSIGNED
+let arrDay = 'ALL';
+let arrTransport = 'ALL'; // ALL | rail | flight | bus
+let arrHub = 'ALL';
+let arrSearch = '';
+let travelPage = 'arrival'; // arrival | departure
+let dirSearch = '';
+let APP_MODE = 'edit'; // view | edit
+let arrFormDirty = false; // user is editing movement — don't clobber pickers
+let saveInFlight = false;
+function isEdit(){ return APP_MODE === 'edit'; }
+
+const locClassKnown = {
+  'TGPA': 'TGPA',
+  'Sport Tower': 'Sport',
+  'Own Location': 'Own',
+  'NITHM': 'NITHM',
+};
+function getVenues(){
+  const fromData = (data && data.venues) ? data.venues.slice() : [];
+  const defaults = ['TGPA','Sport Tower','NITHM','Own Location'];
+  const all = [];
+  [...fromData, ...defaults].forEach(v=>{
+    if(v && !all.includes(v)) all.push(v);
+  });
+  (data && data.units || []).forEach(u=>{
+    if(u.location && !all.includes(u.location)) all.push(u.location);
+  });
+  return all;
+}
+function locClass(loc){
+  if(locClassKnown[loc]) return locClassKnown[loc];
+  const venues = getVenues();
+  const i = Math.max(0, venues.indexOf(loc));
+  return 'v' + (i % 6);
+}
+function venueOptions(selected){
+  return getVenues().map(v =>
+    `<option value="${v.replace(/"/g,'&quot;')}" ${v===selected?'selected':''}>${v}</option>`
+  ).join('');
+}
+function renderVenueUI(){
+  const venues = getVenues();
+  const filters = document.getElementById('locFilters');
+  if(filters){
+    filters.innerHTML = `<button type="button" class="${activeLoc==='ALL'?'active':''}" data-loc="ALL">All</button>` +
+      venues.map(v => `<button type="button" class="${activeLoc===v?'active':''}" data-loc="${v.replace(/"/g,'&quot;')}">${v}</button>`).join('');
+  }
+  const sel = document.getElementById('newLoc');
+  if(sel){
+    const cur = sel.value;
+    sel.innerHTML = venueOptions(cur || venues[0]);
+  }
+  const chips = document.getElementById('venueChips');
+  if(chips){
+    chips.innerHTML = venues.map(v=>{
+      const safe = v.replace(/'/g,"\\'");
+      const del = isEdit() ? `<button type="button" title="Remove venue" onclick="removeVenue('${safe}')">&times;</button>` : '';
+      return `<span class="venue-chip"><span class="loc-tag ${locClass(v)}">${v}</span>${del}</span>`;
+    }).join('');
+  }
+  const viewBar = document.getElementById('venueBarView');
+  const viewChips = document.getElementById('venueChipsView');
+  if(viewBar && viewChips){
+    if(!isEdit()){
+      viewBar.style.display = 'flex';
+      viewChips.innerHTML = venues.map(v =>
+        `<span class="venue-chip"><span class="loc-tag ${locClass(v)}">${v}</span></span>`
+      ).join('');
+    } else {
+      viewBar.style.display = 'none';
+    }
+  }
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+function sTotal(u){
+  const s = u.strength || {};
+  return (s.gos_m||0)+(s.sos_m||0)+(s.ors_m||0)+(s.gos_f||0)+(s.sos_f||0)+(s.ors_f||0);
+}
+
+async function fetchData(){
+  if(saveInFlight) return;
+  try{
+    const res = await fetch('/api/data');
+    const fresh = await res.json();
+    // Ignore stale responses that would wipe a newer local save
+    if(data && data.updated_at && fresh.updated_at && fresh.updated_at < data.updated_at){
+      return;
+    }
+    data = fresh;
+    renderAll();
+  }catch(e){
+    /* keep last good data */
+  }
+}
+
+function renderAll(){
+  if(!data) return;
+  renderHome();
+  if(!editing) renderAccommodation();
+  renderMess();
+  renderTravel();
+  renderDirectory();
+  // Refresh org dropdown while editing, but never reset date/time mid-edit
+  const panel = document.getElementById('arrEditPanel');
+  if(panel && panel.classList.contains('open')){
+    refreshArrEditOrgList(arrFormDirty);
+  }
+}
+
+function renderHome(){
+  const sum = data.summary || {};
+  document.getElementById('homeKpis').innerHTML = `
+    <button class="kpi" data-go="accommodation"><div class="accent"></div><div class="label">Total teams</div><div class="value">${sum.teams||0}</div><div class="sub">contingents in Hyderabad</div></button>
+    <button class="kpi" data-go="accommodation"><div class="accent"></div><div class="label">Total strength</div><div class="value">${sum.strength||0}</div><div class="sub">all locations</div></button>
+    <button class="kpi" data-go="mess"><div class="accent"></div><div class="label">Mess @ TGPA</div><div class="value">${(sum.by_mess&&sum.by_mess.TGPA)||0}</div><div class="sub">tagged TGPA mess</div></button>
+    <button class="kpi" data-go="arrival"><div class="accent"></div><div class="label">Arrival awaited</div><div class="value">${sum.travel_awaited||0}</div><div class="sub">${sum.travel_planned||0} plans received</div></button>`;
+
+  document.querySelectorAll('#homeKpis .kpi').forEach(btn=>{
+    btn.onclick = () => switchView(btn.dataset.go);
+  });
+
+  const by = sum.by_location || {};
+  const locs = getVenues();
+  document.getElementById('homeLocs').innerHTML = locs.map(loc=>{
+    const x = by[loc] || {teams:0, strength:0};
+    return `<div class="loc-card"><h3>${loc}</h3><div class="meta">${x.teams||0} units</div><div class="num">${x.strength||0}<span>strength</span></div></div>`;
+  }).join('') || '<div class="loc-card"><h3>No venues</h3><div class="meta">Add a venue on Accommodation</div></div>';
+
+  const d = sum.strength_detail || {};
+  const ranks = [
+    {name:'GOs', m:d.gos_m||0, f:d.gos_f||0},
+    {name:'SOs', m:d.sos_m||0, f:d.sos_f||0},
+    {name:'ORs', m:d.ors_m||0, f:d.ors_f||0},
+  ];
+  const maxV = Math.max(...ranks.map(r=>r.m+r.f), 1);
+  document.getElementById('homeRanks').innerHTML = ranks.map(r=>{
+    const tot = r.m+r.f || 1;
+    const w = ((r.m+r.f)/maxV*100).toFixed(1);
+    const pm = (r.m/tot*100).toFixed(1);
+    return `<div class="rank-row"><div class="top"><span class="name">${r.name}</span><span>${r.m} M / ${r.f} F (${r.m+r.f})</span></div>
+      <div class="rank-track" style="width:${w}%"><div class="m" style="width:${pm}%"></div><div class="f" style="width:${100-pm}%"></div></div></div>`;
+  }).join('');
+
+  const awaited = (data.units||[]).filter(u => (u.travel||{}).status !== 'planned').slice(0, 8);
+  document.getElementById('homeAlerts').innerHTML = awaited.length
+    ? awaited.map(u => `<li><span class="org-name" data-org="${u.org}">${u.org}</span><span class="badge warn">Awaited</span></li>`).join('')
+    : '<li><span>All travel plans received</span><span class="badge ok">Clear</span></li>';
+  document.querySelectorAll('#homeAlerts .org-name').forEach(el=>{
+    el.onclick = () => openUnit(el.dataset.org);
+  });
+}
+
+function renderAccommodation(){
+  renderVenueUI();
+  const units = data.units || [];
+  document.getElementById('accMeta').textContent = `${units.length} UNITS · ${getVenues().length} VENUES · accommodation.json`;
+  const filtered = units.filter(u=>{
+    const locOk = activeLoc === 'ALL' || u.location === activeLoc;
+    const q = searchTerm.toLowerCase();
+    const searchOk = !q || unitSearchBlob(u).includes(q);
+    return locOk && searchOk;
+  });
+  document.getElementById('accBody').innerHTML = filtered.map(u=>{
+    const s = u.strength;
+    const tot = u.total || sTotal(u);
+    const safe = u.org.replace(/'/g, "\\'");
+    const cls = locClass(u.location);
+    const locCell = isEdit()
+      ? `<select class="loc-select" data-field="location">${venueOptions(u.location)}</select>`
+      : `<span class="loc-tag ${cls}">${u.location}</span>`;
+    const nums = isEdit()
+      ? `<td><input class="num-input" data-field="gos_m" value="${s.gos_m||0}"></td>
+      <td><input class="num-input" data-field="sos_m" value="${s.sos_m||0}"></td>
+      <td><input class="num-input" data-field="ors_m" value="${s.ors_m||0}"></td>
+      <td><input class="num-input" data-field="gos_f" value="${s.gos_f||0}"></td>
+      <td><input class="num-input" data-field="sos_f" value="${s.sos_f||0}"></td>
+      <td><input class="num-input" data-field="ors_f" value="${s.ors_f||0}"></td>`
+      : `<td>${s.gos_m||0}</td><td>${s.sos_m||0}</td><td>${s.ors_m||0}</td>
+      <td>${s.gos_f||0}</td><td>${s.sos_f||0}</td><td>${s.ors_f||0}</td>`;
+    const actions = isEdit()
+      ? `<td><div class="row-actions">
+        <button class="save" onclick="saveUnit('${safe}')">Save</button>
+        <button class="del" onclick="deleteUnit('${safe}')">Del</button>
+      </div></td>`
+      : `<td></td>`;
+    return `<tr data-org="${u.org}">
+      <td class="org-name" onclick="openUnit('${safe}')">${u.org}</td>
+      <td>${locCell}</td>
+      ${nums}
+      <td class="total-col">${tot}</td>
+      ${actions}</tr>`;
+  }).join('');
+
+  const t = [0,0,0,0,0,0];
+  filtered.forEach(u=>{
+    const s = u.strength;
+    t[0]+=s.gos_m||0; t[1]+=s.sos_m||0; t[2]+=s.ors_m||0;
+    t[3]+=s.gos_f||0; t[4]+=s.sos_f||0; t[5]+=s.ors_f||0;
+  });
+  const grand = filtered.reduce((a,u)=>a+(u.total||sTotal(u)),0);
+  document.getElementById('accFoot').innerHTML = `
+    <td>TOTAL</td><td>${filtered.length} units</td>
+    <td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td>
+    <td style="color:var(--orange)">${grand}</td><td></td>`;
+}
+
+function messTagClass(mess){
+  const m = (mess||'').trim();
+  if(m === 'TGPA') return 'TGPA';
+  if(m === 'Own Arrangement') return 'Own';
+  if(m === 'NITHM') return 'NITHM';
+  return 'none';
+}
+
+function renderMessDiningList(rows, emptyLabel){
+  if(!(rows||[]).length) return `<div class="mess-empty">${emptyLabel}</div>`;
+  return rows.map(x => `
+    <div class="mess-row">
+      <div class="org">${x.org}</div>
+      <div class="chips">
+        <span class="mess-chip">IOM ${x.iom||0}</span>
+        <span class="mess-chip">JOM1 ${x.jom1||0}</span>
+        <span class="mess-chip">JOM2 ${x.jom2||0}</span>
+        <span class="mess-chip">SOTC ${x.sotc||0}</span>
+        <span class="mess-chip tot">${x.total||0}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMess(){
+  const tm = data.tgpa_mess || {dining_tgpa:[], own_mess:[]};
+  const sum = data.summary || {};
+  const byMess = sum.by_mess || {};
+  const units = data.units || [];
+  const unassigned = units.filter(u => !(u.mess||'').trim()).length;
+  const leftTot = (tm.dining_tgpa||[]).reduce((a,x)=>a+(x.total||0),0);
+  const rightTot = (tm.own_mess||[]).reduce((a,x)=>a+(x.total||0),0);
+  const diningRows = (tm.dining_tgpa||[]).length + (tm.own_mess||[]).length;
+
+  document.getElementById('messKpis').innerHTML = `
+    <div class="mess-kpi"><div class="l">TGPA mess tag</div><div class="v accent">${byMess.TGPA||0}</div><div class="s">strength tagged TGPA</div></div>
+    <div class="mess-kpi"><div class="l">Own arrangement</div><div class="v ok">${byMess['Own Arrangement']||0}</div><div class="s">own mess tagged</div></div>
+    <div class="mess-kpi"><div class="l">Dining list pax</div><div class="v">${leftTot + rightTot}</div><div class="s">${diningRows} contingent rows</div></div>
+    <div class="mess-kpi"><div class="l">Unassigned</div><div class="v warn">${unassigned}</div><div class="s">units without mess tag</div></div>`;
+
+  document.getElementById('messLeftTot').textContent = leftTot + ' PAX';
+  document.getElementById('messRightTot').textContent = rightTot + ' PAX';
+  document.getElementById('messDining').innerHTML = renderMessDiningList(tm.dining_tgpa, 'No TGPA dining rows');
+  document.getElementById('messOwn').innerHTML = renderMessDiningList(tm.own_mess, 'No own-mess rows');
+
+  const filters = [
+    {id:'ALL', label:'All'},
+    {id:'TGPA', label:'TGPA'},
+    {id:'Own Arrangement', label:'Own'},
+    {id:'NITHM', label:'NITHM'},
+    {id:'UNASSIGNED', label:'Unassigned'},
+  ];
+  document.getElementById('messFilters').innerHTML = filters.map(f=>{
+    const n = f.id === 'ALL' ? units.length
+      : f.id === 'UNASSIGNED' ? unassigned
+      : units.filter(u => (u.mess||'') === f.id).length;
+    return `<button type="button" class="${messFilter===f.id?'active':''}" data-mess="${f.id}">${f.label} (${n})</button>`;
+  }).join('');
+
+  const mq = searchTerm.toLowerCase().trim();
+  const messUnits = units.filter(u=>{
+    if(mq && !unitSearchBlob(u).includes(mq)) return false;
+    if(messFilter === 'ALL') return true;
+    if(messFilter === 'UNASSIGNED') return !(u.mess||'').trim();
+    return (u.mess||'') === messFilter;
+  });
+  document.getElementById('messTagMeta').textContent = messUnits.length + ' UNITS';
+  document.getElementById('messFilterHint').textContent =
+    messFilter === 'ALL' ? 'Showing all unit tags' : ('Filtered · ' + messFilter);
+
+  document.getElementById('messBody').innerHTML = messUnits.length ? messUnits.map(u=>{
+    const cls = locClass(u.location);
+    const safe = u.org.replace(/'/g,"\\'");
+    const mcls = messTagClass(u.mess);
+    const messCell = isEdit()
+      ? (()=>{
+          const messOpts = ['','TGPA','Own Arrangement','NITHM'].map(m=>{
+            const sel = (u.mess||'') === m ? 'selected' : '';
+            const label = m || '— Unassigned —';
+            return `<option value="${m}" ${sel}>${label}</option>`;
+          }).join('');
+          return `<select class="mess-select" data-field="mess">${messOpts}</select>`;
+        })()
+      : `<span class="mess-tag ${mcls}">${u.mess || 'Unassigned'}</span>`;
+    const actions = isEdit()
+      ? `<td><div class="row-actions"><button class="save" onclick="saveMess('${safe}')">Save</button></div></td>`
+      : `<td></td>`;
+    return `<tr data-org="${u.org}">
+      <td class="org-name" onclick="openUnit('${safe}')">${u.org}</td>
+      <td><span class="loc-tag ${cls}">${u.location}</span></td>
+      <td>${messCell}</td>
+      <td class="total-col c-str">${u.total||sTotal(u)}</td>
+      ${actions}</tr>`;
+  }).join('') : `<tr><td colspan="5" style="text-align:left;font-family:var(--font);color:var(--text-dim);padding:20px 8px;">No units match this mess filter.</td></tr>`;
+
+  const note = tm.note || '';
+  const noteEl = document.getElementById('messNote');
+  noteEl.textContent = note;
+  noteEl.style.display = note ? '' : 'none';
+}
+
+function getHubs(){
+  return (data && data.hubs) || {
+    rail: [
+      {id:'secunderabad', label:'Secunderabad Jn'},
+      {id:'hyderabad', label:'Hyderabad Rly. Station'},
+      {id:'charlapalli', label:'Charlapalli Rly. Stn.'},
+      {id:'kacheguda', label:'Kacheguda Station'},
+    ],
+    flight: [{id:'rgia', label:'Rajiv Gandhi Intl Airport (Shamshabad)'}],
+    bus: [
+      {id:'alighting', label:'Bus Alighting Point', role:'arrival'},
+      {id:'boarding', label:'Bus Boarding Point', role:'departure'},
+    ],
+  };
+}
+
+function isBusTravel(t){
+  if(!t) return false;
+  if(t.mode === 'bus') return true;
+  const blob = `${t.station||''} ${t.details||''} ${t.bus_role||''}`.toUpperCase();
+  return blob.includes('BUS') || blob.includes('ALIGHT') || blob.includes('BOARDING');
+}
+
+function travelModeOf(t){
+  if(!t) return 'rail';
+  if(t.mode === 'rail' || t.mode === 'flight' || t.mode === 'bus') return t.mode;
+  if(isBusTravel(t)) return 'bus';
+  const s = `${t.station||''} ${t.details||''}`.toUpperCase();
+  if(s.includes('FLIGHT') || s.includes('AIRPORT') || s.includes('SHAMSHABAD') || s.includes('RGIA') || s.includes('INDIGO') || s.includes('AIR INDIA')) return 'flight';
+  return 'rail';
+}
+
+function travelDirectionOf(t){
+  if(!t) return 'arrival';
+  if(t.direction === 'arrival' || t.direction === 'departure') return t.direction;
+  const mode = travelModeOf(t);
+  const hub = matchHubId(t);
+  const role = (t.bus_role || '').toLowerCase();
+  const station = (t.station || '').toLowerCase();
+  if(mode === 'bus' && (role === 'boarding' || hub === 'boarding' || station.includes('board'))) return 'departure';
+  return 'arrival';
+}
+
+function matchHubId(t){
+  const hubs = getHubs();
+  const mode = travelModeOf(t);
+  const list = hubs[mode] || [];
+  const s = (t.station || '').toLowerCase();
+  const role = (t.bus_role || '').toLowerCase();
+  if(mode === 'bus'){
+    if(role === 'boarding' || s.includes('board')) return (list.find(h=>h.id==='boarding')||list[1]||list[0]||{}).id || 'boarding';
+    return (list.find(h=>h.id==='alighting')||list[0]||{}).id || 'alighting';
+  }
+  for(const h of list){
+    const lab = (h.label||'').toLowerCase();
+    const id = (h.id||'').toLowerCase();
+    if(s && (s.includes(id) || lab.includes(s) || s.includes(lab.split(' ')[0]))) return h.id;
+  }
+  // fuzzy station names
+  const sk = stationKey(t.station || t.details || '');
+  const map = {Secunderabad:'secunderabad', Hyderabad:'hyderabad', Charlapalli:'charlapalli', Kacheguda:'kacheguda', Flight:'rgia', Bus:'alighting'};
+  if(map[sk] && list.some(h=>h.id===map[sk])) return map[sk];
+  return (list[0]||{}).id || 'other';
+}
+
+function hubLabel(mode, id){
+  const h = (getHubs()[mode]||[]).find(x=>x.id===id);
+  return h ? h.label : id;
+}
+
+function stationKey(station){
+  const s = (station||'').toUpperCase();
+  if(s.includes('BUS') || s.includes('ALIGHT') || s.includes('BOARDING')) return 'Bus';
+  if(s.includes('FLIGHT') || s.includes('AIRPORT') || s.includes('SHAMSHABAD') || s.includes('RGIA')) return 'Flight';
+  if(s.includes('CHARLAPALLI') || s.includes('CHARLAPALL')) return 'Charlapalli';
+  if(s.includes('KACHEGUDA') || s.includes('KCG')) return 'Kacheguda';
+  if(s.includes('SECUNDERABAD') || s.includes('SECUNDRABAD') || s.includes('SIKANDARABAD')) return 'Secunderabad';
+  if(s.includes('HYDERABAD') || s.includes('HYDRABAD') || s.includes('DECCAN')) return 'Hyderabad';
+  return 'Other';
+}
+function stationPillClass(key){
+  return ({Secunderabad:'sec', Hyderabad:'hyd', Charlapalli:'char', Kacheguda:'kcg', Flight:'air', Bus:'bus', Other:'other'})[key] || 'other';
+}
+function escHtml(s){
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderTravel(){
+  try{
+    _renderTravel();
+  }catch(err){
+    console.error('renderTravel failed', err);
+    const board = document.getElementById('arrBoard');
+    if(board) board.innerHTML = `<div class="arr-empty">Could not render board. <span style="color:var(--danger)">${escHtml(err && err.message)}</span></div>`;
+    toast('Arrival board error — check console');
+  }
+}
+
+function _renderTravel(){
+  const units = data.units || [];
+  const page = travelPage === 'departure' ? 'departure' : 'arrival';
+  const allEvents = collectArrivalEvents(units);
+  const events = allEvents.filter(e => e.direction === page);
+  const awaited = units.filter(u => {
+    if(page === 'departure'){
+      const t = u.travel_departure;
+      if(!t) return true; // no departure plan yet
+      if(t.status === 'planned' || isBusTravel(t)) return false;
+      return true;
+    }
+    const t = u.travel || {};
+    if(t.status === 'planned') return false;
+    return travelDirectionOf(t) !== 'departure';
+  });
+  const dayKeys = [...new Set(events.map(e => e.dayKey).filter(k => k !== 'UNKNOWN'))].sort();
+  const hubs = getHubs();
+
+  const byMode = {rail:0, flight:0, bus:0};
+  events.forEach(e => { byMode[e.mode] = (byMode[e.mode]||0)+1; });
+
+  const kpis = document.getElementById('arrKpis');
+  if(kpis){
+    const busRole = page === 'departure' ? 'boarding' : 'alighting';
+    kpis.innerHTML = `
+      <div class="arr-kpi"><div class="l">Movements</div><div class="v accent">${events.length}</div><div class="s">planned legs</div></div>
+      <div class="arr-kpi"><div class="l">Rail</div><div class="v">${byMode.rail||0}</div><div class="s">stations</div></div>
+      <div class="arr-kpi"><div class="l">Flight</div><div class="v">${byMode.flight||0}</div><div class="s">RGIA</div></div>
+      <div class="arr-kpi"><div class="l">Bus</div><div class="v ok">${byMode.bus||0}</div><div class="s">${busRole}</div></div>
+      <div class="arr-kpi"><div class="l">Chase</div><div class="v warn">${awaited.length}</div><div class="s">no plan yet</div></div>`;
+  }
+
+  const sideTitle = document.getElementById('arrSideTitle');
+  const boardTitle = document.getElementById('arrBoardTitle');
+  if(sideTitle) sideTitle.textContent = page === 'departure' ? 'Departure chase' : 'Chase list';
+  if(boardTitle) boardTitle.textContent = page === 'departure' ? 'Departure board' : 'Arrival board';
+  const hubEditHint = document.getElementById('hubEditHint');
+  if(hubEditHint){
+    hubEditHint.textContent = page === 'departure'
+      ? 'Departure hubs — railway stations, airport, bus boarding'
+      : 'Arrival hubs — railway stations, airport, bus alighting';
+  }
+  const saveHint = document.getElementById('arrEditSaveHint');
+  if(saveHint){
+    saveHint.textContent = page === 'departure'
+      ? 'Saves travel_departure in data/arrival.json'
+      : 'Saves arrival plan in data/arrival.json';
+  }
+
+  const modeSel = document.getElementById('arrEditMode');
+  if(modeSel){
+    modeSel.innerHTML = '<option value="rail">Railways</option><option value="flight">Flight</option><option value="bus">Bus</option>';
+  }
+
+  const modeTabs = [
+    {id:'ALL', label:'All', n: events.length},
+    {id:'rail', label:'Rail', n: byMode.rail||0},
+    {id:'flight', label:'Flight', n: byMode.flight||0},
+    {id:'bus', label:'Bus', n: byMode.bus||0},
+  ];
+  const tabs = document.getElementById('arrTransportTabs');
+  if(tabs){
+    tabs.innerHTML = modeTabs.map(t =>
+      `<button type="button" class="${arrTransport===t.id?'active':''}" data-transport="${t.id}">${t.label}<span class="n">${t.n}</span></button>`
+    ).join('');
+  }
+
+  const strip = document.getElementById('arrHubStrip');
+  if(strip){
+    const modesForStrip = arrTransport === 'ALL' ? ['rail','flight','bus'] : [arrTransport];
+    const hubPills = [];
+    const allN = events.filter(e=>arrTransport==='ALL'||e.mode===arrTransport).length;
+    hubPills.push(`<button type="button" class="hub-pill ${arrHub==='ALL'?'active':''}" data-hub="ALL">All hubs<span class="n">${allN}</span></button>`);
+    modesForStrip.forEach(mode=>{
+      (hubs[mode]||[]).forEach(h=>{
+        if(page === 'arrival' && mode === 'bus' && h.id === 'boarding') return;
+        if(page === 'departure' && mode === 'bus' && h.id === 'alighting') return;
+        const n = events.filter(e => e.mode===mode && e.hubId===h.id).length;
+        const short = (h.label||'')
+          .replace('Rajiv Gandhi Intl Airport (Shamshabad)', 'RGIA')
+          .replace('Hyderabad Rly. Station', 'Hyderabad')
+          .replace('Secunderabad Jn', 'Secunderabad')
+          .replace('Charlapalli Rly. Stn.', 'Charlapalli')
+          .replace('Kacheguda Station', 'Kacheguda')
+          .replace('Bus Alighting Point', 'Alighting')
+          .replace('Bus Boarding Point', 'Boarding');
+        hubPills.push(`<button type="button" class="hub-pill ${arrTransport===mode && arrHub===h.id?'active':''}" data-transport="${mode}" data-hub="${h.id}">${escHtml(short)}<span class="n">${n}</span></button>`);
+      });
+    });
+    strip.innerHTML = hubPills.join('');
+    strip.querySelectorAll('.hub-pill').forEach(card=>{
+      card.onclick = ()=>{
+        const t = card.dataset.transport;
+        const h = card.dataset.hub;
+        if(h === 'ALL'){ arrHub = 'ALL'; }
+        else { if(t) arrTransport = t; arrHub = h; }
+        renderTravel();
+      };
+    });
+  }
+
+  const dayHost = document.getElementById('arrDayFilters');
+  if(dayHost){
+    const days = ['ALL', ...dayKeys, ...(events.some(e=>e.dayKey==='UNKNOWN') ? ['UNKNOWN'] : [])];
+    dayHost.innerHTML = days.map(k=>{
+      let label = k === 'ALL' ? 'All days' : (k === 'UNKNOWN' ? 'Date TBA' : formatDayLabel(k));
+      label = String(label).replace(/^\w+, /,'').replace(/ 20\d\d$/,'');
+      const n = k === 'ALL' ? events.length : events.filter(e=>e.dayKey===k).length;
+      return `<button type="button" class="${arrDay===k?'active':''}" data-day="${k}">${escHtml(label)} (${n})</button>`;
+    }).join('');
+  }
+
+  const q = (arrSearch || '').toLowerCase().trim();
+  let filtered = events.filter(e=>{
+    if(arrTransport !== 'ALL' && e.mode !== arrTransport) return false;
+    if(arrHub !== 'ALL' && e.hubId !== arrHub) return false;
+    if(arrDay !== 'ALL' && e.dayKey !== arrDay) return false;
+    if(!q) return true;
+    const blob = `${e.org} ${e.station} ${e.arrivalRaw} ${e.details} ${e.mode} ${(e.unit.manager||{}).name||''}`.toLowerCase();
+    return blob.includes(q);
+  });
+
+  const modeHint = arrTransport === 'ALL' ? 'All modes' : modeLabel(arrTransport);
+  const dayHint = arrDay === 'ALL' ? 'All days' : (arrDay === 'UNKNOWN' ? 'Date TBA' : formatDayLabel(arrDay));
+  const hint = document.getElementById('arrFilterHint');
+  if(hint) hint.textContent = `${modeHint} · ${dayHint}`;
+  const countEl = document.getElementById('arrBoardCount');
+  if(countEl) countEl.textContent = `${filtered.length} movement${filtered.length===1?'':'s'}`;
+
+  const board = document.getElementById('arrBoard');
+  if(!board) return;
+  if(!filtered.length){
+    board.innerHTML = `<div class="arr-empty">No ${page} movements match these filters.${page==='departure'?' Use <strong>Edit movement</strong> to add rail / flight / bus departure plans.':''}${q?` Clear search “${escHtml(q)}”.`:''}</div>`;
+  } else {
+    const byHub = {};
+    filtered.forEach(e => {
+      const key = `${e.mode}::${e.hubId}`;
+      (byHub[key] ||= {mode:e.mode, hubId:e.hubId, station:e.station, items:[]}).items.push(e);
+    });
+    const order = Object.keys(byHub).sort((a,b)=>{
+      const ma = byHub[a].mode, mb = byHub[b].mode;
+      const rank = {rail:0, flight:1, bus:2};
+      if(rank[ma]!==rank[mb]) return rank[ma]-rank[mb];
+      return (byHub[a].station||'').localeCompare(byHub[b].station||'');
+    });
+    board.innerHTML = order.map(key=>{
+      const g = byHub[key];
+      const title = hubLabel(g.mode, g.hubId) || g.station;
+      const role = g.mode==='bus'
+        ? (g.hubId==='boarding' ? 'Boarding' : 'Alighting')
+        : (g.mode==='flight' ? 'Airport' : 'Station');
+      const byDay = {};
+      g.items.forEach(e => { (byDay[e.dayKey] ||= []).push(e); });
+      const dayOrder = Object.keys(byDay).sort((a,b)=>{
+        if(a==='UNKNOWN') return 1; if(b==='UNKNOWN') return -1; return a.localeCompare(b);
+      });
+      return `<div class="arr-hub-block">
+        <div class="arr-day-head">
+          <h3><span class="station-pill ${modePill(g.mode)}">${modeLabel(g.mode)}</span>${escHtml(title)}</h3>
+          <span class="count">${role} · ${g.items.length}</span>
+        </div>
+        ${dayOrder.map(day => `
+          <div class="arr-day-label">${escHtml(formatDayLabel(day))}</div>
+          <div class="arr-cards">${byDay[day].map(renderArrivalCard).join('')}</div>
+        `).join('')}
+      </div>`;
+    }).join('');
+    board.querySelectorAll('.arr-card .org').forEach(el=>{
+      el.onclick = () => openUnit(el.dataset.org);
+    });
+    board.querySelectorAll('.arr-card').forEach(card=>{
+      card.addEventListener('click', e=>{
+        if(e.target.closest('a,button,.org')) return;
+        card.classList.toggle('expanded');
+      });
+    });
+  }
+
+  const badge = document.getElementById('arrAwaitedBadge');
+  if(badge) badge.textContent = String(awaited.length);
+  const sub = document.getElementById('arrAwaitedSub');
+  if(sub){
+    sub.textContent = awaited.length
+      ? `${awaited.length} team${awaited.length===1?'':'s'} · chase for plan / ETA`
+      : `All ${page} plans received`;
+  }
+  const list = document.getElementById('arrAwaitedList');
+  if(list){
+    list.innerHTML = awaited.length
+      ? awaited.map(u=>{
+          const m = u.manager || {};
+          const phone = (m.phone||'').replace(/\s/g,'');
+          const t = page === 'departure' ? (u.travel_departure || {}) : (u.travel || {});
+          const note = t.details || (page === 'departure' ? 'No departure plan' : 'No plan received');
+          return `<li>
+            <span class="ao" data-org="${escHtml(u.org)}">${escHtml(u.org)}</span>
+            <span class="am">${escHtml(m.name||'Manager TBA')}${m.rank?' · '+escHtml(m.rank):''}<br>${escHtml(note)}</span>
+            <span class="ap">${phone?`<a href="tel:${phone}">${escHtml(m.phone)}</a>`:'No phone'}</span>
+          </li>`;
+        }).join('')
+      : `<li><span class="am">Nothing to chase</span></li>`;
+    list.querySelectorAll('.ao').forEach(el=>{
+      el.onclick = () => openUnit(el.dataset.org);
+    });
+  }
+}
+function modePill(mode){
+  return ({rail:'rail', flight:'flight', bus:'bus'})[mode] || 'other';
+}
+function modeLabel(mode){
+  return ({rail:'Railways', flight:'Flight', bus:'Bus'})[mode] || mode;
+}
+
+/** Parse DD.MM.YYYY[/HHMM] style arrival strings into sortable parts. */
+function parseArrivalStamp(raw){
+  if(!raw) return null;
+  const text = String(raw).replace(/\n/g,' ');
+  const m = text.match(/(\d{1,2})[./-](\d{1,2})[./-](\d{2,4}).{0,8}?(\d{1,2})[:.]?(\d{2})?/);
+  if(!m){
+    const m2 = text.match(/(\d{1,2})[./-](\d{1,2})[./-](\d{2,4})/);
+    if(!m2) return null;
+    let y = +m2[3]; if(y < 100) y += 2000;
+    return {y, mo:+m2[2], d:+m2[1], h:99, mi:0, key:`${y}-${String(+m2[2]).padStart(2,'0')}-${String(+m2[1]).padStart(2,'0')}`, sort: y*1e8 + (+m2[2])*1e6 + (+m2[1])*1e4 + 9999};
+  }
+  let y = +m[3]; if(y < 100) y += 2000;
+  const mo = +m[2], d = +m[1], h = +m[4], mi = m[5] != null ? +m[5] : 0;
+  return {y, mo, d, h, mi, key:`${y}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}`, sort: y*1e8 + mo*1e6 + d*1e4 + h*100 + mi};
+}
+
+function formatDayLabel(key){
+  if(!key || key === 'ALL' || key === 'UNKNOWN') return key === 'UNKNOWN' ? 'Date TBA' : key;
+  const [y,mo,d] = key.split('-').map(Number);
+  const dt = new Date(y, mo-1, d);
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${days[dt.getDay()]}, ${String(d).padStart(2,'0')} ${months[mo-1]} ${y}`;
+}
+
+function formatClock(stamp){
+  if(!stamp || stamp.h === 99) return {time:'—', ampm:'TBA'};
+  const h24 = stamp.h;
+  const mi = String(stamp.mi).padStart(2,'0');
+  const am = h24 < 12;
+  let h12 = h24 % 12; if(h12 === 0) h12 = 12;
+  return {time:`${h12}:${mi}`, ampm: am ? 'AM' : 'PM'};
+}
+
+function collectArrivalEvents(units){
+  const events = [];
+  units.forEach(u=>{
+    const legs = [];
+    const t0 = u.travel;
+    if(t0 && (t0.arrival || t0.details || t0.station || t0.mode)){
+      if(t0.status === 'planned' || isBusTravel(t0)) legs.push({...t0, _dir: travelDirectionOf(t0) || 'arrival'});
+    }
+    const td = u.travel_departure;
+    if(td && (td.arrival || td.details || td.station || td.mode)){
+      if(td.status === 'planned' || isBusTravel(td)){
+        legs.push({...td, direction: 'departure', bus_role: td.bus_role || 'boarding', _dir: 'departure'});
+      }
+    }
+    (u.travel_extra||[]).forEach(t => legs.push({...t, _dir: travelDirectionOf(t)}));
+    legs.forEach((t, idx)=>{
+      const arrivalLines = String(t.arrival||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      const lines = arrivalLines.length ? arrivalLines : [t.arrival||''];
+      lines.forEach((line, li)=>{
+        const stamp = parseArrivalStamp(line) || parseArrivalStamp(t.details||'');
+        const mode = travelModeOf(t);
+        const hubId = matchHubId(t);
+        const station = t.station || hubLabel(mode, hubId);
+        const sk = stationKey(station);
+        const direction = t._dir || (mode === 'bus' && (hubId === 'boarding' || t.bus_role === 'boarding')
+          ? 'departure'
+          : (t.direction === 'departure' ? 'departure' : 'arrival'));
+        events.push({
+          id: `${u.org}-${idx}-${li}`,
+          org: u.org,
+          unit: u,
+          mode,
+          hubId,
+          direction,
+          station,
+          stationKey: sk,
+          busRole: t.bus_role || (hubId === 'boarding' ? 'boarding' : (mode==='bus' ? 'alighting' : '')),
+          arrivalRaw: line || t.arrival || '',
+          details: t.details || (mode === 'bus' ? 'By Bus' : ''),
+          stamp,
+          dayKey: stamp ? stamp.key : 'UNKNOWN',
+          sort: stamp ? stamp.sort : 9e12,
+        });
+      });
+    });
+  });
+  events.sort((a,b)=> a.sort - b.sort || a.org.localeCompare(b.org));
+  return events;
+}
+
+
+function renderArrivalCard(e){
+  const clock = formatClock(e.stamp);
+  const m = e.unit.manager || {};
+  const phone = (m.phone||'').replace(/\s/g,'');
+  const pax = e.unit.total || sTotal(e.unit);
+  const loc = e.unit.location || '';
+  const cls = locClass(loc);
+  const hubTag = e.mode === 'bus'
+    ? (e.busRole === 'boarding' ? 'Boarding' : 'Alighting')
+    : e.station;
+  const notes = e.details || '';
+  const mgrName = m.name || 'Manager TBA';
+  const phoneHtml = phone
+    ? `<a class="mgr-phone" href="tel:${phone}">${escHtml(m.phone)}</a>`
+    : `<span class="mgr-phone muted">No contact</span>`;
+  const etaLabel = e.direction === 'departure' ? 'ETD TBA' : 'ETA TBA';
+  return `<article class="arr-card">
+    <div class="time-block"><div class="time">${clock.time}</div><div class="ampm">${clock.ampm || (e.arrivalRaw ? '' : 'TBA')}</div></div>
+    <div>
+      <div class="org" data-org="${escHtml(e.org)}">${escHtml(e.org)}</div>
+      <div class="tags">
+        <span class="station-pill ${modePill(e.mode)}">${modeLabel(e.mode)}</span>
+        <span class="station-pill">${escHtml(hubTag)}</span>
+        ${loc?`<span class="loc-tag ${cls}">${escHtml(loc)}</span>`:''}
+      </div>
+      ${notes?`<div class="meta">${escHtml(notes.slice(0, 90))}${notes.length>90?'…':''}</div>`:''}
+    </div>
+    <div class="side">
+      <div class="pax">${pax} pax</div>
+      <div class="mgr-name">${escHtml(mgrName)}</div>
+      ${phoneHtml}
+    </div>
+    ${notes?`<div class="details-full"><strong>${escHtml(e.arrivalRaw||etaLabel)}</strong><br>${escHtml(notes)}</div>`:''}
+  </article>`;
+}
+
+function renderDirectory(){
+  const q = dirSearch.toLowerCase();
+  const units = (data.units||[]).filter(u=>{
+    if(!q) return true;
+    const m = u.manager || {};
+    return u.org.toLowerCase().includes(q) ||
+      (m.name||'').toLowerCase().includes(q) ||
+      (m.phone||'').includes(q);
+  });
+  document.getElementById('dirGrid').innerHTML = units.map(u=>{
+    const m = u.manager || {};
+    const phone = (m.phone||'').replace(/\s/g,'');
+    const cls = locClass(u.location);
+    const safe = u.org.replace(/'/g,"\\'");
+    const fields = isEdit()
+      ? `<div class="dir-fields">
+        <input data-field="name" value="${(m.name||'').replace(/"/g,'&quot;')}" placeholder="Manager name">
+        <input data-field="rank" value="${(m.rank||'').replace(/"/g,'&quot;')}" placeholder="Rank">
+        <input data-field="phone" value="${(m.phone||'').replace(/"/g,'&quot;')}" placeholder="Phone">
+        <button type="button" class="btn primary" onclick="saveDirectory('${safe}')">Save</button>
+      </div>`
+      : `<div class="mgr" style="margin-top:10px;">${m.name||'—'} ${m.rank ? '· '+m.rank : ''}</div>`;
+    return `<div class="dir-card" data-org="${u.org}">
+      <h4 class="org-name" onclick="openUnit('${safe}')">${u.org}</h4>
+      <span class="loc-tag ${cls}">${u.location}</span>
+      <div class="phone">${phone ? `<a href="tel:${phone}">${m.phone}</a>` : '—'}</div>
+      ${fields}
+    </div>`;
+  }).join('');
+}
+
+function openUnit(org){
+  const u = (data.units||[]).find(x => x.org === org);
+  if(!u) return;
+  const s = u.strength;
+  const m = u.manager || {};
+  const t = u.travel || {};
+  const td = u.travel_departure || {};
+  const travelBlock = (label, x) => {
+    if(!x || !(x.arrival || x.details || x.station || x.mode || x.status)) return '';
+    return `<dt>${label}</dt><dd><span class="badge ${x.status==='planned'?'ok':'warn'}">${x.status||'awaited'}</span>
+        ${x.mode? ' · '+x.mode:''}
+        ${x.arrival? '<br>'+x.arrival:''}
+        ${x.station? '<br>'+x.station:''}
+        ${x.details? '<br><span style="color:var(--text-dim);font-size:12px">'+x.details+'</span>':''}</dd>`;
+  };
+  document.getElementById('drawerBody').innerHTML = `
+    <h3>${u.org}</h3>
+    <span class="loc-tag ${locClass(u.location)}">${u.location}</span>
+    ${u.mess ? ` <span class="badge mess">${u.mess}</span>` : ''}
+    <dl>
+      <dt>Strength</dt><dd><strong style="color:var(--orange);font-size:20px">${u.total||sTotal(u)}</strong></dd>
+      <dt>Ranks M</dt><dd>GOs ${s.gos_m||0} · SOs ${s.sos_m||0} · ORs ${s.ors_m||0}</dd>
+      <dt>Ranks F</dt><dd>GOs ${s.gos_f||0} · SOs ${s.sos_f||0} · ORs ${s.ors_f||0}</dd>
+      <dt>Manager</dt><dd>${m.name||'—'} ${m.rank?'('+m.rank+')':''}</dd>
+      <dt>Phone</dt><dd>${m.phone ? `<a href="tel:${m.phone.replace(/\s/g,'')}" style="color:var(--cyan)">${m.phone}</a>` : '—'}</dd>
+      ${travelBlock('Arrival', t)}
+      ${travelBlock('Departure', td)}
+    </dl>`;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBg').classList.add('open');
+}
+
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBg').classList.remove('open');
+}
+
+function switchView(name){
+  if(name === 'arrival' || name === 'departure'){
+    travelPage = name;
+    arrHub = 'ALL';
+    arrTransport = 'ALL';
+    arrDay = 'ALL';
+    document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-travel'));
+  } else {
+    document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-'+name));
+  }
+  document.querySelectorAll('.side-nav button[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === name));
+  const titles = {
+    home: 'Home',
+    accommodation: 'Accommodation',
+    mess: 'Mess',
+    arrival: 'Arrival',
+    departure: 'Departure',
+    directory: 'Directory',
+  };
+  const titleEl = document.getElementById('pageTitle');
+  if(titleEl) titleEl.textContent = titles[name] || name;
+  closeNavSearch();
+  applyGlobalSearch(document.getElementById('navSearch').value || '');
+  if(name === 'arrival' || name === 'departure') renderTravel();
+}
+
+document.querySelectorAll('.side-nav button[data-view]').forEach(b=>{
+  b.addEventListener('click', () => switchView(b.dataset.view));
+});
+document.getElementById('drawerClose').onclick = closeDrawer;
+document.getElementById('drawerBg').onclick = closeDrawer;
+
+document.getElementById('locFilters').addEventListener('click', e=>{
+  if(e.target.tagName !== 'BUTTON') return;
+  activeLoc = e.target.dataset.loc;
+  renderAccommodation();
+});
+document.getElementById('messFilters').addEventListener('click', e=>{
+  if(e.target.tagName !== 'BUTTON') return;
+  messFilter = e.target.dataset.mess;
+  renderMess();
+});
+document.getElementById('btnAddVenue').onclick = async ()=>{
+  const name = (document.getElementById('newVenue').value || '').trim();
+  if(!name){ toast('Enter a venue name'); return; }
+  const res = await fetch('/api/venues', {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name})
+  });
+  const body = await res.json();
+  if(res.ok){
+    data = body;
+    document.getElementById('newVenue').value = '';
+    toast('Venue added: '+name);
+    renderAll();
+  } else toast(body.error || 'Could not add venue');
+};
+document.getElementById('newVenue').addEventListener('keydown', e=>{
+  if(e.key === 'Enter') document.getElementById('btnAddVenue').click();
+});
+async function removeVenue(name){
+  if(!confirm('Remove venue "'+name+'"? Units must be moved first.')) return;
+  const res = await fetch('/api/venues/'+encodeURIComponent(name), {method:'DELETE'});
+  const body = await res.json();
+  if(res.ok){ data = body; toast('Venue removed'); if(activeLoc===name) activeLoc='ALL'; renderAll(); }
+  else toast(body.error || 'Cannot remove venue');
+}
+
+function applyGlobalSearch(q){
+  searchTerm = q;
+  dirSearch = q;
+  arrSearch = q;
+  const active = document.querySelector('.view.active');
+  const view = active ? active.id.replace('view-','') : 'home';
+  if(view === 'accommodation') renderAccommodation();
+  else if(view === 'directory') renderDirectory();
+  else if(view === 'travel') renderTravel();
+  else if(view === 'mess') renderMess();
+}
+
+function unitSearchBlob(u){
+  const m = u.manager || {};
+  const t = u.travel || {};
+  return [
+    u.org, u.location, u.mess,
+    m.name, m.rank, m.phone,
+    t.station, t.arrival, t.details, t.status, t.mode
+  ].join(' ').toLowerCase();
+}
+
+function renderNavSearchResults(q){
+  const box = document.getElementById('navSearchResults');
+  if(!box) return;
+  const query = (q||'').trim().toLowerCase();
+  if(!query || !data){
+    box.classList.remove('open');
+    box.innerHTML = '';
+    return;
+  }
+  const hits = (data.units||[]).filter(u => unitSearchBlob(u).includes(query)).slice(0, 12);
+  if(!hits.length){
+    box.innerHTML = '<div class="ns-empty">No teams match</div>';
+    box.classList.add('open');
+    return;
+  }
+  box.innerHTML = '<div class="ns-label">Teams</div>' + hits.map(u=>{
+    const m = u.manager || {};
+    const meta = [u.location, u.mess, m.name, m.phone].filter(Boolean).join(' · ');
+    const safe = u.org.replace(/"/g,'&quot;');
+    return `<button type="button" data-org="${safe}">
+      <span class="ns-org">${u.org}</span>
+      <span class="ns-meta">${meta||'—'}</span>
+    </button>`;
+  }).join('');
+  box.classList.add('open');
+  box.querySelectorAll('button[data-org]').forEach(btn=>{
+    btn.onclick = ()=>{
+      const org = btn.dataset.org;
+      document.getElementById('navSearch').value = org;
+      applyGlobalSearch(org);
+      closeNavSearch();
+      openUnit(org);
+    };
+  });
+}
+
+function closeNavSearch(){
+  const box = document.getElementById('navSearchResults');
+  if(box){ box.classList.remove('open'); box.innerHTML = ''; }
+}
+
+document.getElementById('navSearch').addEventListener('input', e=>{
+  const q = e.target.value;
+  applyGlobalSearch(q);
+  renderNavSearchResults(q);
+});
+document.getElementById('navSearch').addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    e.target.value = '';
+    applyGlobalSearch('');
+    closeNavSearch();
+  }
+});
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.header-search')) closeNavSearch();
+});
+
+document.getElementById('arrDayFilters').addEventListener('click', e=>{
+  if(e.target.tagName !== 'BUTTON') return;
+  arrDay = e.target.dataset.day;
+  renderTravel();
+});
+document.getElementById('arrTransportTabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-transport]');
+  if(!btn) return;
+  arrTransport = btn.dataset.transport;
+  arrHub = 'ALL';
+  renderTravel();
+});
+document.getElementById('toggleArrEdit').onclick = () => {
+  document.getElementById('hubEditPanel').classList.remove('open');
+  const panel = document.getElementById('arrEditPanel');
+  panel.classList.toggle('open');
+  if(panel.classList.contains('open')){
+    arrFormDirty = false;
+    fillArrEditOrg();
+  }
+};
+document.getElementById('toggleHubEdit').onclick = () => {
+  document.getElementById('arrEditPanel').classList.remove('open');
+  arrFormDirty = false;
+  document.getElementById('hubEditPanel').classList.toggle('open');
+  fillHubEditFields();
+};
+document.getElementById('arrEditOrg').addEventListener('change', ()=>{
+  arrFormDirty = false;
+  loadArrEditFields();
+});
+document.getElementById('arrEditMode').addEventListener('change', () => {
+  arrFormDirty = true;
+  fillArrEditHubOptions();
+});
+document.getElementById('arrEditHub').addEventListener('change', ()=>{ arrFormDirty = true; });
+document.getElementById('arrEditStatus').addEventListener('change', ()=>{ arrFormDirty = true; });
+document.getElementById('arrEditDetails').addEventListener('input', ()=>{ arrFormDirty = true; });
+document.getElementById('arrEditSave').onclick = saveArrivalEdit;
+document.getElementById('hubEditSave').onclick = saveHubsEdit;
+document.getElementById('arrEditDate').addEventListener('change', onArrEditDtChange);
+document.getElementById('arrEditTime').addEventListener('change', onArrEditDtChange);
+document.getElementById('arrEditDate').addEventListener('input', onArrEditDtChange);
+document.getElementById('arrEditTime').addEventListener('input', onArrEditDtChange);
+document.getElementById('arrEditClearDt').onclick = ()=>{
+  document.getElementById('arrEditDate').value = '';
+  document.getElementById('arrEditTime').value = '';
+  arrFormDirty = true;
+  updateArrEditDtPreview();
+};
+
+document.getElementById('toggleAdd').onclick = () => document.getElementById('addForm').classList.toggle('open');
+
+document.getElementById('saveAdd').onclick = async ()=>{
+  const payload = {
+    org: document.getElementById('newOrg').value,
+    location: document.getElementById('newLoc').value,
+    gos_m: +document.getElementById('newGOsM').value||0,
+    sos_m: +document.getElementById('newSOsM').value||0,
+    ors_m: +document.getElementById('newORsM').value||0,
+    gos_f: +document.getElementById('newGOsF').value||0,
+    sos_f: +document.getElementById('newSOsF').value||0,
+    ors_f: +document.getElementById('newORsF').value||0,
+  };
+  if(!payload.org.trim()){ toast('Enter organisation name'); return; }
+  const res = await fetch('/api/units', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  if(res.ok){
+    data = await res.json(); toast(payload.org.toUpperCase()+' added');
+    document.getElementById('addForm').classList.remove('open');
+    document.getElementById('newOrg').value = '';
+    renderAll();
+  } else {
+    const err = await res.json(); toast(err.error||'Add failed');
+  }
+};
+
+async function saveUnit(org){
+  const tr = document.querySelector(`tr[data-org="${CSS.escape(org)}"]`);
+  const payload = {};
+  tr.querySelectorAll('.num-input').forEach(inp => { payload[inp.dataset.field] = parseInt(inp.value)||0; });
+  const locSel = tr.querySelector('.loc-select');
+  if(locSel) payload.location = locSel.value;
+  editing = true;
+  const res = await fetch('/api/accommodation/'+encodeURIComponent(org), {
+    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+  });
+  editing = false;
+  if(res.ok){ data = await res.json(); toast(org+' → accommodation.json'); renderAll(); }
+  else toast('Update failed');
+}
+
+async function saveMess(org){
+  const tr = document.querySelector(`#messBody tr[data-org="${CSS.escape(org)}"]`);
+  const sel = tr.querySelector('.mess-select');
+  const res = await fetch('/api/mess/'+encodeURIComponent(org), {
+    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({mess: sel.value})
+  });
+  if(res.ok){ data = await res.json(); toast(org+' → mess.json'); renderAll(); }
+  else toast('Mess save failed');
+}
+
+async function saveDirectory(org){
+  const card = document.querySelector(`.dir-card[data-org="${CSS.escape(org)}"]`);
+  const payload = {};
+  card.querySelectorAll('[data-field]').forEach(inp => { payload[inp.dataset.field] = inp.value; });
+  const res = await fetch('/api/directory/'+encodeURIComponent(org), {
+    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+  });
+  if(res.ok){ data = await res.json(); toast(org+' → directory.json'); renderAll(); }
+  else toast('Directory save failed');
+}
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+
+/** Build ops string: 21.07.2026/1435 hrs */
+function formatArrivalFromPickers(){
+  const d = document.getElementById('arrEditDate').value;
+  const t = document.getElementById('arrEditTime').value;
+  if(!d) return '';
+  const [y, mo, day] = d.split('-').map(Number);
+  const datePart = `${pad2(day)}.${pad2(mo)}.${y}`;
+  if(!t) return datePart;
+  const [hh, mm] = t.split(':');
+  return `${datePart}/${hh}${mm} hrs`;
+}
+
+function updateArrEditDtPreview(){
+  const formatted = formatArrivalFromPickers();
+  const el = document.getElementById('arrEditDtPreview');
+  if(!el) return;
+  el.textContent = formatted || 'No date/time — TBA';
+}
+
+function onArrEditDtChange(){
+  arrFormDirty = true;
+  updateArrEditDtPreview();
+  const d = document.getElementById('arrEditDate').value;
+  if(d){
+    const st = document.getElementById('arrEditStatus');
+    if(st.value === 'awaited') st.value = 'planned';
+  }
+}
+
+/** Fill date/time pickers from stored arrival text. */
+function setArrEditPickersFromRaw(raw){
+  const dateEl = document.getElementById('arrEditDate');
+  const timeEl = document.getElementById('arrEditTime');
+  if(!dateEl || !timeEl) return;
+  dateEl.value = '';
+  timeEl.value = '';
+  const stamp = parseArrivalStamp(raw || '');
+  if(stamp){
+    dateEl.value = `${stamp.y}-${pad2(stamp.mo)}-${pad2(stamp.d)}`;
+    if(stamp.h !== 99){
+      timeEl.value = `${pad2(stamp.h)}:${pad2(stamp.mi)}`;
+    }
+  }
+  updateArrEditDtPreview();
+}
+
+async function saveArrivalEdit(){
+  const org = document.getElementById('arrEditOrg').value;
+  if(!org){ toast('Pick an organisation'); return; }
+  if(!isEdit()){
+    toast('Read-only View — open Edit on port 5001');
+    return;
+  }
+  const mode = document.getElementById('arrEditMode').value;
+  const hubId = document.getElementById('arrEditHub').value;
+  const hub = (getHubs()[mode]||[]).find(h=>h.id===hubId);
+  const arrival = formatArrivalFromPickers();
+  let status = document.getElementById('arrEditStatus').value;
+  if(arrival && status === 'awaited') status = 'planned';
+  if(!arrival && status === 'planned'){
+    // Allow planned without clock only if details exist; else keep awaited
+    const details = document.getElementById('arrEditDetails').value.trim();
+    if(!details && !isBusTravel({mode, station: hub?hub.label:'', details:''})){
+      toast('Pick a date (and time) or set status to Awaited');
+      return;
+    }
+  }
+  const travel = {
+    mode,
+    status,
+    station: hub ? hub.label : hubId,
+    arrival,
+    details: document.getElementById('arrEditDetails').value,
+    direction: travelPage === 'departure' ? 'departure' : 'arrival',
+  };
+  if(mode === 'bus'){
+    travel.bus_role = (travelPage === 'departure' || hubId === 'boarding') ? 'boarding' : 'alighting';
+    if(!travel.details) travel.details = 'By Bus';
+  }
+  const btn = document.getElementById('arrEditSave');
+  btn.disabled = true;
+  saveInFlight = true;
+  try{
+    const payload = {
+      travel,
+      field: travelPage === 'departure' ? 'travel_departure' : 'travel',
+      direction: travel.direction,
+    };
+    const res = await fetch('/api/arrival/'+encodeURIComponent(org), {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+    });
+    let body = null;
+    try{ body = await res.json(); }catch(e){}
+    if(res.ok){
+      data = body;
+      arrFormDirty = false;
+      arrTransport = mode;
+      arrHub = 'ALL';
+      toast(org+' saved · '+(arrival || status));
+      renderAll();
+      fillArrEditOrg();
+    } else {
+      const err = (body && (body.error || body.hint)) || ('HTTP '+res.status);
+      toast(res.status === 403 ? 'View port is read-only — use http://'+location.hostname+':5001' : ('Save failed: '+err));
+    }
+  }catch(e){
+    toast('Save failed — check Edit server on :5001');
+  }finally{
+    saveInFlight = false;
+    btn.disabled = false;
+  }
+}
+
+function fillArrEditHubOptions(selectedId){
+  const mode = document.getElementById('arrEditMode').value;
+  const sel = document.getElementById('arrEditHub');
+  let list = getHubs()[mode] || [];
+  if(mode === 'bus'){
+    if(travelPage === 'departure'){
+      list = list.filter(h => h.id === 'boarding' || h.role === 'departure');
+      if(!list.length) list = [{id:'boarding', label:'Bus Boarding Point', role:'departure'}];
+    } else {
+      list = list.filter(h => h.id === 'alighting' || h.role === 'arrival');
+      if(!list.length) list = [{id:'alighting', label:'Bus Alighting Point', role:'arrival'}];
+    }
+  }
+  sel.innerHTML = list.map(h=>{
+    const role = h.role === 'departure' ? ' (Departure / Boarding)' : (h.role === 'arrival' ? ' (Arrival / Alighting)' : '');
+    return `<option value="${h.id}">${h.label}${role}</option>`;
+  }).join('');
+  if(selectedId && list.some(h=>h.id===selectedId)) sel.value = selectedId;
+  else if(travelPage === 'departure' && mode === 'bus' && list.some(h=>h.id==='boarding')) sel.value = 'boarding';
+  else if(travelPage === 'arrival' && mode === 'bus' && list.some(h=>h.id==='alighting')) sel.value = 'alighting';
+}
+
+/** Update org <select> options; optionally keep current field values. */
+function refreshArrEditOrgList(keepFields){
+  const sel = document.getElementById('arrEditOrg');
+  if(!sel || !data) return;
+  const cur = sel.value;
+  const dateVal = keepFields ? document.getElementById('arrEditDate').value : null;
+  const timeVal = keepFields ? document.getElementById('arrEditTime').value : null;
+  const modeVal = keepFields ? document.getElementById('arrEditMode').value : null;
+  const hubVal = keepFields ? document.getElementById('arrEditHub').value : null;
+  const statusVal = keepFields ? document.getElementById('arrEditStatus').value : null;
+  const detailsVal = keepFields ? document.getElementById('arrEditDetails').value : null;
+  sel.innerHTML = (data.units||[]).map(u => `<option value="${u.org}">${u.org}</option>`).join('');
+  if(cur) sel.value = cur;
+  if(keepFields){
+    if(modeVal) document.getElementById('arrEditMode').value = modeVal;
+    fillArrEditHubOptions(hubVal);
+    if(statusVal) document.getElementById('arrEditStatus').value = statusVal;
+    if(dateVal != null) document.getElementById('arrEditDate').value = dateVal;
+    if(timeVal != null) document.getElementById('arrEditTime').value = timeVal;
+    if(detailsVal != null) document.getElementById('arrEditDetails').value = detailsVal;
+    updateArrEditDtPreview();
+  } else {
+    loadArrEditFields();
+  }
+}
+
+function fillArrEditOrg(){
+  arrFormDirty = false;
+  refreshArrEditOrgList(false);
+}
+
+function loadArrEditFields(){
+  const org = document.getElementById('arrEditOrg').value;
+  const u = (data.units||[]).find(x => x.org === org);
+  if(!u) return;
+  const t = travelPage === 'departure'
+    ? (u.travel_departure || {mode:'bus', bus_role:'boarding', status:'awaited', details:''})
+    : (u.travel || {});
+  let mode = travelModeOf(t);
+  if(travelPage === 'departure' && !u.travel_departure) mode = 'rail';
+  const modeEl = document.getElementById('arrEditMode');
+  if([...modeEl.options].some(o => o.value === mode)) modeEl.value = mode;
+  else modeEl.value = modeEl.options[0] ? modeEl.options[0].value : mode;
+  const preferHub = matchHubId(t) || (travelPage === 'departure' && mode === 'bus' ? 'boarding' : '');
+  fillArrEditHubOptions(preferHub);
+  document.getElementById('arrEditStatus').value = t.status === 'planned' ? 'planned' : 'awaited';
+  setArrEditPickersFromRaw(t.arrival || '');
+  document.getElementById('arrEditDetails').value = t.details || '';
+  arrFormDirty = false;
+}
+
+function fillHubEditFields(){
+  const hubs = getHubs();
+  const host = document.getElementById('hubEditFields');
+  const rows = [];
+  (hubs.rail||[]).forEach((h,i)=>{
+    rows.push(`<label>Railway station ${i+1}<input data-mode="rail" data-id="${h.id}" value="${(h.label||'').replace(/"/g,'&quot;')}"></label>`);
+  });
+  (hubs.flight||[]).forEach(h=>{
+    rows.push(`<label>Airport (one)<input data-mode="flight" data-id="${h.id}" value="${(h.label||'').replace(/"/g,'&quot;')}"></label>`);
+  });
+  (hubs.bus||[]).forEach(h=>{
+    if(travelPage === 'arrival' && h.id === 'boarding') return;
+    if(travelPage === 'departure' && h.id === 'alighting') return;
+    const tip = h.id==='boarding' ? 'Bus boarding point (departure)' : 'Bus alighting point (arrival)';
+    rows.push(`<label>${tip}<input data-mode="bus" data-id="${h.id}" data-role="${h.role||''}" value="${(h.label||'').replace(/"/g,'&quot;')}"></label>`);
+  });
+  host.innerHTML = rows.join('');
+}
+
+async function saveHubsEdit(){
+  const existing = getHubs();
+  const hubs = {
+    rail: existing.rail || [],
+    flight: existing.flight || [],
+    bus: existing.bus || [],
+  };
+  // Start from existing so hubs for the other page are preserved
+  document.querySelectorAll('#hubEditFields input').forEach(inp=>{
+    const mode = inp.dataset.mode;
+    const item = {id: inp.dataset.id, label: inp.value.trim()};
+    if(mode==='bus') item.role = inp.dataset.role || (inp.dataset.id==='boarding'?'departure':'arrival');
+    const list = hubs[mode] || (hubs[mode]=[]);
+    const idx = list.findIndex(h => h.id === item.id);
+    if(idx >= 0) list[idx] = {...list[idx], ...item};
+    else list.push(item);
+  });
+  const res = await fetch('/api/hubs', {
+    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({hubs})
+  });
+  if(res.ok){ data = await res.json(); toast('Hubs saved'); renderAll(); }
+  else toast('Hubs save failed');
+}
+
+async function deleteUnit(org){
+  if(!confirm('Remove '+org+' from the roster?')) return;
+  const res = await fetch('/api/units/'+encodeURIComponent(org), {method:'DELETE'});
+  if(res.ok){ data = await res.json(); toast(org+' removed'); renderAll(); }
+  else toast('Delete failed');
+}
+
+document.getElementById('btnImport').onclick = async ()=>{
+  if(!confirm('Re-import from Total_Team_Final Excel? This refreshes units, mess and travel from the workbook.')) return;
+  document.getElementById('btnImport').disabled = true;
+  try{
+    const res = await fetch('/api/import', {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
+    const body = await res.json();
+    if(res.ok){ data = body; toast('Imported '+data.units.length+' units'); renderAll(); }
+    else toast(body.error||'Import failed');
+  } finally {
+    document.getElementById('btnImport').disabled = false;
+  }
+};
+
+async function applyMode(){
+  try{
+    const cfg = await fetch('/api/config').then(r=>r.json());
+    APP_MODE = cfg.mode === 'view' ? 'view' : 'edit';
+  }catch(e){
+    APP_MODE = 'edit';
+  }
+  document.body.classList.remove('mode-view','mode-edit');
+  document.body.classList.add('mode-'+APP_MODE);
+  document.title = (APP_MODE === 'edit' ? 'EDIT · ' : 'VIEW · ') + '11th All India Police Judo Cluster 2026';
+}
+
+(async function boot(){
+  await applyMode();
+  await fetchData();
+  setInterval(fetchData, 10000);
+})();
+</script>
+</body>
+</html>
