@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import os
 import threading
+from datetime import timedelta
 
 from flask import Flask, jsonify, redirect, request, send_from_directory, session
 
@@ -32,6 +33,8 @@ app.secret_key = authutil.flask_secret()
 app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
+    PERMANENT_SESSION_LIFETIME=timedelta(days=14),
+    SESSION_REFRESH_EACH_REQUEST=True,
 )
 LOCK = threading.Lock()
 
@@ -49,8 +52,18 @@ def is_edit_mode() -> bool:
     return APP_MODE == "edit"
 
 
+def request_bearer_token() -> str:
+    auth = request.headers.get("Authorization") or ""
+    if auth.lower().startswith("bearer "):
+        return auth[7:].strip()
+    return (request.headers.get("X-Dashboard-Token") or "").strip()
+
+
 def is_logged_in() -> bool:
-    return bool(session.get("auth_ok"))
+    if session.get("auth_ok"):
+        return True
+    # Fallback when browsers drop LAN cookies — token from login / localStorage
+    return authutil.check_auth_token(request_bearer_token())
 
 
 @app.before_request
@@ -108,10 +121,11 @@ def assets(filename):
 
 @app.route("/api/auth/status", methods=["GET"])
 def api_auth_status():
+    ok = is_logged_in()
     return jsonify({
-        "ok": is_logged_in(),
+        "ok": ok,
         "mode": APP_MODE,
-        "auth": "session",
+        "auth": "session+token" if ok else "none",
     })
 
 
@@ -124,7 +138,8 @@ def api_login():
     session.clear()
     session["auth_ok"] = True
     session.permanent = True
-    return jsonify({"ok": True, "mode": APP_MODE})
+    token = authutil.auth_token()
+    return jsonify({"ok": True, "mode": APP_MODE, "token": token})
 
 
 @app.route("/api/logout", methods=["POST"])
@@ -436,6 +451,7 @@ def main():
     with LOCK:
         store.merge_bundle()
     authutil.ensure_access_file()
+    authutil.ensure_auth_file()
     app.secret_key = authutil.flask_secret()
 
     print("=" * 56)

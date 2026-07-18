@@ -3651,9 +3651,10 @@ function modeLabel(mode){
 function parseArrivalStamp(raw){
   if(!raw) return null;
   const text = String(raw).replace(/\n/g,' ');
-  const m = text.match(/(\d{1,2})[./-](\d{1,2})[./-](\d{2,4}).{0,8}?(\d{1,2})[:.]?(\d{2})?/);
+  // Year must be 4 digits or exactly 2 — never 3, or "2026" becomes year 202 + hour 6
+  const m = text.match(/(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})\s*\/\s*(\d{1,2})[:.]?(\d{2})?/);
   if(!m){
-    const m2 = text.match(/(\d{1,2})[./-](\d{1,2})[./-](\d{2,4})/);
+    const m2 = text.match(/(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})/);
     if(!m2) return null;
     let y = +m2[3]; if(y < 100) y += 2000;
     return {y, mo:+m2[2], d:+m2[1], h:99, mi:0, key:`${y}-${String(+m2[2]).padStart(2,'0')}-${String(+m2[1]).padStart(2,'0')}`, sort: y*1e8 + (+m2[2])*1e6 + (+m2[1])*1e4 + 9999};

@@ -16,6 +16,7 @@ import secrets
 BASE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE, "data")
 ACCESS_FILE = os.path.join(DATA_DIR, "access.json")
+AUTH_FILE = os.path.join(DATA_DIR, "auth.json")
 EXAMPLE_FILE = os.path.join(DATA_DIR, "access.example.json")
 DEFAULT_PASSWORD = "JudoCluster2026"
 
@@ -71,3 +72,42 @@ def flask_secret() -> str:
         return env
     # Stable per-machine secret derived from password (good enough for LAN ops)
     return password_sha256("flask-secret:" + get_password())
+
+
+def auth_bundle() -> dict:
+    """Hash + client token (same scheme as export_static.py / GitHub Pages)."""
+    pwhash = password_sha256()
+    token = hashlib.sha256(("judo-token:" + pwhash).encode("utf-8")).hexdigest()
+    return {
+        "pwhash": pwhash,
+        "token": token,
+        "hint": "Set password in data/access.json (gitignored) or DASHBOARD_PASSWORD",
+    }
+
+
+def ensure_auth_file() -> dict:
+    """Keep data/auth.json in sync with the active password (for Pages + Bearer login)."""
+    bundle = auth_bundle()
+    try:
+        if os.path.isfile(AUTH_FILE):
+            with open(AUTH_FILE, "r", encoding="utf-8") as f:
+                cur = json.load(f)
+            if cur.get("pwhash") == bundle["pwhash"] and cur.get("token") == bundle["token"]:
+                return bundle
+    except Exception:
+        pass
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(AUTH_FILE, "w", encoding="utf-8") as f:
+        json.dump(bundle, f, indent=2)
+        f.write("\n")
+    return bundle
+
+
+def auth_token() -> str:
+    return ensure_auth_file()["token"]
+
+
+def check_auth_token(candidate: str) -> bool:
+    if not candidate:
+        return False
+    return secrets.compare_digest(candidate.strip(), auth_token())

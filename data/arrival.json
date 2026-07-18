@@ -224,8 +224,8 @@
       "travel": {
         "mode": "flight",
         "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-        "arrival": "",
-        "details": "1 person (Manager) only                                             Flight - Akasa Air No. QP -1406 Dt. 21.07.2026",
+        "arrival": "21.07.2026",
+        "details": "1 person (Manager) only — Flight Akasa Air QP-1406 Dt. 21.07.2026",
         "status": "planned",
         "team_label": "Mizoram Police"
       },
