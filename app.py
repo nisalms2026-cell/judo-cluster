@@ -71,7 +71,11 @@ def require_login():
 def block_writes_in_view_mode():
     if is_edit_mode():
         return None
-    if request.method in WRITE_METHODS and request.path.startswith("/api/"):
+    path = request.path or "/"
+    # Login/logout must work on the View server too
+    if path in ("/api/login", "/api/logout"):
+        return None
+    if request.method in WRITE_METHODS and path.startswith("/api/"):
         return jsonify({
             "error": "Read-only view server. Use the Edit port to make changes.",
             "mode": "view",
