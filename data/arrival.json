@@ -39,14 +39,14 @@
   },
   "rows": [
     {
-      "org": "ANDHRA POLICE",
+      "org": "Andhra Pradesh",
       "travel": {
         "mode": "bus",
         "station": "Bus Alighting Point",
         "arrival": "",
         "details": "By Bus — K Victor",
         "status": "planned",
-        "team_label": "ANDHRA POLICE",
+        "team_label": "Andhra Pradesh",
         "bus_role": "alighting"
       },
       "travel_extra": []
@@ -142,14 +142,14 @@
       "travel_extra": []
     },
     {
-      "org": "GUJARAT POLICE",
+      "org": "Gujrat",
       "travel": {
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "22.07.2026/0730 hrs",
         "details": "PBR SC SF EXP TRAIN NO 20968 22.07.2026 AT 0730, SECUNDERABAD STATION",
         "status": "planned",
-        "team_label": "GUJRAT"
+        "team_label": "Gujrat"
       },
       "travel_extra": []
     },
@@ -175,14 +175,14 @@
       ]
     },
     {
-      "org": "J&K POLICE",
+      "org": "JAMMU & KASHMIR",
       "travel": {
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "21.07.2026/1555hrs",
         "details": "12724 Telangana Exp",
         "status": "planned",
-        "team_label": "J&K POLICE"
+        "team_label": "JAMMU & KASHMIR"
       },
       "travel_extra": [
         {

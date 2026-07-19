@@ -12,7 +12,7 @@
       "game": "Pencak Silat",
       "sno": 1,
       "name": "Mohmad Iqbal",
-      "unit": "Jammu & Kashmir",
+      "unit": "JAMMU & KASHMIR",
       "arrival": "21/07/2026",
       "departure": "31/07/2026",
       "mobile": "9797567891",
@@ -25,7 +25,7 @@
       "game": "Pencak Silat",
       "sno": 2,
       "name": "Tariq Ahmad Zargar",
-      "unit": "Jammu & Kashmir",
+      "unit": "JAMMU & KASHMIR",
       "arrival": "21/07/2026",
       "departure": "31/07/2026",
       "mobile": "7006738504",
@@ -275,10 +275,11 @@
       "unit": "Maharashtra",
       "arrival": "23/07/2026",
       "departure": "30/07/2026",
-      "mobile": "8953676050",
+      "mobile": "8975367050",
       "email": "waghroopali1311@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "gender": ""
     },
     {
       "id": "tc_ps_22",
@@ -298,7 +299,7 @@
       "game": "Pencak Silat",
       "sno": 23,
       "name": "Sajad Ahmad Butt",
-      "unit": "Jammu & Kashmir",
+      "unit": "JAMMU & KASHMIR",
       "arrival": "21/07/2026",
       "departure": "31/07/2026",
       "mobile": "8825099237",
@@ -467,7 +468,7 @@
       "game": "Pencak Silat",
       "sno": 36,
       "name": "Numan Bin Reyaz",
-      "unit": "Jammu & Kashmir",
+      "unit": "JAMMU & KASHMIR",
       "arrival": "21/07/2026",
       "departure": "31/07/2026",
       "mobile": "9622777707",
@@ -635,14 +636,15 @@
       "id": "tc_jd_13",
       "game": "Judo",
       "sno": 13,
-      "name": "Mr. Indra Soibam",
+      "name": "Mr. Gunamoni",
       "unit": "Manipur",
       "arrival": "21/07/2026",
       "departure": "25/07/2026",
       "mobile": "7005321815",
       "email": "indra.soibam@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "gender": ""
     },
     {
       "id": "tc_jd_14",
@@ -655,7 +657,8 @@
       "mobile": "9701224179",
       "email": "raj.wishesmore@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "gender": ""
     },
     {
       "id": "tc_jd_15",
@@ -912,7 +915,7 @@
       "game": "Wushu",
       "sno": 4,
       "name": "Kuldeep Handoo",
-      "unit": "Jammu & Kashmir",
+      "unit": "JAMMU & KASHMIR",
       "arrival": "21/07/2026",
       "departure": "26/07/2026",
       "mobile": "9797455055",
@@ -1108,7 +1111,7 @@
       "game": "Wushu",
       "sno": 18,
       "name": "Ajay Paul",
-      "unit": "Jammu & Kashmir",
+      "unit": "JAMMU & KASHMIR",
       "arrival": "22/07/2026",
       "departure": "27/07/2026",
       "mobile": "9622572828",
@@ -1122,7 +1125,7 @@
       "game": "Wushu",
       "sno": 19,
       "name": "Raghvendra Singh",
-      "unit": "Gujarat",
+      "unit": "Gujrat",
       "arrival": "22/07/2026",
       "departure": "26/07/2026",
       "mobile": "8384849529",
@@ -1331,7 +1334,7 @@
       "id": "tc_ws_34",
       "game": "Wushu",
       "sno": 34,
-      "name": "Atul Saikia",
+      "name": "Ratul Saikia",
       "unit": "Assam",
       "arrival": "21/07/2026",
       "departure": "26/07/2026",
@@ -1771,7 +1774,7 @@
       "departure": "",
       "mobile": "8122059975",
       "email": "",
-      "role": "Indigo",
+      "role": "",
       "gender": "",
       "rank": ""
     },
@@ -2238,5 +2241,5 @@
       "rank": ""
     }
   ],
-  "updated_at": "2026-07-18T20:20:00"
+  "updated_at": "2026-07-19T13:09:19"
 }

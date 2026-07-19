@@ -540,13 +540,445 @@ body.mode-view .dir-fields input {
   .view.active { animation: none; }
 }
 
-/* KPI grid */
+/* KPI grid (legacy — other views) */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 24px;
   margin-bottom: 32px;
 }
+
+/* ── Home dashboard ── */
+#view-home { padding-bottom: 8px; }
+
+.home-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.home-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.97) 0%, rgba(30, 58, 138, 0.88) 100%);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+}
+
+.home-hero-kicker {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.home-hero-title {
+  margin: 0 0 8px;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  max-width: 36rem;
+}
+
+.home-hero-sub {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+}
+
+.home-hero-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+.home-hero-stat {
+  min-width: 88px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.home-hero-stat .v {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-hero-stat .l {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.home-hero-stat.is-warn { background: rgba(245, 158, 11, 0.18); border-color: rgba(245, 158, 11, 0.35); }
+.home-hero-stat.is-warn .v { color: #FDE68A; }
+
+.home-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .home-kpi-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.home-kpi {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 18px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: var(--text);
+  overflow: hidden;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+}
+
+.home-kpi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--kpi-accent, var(--primary));
+  opacity: 0.85;
+}
+
+.home-kpi:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+  transform: translateY(-1px);
+}
+
+.home-kpi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.home-kpi-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--kpi-soft, var(--selected));
+  color: var(--kpi-accent, var(--primary));
+  flex-shrink: 0;
+}
+
+.home-kpi-ico svg { width: 18px; height: 18px; }
+
+.home-kpi .label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.home-kpi .value {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-kpi .sub {
+  font-size: 11px;
+  color: var(--secondary);
+  line-height: 1.35;
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.home-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+}
+
+.home-panel + .home-panel { margin-top: 24px; }
+
+.home-panel--highlight {
+  border-color: rgba(14, 165, 233, 0.25);
+  background: linear-gradient(180deg, rgba(239, 246, 255, 0.6) 0%, var(--card) 48px);
+}
+
+.home-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.home-panel-head h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.home-panel-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.home-panel-tag.is-live {
+  color: #0369A1;
+  background: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.25);
+}
+
+.home-loc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 14px;
+}
+
+.home-loc-card {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.home-loc-card:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.home-loc-num {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  margin: 10px 0 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-loc-meta {
+  font-size: 11px;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.home-loc-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.home-loc-bar > div {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary), #60A5FA);
+  min-width: 2px;
+}
+
+.home-alert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-alert-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: border-color 0.15s;
+}
+
+.home-alert-item:hover { border-color: rgba(14, 165, 233, 0.35); }
+
+.home-alert-time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.home-alert-time .ampm {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.home-alert-body .org-name {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.home-alert-meta {
+  font-size: 11px;
+  color: var(--secondary);
+}
+
+.home-alert-empty {
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--secondary);
+  font-size: 14px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: var(--bg);
+}
+
+.home-rank-row { margin-bottom: 18px; }
+.home-rank-row:last-child { margin-bottom: 0; }
+
+.home-rank-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.home-rank-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.home-rank-counts {
+  font-variant-numeric: tabular-nums;
+  color: var(--body);
+  font-size: 12px;
+}
+
+.home-rank-counts strong { color: var(--text); font-weight: 700; }
+
+.home-rank-track {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.home-rank-fill {
+  display: flex;
+  height: 100%;
+  border-radius: 6px;
+  min-width: 4px;
+  overflow: hidden;
+}
+
+.home-rank-fill .m { background: var(--info); height: 100%; }
+.home-rank-fill .f { background: var(--warning); height: 100%; }
+
+.home-rank-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--secondary);
+}
+
+.home-rank-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-rank-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.home-rank-foot {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--selected);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--body);
+}
+
+.home-rank-foot strong {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text);
+}
+
+body.on-home .page-head { display: none; }
 
 .kpi {
   background: var(--card);
@@ -878,6 +1310,76 @@ tfoot td:nth-child(2) {
 .acc-table col.c-tot { width: 8%; }
 .acc-table col.c-act { width: 9%; }
 .acc-table .total-col { font-weight: 600; color: var(--text); }
+
+.acc-table input.num-input,
+.acc-table select.loc-select {
+  width: 100%;
+  max-width: 72px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: right;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.acc-table select.loc-select {
+  max-width: none;
+  text-align: left;
+  font-family: var(--font);
+  font-size: 12px;
+}
+.acc-table input.num-input:focus,
+.acc-table select.loc-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+.acc-table tr.acc-row-dirty { background: rgba(245, 158, 11, 0.08); }
+.acc-table tr.acc-row-saved {
+  background: rgba(34, 197, 94, 0.12);
+  transition: background 0.35s;
+}
+.acc-table .row-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+.acc-table .row-actions button {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.acc-table .row-actions button.save {
+  background: var(--primary);
+  color: #fff;
+  border-color: transparent;
+}
+.acc-table .row-actions button.save:hover:not(:disabled) { filter: brightness(1.05); }
+.acc-table .row-actions button.save:disabled { opacity: 0.65; cursor: wait; }
+.acc-table tr.acc-row-dirty .row-actions button.save { box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25); }
+.acc-table .row-actions button.del {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.25);
+}
+.acc-table .row-actions button.del:hover { background: rgba(220, 38, 38, 0.08); }
+.acc-dirty-hint {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  color: #B45309;
+  background: rgba(245, 158, 11, 0.12);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+#view-accommodation.acc-has-dirty #accMeta { color: #B45309; }
 
 /* Mess table */
 .mess-table { table-layout: fixed; width: 100%; }
@@ -1624,10 +2126,12 @@ tfoot td:nth-child(2) {
 
 /* LO view — minimal read-only roster */
 .lo-view-only { display: none; }
+.lo-edit-block { display: block; }
 body.mode-view .lo-view-only,
 body.mode-static .lo-view-only { display: block; }
 body.mode-view .lo-edit-block,
 body.mode-static .lo-edit-block { display: none !important; }
+body.mode-edit .lo-view-only { display: none; }
 
 .lo-view-lead {
   margin: 0 0 14px;
@@ -1741,13 +2245,7 @@ body.mode-static .lo-edit-block { display: none !important; }
   color: var(--secondary);
 }
 
-/* Technical Committee */
-.tc-view-only { display: none; }
-body.mode-view .tc-view-only,
-body.mode-static .tc-view-only { display: block; }
-body.mode-view .tc-edit-block,
-body.mode-static .tc-edit-block { display: none !important; }
-
+/* Technical Committee + Teams — single roster table (always visible) */
 .tc-lead {
   margin: 0 0 12px;
   font-size: 14px;
@@ -1771,6 +2269,7 @@ body.mode-static .tc-edit-block { display: none !important; }
 .tc-officials-table col.c-mobile { width: 108px; }
 .tc-officials-table col.c-date { width: 128px; }
 .tc-officials-table col.c-email { width: auto; }
+.tc-officials-table col.c-act { width: 132px; }
 .tc-officials-table th,
 .tc-officials-table td {
   text-align: left;
@@ -1842,6 +2341,47 @@ body.mode-static .tc-edit-block { display: none !important; }
 .tc-edit-table td,
 .tc-edit-table th { text-align: left; padding: 8px 10px; vertical-align: middle; }
 .tc-edit-table .tc-email a { overflow-wrap: break-word; word-break: break-word; font-size: 12px; }
+
+.pl-lead {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--secondary);
+}
+.pl-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.pl-filters select {
+  min-width: 180px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+}
+.pl-roster-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 860px;
+}
+.pl-roster-table col.c-name { width: 18%; }
+.pl-roster-table col.c-team { width: 16%; }
+.pl-roster-table col.c-gender { width: 72px; }
+.pl-roster-table col.c-event { width: auto; }
+.pl-roster-table col.c-mobile { width: 108px; }
+.pl-roster-table col.c-act { width: 132px; }
+.pl-roster-table .pl-events {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+.pl-roster-table .pl-events span { display: block; }
+.pl-source { font-size: 12px; color: var(--text-dim); margin-left: auto; }
 
 .adm-hero {
   display: flex;
@@ -2232,6 +2772,11 @@ footer {
 
 /* Responsive — tablet */
 @media (max-width: 960px) {
+  .home-layout { grid-template-columns: 1fr; }
+  .home-kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  .home-hero { padding: 22px 20px; }
+  .home-hero-stats { width: 100%; justify-content: flex-start; }
+
   .home-split,
   .mess-boards,
   .loc-grid { grid-template-columns: 1fr; }
@@ -2759,6 +3304,11 @@ footer {
 }
 
 @media (max-width: 420px) {
+  .home-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .home-loc-grid { grid-template-columns: 1fr 1fr; }
+  .home-alert-item { grid-template-columns: 1fr; gap: 6px; }
+  .home-alert-time { text-align: left; }
+
   .kpi-grid,
   .mess-kpis,
   .arr-kpis { grid-template-columns: 1fr; }
@@ -2808,6 +3358,7 @@ footer {
       <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">ADM Staff</span><span class="nav-label-short">ADM</span></button>
       <button type="button" data-view="lo"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.761 0-5 1.567-5 3.5V19h10v-2.5C13 14.567 10.761 13 8 13zM16 13c-.775 0-1.5.13-2.15.36C15.813 14.28 17 15.646 17 17.5V19h7v-2.5c0-1.933-2.239-3.5-5-3.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg><span class="nav-label-full">Liaison Officers</span><span class="nav-label-short">LO</span></button>
       <button type="button" data-view="tc"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Tech Committee</span><span class="nav-label-short">TC</span></button>
+      <button type="button" data-view="teams"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Teams</span><span class="nav-label-short">Teams</span></button>
       <button type="button" data-view="directory"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg><span class="nav-label-full">Directory</span><span class="nav-label-short">Contacts</span></button>
     </nav>
     <div class="sidebar-foot">
@@ -2824,23 +3375,40 @@ footer {
 
   <!-- HOME -->
   <section class="view active" id="view-home">
-    <div class="kpi-grid" id="homeKpis"></div>
-
-    <div class="section-title">Stay by location <span>VENUES GROW AS YOU ADD THEM</span></div>
-    <div class="loc-grid dynamic" id="homeLocs"></div>
-
-    <div class="home-split">
-      <div class="panel">
-        <div class="section-title" style="margin-bottom:16px;">Strength by rank <span>GOs · SOs · ORs</span></div>
-        <div id="homeRanks"></div>
-        <div style="display:flex;gap:18px;margin-top:10px;font-size:11px;color:var(--text-dim);">
-          <span><span style="display:inline-block;width:8px;height:8px;background:var(--cyan);border-radius:2px;margin-right:5px;"></span>Male</span>
-          <span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:5px;"></span>Female</span>
+    <div class="home-dashboard">
+      <header class="home-hero" id="homeHero" aria-label="Event overview"></header>
+      <div class="home-kpi-grid" id="homeKpis"></div>
+      <div class="home-layout">
+        <div class="home-main">
+          <section class="home-panel home-panel--highlight">
+            <div class="home-panel-head">
+              <h2>Needs attention</h2>
+              <span class="home-panel-tag is-live" id="homeAlertsMeta">Arrivals today</span>
+            </div>
+            <ul class="home-alert-list" id="homeAlerts"></ul>
+          </section>
+          <section class="home-panel">
+            <div class="home-panel-head">
+              <h2>Stay by location</h2>
+              <span class="home-panel-tag">All venues</span>
+            </div>
+            <div class="home-loc-grid" id="homeLocs"></div>
+          </section>
         </div>
-      </div>
-      <div class="panel">
-        <div class="section-title" style="margin-bottom:12px;">Needs attention <span>TRAVEL AWAITED</span></div>
-        <ul class="alert-list" id="homeAlerts"></ul>
+        <aside class="home-aside">
+          <section class="home-panel">
+            <div class="home-panel-head">
+              <h2>Strength by rank</h2>
+              <span class="home-panel-tag">GOs · SOs · ORs</span>
+            </div>
+            <div id="homeRanks"></div>
+            <div class="home-rank-legend">
+              <span><i style="background:var(--info)"></i>Male</span>
+              <span><i style="background:var(--warning)"></i>Female</span>
+            </div>
+            <div class="home-rank-foot" id="homeRankFoot"></div>
+          </section>
+        </aside>
       </div>
     </div>
   </section>
@@ -2860,7 +3428,8 @@ footer {
     </div>
     <div class="controls">
       <div class="filter-btns" id="locFilters"></div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-left:auto;">
+        <span class="acc-dirty-hint edit-only" id="accDirtyHint" hidden>Unsaved row changes — click Save on each edited row</span>
         <button type="button" class="btn edit-only" id="btnImport" title="Reload from Excel">Import Excel</button>
         <button type="button" class="btn primary edit-only" id="toggleAdd">+ Add Unit</button>
       </div>
@@ -3356,88 +3925,146 @@ footer {
     <div class="filter-btns tc-game-tabs" id="tcGameTabs"></div>
     <h2 class="tc-game-title" id="tcGameTitle"></h2>
 
-    <div class="tc-view-only">
-      <div class="lo-view-bar">
-        <input class="lo-view-search" id="tcViewSearch" type="search" placeholder="Search name, position, mobile, email…" autocomplete="off">
-        <span class="lo-view-meta" id="tcViewMeta"></span>
+    <div class="adm-form edit-only" id="tcMemberForm">
+      <div class="form-head">
+        <strong id="tcMemberFormTitle">Add member</strong>
+        <span id="tcMemberFormHint">Saves to data/tech_committee.json</span>
       </div>
-      <div class="lo-view-wrap">
-        <table class="lo-view-table tc-officials-table">
-          <colgroup>
-            <col class="c-name"><col class="c-pos"><col class="c-mobile">
-            <col class="c-date"><col class="c-date"><col class="c-email">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Mobile</th>
-              <th>Arrival</th>
-              <th>Departure</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody id="tcViewBody"></tbody>
-        </table>
-        <div class="lo-view-empty" id="tcViewEmpty" hidden>No members added for this game yet.</div>
+      <input type="hidden" id="tcMemberId" value="">
+      <label>Game
+        <select id="tcMemberGame"></select>
+      </label>
+      <label>Name
+        <input id="tcMemberName" placeholder="Full name" autocomplete="off">
+      </label>
+      <label>Position
+        <input id="tcMemberRole" placeholder="e.g. Technical Official / Jury / TTO" autocomplete="off">
+      </label>
+      <label>Mobile No (10 digits)
+        <input id="tcMemberMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+      </label>
+      <label>Arrival
+        <input id="tcMemberArrival" placeholder="DD/MM/YYYY or with time" autocomplete="off">
+      </label>
+      <label>Departure
+        <input id="tcMemberDeparture" placeholder="DD/MM/YYYY or with time" autocomplete="off">
+      </label>
+      <label>Email
+        <input id="tcMemberEmail" type="email" placeholder="email@example.com" autocomplete="off">
+      </label>
+      <input type="hidden" id="tcMemberUnit" value="">
+      <input type="hidden" id="tcMemberGender" value="">
+      <input type="hidden" id="tcMemberRank" value="">
+      <div class="form-actions">
+        <button type="button" class="btn primary" id="tcMemberSave">Add member</button>
+        <button type="button" class="btn" id="tcMemberReset">Clear</button>
       </div>
     </div>
 
-    <div class="tc-edit-block">
-      <div class="adm-form" id="tcMemberForm">
-        <div class="form-head">
-          <strong id="tcMemberFormTitle">Add member</strong>
-          <span id="tcMemberFormHint">Saves to data/tech_committee.json</span>
-        </div>
-        <input type="hidden" id="tcMemberId" value="">
-        <label>Game
-          <select id="tcMemberGame"></select>
-        </label>
-        <label>Name
-          <input id="tcMemberName" placeholder="Full name" autocomplete="off">
-        </label>
-        <label>Position
-          <input id="tcMemberRole" placeholder="e.g. Technical Official / Jury / TTO" autocomplete="off">
-        </label>
-        <label>Mobile No (10 digits)
-          <input id="tcMemberMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
-        </label>
-        <label>Arrival
-          <input id="tcMemberArrival" placeholder="DD/MM/YYYY or with time" autocomplete="off">
-        </label>
-        <label>Departure
-          <input id="tcMemberDeparture" placeholder="DD/MM/YYYY or with time" autocomplete="off">
-        </label>
-        <label>Email
-          <input id="tcMemberEmail" type="email" placeholder="email@example.com" autocomplete="off">
-        </label>
-        <input type="hidden" id="tcMemberUnit" value="">
-        <input type="hidden" id="tcMemberGender" value="">
-        <input type="hidden" id="tcMemberRank" value="">
-        <div class="form-actions">
-          <button type="button" class="btn primary" id="tcMemberSave">Add member</button>
-          <button type="button" class="btn" id="tcMemberReset">Clear</button>
-        </div>
+    <div class="lo-view-bar">
+      <input class="lo-view-search" id="tcViewSearch" type="search" placeholder="Search name, position, mobile, email…" autocomplete="off">
+      <span class="lo-view-meta" id="tcViewMeta"></span>
+    </div>
+    <div class="lo-view-wrap">
+      <table class="lo-view-table tc-officials-table">
+        <colgroup>
+          <col class="c-name"><col class="c-pos"><col class="c-mobile">
+          <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Mobile</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Email</th>
+            <th class="edit-only">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tcViewBody"></tbody>
+      </table>
+      <div class="lo-view-empty" id="tcViewEmpty" hidden>No members added for this game yet.</div>
+    </div>
+  </section>
+
+  <!-- PLAYERS -->
+  <section class="view" id="view-teams">
+    <p class="pl-lead">Contingent team rosters from AIPSCB MIS — filter by sport and organisation.</p>
+    <div class="filter-btns pl-game-tabs" id="plGameTabs"></div>
+    <div class="pl-filters">
+      <h2 class="tc-game-title" id="plGameTitle" style="margin:0"></h2>
+      <select id="plTeamFilter" aria-label="Filter by team">
+        <option value="ALL">All teams</option>
+      </select>
+      <span class="pl-source" id="plSourceHint"></span>
+    </div>
+
+    <div class="controls edit-only" style="margin-bottom:12px;">
+      <button type="button" class="btn primary" id="btnImportPlayers" title="Reload from AIPSCB - MIS Report.xlsx">Import MIS Report</button>
+      <span class="hint" id="plEditSource"></span>
+    </div>
+
+    <div class="adm-form edit-only" id="plPlayerForm">
+      <div class="form-head">
+        <strong id="plPlayerFormTitle">Add player</strong>
+        <span id="plPlayerFormHint">Saves to data/players.json</span>
       </div>
-      <div class="adm-toolbar">
-        <input class="adm-search" id="tcEditSearch" type="search" placeholder="Search members…" autocomplete="off">
-        <span class="hint" id="tcEditCount"></span>
+      <input type="hidden" id="plPlayerId" value="">
+      <label>Name
+        <input id="plPlayerName" placeholder="Full name" autocomplete="off">
+      </label>
+      <label>Team / Organisation
+        <input id="plPlayerOrg" placeholder="e.g. ASSAM POLICE" autocomplete="off">
+      </label>
+      <label>Sport
+        <select id="plPlayerSport"></select>
+      </label>
+      <label>Event
+        <input id="plPlayerEvent" placeholder="e.g. Judo (Over 60 Kg. upto & including 66 Kg)" autocomplete="off">
+      </label>
+      <label>Gender
+        <select id="plPlayerGender">
+          <option value="">—</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </label>
+      <label>Mobile No (10 digits)
+        <input id="plPlayerMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+      </label>
+      <label>Email
+        <input id="plPlayerEmail" type="email" placeholder="email@example.com" autocomplete="off">
+      </label>
+      <div class="form-actions">
+        <button type="button" class="btn primary" id="plPlayerSave">Add player</button>
+        <button type="button" class="btn" id="plPlayerReset">Clear</button>
       </div>
-      <div class="adm-table-wrap">
-        <table class="adm-table tc-edit-table">
-          <colgroup>
-            <col class="c-name"><col class="c-pos"><col class="c-mobile">
-            <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Name</th><th>Position</th><th>Mobile</th><th>Arrival</th><th>Departure</th><th>Email</th><th class="edit-only">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="tcEditBody"></tbody>
-        </table>
-        <div class="adm-empty" id="tcEditEmpty" hidden>No members for this game yet.</div>
-      </div>
+    </div>
+
+    <div class="lo-view-bar">
+      <input class="lo-view-search" id="plViewSearch" type="search" placeholder="Search name, team, event, mobile…" autocomplete="off">
+      <span class="lo-view-meta" id="plViewMeta"></span>
+    </div>
+    <div class="lo-view-wrap">
+      <table class="lo-view-table pl-roster-table">
+        <colgroup>
+          <col class="c-name"><col class="c-team"><col class="c-gender">
+          <col class="c-event"><col class="c-mobile"><col class="c-act">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Team</th>
+            <th>M/F</th>
+            <th>Event(s)</th>
+            <th>Mobile</th>
+            <th class="edit-only">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="plViewBody"></tbody>
+      </table>
+      <div class="lo-view-empty" id="plViewEmpty" hidden>No athletes match this filter.</div>
     </div>
   </section>
 
@@ -3456,7 +4083,7 @@ footer {
 
 <script>
 let data = null;
-let editing = false;
+const accDirtyOrgs = new Set(); // orgs with unsaved accommodation edits
 let activeLoc = 'ALL';
 let searchTerm = '';
 let messFilter = 'ALL'; // ALL | TGPA | Own Arrangement | NITHM | UNASSIGNED
@@ -3477,9 +4104,12 @@ let loAssignFilter = 'ALL';
 let loAssignQ = '';
 let loViewQ = '';
 const TC_GAMES = ['Pencak Silat', 'Judo', 'Wushu', 'Taekwondo', 'Karate'];
+const PLAYER_SPORTS = ['Judo', 'Karate', 'Taekwondo', 'Wushu', 'Pencak Silat', 'Taolu'];
 let tcGame = 'Pencak Silat';
 let tcSearchQ = '';
-let tcEditQ = '';
+let plGame = 'Judo';
+let plTeam = 'ALL';
+let plSearchQ = '';
 let APP_MODE = 'edit'; // view | edit
 let IS_STATIC = false; // GitHub Pages — read-only data/bundle.json
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
@@ -3627,13 +4257,14 @@ async function fetchData(){
 function renderAll(){
   if(!data) return;
   renderHome();
-  if(!editing) renderAccommodation();
+  renderAccommodation();
   renderMess();
   renderTravel();
   renderDirectory();
   renderAdmStaff();
   renderLoStaff();
-  renderTechCommittee();
+  try { renderTechCommittee(); } catch(err) { console.error('renderTechCommittee failed', err); }
+  try { renderPlayers(); } catch(err) { console.error('renderPlayers failed', err); }
   // Refresh org dropdown while editing, but never reset date/time mid-edit
   const panel = document.getElementById('arrEditPanel');
   if(panel && panel.classList.contains('open')){
@@ -3643,28 +4274,75 @@ function renderAll(){
 
 function renderHome(){
   const sum = data.summary || {};
+  const ev = (data && data.event) || {};
   const adm = (data && data.adm_staff) || {persons:[], tasks:[], detailments:[]};
   const admPersons = adm.persons || [];
   const admDets = adm.detailments || [];
   const admDetailed = new Set(admDets.map(d => d.person_id));
   const admPending = admPersons.filter(p => !admDetailed.has(p.id)).length;
-  document.getElementById('homeKpis').innerHTML = `
-    <button class="kpi" data-go="accommodation"><div class="accent"></div><div class="label">Total teams</div><div class="value">${sum.teams||0}</div><div class="sub">contingents in Hyderabad</div></button>
-    <button class="kpi" data-go="accommodation"><div class="accent"></div><div class="label">Total strength</div><div class="value">${sum.strength||0}</div><div class="sub">all locations</div></button>
-    <button class="kpi" data-go="mess"><div class="accent"></div><div class="label">Mess @ TGPA</div><div class="value">${(sum.by_mess&&sum.by_mess.TGPA)||0}</div><div class="sub">tagged TGPA mess</div></button>
-    <button class="kpi" data-go="arrival"><div class="accent"></div><div class="label">Arrival awaited</div><div class="value">${sum.travel_awaited||0}</div><div class="sub">${sum.travel_planned||0} plans received</div></button>
-    <button class="kpi" data-go="adm"><div class="accent"></div><div class="label">ADM Staff</div><div class="value">${admPersons.length}</div><div class="sub">${admPending ? admPending + ' detailment pending' : (admDets.length + ' assigned')}</div></button>`;
+  const awaited = (data.units||[]).filter(u => (u.travel||{}).status !== 'planned');
+  const todayArrivals = getTodayArrivalEvents(data.units || []);
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
-  document.querySelectorAll('#homeKpis .kpi').forEach(btn=>{
+  const hero = document.getElementById('homeHero');
+  if(hero){
+    hero.innerHTML = `
+      <div class="home-hero-text">
+        <p class="home-hero-kicker">${escHtml(ev.city || 'Hyderabad')} · ${escHtml(dateStr)}</p>
+        <h2 class="home-hero-title">${escHtml(ev.title || '11th All India Police Judo Cluster 2026')}</h2>
+        <p class="home-hero-sub">${sum.teams||0} contingents · ${sum.strength||0} total strength · ${sum.male||0} male · ${sum.female||0} female</p>
+      </div>
+      <div class="home-hero-stats">
+        <div class="home-hero-stat"><span class="v">${sum.travel_planned||0}</span><span class="l">Plans in</span></div>
+        <div class="home-hero-stat is-warn"><span class="v">${sum.travel_awaited||0}</span><span class="l">Awaited</span></div>
+        <div class="home-hero-stat"><span class="v">${todayArrivals.length}</span><span class="l">Today</span></div>
+      </div>`;
+  }
+
+  const kpiIcon = {
+    accommodation: '<svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    strength: '<svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+    mess: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+    arrival: '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+    adm: '<svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+    teams: '<svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="1.75"/></svg>',
+  };
+  const kpis = [
+    { go:'accommodation', label:'Total teams', value: sum.teams||0, sub:'contingents in Hyderabad', accent:'#2563EB', soft:'#EFF6FF', icon:'accommodation' },
+    { go:'accommodation', label:'Total strength', value: sum.strength||0, sub:'all stay locations', accent:'#4F46E5', soft:'#EEF2FF', icon:'strength' },
+    { go:'mess', label:'Mess @ TGPA', value: (sum.by_mess&&sum.by_mess.TGPA)||0, sub:'tagged TGPA mess', accent:'#D97706', soft:'#FFFBEB', icon:'mess' },
+    { go:'arrival', label:'Arrival awaited', value: sum.travel_awaited||0, sub:`${sum.travel_planned||0} plans received`, accent:'#EA580C', soft:'#FFF7ED', icon:'arrival' },
+    { go:'adm', label:'ADM Staff', value: admPersons.length, sub: admPending ? admPending + ' detailment pending' : (admDets.length + ' assigned'), accent:'#7C3AED', soft:'#F5F3FF', icon:'adm' },
+    { go:'teams', label:'Athletes', value: getPlayers().players.length, sub:'MIS roster count', accent:'#059669', soft:'#ECFDF5', icon:'teams' },
+  ];
+  document.getElementById('homeKpis').innerHTML = kpis.map(k => `
+    <button type="button" class="home-kpi" data-go="${k.go}" style="--kpi-accent:${k.accent};--kpi-soft:${k.soft}">
+      <div class="home-kpi-top">
+        <span class="label">${k.label}</span>
+        <span class="home-kpi-ico">${kpiIcon[k.icon]}</span>
+      </div>
+      <div class="value">${k.value}</div>
+      <div class="sub">${k.sub}</div>
+    </button>`).join('');
+
+  document.querySelectorAll('#homeKpis .home-kpi').forEach(btn=>{
     btn.onclick = () => switchView(btn.dataset.go);
   });
 
   const by = sum.by_location || {};
   const locs = getVenues();
+  const totalStr = Math.max(sum.strength || 0, 1);
   document.getElementById('homeLocs').innerHTML = locs.map(loc=>{
     const x = by[loc] || {teams:0, strength:0};
-    return `<div class="loc-card"><h3>${loc}</h3><div class="meta">${x.teams||0} units</div><div class="num">${x.strength||0}<span>strength</span></div></div>`;
-  }).join('') || '<div class="loc-card"><h3>No venues</h3><div class="meta">Add a venue on Accommodation</div></div>';
+    const pct = Math.round(((x.strength||0) / totalStr) * 100);
+    return `<article class="home-loc-card">
+      <span class="loc-tag ${locClass(loc)}">${escHtml(loc)}</span>
+      <div class="home-loc-num">${x.strength||0}</div>
+      <div class="home-loc-meta">${x.teams||0} units · ${pct}% of strength</div>
+      <div class="home-loc-bar"><div style="width:${Math.max(pct, x.strength ? 2 : 0)}%"></div></div>
+    </article>`;
+  }).join('') || '<div class="home-alert-empty">Add venues on the Accommodation tab</div>';
 
   const d = sum.strength_detail || {};
   const ranks = [
@@ -3680,10 +4358,13 @@ function renderHome(){
       const share = Math.max(tot ? (tot / maxV * 100) : 0, tot ? 2 : 0).toFixed(1);
       const pm = tot ? (r.m / tot * 100) : 0;
       const pf = tot ? (100 - pm) : 0;
-      return `<div class="rank-row">
-        <div class="top"><span class="name">${r.name}</span><span class="counts">${r.m} M · ${r.f} F · <strong>${tot}</strong></span></div>
-        <div class="rank-track" title="${tot} of max ${maxV}">
-          <div class="rank-fill" style="width:${share}%">
+      return `<div class="home-rank-row">
+        <div class="home-rank-top">
+          <span class="home-rank-name">${r.name}</span>
+          <span class="home-rank-counts">${r.m} M · ${r.f} F · <strong>${tot}</strong></span>
+        </div>
+        <div class="home-rank-track" title="${tot} personnel">
+          <div class="home-rank-fill" style="width:${share}%">
             <div class="m" style="width:${pm.toFixed(1)}%"></div>
             <div class="f" style="width:${pf.toFixed(1)}%"></div>
           </div>
@@ -3691,20 +4372,163 @@ function renderHome(){
       </div>`;
     }).join('');
   }
+  const rankFoot = document.getElementById('homeRankFoot');
+  if(rankFoot){
+    const rankTotal = (d.gos_m||0)+(d.sos_m||0)+(d.ors_m||0)+(d.gos_f||0)+(d.sos_f||0)+(d.ors_f||0);
+    rankFoot.innerHTML = `
+      <span>Rank total <strong>${rankTotal}</strong></span>
+      <span>Reported strength <strong>${sum.strength||0}</strong></span>`;
+  }
 
-  const awaited = (data.units||[]).filter(u => (u.travel||{}).status !== 'planned').slice(0, 8);
-  document.getElementById('homeAlerts').innerHTML = awaited.length
-    ? awaited.map(u => `<li><span class="org-name" data-org="${u.org}">${u.org}</span><span class="badge warn">Awaited</span></li>`).join('')
-    : '<li><span>All travel plans received</span><span class="badge ok">Clear</span></li>';
+  const alertsMeta = document.getElementById('homeAlertsMeta');
+  if(alertsMeta){
+    alertsMeta.textContent = todayArrivals.length
+      ? `Arrivals today · ${todayArrivals.length}`
+      : 'Arrivals today';
+  }
+  document.getElementById('homeAlerts').innerHTML = todayArrivals.length
+    ? todayArrivals.map(e => {
+        const safe = e.org.replace(/'/g, "\\'");
+        const clock = formatClock(e.stamp);
+        const timeMain = clock.time !== '—' ? clock.time : 'TBA';
+        const hub = e.mode === 'bus' ? 'Bus' : (e.station || modeLabel(e.mode));
+        return `<li class="home-alert-item">
+          <div class="home-alert-time">${escHtml(timeMain)}${clock.ampm && clock.time !== '—' ? `<span class="ampm">${escHtml(clock.ampm)}</span>` : ''}</div>
+          <div class="home-alert-body">
+            <span class="org-name" data-org="${safe}">${escHtml(e.org)}</span>
+            <span class="home-alert-meta">${modeLabel(e.mode)} · ${escHtml(hub)}</span>
+          </div>
+        </li>`;
+      }).join('')
+    : `<li class="home-alert-empty">${awaited.length
+        ? `No arrivals scheduled today · <strong>${awaited.length}</strong> travel plan${awaited.length===1?'':'s'} still awaited`
+        : 'No arrivals scheduled today — all clear'}</li>`;
   document.querySelectorAll('#homeAlerts .org-name').forEach(el=>{
     el.onclick = () => openUnit(el.dataset.org);
   });
+  document.body.classList.toggle('on-home', !!document.querySelector('#view-home.active'));
 }
 
-function renderAccommodation(){
+function markAccDirty(org, tr){
+  if(!org) return;
+  accDirtyOrgs.add(org);
+  if(tr) tr.classList.add('acc-row-dirty');
+  updateAccDirtyUI();
+}
+
+function clearAccDirty(org){
+  accDirtyOrgs.delete(org);
+  const tr = document.querySelector(`#accBody tr[data-org="${CSS.escape(org)}"]`);
+  if(tr) tr.classList.remove('acc-row-dirty');
+  updateAccDirtyUI();
+}
+
+function updateAccDirtyUI(){
+  const hint = document.getElementById('accDirtyHint');
+  if(hint) hint.hidden = accDirtyOrgs.size === 0;
+  const panel = document.getElementById('view-accommodation');
+  if(panel) panel.classList.toggle('acc-has-dirty', accDirtyOrgs.size > 0);
+}
+
+function updateAccRowTotal(tr){
+  let tot = 0;
+  tr.querySelectorAll('.num-input').forEach(inp => {
+    tot += parseInt(inp.value, 10) || 0;
+  });
+  const cell = tr.querySelector('.total-col');
+  if(cell) cell.textContent = tot;
+  updateAccFootFromDom();
+}
+
+function updateAccFootFromDom(){
+  const rows = [...document.querySelectorAll('#accBody tr[data-org]')].filter(tr => tr.style.display !== 'none');
+  const t = [0, 0, 0, 0, 0, 0];
+  let grand = 0;
+  rows.forEach(tr => {
+    tr.querySelectorAll('.num-input').forEach((inp, i) => {
+      if(i < 6) t[i] += parseInt(inp.value, 10) || 0;
+    });
+    grand += parseInt(tr.querySelector('.total-col')?.textContent, 10) || 0;
+  });
+  const foot = document.getElementById('accFoot');
+  if(!foot) return;
+  foot.innerHTML = `
+    <td>TOTAL</td><td>${rows.length} units</td>
+    <td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td>
+    <td style="color:var(--orange)">${grand}</td><td></td>`;
+}
+
+function refreshAccLocSelects(){
+  document.querySelectorAll('#accBody .loc-select').forEach(sel => {
+    const cur = sel.value;
+    sel.innerHTML = venueOptions(cur);
+  });
+}
+
+function accRowVisible(tr, q){
+  const org = tr.dataset.org || '';
+  const u = (data.units || []).find(x => x.org === org);
+  const locSel = tr.querySelector('.loc-select');
+  const loc = locSel ? locSel.value : (u && u.location);
+  const locOk = activeLoc === 'ALL' || loc === activeLoc;
+  const searchOk = !q || (u && unitSearchBlob(u).includes(q)) || org.toLowerCase().includes(q);
+  return locOk && searchOk;
+}
+
+function applyAccDomFilter(){
+  const q = searchTerm.toLowerCase();
+  document.querySelectorAll('#accBody tr[data-org]').forEach(tr => {
+    const show = accRowVisible(tr, q);
+    tr.style.display = show ? '' : 'none';
+  });
+  updateAccFootFromDom();
+}
+
+function bindAccTableEvents(){
+  const body = document.getElementById('accBody');
+  if(!body || body.dataset.bound) return;
+  body.dataset.bound = '1';
+  body.addEventListener('input', e => {
+    if(!isEdit()) return;
+    const inp = e.target.closest('.num-input');
+    if(!inp) return;
+    const tr = inp.closest('tr[data-org]');
+    if(!tr) return;
+    markAccDirty(tr.dataset.org, tr);
+    updateAccRowTotal(tr);
+  });
+  body.addEventListener('change', e => {
+    if(!isEdit()) return;
+    const inp = e.target.closest('.loc-select');
+    if(!inp) return;
+    const tr = inp.closest('tr[data-org]');
+    if(!tr) return;
+    markAccDirty(tr.dataset.org, tr);
+    applyAccDomFilter();
+  });
+  body.addEventListener('keydown', e => {
+    if(e.key !== 'Enter' || !isEdit()) return;
+    const inp = e.target.closest('.num-input, .loc-select');
+    if(!inp) return;
+    e.preventDefault();
+    const tr = inp.closest('tr[data-org]');
+    if(tr && accDirtyOrgs.has(tr.dataset.org)) saveUnit(tr.dataset.org);
+  });
+}
+
+function renderAccommodation(opts){
+  opts = opts || {};
   renderVenueUI();
   const units = data.units || [];
   document.getElementById('accMeta').textContent = `${units.length} UNITS · ${getVenues().length} VENUES · accommodation.json`;
+
+  if(!opts.force && accDirtyOrgs.size > 0){
+    refreshAccLocSelects();
+    applyAccDomFilter();
+    updateAccDirtyUI();
+    return;
+  }
+
   const filtered = units.filter(u=>{
     const locOk = activeLoc === 'ALL' || u.location === activeLoc;
     const q = searchTerm.toLowerCase();
@@ -3720,12 +4544,12 @@ function renderAccommodation(){
       ? `<select class="loc-select" data-field="location">${venueOptions(u.location)}</select>`
       : `<span class="loc-tag ${cls}">${u.location}</span>`;
     const nums = isEdit()
-      ? `<td data-label="GOs M"><input class="num-input" data-field="gos_m" value="${s.gos_m||0}"></td>
-      <td data-label="SOs M"><input class="num-input" data-field="sos_m" value="${s.sos_m||0}"></td>
-      <td data-label="ORs M"><input class="num-input" data-field="ors_m" value="${s.ors_m||0}"></td>
-      <td data-label="GOs F"><input class="num-input" data-field="gos_f" value="${s.gos_f||0}"></td>
-      <td data-label="SOs F"><input class="num-input" data-field="sos_f" value="${s.sos_f||0}"></td>
-      <td data-label="ORs F"><input class="num-input" data-field="ors_f" value="${s.ors_f||0}"></td>`
+      ? `<td data-label="GOs M"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="gos_m" value="${s.gos_m||0}"></td>
+      <td data-label="SOs M"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="sos_m" value="${s.sos_m||0}"></td>
+      <td data-label="ORs M"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="ors_m" value="${s.ors_m||0}"></td>
+      <td data-label="GOs F"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="gos_f" value="${s.gos_f||0}"></td>
+      <td data-label="SOs F"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="sos_f" value="${s.sos_f||0}"></td>
+      <td data-label="ORs F"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="ors_f" value="${s.ors_f||0}"></td>`
       : `<td data-label="GOs M">${s.gos_m||0}</td><td data-label="SOs M">${s.sos_m||0}</td><td data-label="ORs M">${s.ors_m||0}</td>
       <td data-label="GOs F">${s.gos_f||0}</td><td data-label="SOs F">${s.sos_f||0}</td><td data-label="ORs F">${s.ors_f||0}</td>`;
     const actions = isEdit()
@@ -3753,6 +4577,7 @@ function renderAccommodation(){
     <td>TOTAL</td><td>${filtered.length} units</td>
     <td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td>
     <td style="color:var(--orange)">${grand}</td><td></td>`;
+  updateAccDirtyUI();
 }
 
 function messTagClass(mess){
@@ -4253,6 +5078,19 @@ function collectArrivalEvents(units){
   return events;
 }
 
+function todayDayKey(){
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+}
+
+/** Planned arrival legs scheduled for today (local date). */
+function getTodayArrivalEvents(units){
+  const today = todayDayKey();
+  return collectArrivalEvents(units).filter(e =>
+    e.direction === 'arrival' && e.dayKey === today && (e.unit.travel || {}).status === 'planned'
+  );
+}
+
 
 function renderArrivalCard(e){
   const clock = formatClock(e.stamp);
@@ -4430,94 +5268,58 @@ function renderTechCommittee(){
   const members = tc.members || [];
   const gameMembers = members.filter(m => m.game === tcGame);
   const q = (tcSearchQ || '').toLowerCase().trim();
-  let vlist = tcSortMembers(gameMembers);
-  if(q) vlist = vlist.filter(m => tcSearchHay(m).includes(q));
+  let list = tcSortMembers(gameMembers);
+  if(q) list = list.filter(m => tcSearchHay(m).includes(q));
 
   const vmeta = document.getElementById('tcViewMeta');
-  if(vmeta) vmeta.textContent = `${gameMembers.length} official${gameMembers.length===1?'':'s'}`;
+  if(vmeta) vmeta.textContent = `${list.length} of ${gameMembers.length} official${gameMembers.length===1?'':'s'}`;
 
   const vbody = document.getElementById('tcViewBody');
   const vempty = document.getElementById('tcViewEmpty');
   const vwrap = vbody && vbody.closest('.lo-view-wrap');
-  if(vbody){
-    if(!vlist.length){
-      vbody.innerHTML = '';
-      if(vempty){
-        vempty.hidden = false;
-        vempty.textContent = q ? 'No members match this search.' : 'No members added for this game yet.';
-      }
-      const tbl = vwrap && vwrap.querySelector('.lo-view-table');
-      if(tbl) tbl.hidden = true;
-    } else {
-      if(vempty) vempty.hidden = true;
-      const tbl = vwrap && vwrap.querySelector('.lo-view-table');
-      if(tbl) tbl.hidden = false;
-      vbody.innerHTML = vlist.map(m=>{
-        const mobile = m.mobile
-          ? `<a href="tel:${escHtml(m.mobile)}">${escHtml(m.mobile)}</a>`
-          : '<span class="lo-dash">—</span>';
-        const email = m.email
-          ? `<a href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>`
-          : '<span class="lo-dash">—</span>';
-        const pos = tcDisplayPosition(m);
-        return `<tr>
-          <td class="lo-name">${escHtml(m.name||'')}</td>
-          <td class="tc-pos">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
-          <td class="lo-mobile">${mobile}</td>
-          <td class="tc-date">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
-          <td class="tc-date">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
-          <td class="tc-email">${email}</td>
-        </tr>`;
-      }).join('');
+  const tbl = vwrap && vwrap.querySelector('table');
+  if(!vbody) return;
+  if(!list.length){
+    vbody.innerHTML = '';
+    if(vempty){
+      vempty.hidden = false;
+      vempty.textContent = q ? 'No members match this search.' : 'No members added for this game yet.';
     }
+    if(tbl) tbl.hidden = true;
+    return;
   }
-
-  if(!isEdit()) return;
-
-  const eq = (tcEditQ || '').toLowerCase().trim();
-  let elist = tcSortMembers(gameMembers);
-  if(eq) elist = elist.filter(m => tcSearchHay(m).includes(eq));
-  const ecount = document.getElementById('tcEditCount');
-  if(ecount) ecount.textContent = `${elist.length} of ${gameMembers.length} official${gameMembers.length===1?'':'s'}`;
-  const ebody = document.getElementById('tcEditBody');
-  const eempty = document.getElementById('tcEditEmpty');
-  if(!ebody) return;
-  if(!elist.length){
-    ebody.innerHTML = '';
-    if(eempty){
-      eempty.hidden = false;
-      eempty.textContent = gameMembers.length ? 'No members match this search.' : 'No members for this game yet.';
-    }
-  } else {
-    if(eempty) eempty.hidden = true;
-    ebody.innerHTML = elist.map(m=>{
-      const phone = m.mobile
-        ? `<a href="tel:${escHtml(m.mobile)}">${escHtml(m.mobile)}</a>`
-        : admDash('');
-      const email = m.email
-        ? `<a href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>`
-        : admDash('');
-      const pos = tcDisplayPosition(m);
-      return `<tr>
-        <td class="name-cell">${escHtml(m.name||'')}</td>
-        <td>${pos ? escHtml(pos) : admDash('')}</td>
-        <td class="mono">${phone}</td>
-        <td class="mono">${m.arrival ? escHtml(m.arrival) : admDash('')}</td>
-        <td class="mono">${m.departure ? escHtml(m.departure) : admDash('')}</td>
-        <td>${email}</td>
-        <td class="acts edit-only">
+  if(vempty) vempty.hidden = true;
+  if(tbl) tbl.hidden = false;
+  vbody.innerHTML = list.map(m=>{
+    const mobile = m.mobile
+      ? `<a href="tel:${escHtml(m.mobile)}">${escHtml(m.mobile)}</a>`
+      : '<span class="lo-dash">—</span>';
+    const email = m.email
+      ? `<a href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>`
+      : '<span class="lo-dash">—</span>';
+    const pos = tcDisplayPosition(m);
+    const acts = isEdit() ? `<td class="acts edit-only">
           <button type="button" class="btn" data-edit-tc="${escHtml(m.id)}">Edit</button>
           <button type="button" class="btn" data-del-tc="${escHtml(m.id)}">Remove</button>
-        </td>
-      </tr>`;
-    }).join('');
-    ebody.querySelectorAll('[data-edit-tc]').forEach(btn=>{
+        </td>` : '';
+    return `<tr>
+      <td class="lo-name">${escHtml(m.name||'')}</td>
+      <td class="tc-pos">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
+      <td class="lo-mobile">${mobile}</td>
+      <td class="tc-date">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
+      <td class="tc-date">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
+      <td class="tc-email">${email}</td>
+      ${acts}
+    </tr>`;
+  }).join('');
+  if(isEdit()){
+    vbody.querySelectorAll('[data-edit-tc]').forEach(btn=>{
       btn.onclick = ()=>{
         const m = members.find(x => x.id === btn.dataset.editTc);
         if(m) fillTcMemberForm(m);
       };
     });
-    ebody.querySelectorAll('[data-del-tc]').forEach(btn=>{
+    vbody.querySelectorAll('[data-del-tc]').forEach(btn=>{
       btn.onclick = () => deleteTcMember(btn.dataset.delTc);
     });
   }
@@ -4571,6 +5373,252 @@ async function deleteTcMember(id){
   data = body;
   toast('Member removed');
   renderTechCommittee();
+}
+
+function getPlayers(){
+  const raw = data && data.players;
+  if(!raw) return { sports: PLAYER_SPORTS, players: [], source_file: '' };
+  if(Array.isArray(raw)) return { sports: PLAYER_SPORTS, players: raw, source_file: '' };
+  return {
+    sports: raw.sports || PLAYER_SPORTS,
+    players: raw.players || [],
+    source_file: raw.source_file || '',
+  };
+}
+
+function plSports(){
+  const s = getPlayers().sports || [];
+  return s.length ? s : PLAYER_SPORTS;
+}
+
+function playerHasSport(p, sport){
+  return (p.events || []).some(ev => (ev.sport || '') === sport);
+}
+
+function playerEventsForSport(p, sport){
+  return (p.events || []).filter(ev => (ev.sport || '') === sport);
+}
+
+function plEventLabels(p, sport){
+  const evs = playerEventsForSport(p, sport);
+  if(!evs.length) return '';
+  return evs.map(ev => ev.label || '').filter(Boolean).join(' · ');
+}
+
+function plSearchHay(p, sport){
+  const evText = plEventLabels(p, sport);
+  return [p.name, p.org, p.org_raw, p.gender, p.mobile, p.email, evText].join(' ').toLowerCase();
+}
+
+function plSort(list){
+  return list.slice().sort((a,b) => {
+    const o = (a.org||'').localeCompare(b.org||'');
+    if(o) return o;
+    return (a.name||'').localeCompare(b.name||'');
+  });
+}
+
+function setPlGame(game){
+  plGame = game || plSports()[0];
+  renderPlayers();
+}
+
+function renderPlGameTabs(){
+  const tabs = document.getElementById('plGameTabs');
+  const sports = plSports();
+  if(!tabs) return;
+  if(!sports.includes(plGame)) plGame = sports[0] || 'Judo';
+  tabs.innerHTML = sports.map(g =>
+    `<button type="button" data-pl-game="${escHtml(g)}" class="${g===plGame?'active':''}">${escHtml(g)}</button>`
+  ).join('');
+  tabs.querySelectorAll('[data-pl-game]').forEach(btn=>{
+    btn.onclick = () => setPlGame(btn.dataset.plGame);
+  });
+  const title = document.getElementById('plGameTitle');
+  if(title) title.textContent = plGame;
+  const sportSel = document.getElementById('plPlayerSport');
+  if(sportSel){
+    sportSel.innerHTML = sports.map(g =>
+      `<option value="${escHtml(g)}"${g===plGame?' selected':''}>${escHtml(g)}</option>`
+    ).join('');
+  }
+}
+
+function renderPlTeamFilter(allPlayers){
+  const sel = document.getElementById('plTeamFilter');
+  if(!sel) return;
+  const orgs = [...new Set(allPlayers.map(p => p.org).filter(Boolean))].sort();
+  const cur = plTeam;
+  sel.innerHTML = `<option value="ALL">All teams</option>` +
+    orgs.map(o => `<option value="${escHtml(o)}"${o===cur?' selected':''}>${escHtml(o)}</option>`).join('');
+  if(cur !== 'ALL' && !orgs.includes(cur)) plTeam = 'ALL';
+  sel.onchange = () => { plTeam = sel.value || 'ALL'; renderPlayers(); };
+}
+
+function renderPlayerRows(list, sport){
+  const tbody = document.getElementById('plViewBody');
+  const empty = document.getElementById('plViewEmpty');
+  const wrap = tbody && tbody.closest('.lo-view-wrap');
+  const tbl = wrap && wrap.querySelector('table');
+  if(!tbody) return;
+  if(!list.length){
+    tbody.innerHTML = '';
+    if(empty){
+      empty.hidden = false;
+      empty.textContent = (plSearchQ || plTeam !== 'ALL') ? 'No athletes match this filter.' : 'No athletes for this sport yet. Import MIS Report on Edit server.';
+    }
+    if(tbl) tbl.hidden = true;
+    return;
+  }
+  if(empty) empty.hidden = true;
+  if(tbl) tbl.hidden = false;
+  tbody.innerHTML = list.map(p => {
+    const evHtml = playerEventsForSport(p, sport).map(ev =>
+      `<span>${escHtml(ev.label || '')}</span>`
+    ).join('') || '<span class="lo-dash">—</span>';
+    const mobile = p.mobile
+      ? `<a href="tel:${escHtml(p.mobile)}">${escHtml(p.mobile)}</a>`
+      : '<span class="lo-dash">—</span>';
+    const acts = isEdit() ? `<td class="acts edit-only">
+          <button type="button" class="btn" data-edit-pl="${escHtml(p.id)}">Edit</button>
+          <button type="button" class="btn" data-del-pl="${escHtml(p.id)}">Remove</button>
+        </td>` : '';
+    return `<tr>
+      <td class="lo-name">${escHtml(p.name||'')}</td>
+      <td class="lo-team">${escHtml(p.org||'')}</td>
+      <td>${p.gender ? escHtml(p.gender.charAt(0).toUpperCase()) : '<span class="lo-dash">—</span>'}</td>
+      <td class="pl-events">${evHtml}</td>
+      <td class="lo-mobile">${mobile}</td>
+      ${acts}
+    </tr>`;
+  }).join('');
+  if(isEdit()){
+    tbody.querySelectorAll('[data-edit-pl]').forEach(btn=>{
+      btn.onclick = ()=>{
+        const p = getPlayers().players.find(x => x.id === btn.dataset.editPl);
+        if(p) fillPlPlayerForm(p);
+      };
+    });
+    tbody.querySelectorAll('[data-del-pl]').forEach(btn=>{
+      btn.onclick = () => deletePlayer(btn.dataset.delPl);
+    });
+  }
+}
+
+function renderPlayers(){
+  if(!data) return;
+  renderPlGameTabs();
+  const pl = getPlayers();
+  const all = pl.players || [];
+  const sportPlayers = all.filter(p => playerHasSport(p, plGame));
+  renderPlTeamFilter(all);
+
+  const src = pl.source_file ? `Source: ${pl.source_file}` : '';
+  const srcView = document.getElementById('plSourceHint');
+  if(srcView) srcView.textContent = src || (all.length ? `${all.length} athletes loaded` : 'No roster loaded — Import MIS Report on Edit server');
+  const srcEdit = document.getElementById('plEditSource');
+  if(srcEdit) srcEdit.textContent = src ? `${all.length} athletes · ${src}` : `${all.length} athletes`;
+
+  let list = plSort(sportPlayers);
+  if(plTeam !== 'ALL') list = list.filter(p => p.org === plTeam);
+  const q = (plSearchQ || '').toLowerCase().trim();
+  if(q) list = list.filter(p => plSearchHay(p, plGame).includes(q));
+
+  const vmeta = document.getElementById('plViewMeta');
+  if(vmeta) vmeta.textContent = `${list.length} of ${sportPlayers.length} in ${plGame}`;
+
+  renderPlayerRows(list, plGame);
+}
+
+function resetPlPlayerForm(){
+  document.getElementById('plPlayerId').value = '';
+  document.getElementById('plPlayerName').value = '';
+  document.getElementById('plPlayerOrg').value = '';
+  document.getElementById('plPlayerEvent').value = '';
+  document.getElementById('plPlayerGender').value = '';
+  document.getElementById('plPlayerEmail').value = '';
+  document.getElementById('plPlayerMobile').value = '';
+  document.getElementById('plPlayerMobile').classList.remove('invalid');
+  document.getElementById('plPlayerSport').value = plGame;
+  document.getElementById('plPlayerFormTitle').textContent = 'Add player';
+  document.getElementById('plPlayerSave').textContent = 'Add player';
+}
+
+function fillPlPlayerForm(p){
+  document.getElementById('plPlayerId').value = p.id || '';
+  document.getElementById('plPlayerName').value = p.name || '';
+  document.getElementById('plPlayerOrg').value = p.org || '';
+  document.getElementById('plPlayerGender').value = p.gender || '';
+  document.getElementById('plPlayerEmail').value = p.email || '';
+  document.getElementById('plPlayerMobile').value = p.mobile || '';
+  const ev = playerEventsForSport(p, plGame)[0] || (p.events || [])[0] || {};
+  document.getElementById('plPlayerSport').value = ev.sport || plGame;
+  document.getElementById('plPlayerEvent').value = ev.label || '';
+  document.getElementById('plPlayerFormTitle').textContent = 'Edit player';
+  document.getElementById('plPlayerSave').textContent = 'Save changes';
+}
+
+async function savePlayer(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  const id = document.getElementById('plPlayerId').value;
+  const mobile = digitsOnly(document.getElementById('plPlayerMobile').value);
+  document.getElementById('plPlayerMobile').value = mobile;
+  document.getElementById('plPlayerMobile').classList.toggle('invalid', mobile && !validMobile(mobile));
+  if(mobile && !validMobile(mobile)){ toast('Mobile No must be exactly 10 digits'); return; }
+  const sport = document.getElementById('plPlayerSport').value;
+  const eventLabel = document.getElementById('plPlayerEvent').value.trim();
+  const payload = {
+    name: document.getElementById('plPlayerName').value.trim(),
+    org: document.getElementById('plPlayerOrg').value.trim().toUpperCase(),
+    org_raw: document.getElementById('plPlayerOrg').value.trim(),
+    gender: document.getElementById('plPlayerGender').value,
+    email: document.getElementById('plPlayerEmail').value.trim(),
+    mobile,
+    sport,
+    event_label: eventLabel,
+  };
+  if(!payload.name || !payload.org || !eventLabel){
+    toast('Name, team and event are required');
+    return;
+  }
+  plGame = sport || plGame;
+  const url = id ? '/api/players/members/'+encodeURIComponent(id) : '/api/players/members';
+  const method = id ? 'PUT' : 'POST';
+  saveInFlight = true;
+  const res = await apiFetch(url, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Save failed'); return; }
+  data = body;
+  toast(id ? 'Player updated' : 'Player added');
+  resetPlPlayerForm();
+  renderPlayers();
+}
+
+async function deletePlayer(id){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  if(!confirm('Remove this player?')) return;
+  saveInFlight = true;
+  const res = await apiFetch('/api/players/members/'+encodeURIComponent(id), {method:'DELETE'});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Delete failed'); return; }
+  data = body;
+  toast('Player removed');
+  renderPlayers();
+}
+
+async function importPlayersMIS(){
+  if(!isEdit()){ toast('Read-only View — use Edit :5001'); return; }
+  saveInFlight = true;
+  const res = await apiFetch('/api/players/import', {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
+  let body = null; try{ body = await res.json(); }catch(e){}
+  saveInFlight = false;
+  if(!res.ok){ toast((body && body.error) || 'Import failed'); return; }
+  data = body;
+  const n = ((body.players||{}).players||[]).length;
+  toast('Imported '+n+' athletes from MIS Report');
+  renderPlayers();
 }
 
 function digitsOnly(v){ return String(v||'').replace(/\D/g,''); }
@@ -5467,15 +6515,18 @@ function switchView(name){
     adm: 'ADM Staff',
     lo: 'Liaison Officers',
     tc: 'Technical Committee',
+    teams: 'Teams',
   };
   const titleEl = document.getElementById('pageTitle');
   if(titleEl) titleEl.textContent = titles[name] || name;
+  document.body.classList.toggle('on-home', name === 'home');
   closeNavSearch();
   applyGlobalSearch(document.getElementById('navSearch').value || '');
   if(name === 'arrival' || name === 'departure') renderTravel();
   if(name === 'adm') renderAdmStaff();
   if(name === 'lo') renderLoStaff();
   if(name === 'tc') renderTechCommittee();
+  if(name === 'teams') renderPlayers();
   try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch(_) { window.scrollTo(0, 0); }
 }
 
@@ -5523,11 +6574,6 @@ if(tcViewSearchEl) tcViewSearchEl.addEventListener('input', e=>{
   tcSearchQ = e.target.value || '';
   renderTechCommittee();
 });
-const tcEditSearchEl = document.getElementById('tcEditSearch');
-if(tcEditSearchEl) tcEditSearchEl.addEventListener('input', e=>{
-  tcEditQ = e.target.value || '';
-  renderTechCommittee();
-});
 const tcMemberSaveEl = document.getElementById('tcMemberSave');
 if(tcMemberSaveEl) tcMemberSaveEl.onclick = saveTcMember;
 const tcMemberResetEl = document.getElementById('tcMemberReset');
@@ -5536,6 +6582,27 @@ const tcMemberGameEl = document.getElementById('tcMemberGame');
 if(tcMemberGameEl) tcMemberGameEl.addEventListener('change', e=>{
   tcGame = e.target.value || tcGame;
   renderTechCommittee();
+});
+const plViewSearchEl = document.getElementById('plViewSearch');
+if(plViewSearchEl) plViewSearchEl.addEventListener('input', e=>{
+  plSearchQ = e.target.value || '';
+  renderPlayers();
+});
+const plPlayerSaveEl = document.getElementById('plPlayerSave');
+if(plPlayerSaveEl) plPlayerSaveEl.onclick = savePlayer;
+const plPlayerResetEl = document.getElementById('plPlayerReset');
+if(plPlayerResetEl) plPlayerResetEl.onclick = resetPlPlayerForm;
+const plPlayerSportEl = document.getElementById('plPlayerSport');
+if(plPlayerSportEl) plPlayerSportEl.addEventListener('change', e=>{
+  plGame = e.target.value || plGame;
+  renderPlayers();
+});
+const btnImportPlayersEl = document.getElementById('btnImportPlayers');
+if(btnImportPlayersEl) btnImportPlayersEl.onclick = importPlayersMIS;
+const plPlayerMobileEl = document.getElementById('plPlayerMobile');
+if(plPlayerMobileEl) plPlayerMobileEl.addEventListener('input', ()=>{
+  plPlayerMobileEl.value = digitsOnly(plPlayerMobileEl.value).slice(0, 10);
+  plPlayerMobileEl.classList.toggle('invalid', plPlayerMobileEl.value && !validMobile(plPlayerMobileEl.value));
 });
 document.getElementById('admStayFilters').addEventListener('click', e=>{
   const btn = e.target.closest('button[data-stay]');
@@ -5575,8 +6642,13 @@ document.getElementById('admStayPerson').addEventListener('change', ()=>{
 
 document.getElementById('locFilters').addEventListener('click', e=>{
   if(e.target.tagName !== 'BUTTON') return;
+  if(accDirtyOrgs.size && !confirm('Unsaved accommodation changes will be lost. Change location filter anyway?')) return;
+  if(accDirtyOrgs.size){
+    accDirtyOrgs.clear();
+    updateAccDirtyUI();
+  }
   activeLoc = e.target.dataset.loc;
-  renderAccommodation();
+  renderAccommodation({ force: true });
 });
 document.getElementById('messFilters').addEventListener('click', e=>{
   if(e.target.tagName !== 'BUTTON') return;
@@ -5614,8 +6686,10 @@ function applyGlobalSearch(q){
   arrSearch = q;
   const active = document.querySelector('.view.active');
   const view = active ? active.id.replace('view-','') : 'home';
-  if(view === 'accommodation') renderAccommodation();
-  else if(view === 'directory') renderDirectory();
+  if(view === 'accommodation'){
+    if(accDirtyOrgs.size) applyAccDomFilter();
+    else renderAccommodation();
+  } else if(view === 'directory') renderDirectory();
   else if(view === 'travel') renderTravel();
   else if(view === 'mess') renderMess();
 }
@@ -5764,18 +6838,37 @@ document.getElementById('saveAdd').onclick = async ()=>{
 };
 
 async function saveUnit(org){
-  const tr = document.querySelector(`tr[data-org="${CSS.escape(org)}"]`);
-  const payload = {};
-  tr.querySelectorAll('.num-input').forEach(inp => { payload[inp.dataset.field] = parseInt(inp.value)||0; });
-  const locSel = tr.querySelector('.loc-select');
-  if(locSel) payload.location = locSel.value;
-  editing = true;
-  const res = await apiFetch('/api/accommodation/'+encodeURIComponent(org), {
-    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
-  });
-  editing = false;
-  if(res.ok){ data = await res.json(); toast(org+' → accommodation.json'); renderAll(); }
-  else toast('Update failed');
+  const tr = document.querySelector(`#accBody tr[data-org="${CSS.escape(org)}"]`);
+  if(!tr) return;
+  const btn = tr.querySelector('.row-actions .save');
+  if(btn){ btn.disabled = true; btn.textContent = 'Saving…'; }
+  saveInFlight = true;
+  try{
+    const payload = {};
+    tr.querySelectorAll('.num-input').forEach(inp => {
+      payload[inp.dataset.field] = parseInt(inp.value, 10) || 0;
+    });
+    const locSel = tr.querySelector('.loc-select');
+    if(locSel) payload.location = locSel.value;
+    const res = await apiFetch('/api/accommodation/'+encodeURIComponent(org), {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+    });
+    if(res.ok){
+      data = await res.json();
+      clearAccDirty(org);
+      tr.classList.add('acc-row-saved');
+      setTimeout(() => tr.classList.remove('acc-row-saved'), 1200);
+      toast(org + ' saved');
+      renderHome();
+      renderAccommodation({ force: true });
+    } else {
+      const err = await res.json().catch(() => ({}));
+      toast(err.error || 'Update failed');
+    }
+  } finally {
+    saveInFlight = false;
+    if(btn){ btn.disabled = false; btn.textContent = 'Save'; }
+  }
 }
 
 async function saveMess(org){
@@ -6033,8 +7126,12 @@ async function saveHubsEdit(){
 async function deleteUnit(org){
   if(!confirm('Remove '+org+' from the roster?')) return;
   const res = await apiFetch('/api/units/'+encodeURIComponent(org), {method:'DELETE'});
-  if(res.ok){ data = await res.json(); toast(org+' removed'); renderAll(); }
-  else toast('Delete failed');
+  if(res.ok){
+    data = await res.json();
+    clearAccDirty(org);
+    toast(org+' removed');
+    renderAll();
+  } else toast('Delete failed');
 }
 
 document.getElementById('btnImport').onclick = async ()=>{
@@ -6090,12 +7187,14 @@ async function applyMode(){
   if(search && window.matchMedia('(max-width: 720px)').matches){
     search.placeholder = 'Search teams or phone…';
   }
+  if(data) renderAll();
 }
 
 (async function boot(){
   await applyMode();
   const authed = await ensureAuthGate();
   if(!authed) return;
+  bindAccTableEvents();
   await fetchData();
   // Static Pages: refresh less often (updates arrive via git push)
   setInterval(fetchData, IS_STATIC ? 60000 : 10000);

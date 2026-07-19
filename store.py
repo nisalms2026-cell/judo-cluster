@@ -10,6 +10,7 @@ data/
   adm_staff.json      — ADM staff persons, tasks, detailments
   lo.json             — liaison officers + team assignments
   tech_committee.json — technical committee members by game
+  players.json        — athlete roster by sport (AIPSCB MIS import)
 """
 from __future__ import annotations
 
@@ -34,9 +35,11 @@ FILES = {
     "adm_staff": os.path.join(DATA_DIR, "adm_staff.json"),
     "lo": os.path.join(DATA_DIR, "lo.json"),
     "tech_committee": os.path.join(DATA_DIR, "tech_committee.json"),
+    "players": os.path.join(DATA_DIR, "players.json"),
 }
 
 TC_GAMES = ["Pencak Silat", "Judo", "Wushu", "Taekwondo", "Karate"]
+PLAYER_SPORTS = ["Judo", "Karate", "Taekwondo", "Wushu", "Pencak Silat", "Taolu"]
 
 
 def _now():
@@ -125,6 +128,7 @@ def empty_bundle():
         "adm_staff": {"persons": [], "tasks": [], "detailments": []},
         "lo": {"officers": [], "assignments": []},
         "tech_committee": {"games": list(TC_GAMES), "members": []},
+        "players": {"sports": list(PLAYER_SPORTS), "players": []},
         "summary": build_summary([]),
     }
 
@@ -226,6 +230,12 @@ def merge_bundle() -> dict:
         "games": tc.get("games") or list(TC_GAMES),
         "members": tc.get("members") or [],
     }
+    pl = _read(FILES["players"], {"sports": list(PLAYER_SPORTS), "players": []})
+    players_data = {
+        "source_file": pl.get("source_file", ""),
+        "sports": pl.get("sports") or list(PLAYER_SPORTS),
+        "players": pl.get("players") or [],
+    }
 
     mess_map = {r["org"]: r.get("mess", "") for r in mess.get("by_unit") or []}
     arr_map = {r["org"]: r for r in arrival.get("rows") or []}
@@ -284,6 +294,7 @@ def merge_bundle() -> dict:
         adm.get("updated_at"),
         lo.get("updated_at"),
         tc.get("updated_at"),
+        pl.get("updated_at"),
     ]
     stamps = [s for s in stamps if s]
     updated_at = max(stamps) if stamps else _now()
@@ -314,6 +325,7 @@ def merge_bundle() -> dict:
         "adm_staff": adm_staff,
         "lo": lo_data,
         "tech_committee": tc_data,
+        "players": players_data,
         "summary": build_summary(units),
         "files": {
             "accommodation": FILES["accommodation"],
@@ -324,6 +336,7 @@ def merge_bundle() -> dict:
             "adm_staff": FILES["adm_staff"],
             "lo": FILES["lo"],
             "tech_committee": FILES["tech_committee"],
+            "players": FILES["players"],
         },
     }
 
@@ -1082,3 +1095,145 @@ def delete_tc_member(member_id: str) -> dict:
     if len(doc["members"]) == before:
         raise KeyError(member_id)
     return _write_tc(doc)
+
+
+# ── Players (AIPSCB MIS roster) ───────────────────────────────
+
+def save_players_import(data: dict) -> dict:
+    """Replace player roster from Excel import."""
+    _write(FILES["players"], {
+        "source_file": data.get("source_file", ""),
+        "sports": data.get("sports") or list(PLAYER_SPORTS),
+        "players": data.get("players") or [],
+    })
+    return merge_bundle()
+
+
+def _players_doc() -> dict:
+    doc = _read(FILES["players"], {"sports": list(PLAYER_SPORTS), "players": []})
+    doc["sports"] = doc.get("sports") or list(PLAYER_SPORTS)
+    doc["players"] = doc.get("players") or []
+    return doc
+
+
+def _write_players(doc: dict) -> dict:
+    _write(FILES["players"], {
+        "source_file": doc.get("source_file", ""),
+        "sports": doc.get("sports") or list(PLAYER_SPORTS),
+        "players": doc.get("players") or [],
+    })
+    return merge_bundle()
+
+
+def _normalize_player_sport(sport: str) -> str:
+    s = (sport or "").strip()
+    if not s:
+        raise ValueError("Sport is required")
+    for known in PLAYER_SPORTS:
+        if known.lower() == s.lower():
+            return known
+    raise ValueError(f"Sport must be one of: {', '.join(PLAYER_SPORTS)}")
+
+
+def validate_player_fields(payload: dict, *, require_all: bool = True) -> dict:
+    mobile = _digits_only(payload.get("mobile", ""))
+    name = (payload.get("name") or "").strip()
+    org = (payload.get("org") or "").strip().upper()
+    org_raw = (payload.get("org_raw") or org).strip()
+    gender = (payload.get("gender") or "").strip()
+    email = (payload.get("email") or "").strip()
+    events = payload.get("events")
+    if events is None and require_all:
+        label = (payload.get("event_label") or "").strip()
+        sport = payload.get("sport") or payload.get("game") or ""
+        if label:
+            events = [{"sport": _normalize_player_sport(sport), "label": label}]
+        else:
+            events = []
+    elif isinstance(events, list):
+        cleaned = []
+        for ev in events:
+            if not isinstance(ev, dict):
+                continue
+            label = (ev.get("label") or "").strip()
+            if not label:
+                continue
+            sport_raw = (ev.get("sport") or "").strip()
+            if not sport_raw:
+                t = label.lower()
+                for known in PLAYER_SPORTS:
+                    if known.lower() in t:
+                        sport_raw = known
+                        break
+            cleaned.append({
+                "sport": _normalize_player_sport(sport_raw or "Judo"),
+                "label": label,
+            })
+        events = cleaned
+    else:
+        events = []
+
+    if require_all or "mobile" in payload:
+        if mobile and len(mobile) != 10:
+            raise ValueError("Mobile No must be exactly 10 digits")
+    if require_all and not name:
+        raise ValueError("Name is required")
+    if require_all and not org:
+        raise ValueError("Team / organisation is required")
+    if email and "@" not in email:
+        raise ValueError("Email address looks invalid")
+
+    out = {}
+    if require_all or "name" in payload:
+        out["name"] = name
+    if require_all or "org" in payload:
+        out["org"] = org
+    if require_all or "org_raw" in payload:
+        out["org_raw"] = org_raw
+    if require_all or "gender" in payload:
+        out["gender"] = gender
+    if require_all or "mobile" in payload:
+        out["mobile"] = mobile
+    if require_all or "email" in payload:
+        out["email"] = email
+    if require_all or "events" in payload or "event_label" in payload or "sport" in payload:
+        out["events"] = events
+    if "sno" in payload:
+        sno_raw = payload.get("sno", "")
+        out["sno"] = int(sno_raw) if str(sno_raw).strip().isdigit() else 0
+    return out
+
+
+def save_player(payload: dict, player_id: str | None = None) -> dict:
+    doc = _players_doc()
+    players = doc.get("players") or []
+    fields = validate_player_fields(payload, require_all=not player_id)
+    if player_id:
+        found = None
+        for p in players:
+            if p.get("id") == player_id:
+                found = p
+                break
+        if not found:
+            raise KeyError(player_id)
+        merged = {**found, **fields}
+        fields = validate_player_fields(merged, require_all=True)
+        found.update(fields)
+    else:
+        mobile = fields.get("mobile") or ""
+        new_id = f"pl_{mobile}" if len(mobile) == 10 else _new_id("pl")
+        if any(p.get("id") == new_id for p in players):
+            new_id = _new_id("pl")
+        players.append({"id": new_id, **fields})
+    doc["players"] = players
+    return _write_players(doc)
+
+
+def delete_player(player_id: str) -> dict:
+    doc = _players_doc()
+    players = doc.get("players") or []
+    before = len(players)
+    doc["players"] = [p for p in players if p.get("id") != player_id]
+    if len(doc["players"]) == before:
+        raise KeyError(player_id)
+    return _write_players(doc)

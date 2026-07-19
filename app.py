@@ -20,6 +20,7 @@ from flask import Flask, jsonify, redirect, request, send_from_directory, sessio
 import authutil
 import store
 from import_excel import find_latest_workbook, import_workbook
+from import_players import find_mis_workbook, import_and_save as import_players_workbook
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(BASE, "assets")
@@ -162,8 +163,17 @@ def api_config():
 
 @app.route("/api/data", methods=["GET"])
 def get_data():
+    import importlib
+    global store
+    store = importlib.reload(store)
     with LOCK:
-        return jsonify(store.merge_bundle())
+        bundle = store.merge_bundle()
+        players = bundle.get("players") or {}
+        tc = bundle.get("tech_committee") or {}
+        resp = jsonify(bundle)
+        resp.headers["X-Players-Count"] = str(len(players.get("players") or []))
+        resp.headers["X-TC-Count"] = str(len(tc.get("members") or []))
+        return resp
 
 
 @app.route("/api/import", methods=["POST"])
@@ -434,6 +444,49 @@ def delete_tc_member(member_id):
             return jsonify(store.delete_tc_member(member_id))
         except KeyError:
             return jsonify({"error": "Member not found"}), 404
+
+
+# ── Players (AIPSCB MIS roster) ────────────────────────────
+@app.route("/api/players/import", methods=["POST"])
+def api_players_import():
+    payload = request.get_json(silent=True) or {}
+    path = payload.get("path") or find_mis_workbook()
+    with LOCK:
+        try:
+            return jsonify(import_players_workbook(path))
+        except Exception as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/players/members", methods=["POST"])
+def post_player():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_player(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/players/members/<player_id>", methods=["PUT"])
+def put_player(player_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_player(payload, player_id=player_id))
+        except KeyError:
+            return jsonify({"error": "Player not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/players/members/<player_id>", methods=["DELETE"])
+def delete_player(player_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_player(player_id))
+        except KeyError:
+            return jsonify({"error": "Player not found"}), 404
 
 
 # ── Units add / delete ─────────────────────────────────────

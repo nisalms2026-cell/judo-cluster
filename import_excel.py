@@ -9,6 +9,8 @@ import re
 import datetime
 from openpyxl import load_workbook
 
+from org_names import canonical_org
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE, "event_data.json")
 
@@ -81,7 +83,7 @@ def parse_final_and_mess(wb):
         if loc_hit:
             location = loc_hit
             continue
-        org = _s(b).upper()
+        org = canonical_org(_s(b).upper())
         if not org or org in ("ORGANISATION", "TOTAL", "GRAND TOTAL"):
             continue
         if "TOTAL" in org:
@@ -191,7 +193,7 @@ def parse_tgpa_mess(wb):
                 note = left_org
             else:
                 dining.append({
-                    "org": left_org.upper() if left_org.isupper() or " " in left_org else left_org,
+                    "org": canonical_org(left_org),
                     "iom": _n(ws.cell(r, 3).value),
                     "jom1": _n(ws.cell(r, 4).value),
                     "jom2": _n(ws.cell(r, 5).value),
@@ -204,7 +206,7 @@ def parse_tgpa_mess(wb):
                 note = right_org
             else:
                 own.append({
-                    "org": right_org.upper(),
+                    "org": canonical_org(right_org),
                     "iom": _n(ws.cell(r, 11).value),
                     "jom1": _n(ws.cell(r, 12).value),
                     "jom2": _n(ws.cell(r, 13).value),
@@ -414,12 +416,13 @@ def _match_org(raw, units_by_org):
         "CHHATTISGARH": "CHATTISGARH",
         "CHATTISGARH": "CHATTISGARH",
         "UTTARAKHAND": "UTTARAKHAND POLICE",
-        "GUJRAT": "GUJARAT POLICE",
-        "GUJARAT": "GUJARAT POLICE",
+        "GUJRAT": canonical_org("Gujrat"),
+        "GUJARAT": canonical_org("Gujrat"),
         "BIHAR": "BIHAR POLICE",
         "UTTARPRADESH": "UTTARPRADESH",
-        "J&K POLICE": "J&K POLICE",
-        "J&K": "J&K POLICE",
+        "J&K POLICE": canonical_org("JAMMU & KASHMIR"),
+        "J&K": canonical_org("JAMMU & KASHMIR"),
+        "JAMMU & KASHMIR": canonical_org("JAMMU & KASHMIR"),
         "PUNJAB": "PUNJAB POLICE",
         "MAHARASHTRA POLICE": "MAHARASHTRA POLICE",
         "RAJASTHAN": "RAJASTHAN POLICE",
@@ -429,7 +432,9 @@ def _match_org(raw, units_by_org):
         "RPF": "RPF",
         "ASSAM POLICE": "ASSAM POLICE",
         "MADHYA PRADESH": "MADHYA PRADESH POLICE",
-        "ANDHRA POLICE": "ANDHRA POLICE",
+        "ANDHRA POLICE": canonical_org("Andhra Pradesh"),
+        "ANDHRA PRADESH POLICE": canonical_org("Andhra Pradesh"),
+        "ANDHRA PRADESH": canonical_org("Andhra Pradesh"),
         "ARUNACHAL PRADESH": "ARUNACHAL PRADESH",
         "CHANDIGARH POLICE": "CHANDIGARH POLICE",
         "DELHI POLICE": "DELHI POLICE",

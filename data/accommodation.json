@@ -7,17 +7,17 @@
   ],
   "rows": [
     {
-      "org": "ANDHRA POLICE",
+      "org": "Andhra Pradesh",
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 1,
+        "sos_m": 2,
         "ors_m": 17,
         "gos_f": 0,
         "sos_f": 1,
         "ors_f": 3
       },
-      "total": 22,
+      "total": 23,
       "count_gos": {
         "male": 0,
         "female": 0
@@ -46,8 +46,8 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 3,
-        "ors_m": 13,
+        "sos_m": 4,
+        "ors_m": 16,
         "gos_f": 0,
         "sos_f": 2,
         "ors_f": 4
@@ -81,10 +81,10 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 30,
+        "sos_m": 1,
+        "ors_m": 38,
         "gos_f": 0,
-        "sos_f": 0,
+        "sos_f": 2,
         "ors_f": 20
       },
       "total": 61,
@@ -116,11 +116,11 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 52,
+        "sos_m": 2,
+        "ors_m": 62,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 42
+        "ors_f": 45
       },
       "total": 109,
       "count_gos": {
@@ -151,8 +151,8 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 1,
-        "ors_m": 9,
+        "sos_m": 2,
+        "ors_m": 11,
         "gos_f": 0,
         "sos_f": 1,
         "ors_f": 3
@@ -186,8 +186,8 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 8,
+        "sos_m": 1,
+        "ors_m": 10,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 8
@@ -221,7 +221,7 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 1,
+        "sos_m": 2,
         "ors_m": 9,
         "gos_f": 0,
         "sos_f": 0,
@@ -252,11 +252,11 @@
       "doctor": 0
     },
     {
-      "org": "GUJARAT POLICE",
+      "org": "Gujrat",
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 1,
+        "sos_m": 2,
         "ors_m": 17,
         "gos_f": 0,
         "sos_f": 0,
@@ -290,7 +290,7 @@
       "org": "HIMACHAL PRADESH POLICE",
       "location": "TGPA",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
         "ors_m": 6,
         "gos_f": 0,
@@ -322,13 +322,13 @@
       "doctor": 0
     },
     {
-      "org": "J&K POLICE",
+      "org": "JAMMU & KASHMIR",
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 37,
-        "gos_f": 0,
+        "sos_m": 1,
+        "ors_m": 41,
+        "gos_f": 1,
         "sos_f": 0,
         "ors_f": 9
       },
@@ -360,9 +360,9 @@
       "org": "KARNATAKA POLICE",
       "location": "TGPA",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 1,
-        "ors_m": 14,
+        "ors_m": 17,
         "gos_f": 0,
         "sos_f": 1,
         "ors_f": 3
@@ -396,10 +396,10 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 44,
+        "sos_m": 6,
+        "ors_m": 52,
         "gos_f": 0,
-        "sos_f": 0,
+        "sos_f": 1,
         "ors_f": 39
       },
       "total": 98,
@@ -430,9 +430,9 @@
       "org": "MIZORAM POLICE",
       "location": "TGPA",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 5,
+        "ors_m": 6,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 0
@@ -466,7 +466,7 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 4,
+        "sos_m": 9,
         "ors_m": 20,
         "gos_f": 0,
         "sos_f": 4,
@@ -501,8 +501,8 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 4,
-        "ors_m": 10,
+        "sos_m": 5,
+        "ors_m": 16,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 10
@@ -536,11 +536,11 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 20,
+        "sos_m": 1,
+        "ors_m": 22,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 5
+        "sos_f": 1,
+        "ors_f": 6
       },
       "total": 30,
       "count_gos": {
@@ -571,7 +571,7 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
+        "sos_m": 1,
         "ors_m": 1,
         "gos_f": 0,
         "sos_f": 0,
@@ -606,8 +606,8 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 20,
+        "sos_m": 1,
+        "ors_m": 22,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 9
@@ -640,9 +640,9 @@
       "org": "UTTARPRADESH",
       "location": "TGPA",
       "strength": {
-        "gos_m": 0,
-        "sos_m": 3,
-        "ors_m": 56,
+        "gos_m": 1,
+        "sos_m": 5,
+        "ors_m": 67,
         "gos_f": 0,
         "sos_f": 6,
         "ors_f": 38
@@ -676,11 +676,11 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 1,
+        "sos_m": 2,
         "ors_m": 4,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 1
+        "ors_f": 2
       },
       "total": 8,
       "count_gos": {
@@ -817,10 +817,10 @@
       "strength": {
         "gos_m": 0,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 2,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 2
+        "ors_f": 0
       },
       "total": 2,
       "count_gos": {
@@ -850,12 +850,12 @@
       "org": "JHARKHAND",
       "location": "TGPA",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 25,
+        "ors_m": 29,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 10
+        "ors_f": 11
       },
       "total": 41,
       "count_gos": {
@@ -885,12 +885,12 @@
       "org": "BSF",
       "location": "NITHM",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 55,
+        "ors_m": 62,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 37
+        "ors_f": 38
       },
       "total": 101,
       "count_gos": {
@@ -920,12 +920,12 @@
       "org": "CRPF",
       "location": "Sport Tower",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 3,
-        "ors_m": 48,
-        "gos_f": 1,
-        "sos_f": 1,
-        "ors_f": 28
+        "ors_m": 55,
+        "gos_f": 3,
+        "sos_f": 2,
+        "ors_f": 31
       },
       "total": 95,
       "count_gos": {
@@ -955,12 +955,12 @@
       "org": "SSB",
       "location": "Sport Tower",
       "strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 56,
+        "gos_m": 1,
+        "sos_m": 2,
+        "ors_m": 63,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 46
+        "ors_f": 48
       },
       "total": 114,
       "count_gos": {
@@ -991,8 +991,8 @@
       "location": "Sport Tower",
       "strength": {
         "gos_m": 0,
-        "sos_m": 5,
-        "ors_m": 40,
+        "sos_m": 9,
+        "ors_m": 46,
         "gos_f": 0,
         "sos_f": 1,
         "ors_f": 14
@@ -1026,8 +1026,8 @@
       "location": "Sport Tower",
       "strength": {
         "gos_m": 0,
-        "sos_m": 1,
-        "ors_m": 9,
+        "sos_m": 2,
+        "ors_m": 11,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 8
@@ -1061,7 +1061,7 @@
       "location": "Sport Tower",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
+        "sos_m": 1,
         "ors_m": 13,
         "gos_f": 0,
         "sos_f": 0,
@@ -1096,9 +1096,9 @@
       "location": "Sport Tower",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 36,
-        "gos_f": 1,
+        "sos_m": 5,
+        "ors_m": 38,
+        "gos_f": 2,
         "sos_f": 0,
         "ors_f": 4
       },
@@ -1130,9 +1130,9 @@
       "org": "KERALA POLICE",
       "location": "Sport Tower",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 1,
-        "ors_m": 30,
+        "ors_m": 31,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 0
@@ -1165,11 +1165,11 @@
       "org": "CISF",
       "location": "Own Location",
       "strength": {
-        "gos_m": 0,
-        "sos_m": 14,
-        "ors_m": 31,
+        "gos_m": 1,
+        "sos_m": 16,
+        "ors_m": 32,
         "gos_f": 0,
-        "sos_f": 12,
+        "sos_f": 14,
         "ors_f": 29
       },
       "total": 92,
@@ -1201,7 +1201,7 @@
       "location": "Own Location",
       "strength": {
         "gos_m": 0,
-        "sos_m": 0,
+        "sos_m": 1,
         "ors_m": 32,
         "gos_f": 0,
         "sos_f": 0,
@@ -1235,12 +1235,12 @@
       "org": "RPF",
       "location": "Own Location",
       "strength": {
-        "gos_m": 0,
-        "sos_m": 1,
-        "ors_m": 11,
+        "gos_m": 1,
+        "sos_m": 2,
+        "ors_m": 15,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 2
+        "ors_f": 3
       },
       "total": 21,
       "count_gos": {
@@ -1267,5 +1267,5 @@
       "doctor": 0
     }
   ],
-  "updated_at": "2026-07-17T18:18:37"
+  "updated_at": "2026-07-19T14:06:59"
 }

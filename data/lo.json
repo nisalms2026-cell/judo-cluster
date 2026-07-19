@@ -268,7 +268,7 @@
   "assignments": [
     {
       "id": "la_3dd13c2e6c",
-      "team_org": "J&K POLICE",
+      "team_org": "JAMMU & KASHMIR",
       "officer_id": "lo_7ff8f36103",
       "doa": "21.07.2026",
       "location": "TGPA",
@@ -508,7 +508,7 @@
     },
     {
       "id": "la_b905343eeb",
-      "team_org": "GUJARAT POLICE",
+      "team_org": "Gujrat",
       "officer_id": "lo_ed05efb9b9",
       "doa": "22.07.2026",
       "location": "TGPA",
@@ -524,7 +524,7 @@
     },
     {
       "id": "la_2f63d95a14",
-      "team_org": "ANDHRA POLICE",
+      "team_org": "Andhra Pradesh",
       "officer_id": "lo_95e10bf49b",
       "doa": "Bus",
       "location": "TGPA",

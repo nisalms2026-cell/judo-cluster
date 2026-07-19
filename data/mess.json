@@ -1,7 +1,7 @@
 {
   "by_unit": [
     {
-      "org": "ANDHRA POLICE",
+      "org": "Andhra Pradesh",
       "mess": "TGPA"
     },
     {
@@ -29,7 +29,7 @@
       "mess": "TGPA"
     },
     {
-      "org": "GUJARAT POLICE",
+      "org": "Gujrat",
       "mess": "TGPA"
     },
     {
@@ -37,7 +37,7 @@
       "mess": "TGPA"
     },
     {
-      "org": "J&K POLICE",
+      "org": "JAMMU & KASHMIR",
       "mess": "TGPA"
     },
     {
@@ -172,7 +172,7 @@
         "total": 12
       },
       {
-        "org": "ANDHRA PRADESH POLICE",
+        "org": "Andhra Pradesh",
         "iom": 0,
         "jom1": 2,
         "jom2": 4,

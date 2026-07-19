@@ -1,7 +1,7 @@
 {
   "rows": [
     {
-      "org": "ANDHRA POLICE",
+      "org": "Andhra Pradesh",
       "manager": {
         "name": "K Victor",
         "rank": "Inspector",
@@ -57,7 +57,7 @@
       }
     },
     {
-      "org": "GUJARAT POLICE",
+      "org": "Gujrat",
       "manager": {
         "name": "M A RAVAL",
         "rank": "P.I",
@@ -73,7 +73,7 @@
       }
     },
     {
-      "org": "J&K POLICE",
+      "org": "JAMMU & KASHMIR",
       "manager": {
         "name": "Anjana",
         "rank": "Dy.SP",
