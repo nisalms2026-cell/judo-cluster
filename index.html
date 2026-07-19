@@ -1631,6 +1631,53 @@ body.on-lo .page-head { display: none; }
 body.on-tc .page-head { display: none; }
 body.on-teams .page-head { display: none; }
 
+/* View / GitHub Pages — let tables grow with the page, no inner scroll boxes */
+body.mode-view .table-wrap,
+body.mode-static .table-wrap,
+body.mode-view .adm-table-wrap,
+body.mode-static .adm-table-wrap {
+  max-height: none;
+  overflow: visible;
+  scrollbar-gutter: auto;
+}
+
+body.mode-view .acc-table-panel .table-wrap,
+body.mode-static .acc-table-panel .table-wrap,
+body.mode-view .acc-table-panel .adm-table-wrap,
+body.mode-static .acc-table-panel .adm-table-wrap {
+  max-height: none;
+  overflow: visible;
+}
+
+body.mode-view .acc-table-panel .adm-table-wrap,
+body.mode-static .acc-table-panel .adm-table-wrap {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+body.mode-view .mess-board-panel .mess-board-body,
+body.mode-static .mess-board-panel .mess-board-body {
+  max-height: none;
+  overflow: visible;
+}
+
+body.mode-view .table-wrap.lo-view-wrap,
+body.mode-static .table-wrap.lo-view-wrap {
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+body.mode-view .lo-view-wrap,
+body.mode-static .lo-view-wrap {
+  overflow: visible;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
 .acc-table-bar .module-select {
   height: 36px;
   min-width: 140px;
@@ -3555,7 +3602,7 @@ footer {
 
   .lo-view-bar { flex-direction: column; align-items: stretch; }
   .lo-view-search { max-width: none; width: 100%; }
-  .lo-view-wrap {
+  body.mode-edit .lo-view-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -3695,6 +3742,7 @@ footer {
     border: none;
     box-shadow: none;
     padding: 0;
+    max-height: none;
     overflow: visible;
   }
 
