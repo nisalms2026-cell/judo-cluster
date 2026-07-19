@@ -1695,6 +1695,98 @@ body.mode-static .pl-roster-table {
   z-index: 3;
 }
 
+/* Roster tables (TC, LO, Teams) — normal table on view site (desktop/tablet) */
+body.mode-view .roster-table,
+body.mode-static .roster-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+body.mode-view .roster-table thead,
+body.mode-static .roster-table thead {
+  display: table-header-group;
+}
+
+body.mode-view .roster-table tbody,
+body.mode-static .roster-table tbody {
+  display: table-row-group;
+}
+
+body.mode-view .roster-table tr,
+body.mode-static .roster-table tr {
+  display: table-row;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+body.mode-view .roster-table colgroup,
+body.mode-static .roster-table colgroup {
+  display: table-column-group;
+}
+
+body.mode-view .roster-table th,
+body.mode-static .roster-table th,
+body.mode-view .roster-table td,
+body.mode-static .roster-table td {
+  display: table-cell;
+  text-align: left !important;
+  font-family: var(--font);
+  vertical-align: middle;
+}
+
+body.mode-view .roster-table td::before,
+body.mode-static .roster-table td::before {
+  content: none;
+  display: none;
+}
+
+body.mode-view .roster-table .lo-mobile,
+body.mode-static .roster-table .lo-mobile,
+body.mode-view .roster-table .tc-date,
+body.mode-static .roster-table .tc-date {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+body.mode-view .tc-officials-table col.c-act,
+body.mode-static .tc-officials-table col.c-act,
+body.mode-view .pl-roster-table col.c-act,
+body.mode-static .pl-roster-table col.c-act {
+  width: 0;
+}
+
+body.mode-view .tc-officials-table col.c-email,
+body.mode-static .tc-officials-table col.c-email {
+  width: 0;
+}
+
+body.mode-view .tc-officials-table th.tc-email-col,
+body.mode-static .tc-officials-table th.tc-email-col,
+body.mode-view .tc-officials-table td.tc-email,
+body.mode-static .tc-officials-table td.tc-email {
+  display: none !important;
+}
+
+body.mode-view .tc-officials-table col.c-name,
+body.mode-static .tc-officials-table col.c-name { width: 22%; }
+body.mode-view .tc-officials-table col.c-pos,
+body.mode-static .tc-officials-table col.c-pos { width: 18%; }
+body.mode-view .tc-officials-table col.c-mobile,
+body.mode-static .tc-officials-table col.c-mobile { width: 14%; }
+body.mode-view .tc-officials-table col.c-date,
+body.mode-static .tc-officials-table col.c-date { width: 16%; }
+
+body.mode-edit .tc-officials-table col.c-act,
+body.mode-edit .pl-roster-table col.c-act {
+  width: 12%;
+}
+
 .acc-table-bar .module-select {
   height: 36px;
   min-width: 140px;
@@ -2787,12 +2879,12 @@ body.mode-edit .lo-view-only { display: none; }
   width: 100%;
   min-width: 0;
 }
-.tc-officials-table col.c-name { width: 22%; }
-.tc-officials-table col.c-pos { width: 15%; }
-.tc-officials-table col.c-mobile { width: 108px; }
-.tc-officials-table col.c-date { width: 128px; }
-.tc-officials-table col.c-email { width: auto; }
-.tc-officials-table col.c-act { width: 132px; }
+.tc-officials-table col.c-name { width: 17%; }
+.tc-officials-table col.c-pos { width: 14%; }
+.tc-officials-table col.c-mobile { width: 11%; }
+.tc-officials-table col.c-date { width: 13%; }
+.tc-officials-table col.c-email { width: 20%; }
+.tc-officials-table col.c-act { width: 12%; }
 .tc-officials-table th,
 .tc-officials-table td {
   text-align: left;
@@ -3625,7 +3717,7 @@ footer {
   }
   .lo-view-table { min-width: 520px; }
   .lo-roster-table { min-width: 640px; }
-  .tc-officials-table { min-width: 680px; }
+  .tc-officials-table { min-width: 0; }
   .tc-officials-table th,
   .tc-officials-table td { padding: 10px 12px; }
   .tc-officials-table col.c-date { width: 112px; }
@@ -3776,11 +3868,12 @@ footer {
     color: var(--text);
   }
 
-  /* View mode: roster tables (TC, LO, Teams) */
-  body.mode-view .roster-table colgroup,
-  body.mode-static .roster-table colgroup,
+  /* View mode: roster tables (TC, LO, Teams) as cards on phone */
   body.mode-view .roster-table thead,
   body.mode-static .roster-table thead { display: none !important; }
+
+  body.mode-view .roster-table colgroup,
+  body.mode-static .roster-table colgroup { display: none !important; }
 
   body.mode-view .roster-table,
   body.mode-static .roster-table,
@@ -3800,30 +3893,33 @@ footer {
 
   body.mode-view .roster-table td,
   body.mode-static .roster-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 10px;
-    padding: 5px 0;
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 4px 10px;
+    align-items: start;
+    padding: 6px 0;
     border: none;
     text-align: left !important;
+    white-space: normal;
   }
 
   body.mode-view .roster-table td::before,
   body.mode-static .roster-table td::before {
+    display: block;
     content: attr(data-label);
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--secondary);
-    flex-shrink: 0;
   }
 
   body.mode-view .roster-table td.lo-name,
   body.mode-static .roster-table td.lo-name,
   body.mode-view .roster-table td.lo-team,
   body.mode-static .roster-table td.lo-team {
+    display: block;
+    grid-column: 1 / -1;
     font-size: 15px;
     font-weight: 700;
     color: var(--text);
@@ -3835,7 +3931,14 @@ footer {
   body.mode-view .roster-table td.lo-name::before,
   body.mode-static .roster-table td.lo-name::before,
   body.mode-view .roster-table td.lo-team::before,
-  body.mode-static .roster-table td.lo-team::before { display: none; }
+  body.mode-static .roster-table td.lo-team::before { display: none; content: none; }
+
+  body.mode-view .roster-table td.tc-email,
+  body.mode-static .roster-table td.tc-email,
+  body.mode-view .tc-officials-table th.tc-email-col,
+  body.mode-static .tc-officials-table th.tc-email-col {
+    display: none !important;
+  }
 
   body.mode-view .table-wrap {
     background: transparent;
@@ -4651,7 +4754,7 @@ footer {
                 <th>Mobile</th>
                 <th>Arrival</th>
                 <th>Departure</th>
-                <th>Email</th>
+                <th class="tc-email-col">Email</th>
                 <th class="edit-only">Actions</th>
               </tr>
             </thead>
@@ -6135,13 +6238,16 @@ function renderTechCommittee(){
           <button type="button" class="btn" data-edit-tc="${escHtml(m.id)}">Edit</button>
           <button type="button" class="btn" data-del-tc="${escHtml(m.id)}">Remove</button>
         </td>` : '';
+    const emailCell = isEdit()
+      ? `<td class="tc-email" data-label="Email">${email}</td>`
+      : '';
     return `<tr>
       <td class="lo-name" data-label="Name">${escHtml(m.name||'')}</td>
       <td class="tc-pos" data-label="Position">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
       <td class="lo-mobile" data-label="Mobile">${mobile}</td>
       <td class="tc-date" data-label="Arrival">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
       <td class="tc-date" data-label="Departure">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
-      <td class="tc-email" data-label="Email">${email}</td>
+      ${emailCell}
       ${acts}
     </tr>`;
   }).join('');
