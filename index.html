@@ -113,13 +113,15 @@ body.mode-view .dir-fields input {
 }
 
 .topbar {
-  height: var(--chrome-h);
+  min-height: var(--chrome-h);
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 0 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--header);
+  gap: 20px;
+  padding: 10px 32px;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 58, 138, 0.92) 100%);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.14);
   position: sticky;
   top: 0;
   z-index: 60;
@@ -156,15 +158,82 @@ body.mode-view .dir-fields input {
   white-space: nowrap;
 }
 
+.topbar-brand .brand-kicker {
+  display: none;
+  margin: 0 0 2px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .topbar-brand .brand-sub {
   display: none;
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
+  margin: 2px 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
   letter-spacing: 0.01em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.topbar-hero-stats {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.topbar-stat {
+  min-width: 68px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.topbar-stat .v {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+.topbar-stat .l {
+  display: block;
+  margin-top: 2px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.topbar-stat.is-warn {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.topbar-stat.is-warn .v { color: #FDE68A; }
+
+@media (min-width: 1100px) {
+  .topbar-brand .brand-kicker,
+  .topbar-brand .brand-sub { display: block; }
 }
 
 .header-chip {
@@ -429,26 +498,6 @@ body.mode-view .dir-fields input {
 .nav-search-results .ns-meta { font-size: 11px; color: var(--secondary); margin-top: 3px; }
 .nav-search-results .ns-empty { padding: 16px 14px; font-size: 13px; color: var(--secondary); }
 
-.header-meta {
-  margin-left: 0;
-  flex-shrink: 0;
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.45;
-  min-width: 120px;
-}
-
-.header-meta strong {
-  display: block;
-  color: #FFFFFF;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  font-size: 11px;
-}
 
 /* Buttons */
 .btn {
@@ -979,6 +1028,7 @@ body.mode-view .dir-fields input {
 }
 
 body.on-home .page-head { display: none; }
+body.on-home #homeHero { display: none; }
 
 .kpi {
   background: var(--card);
@@ -1303,6 +1353,400 @@ tfoot td:nth-child(2) {
   font-family: var(--font);
 }
 
+/* ── Accommodation dashboard ── */
+#view-accommodation { padding-bottom: 12px; }
+
+.acc-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.acc-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 24px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #fff 0%, #f0f7ff 100%);
+  box-shadow: var(--shadow);
+}
+
+.acc-hero-text h2 {
+  margin: 0 0 6px;
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.acc-hero-text p,
+#accMeta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+#view-accommodation.acc-has-dirty #accMeta { color: #B45309; }
+
+.acc-hero-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.acc-stat-pill {
+  min-width: 78px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.acc-stat-pill .v {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.acc-stat-pill .l {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.acc-stat-pill.is-accent {
+  background: var(--selected);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+.acc-stat-pill.is-accent .v { color: var(--primary); }
+
+.acc-venue-panel {
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.acc-venue-panel .venue-bar {
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.acc-toolbar-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.acc-loc-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.acc-loc-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+  box-shadow: var(--shadow);
+}
+
+.acc-loc-pill:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+.acc-loc-pill.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  background: var(--selected);
+}
+
+.acc-loc-pill .acc-loc-num {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.acc-loc-pill .acc-loc-sub {
+  font-size: 11px;
+  color: var(--secondary);
+}
+
+.acc-table-panel {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.acc-table-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.acc-table-bar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.acc-table-bar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.acc-table-bar h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.acc-table-bar span {
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.acc-table-panel .table-wrap {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.acc-table-panel .add-form {
+  margin: 0;
+  border-radius: 0;
+  border-left: none;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.acc-table-panel .acc-table thead th {
+  background: var(--bg);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.acc-table-panel .acc-table tbody tr {
+  transition: background 0.12s;
+}
+
+.acc-table-panel .acc-table tbody tr:nth-child(even) {
+  background: rgba(248, 251, 255, 0.7);
+}
+
+.acc-table-panel .acc-table tbody tr:hover {
+  background: var(--hover);
+}
+
+.acc-table-panel .acc-table td {
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+
+.acc-dirty-hint {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  color: #B45309;
+  background: rgba(245, 158, 11, 0.12);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.acc-filter-block { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+.acc-filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.acc-toolbar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+body.on-acc .page-head { display: none; }
+body.on-mess .page-head { display: none; }
+body.on-lo .page-head { display: none; }
+body.on-tc .page-head { display: none; }
+body.on-teams .page-head { display: none; }
+
+.acc-table-bar .module-select {
+  height: 36px;
+  min-width: 140px;
+  max-width: 220px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+  font-family: var(--font);
+  font-size: 13px;
+  background: var(--card);
+  color: var(--text);
+}
+.acc-table-bar .module-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.acc-table-bar .module-search {
+  flex: 1;
+  min-width: 160px;
+  max-width: 360px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+  font-family: var(--font);
+  font-size: 13px;
+  background: var(--card);
+  color: var(--text);
+}
+.acc-table-bar .module-search:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.mess-boards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mess-board-panel .mess-board-body {
+  padding: 4px 8px 10px;
+  overflow: auto;
+  max-height: 420px;
+}
+
+.mess-board-panel .acc-table-bar .pax-tot {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--selected);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.mess-note {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: rgba(255, 251, 235, 0.9);
+  font-size: 13px;
+  color: #92400E;
+  line-height: 1.5;
+}
+
+.lo-pillars-wrap {
+  padding: 4px 2px 0;
+}
+
+.lo-pillars-wrap .adm-pillars { margin-bottom: 0; }
+
+.acc-form-panel {
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.acc-form-panel .adm-form {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  background: transparent;
+}
+
+body.mode-view #view-accommodation .acc-venue-legend { display: none !important; }
+
+.acc-venue-legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.acc-venue-legend-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Legacy acc aliases */
+.acc-page-head,
+.acc-page-title,
+.acc-page-meta,
+.acc-toolbar { display: none; }
+
 .acc-table { table-layout: fixed; width: 100%; }
 .acc-table col.c-org { width: 22%; }
 .acc-table col.c-loc { width: 14%; }
@@ -1318,7 +1762,7 @@ tfoot td:nth-child(2) {
   padding: 6px 8px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  background: var(--surface);
+  background: var(--card);
   font-family: var(--font-mono);
   font-size: 13px;
   text-align: right;
@@ -1351,7 +1795,7 @@ tfoot td:nth-child(2) {
   padding: 5px 10px;
   border-radius: 6px;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--card);
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
@@ -1370,16 +1814,6 @@ tfoot td:nth-child(2) {
   border-color: rgba(220, 38, 38, 0.25);
 }
 .acc-table .row-actions button.del:hover { background: rgba(220, 38, 38, 0.08); }
-.acc-dirty-hint {
-  display: inline-flex;
-  align-items: center;
-  font-size: 12px;
-  color: #B45309;
-  background: rgba(245, 158, 11, 0.12);
-  padding: 6px 12px;
-  border-radius: 8px;
-}
-#view-accommodation.acc-has-dirty #accMeta { color: #B45309; }
 
 /* Mess table */
 .mess-table { table-layout: fixed; width: 100%; }
@@ -1450,6 +1884,31 @@ tfoot td:nth-child(2) {
 }
 
 .venue-bar .hint { font-size: 12px; color: var(--secondary); margin-right: auto; }
+
+.venue-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.venue-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.venue-chip button {
+  border: none;
+  background: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.venue-chip button:hover { color: var(--danger); }
 
 .venue-bar input[type="text"] {
   font-family: var(--font);
@@ -2776,6 +3235,9 @@ footer {
   .home-kpi-grid { grid-template-columns: repeat(3, 1fr); }
   .home-hero { padding: 22px 20px; }
   .home-hero-stats { width: 100%; justify-content: flex-start; }
+  .acc-loc-strip { grid-template-columns: repeat(2, 1fr); }
+  .acc-hero { padding: 20px 18px; }
+  .acc-hero-stats { width: 100%; }
 
   .home-split,
   .mess-boards,
@@ -2842,16 +3304,12 @@ footer {
     order: 1;
   }
 
-  .header-chip {
+  .topbar-actions {
     order: 2;
     margin-left: auto;
   }
 
-  .header-logout {
-    order: 2;
-  }
-
-  .header-meta { display: none; }
+  .topbar-hero-stats { display: none; }
 
   .header-chip {
     display: inline-flex;
@@ -2962,6 +3420,9 @@ footer {
 
   .header-chip {
     display: inline-flex;
+  }
+
+  .topbar-actions {
     order: 2;
     margin-left: auto;
   }
@@ -3308,6 +3769,8 @@ footer {
   .home-loc-grid { grid-template-columns: 1fr 1fr; }
   .home-alert-item { grid-template-columns: 1fr; gap: 6px; }
   .home-alert-time { text-align: left; }
+  .acc-loc-strip { grid-template-columns: 1fr 1fr; }
+  .acc-stat-pill { min-width: 0; flex: 1 1 40%; }
 
   .kpi-grid,
   .mess-kpis,
@@ -3325,8 +3788,9 @@ footer {
     <div class="topbar-brand">
       <img class="logo" src="assets/logo.png" alt="Judo Cluster 2026">
       <div class="brand-text">
+        <p class="brand-kicker" id="brandKicker"></p>
         <span class="brand-name">OP Dashboard</span>
-        <span class="brand-sub">11th AIP Judo Cluster · Hyderabad</span>
+        <p class="brand-sub" id="brandSub"></p>
       </div>
     </div>
     <div class="header-search">
@@ -3339,12 +3803,11 @@ footer {
       </div>
       <div class="nav-search-results" id="navSearchResults"></div>
     </div>
-    <div class="header-meta" id="headerMeta">
-      <strong>CISF Host</strong>
-      Hyderabad
+    <div class="topbar-actions">
+      <div class="topbar-hero-stats" id="topbarHeroStats" aria-label="Travel overview"></div>
+      <div class="header-chip" id="headerChip" hidden>VIEW</div>
+      <button type="button" class="header-logout" id="btnLogout" title="Sign out">Sign out</button>
     </div>
-    <div class="header-chip" id="headerChip" hidden>VIEW</div>
-    <button type="button" class="header-logout" id="btnLogout" title="Sign out">Sign out</button>
   </header>
 
   <div class="app-body">
@@ -3415,117 +3878,144 @@ footer {
 
   <!-- ACCOMMODATION -->
   <section class="view" id="view-accommodation">
-    <div class="section-title">Accommodation roster <span id="accMeta">SAVES TO ACCOMMODATION.JSON</span></div>
-    <div class="venue-bar edit-only">
-      <span class="hint">Venues / stay locations</span>
-      <input type="text" id="newVenue" placeholder="Add venue e.g. Gachibowli Hostel">
-      <button type="button" class="btn primary" id="btnAddVenue">+ Add Venue</button>
-      <div class="venue-chips" id="venueChips"></div>
-    </div>
-    <div class="venue-bar view-only-venues" id="venueBarView" style="display:none;">
-      <span class="hint">Venues</span>
-      <div class="venue-chips" id="venueChipsView"></div>
-    </div>
-    <div class="controls">
-      <div class="filter-btns" id="locFilters"></div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-left:auto;">
-        <span class="acc-dirty-hint edit-only" id="accDirtyHint" hidden>Unsaved row changes — click Save on each edited row</span>
-        <button type="button" class="btn edit-only" id="btnImport" title="Reload from Excel">Import Excel</button>
-        <button type="button" class="btn primary edit-only" id="toggleAdd">+ Add Unit</button>
+    <div class="acc-dashboard">
+      <header class="acc-hero">
+        <div class="acc-hero-text">
+          <h2>Accommodation</h2>
+          <p id="accMeta">36 units · 4 venues · accommodation.json</p>
+        </div>
+        <div class="acc-hero-stats" id="accHeroStats"></div>
+      </header>
+
+      <div class="acc-venue-panel edit-only">
+        <div class="venue-bar">
+          <span class="hint">Venues / stay locations</span>
+          <input type="text" id="newVenue" placeholder="Add venue e.g. Gachibowli Hostel">
+          <button type="button" class="btn primary" id="btnAddVenue">+ Add Venue</button>
+          <div class="venue-chips" id="venueChips"></div>
+        </div>
       </div>
-    </div>
-    <div class="add-form" id="addForm">
-      <label>Organisation<input type="text" id="newOrg"></label>
-      <label>Location
-        <select id="newLoc"></select>
-      </label>
-      <label>GOs M<input class="num-field" type="number" id="newGOsM" value="0" min="0"></label>
-      <label>SOs M<input class="num-field" type="number" id="newSOsM" value="0" min="0"></label>
-      <label>ORs M<input class="num-field" type="number" id="newORsM" value="0" min="0"></label>
-      <label>GOs F<input class="num-field" type="number" id="newGOsF" value="0" min="0"></label>
-      <label>SOs F<input class="num-field" type="number" id="newSOsF" value="0" min="0"></label>
-      <label>ORs F<input class="num-field" type="number" id="newORsF" value="0" min="0"></label>
-      <button type="button" class="btn primary" id="saveAdd">Save</button>
-    </div>
-    <div class="table-wrap">
-      <table class="acc-table">
-        <colgroup>
-          <col class="c-org">
-          <col class="c-loc">
-          <col class="c-n"><col class="c-n"><col class="c-n">
-          <col class="c-n"><col class="c-n"><col class="c-n">
-          <col class="c-tot">
-          <col class="c-act">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Organisation</th><th>Location</th>
-            <th>GOs M</th><th>SOs M</th><th>ORs M</th>
-            <th>GOs F</th><th>SOs F</th><th>ORs F</th>
-            <th>Total</th><th></th>
-          </tr>
-        </thead>
-        <tbody id="accBody"></tbody>
-        <tfoot><tr id="accFoot"></tr></tfoot>
-      </table>
+
+      <div class="acc-loc-strip" id="accLocStrip"></div>
+
+      <div class="acc-table-panel">
+        <div class="acc-table-bar">
+          <div class="acc-table-bar-left">
+            <h3>Unit roster</h3>
+            <span id="accTableMeta">All units</span>
+          </div>
+          <div class="acc-table-bar-actions edit-only">
+            <span class="acc-dirty-hint edit-only" id="accDirtyHint" hidden>Unsaved changes — save each edited row</span>
+            <button type="button" class="btn edit-only" id="btnImport" title="Reload from Excel">Import Excel</button>
+            <button type="button" class="btn primary edit-only" id="toggleAdd">+ Add Unit</button>
+          </div>
+        </div>
+        <div class="add-form" id="addForm">
+          <label>Organisation<input type="text" id="newOrg"></label>
+          <label>Location
+            <select id="newLoc"></select>
+          </label>
+          <label>GOs M<input class="num-field" type="number" id="newGOsM" value="0" min="0"></label>
+          <label>SOs M<input class="num-field" type="number" id="newSOsM" value="0" min="0"></label>
+          <label>ORs M<input class="num-field" type="number" id="newORsM" value="0" min="0"></label>
+          <label>GOs F<input class="num-field" type="number" id="newGOsF" value="0" min="0"></label>
+          <label>SOs F<input class="num-field" type="number" id="newSOsF" value="0" min="0"></label>
+          <label>ORs F<input class="num-field" type="number" id="newORsF" value="0" min="0"></label>
+          <button type="button" class="btn primary" id="saveAdd">Save</button>
+        </div>
+        <div class="table-wrap">
+          <table class="acc-table">
+            <colgroup>
+              <col class="c-org">
+              <col class="c-loc">
+              <col class="c-n"><col class="c-n"><col class="c-n">
+              <col class="c-n"><col class="c-n"><col class="c-n">
+              <col class="c-tot">
+              <col class="c-act">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Organisation</th><th>Location</th>
+                <th>GOs M</th><th>SOs M</th><th>ORs M</th>
+                <th>GOs F</th><th>SOs F</th><th>ORs F</th>
+                <th>Total</th><th></th>
+              </tr>
+            </thead>
+            <tbody id="accBody"></tbody>
+            <tfoot><tr id="accFoot"></tr></tfoot>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- MESS -->
   <section class="view" id="view-mess">
-    <div class="mess-hero">
-      <div>
-        <h2>Mess</h2>
-        <p>Dining load at TGPA and own arrangements — unit mess tags for ops allocation.</p>
-      </div>
-    </div>
-
-    <div class="mess-kpis" id="messKpis"></div>
-
-    <div class="mess-boards">
-      <div class="mess-board">
-        <div class="mess-board-head">
-          <h3>Dining at TGPA mess</h3>
-          <span class="tot" id="messLeftTot">0 PAX</span>
+    <div class="acc-dashboard">
+      <header class="acc-hero">
+        <div class="acc-hero-text">
+          <h2>Mess</h2>
+          <p id="messMeta">Dining load · unit mess tags</p>
         </div>
-        <div class="mess-board-body" id="messDining"></div>
-      </div>
-      <div class="mess-board">
-        <div class="mess-board-head">
-          <h3>Own mess arrangement</h3>
-          <span class="tot" id="messRightTot">0 PAX</span>
-        </div>
-        <div class="mess-board-body" id="messOwn"></div>
-      </div>
-    </div>
+        <div class="acc-hero-stats" id="messHeroStats"></div>
+      </header>
 
-    <div class="section-title">Unit mess tags <span id="messTagMeta">ASSIGNMENT</span></div>
-    <div class="mess-toolbar">
-      <div class="filter-btns" id="messFilters"></div>
-      <span class="hint" id="messFilterHint">All units</span>
+      <div class="acc-loc-strip" id="messFilterStrip"></div>
+
+      <div class="mess-boards">
+        <div class="acc-table-panel mess-board-panel">
+          <div class="acc-table-bar">
+            <div class="acc-table-bar-left">
+              <h3>Dining at TGPA mess</h3>
+              <span>Contingent dining list</span>
+            </div>
+            <span class="pax-tot" id="messLeftTot">0 PAX</span>
+          </div>
+          <div class="mess-board-body" id="messDining"></div>
+        </div>
+        <div class="acc-table-panel mess-board-panel">
+          <div class="acc-table-bar">
+            <div class="acc-table-bar-left">
+              <h3>Own mess arrangement</h3>
+              <span>Self-catered contingents</span>
+            </div>
+            <span class="pax-tot" id="messRightTot">0 PAX</span>
+          </div>
+          <div class="mess-board-body" id="messOwn"></div>
+        </div>
+      </div>
+
+      <div class="acc-table-panel">
+        <div class="acc-table-bar">
+          <div class="acc-table-bar-left">
+            <h3>Unit mess tags</h3>
+            <span id="messTableMeta">All units</span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="mess-table acc-table">
+            <colgroup>
+              <col class="c-org">
+              <col class="c-stay">
+              <col class="c-mess">
+              <col class="c-str">
+              <col class="c-act">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Organisation</th>
+                <th>Stay</th>
+                <th>Mess</th>
+                <th class="c-str">Strength</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="messBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mess-note" id="messNote" hidden></p>
     </div>
-    <div class="table-wrap">
-      <table class="mess-table">
-        <colgroup>
-          <col class="c-org">
-          <col class="c-stay">
-          <col class="c-mess">
-          <col class="c-str">
-          <col class="c-act">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Organisation</th>
-            <th>Stay</th>
-            <th>Mess</th>
-            <th class="c-str">Strength</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="messBody"></tbody>
-      </table>
-    </div>
-    <div class="mess-note" id="messNote"></div>
   </section>
 
   <!-- ARRIVAL / DEPARTURE (shared board; page set by sidebar) -->
@@ -3809,262 +4299,310 @@ footer {
 
   <!-- LIAISON OFFICERS -->
   <section class="view" id="view-lo">
-    <div class="lo-view-only">
-      <p class="lo-view-lead">Liaison officer allotted to each contingent team.</p>
-      <div class="lo-view-bar">
-        <input class="lo-view-search" id="loViewSearch" type="search" placeholder="Search team, liaison officer, rank, mobile…" autocomplete="off">
-        <span class="lo-view-meta" id="loViewMeta"></span>
-      </div>
-      <div class="lo-view-wrap">
-        <table class="lo-view-table lo-roster-table">
-          <colgroup>
-            <col class="c-team"><col class="c-lo"><col class="c-rank"><col class="c-mobile">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Team</th>
-              <th>Liaison officer</th>
-              <th>Rank</th>
-              <th>Mobile</th>
-            </tr>
-          </thead>
-          <tbody id="loViewBody"></tbody>
-        </table>
-        <div class="lo-view-empty" id="loViewEmpty" hidden>No teams match this search.</div>
-      </div>
-    </div>
-
-    <div class="lo-edit-block">
-    <p class="adm-lead">Onboard liaison officers, then assign one LO to each contingent team.</p>
-    <div class="adm-kpis" id="loKpis"></div>
-    <div class="adm-pillars" id="loPillars">
-      <button type="button" class="adm-pillar active" data-lo="onboard">
-        <span class="step">01</span>
-        <span class="ttl">Onboarding</span>
-        <span class="sub">CISF No · Name · Rank · Unit · Mobile</span>
-      </button>
-      <button type="button" class="adm-pillar" data-lo="assign">
-        <span class="step">02</span>
-        <span class="ttl">Team assignment</span>
-        <span class="sub">Allot LO to each team · — until assigned</span>
-      </button>
-    </div>
-
-    <div class="adm-panel active" id="loPanelOnboard">
-      <div class="adm-form edit-only" id="loOfficerForm">
-        <div class="form-head">
-          <strong id="loOfficerFormTitle">Onboard LO</strong>
-          <span>Identity for liaison duty</span>
+    <div class="acc-dashboard">
+      <header class="acc-hero">
+        <div class="acc-hero-text">
+          <h2>Liaison Officers</h2>
+          <p id="loMeta">LO roster · team assignments</p>
         </div>
-        <input type="hidden" id="loOfficerId" value="">
-        <label>CISF No (9 digits)
-          <input id="loCisf" inputmode="numeric" maxlength="9" placeholder="9-digit CISF No" autocomplete="off">
-        </label>
-        <label>Name
-          <input id="loName" placeholder="Full name" autocomplete="off">
-        </label>
-        <label>Rank
-          <input id="loRank" placeholder="e.g. SI / ASI / HC" autocomplete="off">
-        </label>
-        <label>Unit
-          <input id="loUnit" placeholder="Unit / Battalion" autocomplete="off">
-        </label>
-        <label>Mobile No (10 digits)
-          <input id="loMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
-        </label>
-        <div class="form-actions">
-          <button type="button" class="btn primary" id="loOfficerSave">Onboard</button>
-          <button type="button" class="btn" id="loOfficerReset">Clear</button>
+        <div class="acc-hero-stats" id="loHeroStats"></div>
+      </header>
+
+      <div class="lo-view-only">
+        <div class="acc-table-panel">
+          <div class="acc-table-bar">
+            <div class="acc-table-bar-left">
+              <h3>Team roster</h3>
+              <span id="loViewMeta">All contingents</span>
+            </div>
+            <input class="module-search lo-view-search" id="loViewSearch" type="search" placeholder="Search team, LO, rank, mobile…" autocomplete="off">
+          </div>
+          <div class="table-wrap lo-view-wrap">
+            <table class="lo-view-table lo-roster-table acc-table">
+              <colgroup>
+                <col class="c-team"><col class="c-lo"><col class="c-rank"><col class="c-mobile">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Liaison officer</th>
+                  <th>Rank</th>
+                  <th>Mobile</th>
+                </tr>
+              </thead>
+              <tbody id="loViewBody"></tbody>
+            </table>
+            <div class="lo-view-empty" id="loViewEmpty" hidden>No teams match this search.</div>
+          </div>
         </div>
       </div>
-      <div class="adm-toolbar">
-        <input class="adm-search" id="loOnboardSearch" type="search" placeholder="Search name, CISF, rank, unit…" autocomplete="off">
-        <span class="hint" id="loOnboardCount"></span>
-      </div>
-      <div class="adm-table-wrap">
-        <table class="adm-table">
-          <thead>
-            <tr>
-              <th>#</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Mobile</th><th>Teams</th><th class="edit-only">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="loOfficerBody"></tbody>
-        </table>
-        <div class="adm-empty" id="loOfficerEmpty" hidden>No liaison officers yet.</div>
-      </div>
-    </div>
 
-    <div class="adm-panel" id="loPanelAssign">
-      <div class="adm-toolbar">
-        <div class="filter-btns" id="loAssignFilters">
-          <button type="button" class="active" data-lo-filter="ALL">All teams</button>
-          <button type="button" data-lo-filter="pending">Unassigned</button>
-          <button type="button" data-lo-filter="assigned">Assigned</button>
+      <div class="lo-edit-block">
+        <div class="acc-venue-panel lo-pillars-wrap">
+          <div class="adm-pillars" id="loPillars">
+            <button type="button" class="adm-pillar active" data-lo="onboard">
+              <span class="step">01</span>
+              <span class="ttl">Onboarding</span>
+              <span class="sub">CISF No · Name · Rank · Unit · Mobile</span>
+            </button>
+            <button type="button" class="adm-pillar" data-lo="assign">
+              <span class="step">02</span>
+              <span class="ttl">Team assignment</span>
+              <span class="sub">Allot LO to each team · — until assigned</span>
+            </button>
+          </div>
         </div>
-        <input class="adm-search" id="loAssignSearch" type="search" placeholder="Search team…" autocomplete="off">
-        <span class="hint" id="loAssignCount"></span>
-      </div>
-      <div class="adm-table-wrap">
-        <table class="adm-table lo-assign-table">
-          <thead>
-            <tr>
-              <th>Team</th><th>Stay</th><th>Strength</th><th>Liaison officer</th><th>Mobile</th><th>DOA</th><th>LO location</th>
-            </tr>
-          </thead>
-          <tbody id="loAssignBody"></tbody>
-        </table>
-        <div class="adm-empty" id="loAssignEmpty" hidden>No teams found.</div>
+
+        <div class="adm-panel active" id="loPanelOnboard">
+          <div class="acc-form-panel edit-only" id="loOfficerForm">
+            <div class="adm-form">
+              <div class="form-head">
+                <strong id="loOfficerFormTitle">Onboard LO</strong>
+                <span>Identity for liaison duty</span>
+              </div>
+              <input type="hidden" id="loOfficerId" value="">
+              <label>CISF No (9 digits)
+                <input id="loCisf" inputmode="numeric" maxlength="9" placeholder="9-digit CISF No" autocomplete="off">
+              </label>
+              <label>Name
+                <input id="loName" placeholder="Full name" autocomplete="off">
+              </label>
+              <label>Rank
+                <input id="loRank" placeholder="e.g. SI / ASI / HC" autocomplete="off">
+              </label>
+              <label>Unit
+                <input id="loUnit" placeholder="Unit / Battalion" autocomplete="off">
+              </label>
+              <label>Mobile No (10 digits)
+                <input id="loMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+              </label>
+              <div class="form-actions">
+                <button type="button" class="btn primary" id="loOfficerSave">Onboard</button>
+                <button type="button" class="btn" id="loOfficerReset">Clear</button>
+              </div>
+            </div>
+          </div>
+          <div class="acc-table-panel">
+            <div class="acc-table-bar">
+              <div class="acc-table-bar-left">
+                <h3>LO pool</h3>
+                <span id="loOnboardCount">0 officers</span>
+              </div>
+              <input class="module-search adm-search" id="loOnboardSearch" type="search" placeholder="Search name, CISF, rank…" autocomplete="off">
+            </div>
+            <div class="adm-table-wrap">
+              <table class="adm-table acc-table">
+                <thead>
+                  <tr>
+                    <th>#</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Mobile</th><th>Teams</th><th class="edit-only">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="loOfficerBody"></tbody>
+              </table>
+              <div class="adm-empty" id="loOfficerEmpty" hidden>No liaison officers yet.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-panel" id="loPanelAssign">
+          <div class="acc-loc-strip" id="loAssignStrip"></div>
+          <div class="acc-table-panel">
+            <div class="acc-table-bar">
+              <div class="acc-table-bar-left">
+                <h3>Team assignments</h3>
+                <span id="loAssignCount">0 teams</span>
+              </div>
+              <input class="module-search adm-search" id="loAssignSearch" type="search" placeholder="Search team…" autocomplete="off">
+            </div>
+            <div class="adm-table-wrap">
+              <table class="adm-table lo-assign-table acc-table">
+                <thead>
+                  <tr>
+                    <th>Team</th><th>Stay</th><th>Strength</th><th>Liaison officer</th><th>Mobile</th><th>DOA</th><th>LO location</th>
+                  </tr>
+                </thead>
+                <tbody id="loAssignBody"></tbody>
+              </table>
+              <div class="adm-empty" id="loAssignEmpty" hidden>No teams found.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div><!-- .lo-edit-block -->
   </section>
 
   <!-- TECHNICAL COMMITTEE -->
   <section class="view" id="view-tc">
-    <p class="tc-lead">Technical committee members for each game discipline.</p>
-    <div class="filter-btns tc-game-tabs" id="tcGameTabs"></div>
-    <h2 class="tc-game-title" id="tcGameTitle"></h2>
+    <div class="acc-dashboard">
+      <header class="acc-hero">
+        <div class="acc-hero-text">
+          <h2>Technical Committee</h2>
+          <p id="tcMeta">Officials by discipline</p>
+        </div>
+        <div class="acc-hero-stats" id="tcHeroStats"></div>
+      </header>
 
-    <div class="adm-form edit-only" id="tcMemberForm">
-      <div class="form-head">
-        <strong id="tcMemberFormTitle">Add member</strong>
-        <span id="tcMemberFormHint">Saves to data/tech_committee.json</span>
-      </div>
-      <input type="hidden" id="tcMemberId" value="">
-      <label>Game
-        <select id="tcMemberGame"></select>
-      </label>
-      <label>Name
-        <input id="tcMemberName" placeholder="Full name" autocomplete="off">
-      </label>
-      <label>Position
-        <input id="tcMemberRole" placeholder="e.g. Technical Official / Jury / TTO" autocomplete="off">
-      </label>
-      <label>Mobile No (10 digits)
-        <input id="tcMemberMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
-      </label>
-      <label>Arrival
-        <input id="tcMemberArrival" placeholder="DD/MM/YYYY or with time" autocomplete="off">
-      </label>
-      <label>Departure
-        <input id="tcMemberDeparture" placeholder="DD/MM/YYYY or with time" autocomplete="off">
-      </label>
-      <label>Email
-        <input id="tcMemberEmail" type="email" placeholder="email@example.com" autocomplete="off">
-      </label>
-      <input type="hidden" id="tcMemberUnit" value="">
-      <input type="hidden" id="tcMemberGender" value="">
-      <input type="hidden" id="tcMemberRank" value="">
-      <div class="form-actions">
-        <button type="button" class="btn primary" id="tcMemberSave">Add member</button>
-        <button type="button" class="btn" id="tcMemberReset">Clear</button>
-      </div>
-    </div>
+      <div class="acc-loc-strip" id="tcGameStrip"></div>
 
-    <div class="lo-view-bar">
-      <input class="lo-view-search" id="tcViewSearch" type="search" placeholder="Search name, position, mobile, email…" autocomplete="off">
-      <span class="lo-view-meta" id="tcViewMeta"></span>
-    </div>
-    <div class="lo-view-wrap">
-      <table class="lo-view-table tc-officials-table">
-        <colgroup>
-          <col class="c-name"><col class="c-pos"><col class="c-mobile">
-          <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Mobile</th>
-            <th>Arrival</th>
-            <th>Departure</th>
-            <th>Email</th>
-            <th class="edit-only">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="tcViewBody"></tbody>
-      </table>
-      <div class="lo-view-empty" id="tcViewEmpty" hidden>No members added for this game yet.</div>
+      <div class="acc-form-panel edit-only" id="tcMemberForm">
+        <div class="adm-form">
+          <div class="form-head">
+            <strong id="tcMemberFormTitle">Add member</strong>
+            <span id="tcMemberFormHint">Saves to data/tech_committee.json</span>
+          </div>
+          <input type="hidden" id="tcMemberId" value="">
+          <label>Game
+            <select id="tcMemberGame"></select>
+          </label>
+          <label>Name
+            <input id="tcMemberName" placeholder="Full name" autocomplete="off">
+          </label>
+          <label>Position
+            <input id="tcMemberRole" placeholder="e.g. Technical Official / Jury / TTO" autocomplete="off">
+          </label>
+          <label>Mobile No (10 digits)
+            <input id="tcMemberMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+          </label>
+          <label>Arrival
+            <input id="tcMemberArrival" placeholder="DD/MM/YYYY or with time" autocomplete="off">
+          </label>
+          <label>Departure
+            <input id="tcMemberDeparture" placeholder="DD/MM/YYYY or with time" autocomplete="off">
+          </label>
+          <label>Email
+            <input id="tcMemberEmail" type="email" placeholder="email@example.com" autocomplete="off">
+          </label>
+          <input type="hidden" id="tcMemberUnit" value="">
+          <input type="hidden" id="tcMemberGender" value="">
+          <input type="hidden" id="tcMemberRank" value="">
+          <div class="form-actions">
+            <button type="button" class="btn primary" id="tcMemberSave">Add member</button>
+            <button type="button" class="btn" id="tcMemberReset">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-table-panel">
+        <div class="acc-table-bar">
+          <div class="acc-table-bar-left">
+            <h3 id="tcGameTitle">Officials</h3>
+            <span id="tcViewMeta">0 officials</span>
+          </div>
+          <input class="module-search lo-view-search" id="tcViewSearch" type="search" placeholder="Search name, position, mobile…" autocomplete="off">
+        </div>
+        <div class="table-wrap lo-view-wrap">
+          <table class="lo-view-table tc-officials-table acc-table">
+            <colgroup>
+              <col class="c-name"><col class="c-pos"><col class="c-mobile">
+              <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Mobile</th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Email</th>
+                <th class="edit-only">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tcViewBody"></tbody>
+          </table>
+          <div class="lo-view-empty" id="tcViewEmpty" hidden>No members added for this game yet.</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- PLAYERS -->
   <section class="view" id="view-teams">
-    <p class="pl-lead">Contingent team rosters from AIPSCB MIS — filter by sport and organisation.</p>
-    <div class="filter-btns pl-game-tabs" id="plGameTabs"></div>
-    <div class="pl-filters">
-      <h2 class="tc-game-title" id="plGameTitle" style="margin:0"></h2>
-      <select id="plTeamFilter" aria-label="Filter by team">
-        <option value="ALL">All teams</option>
-      </select>
-      <span class="pl-source" id="plSourceHint"></span>
-    </div>
+    <div class="acc-dashboard">
+      <header class="acc-hero">
+        <div class="acc-hero-text">
+          <h2>Teams</h2>
+          <p id="plMeta">Athlete rosters · AIPSCB MIS</p>
+        </div>
+        <div class="acc-hero-stats" id="plHeroStats"></div>
+      </header>
 
-    <div class="controls edit-only" style="margin-bottom:12px;">
-      <button type="button" class="btn primary" id="btnImportPlayers" title="Reload from AIPSCB - MIS Report.xlsx">Import MIS Report</button>
-      <span class="hint" id="plEditSource"></span>
-    </div>
+      <div class="acc-loc-strip" id="plGameStrip"></div>
 
-    <div class="adm-form edit-only" id="plPlayerForm">
-      <div class="form-head">
-        <strong id="plPlayerFormTitle">Add player</strong>
-        <span id="plPlayerFormHint">Saves to data/players.json</span>
+      <div class="acc-form-panel edit-only" id="plPlayerForm">
+        <div class="adm-form">
+          <div class="form-head">
+            <strong id="plPlayerFormTitle">Add player</strong>
+            <span id="plPlayerFormHint">Saves to data/players.json</span>
+          </div>
+          <input type="hidden" id="plPlayerId" value="">
+          <label>Name
+            <input id="plPlayerName" placeholder="Full name" autocomplete="off">
+          </label>
+          <label>Team / Organisation
+            <input id="plPlayerOrg" placeholder="e.g. ASSAM POLICE" autocomplete="off">
+          </label>
+          <label>Sport
+            <select id="plPlayerSport"></select>
+          </label>
+          <label>Event
+            <input id="plPlayerEvent" placeholder="e.g. Judo (Over 60 Kg. upto & including 66 Kg)" autocomplete="off">
+          </label>
+          <label>Gender
+            <select id="plPlayerGender">
+              <option value="">—</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </label>
+          <label>Mobile No (10 digits)
+            <input id="plPlayerMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
+          </label>
+          <label>Email
+            <input id="plPlayerEmail" type="email" placeholder="email@example.com" autocomplete="off">
+          </label>
+          <div class="form-actions">
+            <button type="button" class="btn primary" id="plPlayerSave">Add player</button>
+            <button type="button" class="btn" id="plPlayerReset">Clear</button>
+          </div>
+        </div>
       </div>
-      <input type="hidden" id="plPlayerId" value="">
-      <label>Name
-        <input id="plPlayerName" placeholder="Full name" autocomplete="off">
-      </label>
-      <label>Team / Organisation
-        <input id="plPlayerOrg" placeholder="e.g. ASSAM POLICE" autocomplete="off">
-      </label>
-      <label>Sport
-        <select id="plPlayerSport"></select>
-      </label>
-      <label>Event
-        <input id="plPlayerEvent" placeholder="e.g. Judo (Over 60 Kg. upto & including 66 Kg)" autocomplete="off">
-      </label>
-      <label>Gender
-        <select id="plPlayerGender">
-          <option value="">—</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </label>
-      <label>Mobile No (10 digits)
-        <input id="plPlayerMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="off">
-      </label>
-      <label>Email
-        <input id="plPlayerEmail" type="email" placeholder="email@example.com" autocomplete="off">
-      </label>
-      <div class="form-actions">
-        <button type="button" class="btn primary" id="plPlayerSave">Add player</button>
-        <button type="button" class="btn" id="plPlayerReset">Clear</button>
-      </div>
-    </div>
 
-    <div class="lo-view-bar">
-      <input class="lo-view-search" id="plViewSearch" type="search" placeholder="Search name, team, event, mobile…" autocomplete="off">
-      <span class="lo-view-meta" id="plViewMeta"></span>
-    </div>
-    <div class="lo-view-wrap">
-      <table class="lo-view-table pl-roster-table">
-        <colgroup>
-          <col class="c-name"><col class="c-team"><col class="c-gender">
-          <col class="c-event"><col class="c-mobile"><col class="c-act">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Team</th>
-            <th>M/F</th>
-            <th>Event(s)</th>
-            <th>Mobile</th>
-            <th class="edit-only">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="plViewBody"></tbody>
-      </table>
-      <div class="lo-view-empty" id="plViewEmpty" hidden>No athletes match this filter.</div>
+      <div class="acc-table-panel">
+        <div class="acc-table-bar">
+          <div class="acc-table-bar-left">
+            <h3 id="plGameTitle">Roster</h3>
+            <span id="plViewMeta">0 athletes</span>
+          </div>
+          <select class="module-select" id="plTeamFilter" aria-label="Filter by team">
+            <option value="ALL">All teams</option>
+          </select>
+          <input class="module-search lo-view-search" id="plViewSearch" type="search" placeholder="Search name, team, event…" autocomplete="off">
+          <div class="acc-table-bar-actions edit-only">
+            <span class="hint" id="plEditSource"></span>
+            <button type="button" class="btn primary" id="btnImportPlayers" title="Reload from AIPSCB - MIS Report.xlsx">Import MIS Report</button>
+          </div>
+        </div>
+        <div class="table-wrap lo-view-wrap">
+          <table class="lo-view-table pl-roster-table acc-table">
+            <colgroup>
+              <col class="c-name"><col class="c-team"><col class="c-gender">
+              <col class="c-event"><col class="c-mobile"><col class="c-act">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Team</th>
+                <th>M/F</th>
+                <th>Event(s)</th>
+                <th>Mobile</th>
+                <th class="edit-only">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="plViewBody"></tbody>
+          </table>
+          <div class="lo-view-empty" id="plViewEmpty" hidden>No athletes match this filter.</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -4183,11 +4721,6 @@ function venueOptions(selected){
 }
 function renderVenueUI(){
   const venues = getVenues();
-  const filters = document.getElementById('locFilters');
-  if(filters){
-    filters.innerHTML = `<button type="button" class="${activeLoc==='ALL'?'active':''}" data-loc="ALL">All</button>` +
-      venues.map(v => `<button type="button" class="${activeLoc===v?'active':''}" data-loc="${v.replace(/"/g,'&quot;')}">${v}</button>`).join('');
-  }
   const sel = document.getElementById('newLoc');
   if(sel){
     const cur = sel.value;
@@ -4205,14 +4738,78 @@ function renderVenueUI(){
   const viewChips = document.getElementById('venueChipsView');
   if(viewBar && viewChips){
     if(!isEdit()){
-      viewBar.style.display = 'flex';
+      viewBar.hidden = false;
       viewChips.innerHTML = venues.map(v =>
         `<span class="venue-chip"><span class="loc-tag ${locClass(v)}">${v}</span></span>`
       ).join('');
     } else {
-      viewBar.style.display = 'none';
+      viewBar.hidden = true;
     }
   }
+  syncAccLocUi();
+}
+
+function syncAccLocUi(){
+  document.querySelectorAll('#accLocStrip .acc-loc-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.loc === activeLoc);
+  });
+}
+
+function setAccLocationFilter(loc){
+  if(loc === activeLoc) return;
+  if(accDirtyOrgs.size && !confirm('Unsaved accommodation changes will be lost. Change location filter anyway?')){
+    syncAccLocUi();
+    return;
+  }
+  if(accDirtyOrgs.size){
+    accDirtyOrgs.clear();
+    updateAccDirtyUI();
+  }
+  activeLoc = loc;
+  syncAccLocUi();
+  if(accDirtyOrgs.size) applyAccDomFilter();
+  else renderAccommodation({ force: true });
+}
+
+function renderAccLocStrip(){
+  const strip = document.getElementById('accLocStrip');
+  if(!strip || !data) return;
+  const sum = data.summary || {};
+  const by = sum.by_location || {};
+  const venues = getVenues();
+  const totalStr = Math.max(sum.strength || 0, 1);
+  const allTeams = sum.teams || (data.units || []).length;
+  const allStrength = sum.strength || 0;
+  let html = `<button type="button" class="acc-loc-pill${activeLoc==='ALL'?' active':''}" data-loc="ALL">
+    <span class="loc-tag TGPA">All</span>
+    <span class="acc-loc-num">${allStrength}</span>
+    <span class="acc-loc-sub">${allTeams} units · 100%</span>
+  </button>`;
+  html += venues.map(loc => {
+    const x = by[loc] || { teams: 0, strength: 0 };
+    const pct = Math.round(((x.strength || 0) / totalStr) * 100);
+    return `<button type="button" class="acc-loc-pill${activeLoc===loc?' active':''}" data-loc="${loc.replace(/"/g,'&quot;')}">
+      <span class="loc-tag ${locClass(loc)}">${escHtml(loc)}</span>
+      <span class="acc-loc-num">${x.strength||0}</span>
+      <span class="acc-loc-sub">${x.teams||0} units · ${pct}%</span>
+    </button>`;
+  }).join('');
+  strip.innerHTML = html;
+  strip.querySelectorAll('.acc-loc-pill').forEach(btn => {
+    btn.onclick = () => setAccLocationFilter(btn.dataset.loc);
+  });
+}
+
+function renderAccHeroStats(filteredCount, filteredStrength){
+  const sum = data.summary || {};
+  const hero = document.getElementById('accHeroStats');
+  if(!hero) return;
+  const locLabel = activeLoc === 'ALL' ? 'All venues' : activeLoc;
+  hero.innerHTML = `
+    <div class="acc-stat-pill is-accent"><span class="v">${sum.teams||0}</span><span class="l">Teams</span></div>
+    <div class="acc-stat-pill"><span class="v">${sum.strength||0}</span><span class="l">Strength</span></div>
+    <div class="acc-stat-pill"><span class="v">${filteredCount}</span><span class="l">Showing</span></div>
+    <div class="acc-stat-pill"><span class="v">${filteredStrength}</span><span class="l">${escHtml(locLabel)}</span></div>`;
 }
 
 function toast(msg){
@@ -4256,6 +4853,7 @@ async function fetchData(){
 
 function renderAll(){
   if(!data) return;
+  renderTopbar();
   renderHome();
   renderAccommodation();
   renderMess();
@@ -4272,33 +4870,44 @@ function renderAll(){
   }
 }
 
+function renderTopbar(){
+  const sum = (data && data.summary) || {};
+  const ev = (data && data.event) || {};
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+  const todayArrivals = getTodayArrivalEvents((data && data.units) || []);
+
+  const kicker = document.getElementById('brandKicker');
+  if(kicker){
+    kicker.textContent = `${ev.city || 'Hyderabad'} · ${dateStr}`;
+  }
+  const brandName = document.querySelector('.topbar-brand .brand-name');
+  if(brandName){
+    const isEdit = !IS_STATIC && APP_MODE === 'edit';
+    brandName.textContent = isEdit ? 'Ops Edit' : (ev.title || '11th All India Police Judo Cluster 2026');
+  }
+  const sub = document.getElementById('brandSub');
+  if(sub){
+    sub.textContent = `${sum.teams||0} contingents · ${sum.strength||0} total strength · ${sum.male||0} male · ${sum.female||0} female`;
+  }
+  const stats = document.getElementById('topbarHeroStats');
+  if(stats){
+    stats.innerHTML = `
+      <div class="topbar-stat"><span class="v">${sum.travel_planned||0}</span><span class="l">Plans in</span></div>
+      <div class="topbar-stat is-warn"><span class="v">${sum.travel_awaited||0}</span><span class="l">Awaited</span></div>
+      <div class="topbar-stat"><span class="v">${todayArrivals.length}</span><span class="l">Today</span></div>`;
+  }
+}
+
 function renderHome(){
   const sum = data.summary || {};
-  const ev = (data && data.event) || {};
   const adm = (data && data.adm_staff) || {persons:[], tasks:[], detailments:[]};
   const admPersons = adm.persons || [];
   const admDets = adm.detailments || [];
   const admDetailed = new Set(admDets.map(d => d.person_id));
   const admPending = admPersons.filter(p => !admDetailed.has(p.id)).length;
-  const awaited = (data.units||[]).filter(u => (u.travel||{}).status !== 'planned');
   const todayArrivals = getTodayArrivalEvents(data.units || []);
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
-
-  const hero = document.getElementById('homeHero');
-  if(hero){
-    hero.innerHTML = `
-      <div class="home-hero-text">
-        <p class="home-hero-kicker">${escHtml(ev.city || 'Hyderabad')} · ${escHtml(dateStr)}</p>
-        <h2 class="home-hero-title">${escHtml(ev.title || '11th All India Police Judo Cluster 2026')}</h2>
-        <p class="home-hero-sub">${sum.teams||0} contingents · ${sum.strength||0} total strength · ${sum.male||0} male · ${sum.female||0} female</p>
-      </div>
-      <div class="home-hero-stats">
-        <div class="home-hero-stat"><span class="v">${sum.travel_planned||0}</span><span class="l">Plans in</span></div>
-        <div class="home-hero-stat is-warn"><span class="v">${sum.travel_awaited||0}</span><span class="l">Awaited</span></div>
-        <div class="home-hero-stat"><span class="v">${todayArrivals.length}</span><span class="l">Today</span></div>
-      </div>`;
-  }
+  const awaited = (data.units||[]).filter(u => (u.travel||{}).status !== 'planned');
 
   const kpiIcon = {
     accommodation: '<svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -4520,12 +5129,21 @@ function renderAccommodation(opts){
   opts = opts || {};
   renderVenueUI();
   const units = data.units || [];
-  document.getElementById('accMeta').textContent = `${units.length} UNITS · ${getVenues().length} VENUES · accommodation.json`;
+  document.getElementById('accMeta').textContent = `${units.length} units · ${getVenues().length} venues · accommodation.json`;
 
   if(!opts.force && accDirtyOrgs.size > 0){
     refreshAccLocSelects();
     applyAccDomFilter();
     updateAccDirtyUI();
+    renderAccLocStrip();
+    const visRows = [...document.querySelectorAll('#accBody tr[data-org]')].filter(tr => tr.style.display !== 'none');
+    const visStr = visRows.reduce((a, tr) => a + (parseInt(tr.querySelector('.total-col')?.textContent, 10) || 0), 0);
+    renderAccHeroStats(visRows.length, visStr);
+    const metaDirty = document.getElementById('accTableMeta');
+    if(metaDirty){
+      metaDirty.textContent = `${visRows.length} unit${visRows.length===1?'':'s'} · ${visStr} strength`;
+    }
+    document.body.classList.toggle('on-acc', !!document.querySelector('#view-accommodation.active'));
     return;
   }
 
@@ -4577,7 +5195,15 @@ function renderAccommodation(opts){
     <td>TOTAL</td><td>${filtered.length} units</td>
     <td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td>
     <td style="color:var(--orange)">${grand}</td><td></td>`;
+  renderAccLocStrip();
+  renderAccHeroStats(filtered.length, grand);
+  const tableMeta = document.getElementById('accTableMeta');
+  if(tableMeta){
+    const locLabel = activeLoc === 'ALL' ? 'all venues' : activeLoc;
+    tableMeta.textContent = `${filtered.length} unit${filtered.length===1?'':'s'} · ${grand} strength · ${locLabel}`;
+  }
   updateAccDirtyUI();
+  document.body.classList.toggle('on-acc', !!document.querySelector('#view-accommodation.active'));
 }
 
 function messTagClass(mess){
@@ -4604,6 +5230,48 @@ function renderMessDiningList(rows, emptyLabel){
   `).join('');
 }
 
+function messUnitsForFilter(id){
+  const units = (data && data.units) || [];
+  if(id === 'ALL') return units;
+  if(id === 'UNASSIGNED') return units.filter(u => !(u.mess||'').trim());
+  return units.filter(u => (u.mess||'') === id);
+}
+
+function messStrengthTotal(list){
+  return (list || []).reduce((a, u) => a + (u.total || sTotal(u)), 0);
+}
+
+function renderMessFilterStrip(){
+  const strip = document.getElementById('messFilterStrip');
+  if(!strip || !data) return;
+  const units = data.units || [];
+  const unassigned = units.filter(u => !(u.mess||'').trim()).length;
+  const filters = [
+    {id:'ALL', label:'All', tag:'TGPA', tagClass:''},
+    {id:'TGPA', label:'TGPA', tag:'TGPA', tagClass:'TGPA'},
+    {id:'Own Arrangement', label:'Own', tag:'Own', tagClass:'Own'},
+    {id:'NITHM', label:'NITHM', tag:'NITHM', tagClass:'NITHM'},
+    {id:'UNASSIGNED', label:'Unassigned', tag:'None', tagClass:'none'},
+  ];
+  strip.innerHTML = filters.map(f => {
+    const list = messUnitsForFilter(f.id);
+    const n = list.length;
+    const str = messStrengthTotal(list);
+    const tagCls = f.tagClass || 'TGPA';
+    return `<button type="button" class="acc-loc-pill${messFilter===f.id?' active':''}" data-mess="${f.id.replace(/"/g,'&quot;')}">
+      <span class="mess-tag ${tagCls}">${escHtml(f.label)}</span>
+      <span class="acc-loc-num">${str}</span>
+      <span class="acc-loc-sub">${n} unit${n===1?'':'s'}</span>
+    </button>`;
+  }).join('');
+  strip.querySelectorAll('.acc-loc-pill').forEach(btn => {
+    btn.onclick = () => {
+      messFilter = btn.dataset.mess;
+      renderMess();
+    };
+  });
+}
+
 function renderMess(){
   const tm = data.tgpa_mess || {dining_tgpa:[], own_mess:[]};
   const sum = data.summary || {};
@@ -4614,30 +5282,23 @@ function renderMess(){
   const rightTot = (tm.own_mess||[]).reduce((a,x)=>a+(x.total||0),0);
   const diningRows = (tm.dining_tgpa||[]).length + (tm.own_mess||[]).length;
 
-  document.getElementById('messKpis').innerHTML = `
-    <div class="mess-kpi"><div class="l">TGPA mess tag</div><div class="v accent">${byMess.TGPA||0}</div><div class="s">strength tagged TGPA</div></div>
-    <div class="mess-kpi"><div class="l">Own arrangement</div><div class="v ok">${byMess['Own Arrangement']||0}</div><div class="s">own mess tagged</div></div>
-    <div class="mess-kpi"><div class="l">Dining list pax</div><div class="v">${leftTot + rightTot}</div><div class="s">${diningRows} contingent rows</div></div>
-    <div class="mess-kpi"><div class="l">Unassigned</div><div class="v warn">${unassigned}</div><div class="s">units without mess tag</div></div>`;
+  const meta = document.getElementById('messMeta');
+  if(meta) meta.textContent = `${units.length} units · ${diningRows} dining rows · mess tags`;
+  const hero = document.getElementById('messHeroStats');
+  if(hero){
+    hero.innerHTML = `
+      <div class="acc-stat-pill is-accent"><span class="v">${byMess.TGPA||0}</span><span class="l">TGPA tag</span></div>
+      <div class="acc-stat-pill"><span class="v">${byMess['Own Arrangement']||0}</span><span class="l">Own mess</span></div>
+      <div class="acc-stat-pill"><span class="v">${leftTot + rightTot}</span><span class="l">Dining pax</span></div>
+      <div class="acc-stat-pill"><span class="v">${unassigned}</span><span class="l">Unassigned</span></div>`;
+  }
 
   document.getElementById('messLeftTot').textContent = leftTot + ' PAX';
   document.getElementById('messRightTot').textContent = rightTot + ' PAX';
   document.getElementById('messDining').innerHTML = renderMessDiningList(tm.dining_tgpa, 'No TGPA dining rows');
   document.getElementById('messOwn').innerHTML = renderMessDiningList(tm.own_mess, 'No own-mess rows');
 
-  const filters = [
-    {id:'ALL', label:'All'},
-    {id:'TGPA', label:'TGPA'},
-    {id:'Own Arrangement', label:'Own'},
-    {id:'NITHM', label:'NITHM'},
-    {id:'UNASSIGNED', label:'Unassigned'},
-  ];
-  document.getElementById('messFilters').innerHTML = filters.map(f=>{
-    const n = f.id === 'ALL' ? units.length
-      : f.id === 'UNASSIGNED' ? unassigned
-      : units.filter(u => (u.mess||'') === f.id).length;
-    return `<button type="button" class="${messFilter===f.id?'active':''}" data-mess="${f.id}">${f.label} (${n})</button>`;
-  }).join('');
+  renderMessFilterStrip();
 
   const mq = searchTerm.toLowerCase().trim();
   const messUnits = units.filter(u=>{
@@ -4646,9 +5307,11 @@ function renderMess(){
     if(messFilter === 'UNASSIGNED') return !(u.mess||'').trim();
     return (u.mess||'') === messFilter;
   });
-  document.getElementById('messTagMeta').textContent = messUnits.length + ' UNITS';
-  document.getElementById('messFilterHint').textContent =
-    messFilter === 'ALL' ? 'Showing all unit tags' : ('Filtered · ' + messFilter);
+  const filterLabel = messFilter === 'ALL' ? 'All units' : messFilter === 'UNASSIGNED' ? 'Unassigned tags' : messFilter;
+  const tableMeta = document.getElementById('messTableMeta');
+  if(tableMeta){
+    tableMeta.textContent = `${messUnits.length} unit${messUnits.length===1?'':'s'} · ${messStrengthTotal(messUnits)} strength · ${filterLabel}`;
+  }
 
   document.getElementById('messBody').innerHTML = messUnits.length ? messUnits.map(u=>{
     const cls = locClass(u.location);
@@ -4677,8 +5340,10 @@ function renderMess(){
 
   const note = tm.note || '';
   const noteEl = document.getElementById('messNote');
-  noteEl.textContent = note;
-  noteEl.style.display = note ? '' : 'none';
+  if(noteEl){
+    noteEl.textContent = note;
+    noteEl.hidden = !note;
+  }
 }
 
 function getHubs(){
@@ -5240,19 +5905,24 @@ function fillTcMemberForm(m){
   if(m.game) tcGame = m.game;
 }
 
-function renderTcGameTabs(){
-  const tabs = document.getElementById('tcGameTabs');
+function renderTcGameStrip(members){
+  const strip = document.getElementById('tcGameStrip');
   const games = tcGames();
-  if(!tabs) return;
+  if(!strip) return;
   if(!games.includes(tcGame)) tcGame = games[0] || TC_GAMES[0];
-  tabs.innerHTML = games.map(g =>
-    `<button type="button" data-tc-game="${escHtml(g)}" class="${g===tcGame?'active':''}">${escHtml(g)}</button>`
-  ).join('');
-  tabs.querySelectorAll('[data-tc-game]').forEach(btn=>{
+  strip.innerHTML = games.map(g => {
+    const n = (members || []).filter(m => m.game === g).length;
+    return `<button type="button" class="acc-loc-pill${g===tcGame?' active':''}" data-tc-game="${escHtml(g)}">
+      <span class="loc-tag TGPA">${escHtml(g)}</span>
+      <span class="acc-loc-num">${n}</span>
+      <span class="acc-loc-sub">official${n===1?'':'s'}</span>
+    </button>`;
+  }).join('');
+  strip.querySelectorAll('[data-tc-game]').forEach(btn=>{
     btn.onclick = () => setTcGame(btn.dataset.tcGame);
   });
   const title = document.getElementById('tcGameTitle');
-  if(title) title.textContent = tcGame;
+  if(title) title.textContent = tcGame + ' officials';
   const gameSel = document.getElementById('tcMemberGame');
   if(gameSel){
     gameSel.innerHTML = games.map(g =>
@@ -5261,18 +5931,33 @@ function renderTcGameTabs(){
   }
 }
 
+function renderTcHeroStats(members, gameMembers){
+  const meta = document.getElementById('tcMeta');
+  if(meta) meta.textContent = `${tcGame} · ${gameMembers.length} officials · tech_committee.json`;
+  const hero = document.getElementById('tcHeroStats');
+  if(hero){
+    const withMobile = gameMembers.filter(m => m.mobile).length;
+    hero.innerHTML = `
+      <div class="acc-stat-pill is-accent"><span class="v">${gameMembers.length}</span><span class="l">${escHtml(tcGame)}</span></div>
+      <div class="acc-stat-pill"><span class="v">${members.length}</span><span class="l">All games</span></div>
+      <div class="acc-stat-pill"><span class="v">${withMobile}</span><span class="l">With mobile</span></div>
+      <div class="acc-stat-pill"><span class="v">${tcGames().length}</span><span class="l">Disciplines</span></div>`;
+  }
+}
+
 function renderTechCommittee(){
   if(!data) return;
-  renderTcGameTabs();
   const tc = getTc();
   const members = tc.members || [];
   const gameMembers = members.filter(m => m.game === tcGame);
+  renderTcGameStrip(members);
+  renderTcHeroStats(members, gameMembers);
   const q = (tcSearchQ || '').toLowerCase().trim();
   let list = tcSortMembers(gameMembers);
   if(q) list = list.filter(m => tcSearchHay(m).includes(q));
 
   const vmeta = document.getElementById('tcViewMeta');
-  if(vmeta) vmeta.textContent = `${list.length} of ${gameMembers.length} official${gameMembers.length===1?'':'s'}`;
+  if(vmeta) vmeta.textContent = `${list.length} of ${gameMembers.length} shown`;
 
   const vbody = document.getElementById('tcViewBody');
   const vempty = document.getElementById('tcViewEmpty');
@@ -5423,19 +6108,25 @@ function setPlGame(game){
   renderPlayers();
 }
 
-function renderPlGameTabs(){
-  const tabs = document.getElementById('plGameTabs');
+function renderPlGameStrip(all){
+  const strip = document.getElementById('plGameStrip');
   const sports = plSports();
-  if(!tabs) return;
+  if(!strip) return;
   if(!sports.includes(plGame)) plGame = sports[0] || 'Judo';
-  tabs.innerHTML = sports.map(g =>
-    `<button type="button" data-pl-game="${escHtml(g)}" class="${g===plGame?'active':''}">${escHtml(g)}</button>`
-  ).join('');
-  tabs.querySelectorAll('[data-pl-game]').forEach(btn=>{
+  strip.innerHTML = sports.map(g => {
+    const n = (all || []).filter(p => playerHasSport(p, g)).length;
+    const teams = new Set((all || []).filter(p => playerHasSport(p, g)).map(p => p.org).filter(Boolean)).size;
+    return `<button type="button" class="acc-loc-pill${g===plGame?' active':''}" data-pl-game="${escHtml(g)}">
+      <span class="loc-tag TGPA">${escHtml(g)}</span>
+      <span class="acc-loc-num">${n}</span>
+      <span class="acc-loc-sub">${teams} team${teams===1?'':'s'}</span>
+    </button>`;
+  }).join('');
+  strip.querySelectorAll('[data-pl-game]').forEach(btn=>{
     btn.onclick = () => setPlGame(btn.dataset.plGame);
   });
   const title = document.getElementById('plGameTitle');
-  if(title) title.textContent = plGame;
+  if(title) title.textContent = plGame + ' roster';
   const sportSel = document.getElementById('plPlayerSport');
   if(sportSel){
     sportSel.innerHTML = sports.map(g =>
@@ -5444,10 +6135,29 @@ function renderPlGameTabs(){
   }
 }
 
-function renderPlTeamFilter(allPlayers){
+function renderPlHeroStats(all, sportPlayers){
+  const pl = getPlayers();
+  const src = pl.source_file || 'players.json';
+  const meta = document.getElementById('plMeta');
+  if(meta){
+    meta.textContent = `${all.length} athletes · ${src}`;
+  }
+  const hero = document.getElementById('plHeroStats');
+  if(hero){
+    const teams = new Set(sportPlayers.map(p => p.org).filter(Boolean)).size;
+    const withMobile = sportPlayers.filter(p => p.mobile).length;
+    hero.innerHTML = `
+      <div class="acc-stat-pill is-accent"><span class="v">${sportPlayers.length}</span><span class="l">${escHtml(plGame)}</span></div>
+      <div class="acc-stat-pill"><span class="v">${all.length}</span><span class="l">All sports</span></div>
+      <div class="acc-stat-pill"><span class="v">${teams}</span><span class="l">Teams</span></div>
+      <div class="acc-stat-pill"><span class="v">${withMobile}</span><span class="l">With mobile</span></div>`;
+  }
+}
+
+function renderPlTeamFilter(sportPlayers){
   const sel = document.getElementById('plTeamFilter');
   if(!sel) return;
-  const orgs = [...new Set(allPlayers.map(p => p.org).filter(Boolean))].sort();
+  const orgs = [...new Set((sportPlayers || []).map(p => p.org).filter(Boolean))].sort();
   const cur = plTeam;
   sel.innerHTML = `<option value="ALL">All teams</option>` +
     orgs.map(o => `<option value="${escHtml(o)}"${o===cur?' selected':''}>${escHtml(o)}</option>`).join('');
@@ -5507,15 +6217,14 @@ function renderPlayerRows(list, sport){
 
 function renderPlayers(){
   if(!data) return;
-  renderPlGameTabs();
   const pl = getPlayers();
   const all = pl.players || [];
   const sportPlayers = all.filter(p => playerHasSport(p, plGame));
-  renderPlTeamFilter(all);
+  renderPlGameStrip(all);
+  renderPlHeroStats(all, sportPlayers);
+  renderPlTeamFilter(sportPlayers);
 
-  const src = pl.source_file ? `Source: ${pl.source_file}` : '';
-  const srcView = document.getElementById('plSourceHint');
-  if(srcView) srcView.textContent = src || (all.length ? `${all.length} athletes loaded` : 'No roster loaded — Import MIS Report on Edit server');
+  const src = pl.source_file ? pl.source_file : '';
   const srcEdit = document.getElementById('plEditSource');
   if(srcEdit) srcEdit.textContent = src ? `${all.length} athletes · ${src}` : `${all.length} athletes`;
 
@@ -5525,7 +6234,8 @@ function renderPlayers(){
   if(q) list = list.filter(p => plSearchHay(p, plGame).includes(q));
 
   const vmeta = document.getElementById('plViewMeta');
-  if(vmeta) vmeta.textContent = `${list.length} of ${sportPlayers.length} in ${plGame}`;
+  const teamLabel = plTeam === 'ALL' ? 'all teams' : plTeam;
+  if(vmeta) vmeta.textContent = `${list.length} shown · ${sportPlayers.length} in ${plGame} · ${teamLabel}`;
 
   renderPlayerRows(list, plGame);
 }
@@ -6014,6 +6724,41 @@ function loOfficerSelectHtml(selectedId){
   return html;
 }
 
+function renderLoHeroStats(officers, assignedTeams, pendingTeams, teamCount){
+  const meta = document.getElementById('loMeta');
+  if(meta) meta.textContent = `${teamCount} teams · ${officers.length} LO · lo.json`;
+  const hero = document.getElementById('loHeroStats');
+  if(hero){
+    hero.innerHTML = `
+      <div class="acc-stat-pill is-accent"><span class="v">${officers.length}</span><span class="l">LO pool</span></div>
+      <div class="acc-stat-pill"><span class="v">${assignedTeams}</span><span class="l">Assigned</span></div>
+      <div class="acc-stat-pill"><span class="v">${pendingTeams}</span><span class="l">Pending</span></div>
+      <div class="acc-stat-pill"><span class="v">${teamCount}</span><span class="l">Teams</span></div>`;
+  }
+}
+
+function renderLoAssignStrip(teams, assignedTeams, pendingTeams){
+  const strip = document.getElementById('loAssignStrip');
+  if(!strip) return;
+  const pills = [
+    {id:'ALL', label:'All teams', count: teams.length, sub: `${teams.length} contingents`},
+    {id:'pending', label:'Unassigned', count: pendingTeams, sub: 'needs LO'},
+    {id:'assigned', label:'Assigned', count: assignedTeams, sub: 'LO allotted'},
+  ];
+  strip.innerHTML = pills.map(p => `
+    <button type="button" class="acc-loc-pill${loAssignFilter===p.id?' active':''}" data-lo-filter="${p.id}">
+      <span class="loc-tag ${p.id==='pending'?'none':'TGPA'}">${escHtml(p.label)}</span>
+      <span class="acc-loc-num">${p.count}</span>
+      <span class="acc-loc-sub">${escHtml(p.sub)}</span>
+    </button>`).join('');
+  strip.querySelectorAll('.acc-loc-pill').forEach(btn => {
+    btn.onclick = () => {
+      loAssignFilter = btn.dataset.loFilter;
+      renderLoStaff();
+    };
+  });
+}
+
 function renderLoViewTable(teams, assignByTeam, officerMap, assignedTeams, pendingTeams){
   const q = (loViewQ || '').toLowerCase().trim();
   let tlist = teams.slice();
@@ -6026,7 +6771,7 @@ function renderLoViewTable(teams, assignByTeam, officerMap, assignedTeams, pendi
     });
   }
   const meta = document.getElementById('loViewMeta');
-  if(meta) meta.textContent = `${assignedTeams} assigned · ${pendingTeams} pending · ${teams.length} teams`;
+  if(meta) meta.textContent = `${tlist.length} shown · ${assignedTeams} assigned · ${pendingTeams} pending`;
   const body = document.getElementById('loViewBody');
   const empty = document.getElementById('loViewEmpty');
   const wrap = body && body.closest('.lo-view-wrap');
@@ -6070,18 +6815,11 @@ function renderLoStaff(){
   const assignedTeams = teams.filter(u => (assignByTeam[u.org] || {}).officer_id).length;
   const pendingTeams = teams.length - assignedTeams;
 
+  renderLoHeroStats(officers, assignedTeams, pendingTeams, teams.length);
+
   if(!isEdit()){
     renderLoViewTable(teams, assignByTeam, officerMap, assignedTeams, pendingTeams);
     return;
-  }
-
-  const kpis = document.getElementById('loKpis');
-  if(kpis){
-    kpis.innerHTML = `
-      <div class="adm-kpi"><div class="l">LO onboarded</div><div class="v">${officers.length}</div><div class="s">liaison officers</div></div>
-      <div class="adm-kpi ok"><div class="l">Teams assigned</div><div class="v">${assignedTeams}</div><div class="s">of ${teams.length} contingents</div></div>
-      <div class="adm-kpi warn"><div class="l">Teams pending</div><div class="v">${pendingTeams}</div><div class="s">showing —</div></div>
-      <div class="adm-kpi"><div class="l">LO available</div><div class="v">${officers.length}</div><div class="s">in pool</div></div>`;
   }
 
   setLoTab(loTab);
@@ -6128,12 +6866,7 @@ function renderLoStaff(){
     }
   }
 
-  const filters = document.getElementById('loAssignFilters');
-  if(filters){
-    filters.querySelectorAll('button[data-lo-filter]').forEach(btn=>{
-      btn.classList.toggle('active', btn.dataset.loFilter === loAssignFilter);
-    });
-  }
+  renderLoAssignStrip(teams, assignedTeams, pendingTeams);
 
   const aq = (loAssignQ || '').toLowerCase().trim();
   const abody = document.getElementById('loAssignBody');
@@ -6520,6 +7253,11 @@ function switchView(name){
   const titleEl = document.getElementById('pageTitle');
   if(titleEl) titleEl.textContent = titles[name] || name;
   document.body.classList.toggle('on-home', name === 'home');
+  document.body.classList.toggle('on-acc', name === 'accommodation');
+  document.body.classList.toggle('on-mess', name === 'mess');
+  document.body.classList.toggle('on-lo', name === 'lo');
+  document.body.classList.toggle('on-tc', name === 'tc');
+  document.body.classList.toggle('on-teams', name === 'teams');
   closeNavSearch();
   applyGlobalSearch(document.getElementById('navSearch').value || '');
   if(name === 'arrival' || name === 'departure') renderTravel();
@@ -6547,12 +7285,6 @@ document.getElementById('loPillars').addEventListener('click', e=>{
   const btn = e.target.closest('button[data-lo]');
   if(!btn) return;
   setLoTab(btn.dataset.lo);
-});
-document.getElementById('loAssignFilters').addEventListener('click', e=>{
-  const btn = e.target.closest('button[data-lo-filter]');
-  if(!btn) return;
-  loAssignFilter = btn.dataset.loFilter;
-  renderLoStaff();
 });
 document.getElementById('loOfficerSave').onclick = saveLoOfficer;
 document.getElementById('loOfficerReset').onclick = resetLoOfficerForm;
@@ -6640,21 +7372,6 @@ document.getElementById('admStayPerson').addEventListener('change', ()=>{
   });
 });
 
-document.getElementById('locFilters').addEventListener('click', e=>{
-  if(e.target.tagName !== 'BUTTON') return;
-  if(accDirtyOrgs.size && !confirm('Unsaved accommodation changes will be lost. Change location filter anyway?')) return;
-  if(accDirtyOrgs.size){
-    accDirtyOrgs.clear();
-    updateAccDirtyUI();
-  }
-  activeLoc = e.target.dataset.loc;
-  renderAccommodation({ force: true });
-});
-document.getElementById('messFilters').addEventListener('click', e=>{
-  if(e.target.tagName !== 'BUTTON') return;
-  messFilter = e.target.dataset.mess;
-  renderMess();
-});
 document.getElementById('btnAddVenue').onclick = async ()=>{
   const name = (document.getElementById('newVenue').value || '').trim();
   if(!name){ toast('Enter a venue name'); return; }
