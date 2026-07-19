@@ -1678,6 +1678,23 @@ body.mode-static .lo-view-wrap {
   background: transparent;
 }
 
+body.mode-view .tc-officials-table,
+body.mode-static .tc-officials-table,
+body.mode-view .lo-roster-table,
+body.mode-static .lo-roster-table,
+body.mode-view .pl-roster-table,
+body.mode-static .pl-roster-table {
+  min-width: 0;
+  width: 100%;
+}
+
+.acc-table-panel .lo-view-table thead th {
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
 .acc-table-bar .module-select {
   height: 36px;
   min-width: 140px;
@@ -2768,7 +2785,7 @@ body.mode-edit .lo-view-only { display: none; }
 .tc-officials-table {
   table-layout: fixed;
   width: 100%;
-  min-width: 780px;
+  min-width: 0;
 }
 .tc-officials-table col.c-name { width: 22%; }
 .tc-officials-table col.c-pos { width: 15%; }
@@ -3634,19 +3651,27 @@ footer {
   }
 
   /* View mode: stack accommodation as mobile cards */
-  body.mode-view .acc-table colgroup,
-  body.mode-view .acc-table thead,
-  body.mode-view .acc-table td.c-act,
-  body.mode-view .acc-table th:last-child { display: none !important; }
+  body.mode-view #view-accommodation .acc-table colgroup,
+  body.mode-static #view-accommodation .acc-table colgroup,
+  body.mode-view #view-accommodation .acc-table thead,
+  body.mode-static #view-accommodation .acc-table thead,
+  body.mode-view #view-accommodation .acc-table td.c-act,
+  body.mode-static #view-accommodation .acc-table td.c-act,
+  body.mode-view #view-accommodation .acc-table th:last-child,
+  body.mode-static #view-accommodation .acc-table th:last-child { display: none !important; }
 
-  body.mode-view .acc-table,
-  body.mode-view .acc-table tbody,
-  body.mode-view .acc-table tfoot {
+  body.mode-view #view-accommodation .acc-table,
+  body.mode-static #view-accommodation .acc-table,
+  body.mode-view #view-accommodation .acc-table tbody,
+  body.mode-static #view-accommodation .acc-table tbody,
+  body.mode-view #view-accommodation .acc-table tfoot,
+  body.mode-static #view-accommodation .acc-table tfoot {
     display: block;
     width: 100%;
   }
 
-  body.mode-view .acc-table tfoot tr {
+  body.mode-view #view-accommodation .acc-table tfoot tr,
+  body.mode-static #view-accommodation .acc-table tfoot tr {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -3658,7 +3683,8 @@ footer {
     margin: 4px 0 12px;
   }
 
-  body.mode-view .acc-table tfoot td {
+  body.mode-view #view-accommodation .acc-table tfoot td,
+  body.mode-static #view-accommodation .acc-table tfoot td {
     display: none;
     padding: 0;
     border: none;
@@ -3666,24 +3692,30 @@ footer {
     font-size: 13px;
   }
 
-  body.mode-view .acc-table tfoot td:first-child,
-  body.mode-view .acc-table tfoot td:nth-child(2),
-  body.mode-view .acc-table tfoot td:nth-child(9) {
+  body.mode-view #view-accommodation .acc-table tfoot td:first-child,
+  body.mode-static #view-accommodation .acc-table tfoot td:first-child,
+  body.mode-view #view-accommodation .acc-table tfoot td:nth-child(2),
+  body.mode-static #view-accommodation .acc-table tfoot td:nth-child(2),
+  body.mode-view #view-accommodation .acc-table tfoot td:nth-child(9),
+  body.mode-static #view-accommodation .acc-table tfoot td:nth-child(9) {
     display: inline-flex;
     align-items: baseline;
     gap: 6px;
     position: static;
   }
 
-  body.mode-view .acc-table tfoot td:first-child { font-weight: 700; color: var(--text); }
-  body.mode-view .acc-table tfoot td:nth-child(9) {
+  body.mode-view #view-accommodation .acc-table tfoot td:first-child,
+  body.mode-static #view-accommodation .acc-table tfoot td:first-child { font-weight: 700; color: var(--text); }
+  body.mode-view #view-accommodation .acc-table tfoot td:nth-child(9),
+  body.mode-static #view-accommodation .acc-table tfoot td:nth-child(9) {
     margin-left: auto;
     font-size: 18px;
     font-weight: 700;
     color: var(--warning);
   }
 
-  body.mode-view .acc-table tr {
+  body.mode-view #view-accommodation .acc-table tr,
+  body.mode-static #view-accommodation .acc-table tr {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px 12px;
@@ -3695,7 +3727,8 @@ footer {
     box-shadow: var(--shadow);
   }
 
-  body.mode-view .acc-table td {
+  body.mode-view #view-accommodation .acc-table td,
+  body.mode-static #view-accommodation .acc-table td {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -3706,7 +3739,8 @@ footer {
     font-size: 13px;
   }
 
-  body.mode-view .acc-table td::before {
+  body.mode-view #view-accommodation .acc-table td::before,
+  body.mode-static #view-accommodation .acc-table td::before {
     content: attr(data-label);
     font-family: var(--font-mono);
     font-size: 10px;
@@ -3716,18 +3750,23 @@ footer {
     flex-shrink: 0;
   }
 
-  body.mode-view .acc-table td.org-name,
-  body.mode-view .acc-table td:nth-child(2) {
+  body.mode-view #view-accommodation .acc-table td.org-name,
+  body.mode-static #view-accommodation .acc-table td.org-name,
+  body.mode-view #view-accommodation .acc-table td:nth-child(2),
+  body.mode-static #view-accommodation .acc-table td:nth-child(2) {
     grid-column: 1 / -1;
     font-size: 15px;
     font-weight: 600;
     color: var(--text);
   }
 
-  body.mode-view .acc-table td.org-name::before,
-  body.mode-view .acc-table td:nth-child(2)::before { display: none; }
+  body.mode-view #view-accommodation .acc-table td.org-name::before,
+  body.mode-static #view-accommodation .acc-table td.org-name::before,
+  body.mode-view #view-accommodation .acc-table td:nth-child(2)::before,
+  body.mode-static #view-accommodation .acc-table td:nth-child(2)::before { display: none; }
 
-  body.mode-view .acc-table td.total-col {
+  body.mode-view #view-accommodation .acc-table td.total-col,
+  body.mode-static #view-accommodation .acc-table td.total-col {
     grid-column: 1 / -1;
     margin-top: 4px;
     padding-top: 8px;
@@ -3736,6 +3775,67 @@ footer {
     font-weight: 700;
     color: var(--text);
   }
+
+  /* View mode: roster tables (TC, LO, Teams) */
+  body.mode-view .roster-table colgroup,
+  body.mode-static .roster-table colgroup,
+  body.mode-view .roster-table thead,
+  body.mode-static .roster-table thead { display: none !important; }
+
+  body.mode-view .roster-table,
+  body.mode-static .roster-table,
+  body.mode-view .roster-table tbody,
+  body.mode-static .roster-table tbody { display: block; width: 100%; }
+
+  body.mode-view .roster-table tr,
+  body.mode-static .roster-table tr {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  body.mode-view .roster-table td,
+  body.mode-static .roster-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    padding: 5px 0;
+    border: none;
+    text-align: left !important;
+  }
+
+  body.mode-view .roster-table td::before,
+  body.mode-static .roster-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    flex-shrink: 0;
+  }
+
+  body.mode-view .roster-table td.lo-name,
+  body.mode-static .roster-table td.lo-name,
+  body.mode-view .roster-table td.lo-team,
+  body.mode-static .roster-table td.lo-team {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  body.mode-view .roster-table td.lo-name::before,
+  body.mode-static .roster-table td.lo-name::before,
+  body.mode-view .roster-table td.lo-team::before,
+  body.mode-static .roster-table td.lo-team::before { display: none; }
 
   body.mode-view .table-wrap {
     background: transparent;
@@ -4366,7 +4466,7 @@ footer {
             <input class="module-search lo-view-search" id="loViewSearch" type="search" placeholder="Search team, LO, rank, mobile…" autocomplete="off">
           </div>
           <div class="table-wrap lo-view-wrap">
-            <table class="lo-view-table lo-roster-table acc-table">
+            <table class="lo-view-table lo-roster-table roster-table">
               <colgroup>
                 <col class="c-team"><col class="c-lo"><col class="c-rank"><col class="c-mobile">
               </colgroup>
@@ -4539,7 +4639,7 @@ footer {
           <input class="module-search lo-view-search" id="tcViewSearch" type="search" placeholder="Search name, position, mobile…" autocomplete="off">
         </div>
         <div class="table-wrap lo-view-wrap">
-          <table class="lo-view-table tc-officials-table acc-table">
+          <table class="lo-view-table tc-officials-table roster-table">
             <colgroup>
               <col class="c-name"><col class="c-pos"><col class="c-mobile">
               <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
@@ -4631,7 +4731,7 @@ footer {
           </div>
         </div>
         <div class="table-wrap lo-view-wrap">
-          <table class="lo-view-table pl-roster-table acc-table">
+          <table class="lo-view-table pl-roster-table roster-table">
             <colgroup>
               <col class="c-name"><col class="c-team"><col class="c-gender">
               <col class="c-event"><col class="c-mobile"><col class="c-act">
@@ -6036,12 +6136,12 @@ function renderTechCommittee(){
           <button type="button" class="btn" data-del-tc="${escHtml(m.id)}">Remove</button>
         </td>` : '';
     return `<tr>
-      <td class="lo-name">${escHtml(m.name||'')}</td>
-      <td class="tc-pos">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
-      <td class="lo-mobile">${mobile}</td>
-      <td class="tc-date">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
-      <td class="tc-date">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
-      <td class="tc-email">${email}</td>
+      <td class="lo-name" data-label="Name">${escHtml(m.name||'')}</td>
+      <td class="tc-pos" data-label="Position">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
+      <td class="lo-mobile" data-label="Mobile">${mobile}</td>
+      <td class="tc-date" data-label="Arrival">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
+      <td class="tc-date" data-label="Departure">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
+      <td class="tc-email" data-label="Email">${email}</td>
       ${acts}
     </tr>`;
   }).join('');
@@ -6242,11 +6342,11 @@ function renderPlayerRows(list, sport){
           <button type="button" class="btn" data-del-pl="${escHtml(p.id)}">Remove</button>
         </td>` : '';
     return `<tr>
-      <td class="lo-name">${escHtml(p.name||'')}</td>
-      <td class="lo-team">${escHtml(p.org||'')}</td>
-      <td>${p.gender ? escHtml(p.gender.charAt(0).toUpperCase()) : '<span class="lo-dash">—</span>'}</td>
-      <td class="pl-events">${evHtml}</td>
-      <td class="lo-mobile">${mobile}</td>
+      <td class="lo-name" data-label="Name">${escHtml(p.name||'')}</td>
+      <td class="lo-team" data-label="Team">${escHtml(p.org||'')}</td>
+      <td data-label="M/F">${p.gender ? escHtml(p.gender.charAt(0).toUpperCase()) : '<span class="lo-dash">—</span>'}</td>
+      <td class="pl-events" data-label="Event(s)">${evHtml}</td>
+      <td class="lo-mobile" data-label="Mobile">${mobile}</td>
       ${acts}
     </tr>`;
   }).join('');
@@ -6844,10 +6944,10 @@ function renderLoViewTable(teams, assignByTeam, officerMap, assignedTeams, pendi
       ? `<a href="tel:${escHtml(off.mobile)}">${escHtml(off.mobile)}</a>`
       : dash;
     return `<tr class="${off ? '' : 'lo-pending'}">
-      <td class="lo-team">${escHtml(u.org)}</td>
-      <td class="lo-name">${name}</td>
-      <td class="lo-rank">${rank}</td>
-      <td class="lo-mobile">${mobile}</td>
+      <td class="lo-team" data-label="Team">${escHtml(u.org)}</td>
+      <td class="lo-name" data-label="Liaison officer">${name}</td>
+      <td class="lo-rank" data-label="Rank">${rank}</td>
+      <td class="lo-mobile" data-label="Mobile">${mobile}</td>
     </tr>`;
   }).join('');
 }
