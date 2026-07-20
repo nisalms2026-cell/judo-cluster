@@ -47,9 +47,32 @@
         "details": "By Bus — K Victor",
         "status": "planned",
         "team_label": "Andhra Pradesh",
-        "bus_role": "alighting"
+        "bus_role": "alighting",
+        "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [
+        {
+          "mode": "rail",
+          "station": "",
+          "arrival": "",
+          "details": "",
+          "status": "awaited"
+        },
+        {
+          "mode": "rail",
+          "station": "",
+          "arrival": "",
+          "details": "",
+          "status": "awaited"
+        },
+        {
+          "mode": "rail",
+          "station": "",
+          "arrival": "",
+          "details": "",
+          "status": "awaited"
+        }
+      ]
     },
     {
       "org": "ARUNACHAL PRADESH",
@@ -59,7 +82,8 @@
         "arrival": "19.07.2026/2040 hrs",
         "details": "Train No. 07029 arrival time 2040 hrs Charlapalli Railway Station on 19.07.2026",
         "status": "planned",
-        "team_label": "ARUNACHAL PRADESH"
+        "team_label": "ARUNACHAL PRADESH",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -71,7 +95,8 @@
         "arrival": "18.07.2026/1720 hrs",
         "details": "Arrival on July 18,2026. Time: 17:20 ( evening) Train no.& Name- 18045 East Coast exp. Station - Charlapalli.",
         "status": "planned",
-        "team_label": "Assam Police"
+        "team_label": "Assam Police",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
@@ -80,7 +105,8 @@
           "arrival": "20.07.2026/2300 hrs",
           "details": "Arrival on July 20,2026. Time: 23:00 ( night)at Shamshabad Rajiv Gandhi, T- NA",
           "status": "planned",
-          "team_label": "Assam Police"
+          "team_label": "Assam Police",
+          "direction": "arrival"
         }
       ]
     },
@@ -113,7 +139,8 @@
         "arrival": "20.07.2026/2100 hrs",
         "details": "Train No.12792, Boarding date 19.07.2026, PNR 660-6679990 (Danapur to secunderabad) 16 member",
         "status": "planned",
-        "team_label": "Bihar"
+        "team_label": "Bihar",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -125,7 +152,8 @@
         "arrival": "21.07.2026/2100 hrs",
         "details": "Tr. No. 12214 Duronto Express, approx. 21:00 hrs Secunderabad Jn",
         "status": "planned",
-        "team_label": "CHANDIGARH POLICE"
+        "team_label": "CHANDIGARH POLICE",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -137,9 +165,19 @@
         "arrival": "21.07.2026/1600 hrs",
         "details": "T/No.12286 Duranto Exp ,Date of arrival 21/7/16,Time of arrival -1412 hrs at Sikandarabad R/Station",
         "status": "planned",
-        "team_label": "DELHI POLICE"
+        "team_label": "DELHI POLICE",
+        "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [
+        {
+          "mode": "flight",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "21.07.2026/0430 hrs",
+          "details": "",
+          "status": "planned",
+          "direction": "arrival"
+        }
+      ]
     },
     {
       "org": "Gujrat",
@@ -149,7 +187,8 @@
         "arrival": "22.07.2026/0730 hrs",
         "details": "PBR SC SF EXP TRAIN NO 20968 22.07.2026 AT 0730, SECUNDERABAD STATION",
         "status": "planned",
-        "team_label": "Gujrat"
+        "team_label": "Gujrat",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -161,7 +200,8 @@
         "arrival": "21.07.2026/1715 hrs",
         "details": "Train No. 22692 Date-20.07.2026 Time 1660, Railway Station- Secunderabaad (Date-21.07.2026 Time-17:15), 01 Adult",
         "status": "planned",
-        "team_label": "Himachal Pradesh Police  (Half Team)"
+        "team_label": "Himachal Pradesh Police  (Half Team)",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
@@ -179,19 +219,21 @@
       "travel": {
         "mode": "rail",
         "station": "Secunderabad Jn",
-        "arrival": "21.07.2026/1555hrs",
+        "arrival": "21.07.2026/1555 hrs",
         "details": "12724 Telangana Exp",
         "status": "planned",
-        "team_label": "JAMMU & KASHMIR"
+        "team_label": "JAMMU & KASHMIR",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
           "mode": "flight",
           "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "",
+          "arrival": "21.07.2026/1700 hrs",
           "details": "Arrival on July 21,2026. Indigo 6E 2491 DXN-HYD Time: 17:00hrs at Shamshabad Rajiv Gandhi, T- NA",
           "status": "planned",
-          "team_label": "J&K (1)"
+          "team_label": "J&K (1)",
+          "direction": "arrival"
         }
       ]
     },
@@ -203,7 +245,8 @@
         "arrival": "22.07.2026/0700 hrs",
         "details": "Train 22691, Rajdhani Exp, 22.07.2026 at 07.00 hrs.Secundrabad. 23 persons.",
         "status": "planned",
-        "team_label": "Karnataka State Police"
+        "team_label": "Karnataka State Police",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -212,22 +255,33 @@
       "travel": {
         "mode": "rail",
         "station": "Hyderabad Rly. Station",
-        "arrival": "21.07.2026/0430hrs",
-        "details": "Date 20-7-26 at 14:10 Train no 22732 CSMT to Hyderabad 04:30 Am 21-7-26",
+        "arrival": "21.07.2026/2030 hrs",
+        "details": "Date 21-7-26 at 2030 hrs Train no 18520 LTT to Secundrabad  04:30 Am 21-7-26",
         "status": "planned",
-        "team_label": "Maharashtra Police"
+        "team_label": "Maharashtra Police",
+        "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "21.07.2026/1530 hrs",
+          "details": "Date 21-7-2026 at 1530 hrs Train No. 17013 Hadapsar to Secundrabad",
+          "status": "planned",
+          "direction": "arrival"
+        }
+      ]
     },
     {
       "org": "MIZORAM POLICE",
       "travel": {
         "mode": "flight",
         "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-        "arrival": "21.07.2026",
-        "details": "1 person (Manager) only — Flight Akasa Air QP-1406 Dt. 21.07.2026",
+        "arrival": "21.07.2026/1630 hrs",
+        "details": " 1 person (Manager) only                                             Flight - Akasa Air No. QP -1406 Dt. 21.07.2026\nDeparture Delhi 1410 hrs\nArrival Hyderabad - 1630 hrs\nOthers 1 Coach + 5 Players Dt. 21.07.2026 Indigo Flight No. 6E6528 Departure Kolkata 1700 hrs\nArrival Hyderabad 1910 hrs",
         "status": "planned",
-        "team_label": "Mizoram Police"
+        "team_label": "Mizoram Police",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -236,27 +290,30 @@
       "travel": {
         "mode": "rail",
         "station": "Secunderabad Jn",
-        "arrival": "21.07.26/ 1600 hrs",
+        "arrival": "21.07.2026/1600 hrs",
         "details": "Train no. 12724 secunderabad",
         "status": "planned",
-        "team_label": "Punjab"
+        "team_label": "Punjab",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
           "mode": "rail",
           "station": "Secunderabad Jn",
-          "arrival": "22.07.2026/ 0300 hrs",
+          "arrival": "22.07.2026/0300 hrs",
           "details": "Train no.12722 secunderabad",
           "status": "planned",
-          "team_label": "Punjab"
+          "team_label": "Punjab",
+          "direction": "arrival"
         },
         {
           "mode": "flight",
           "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "",
+          "arrival": "22.07.2026",
           "details": "6E 2491 (A320) 22/07/26 Rajiv gandhi international airport hydrabad one person",
           "status": "planned",
-          "team_label": "Punjab"
+          "team_label": "Punjab",
+          "direction": "arrival"
         }
       ]
     },
@@ -268,7 +325,8 @@
         "arrival": "21.07.2026/0500 hrs",
         "details": "Date 19/07/26 departure jaipur 15:30 pm",
         "status": "planned",
-        "team_label": "Rajasthan"
+        "team_label": "Rajasthan",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -280,7 +338,8 @@
         "arrival": "22.07.2026/0250 hrs",
         "details": "Arrival 22-07-2026, 12722/DAKSHIN EXP 02.50 Secunderabad JN (SC)",
         "status": "planned",
-        "team_label": "Uttarakhand"
+        "team_label": "Uttarakhand",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -305,7 +364,8 @@
         "arrival": "22.07.2026/0830 hrs",
         "details": "Train no. 12772 R SC SF Express, arrival timing - 0830 am Dt. 22.07.2026 Secunderabad",
         "status": "planned",
-        "team_label": "Chhattisgarh"
+        "team_label": "Chhattisgarh",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -315,12 +375,21 @@
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "21.07.2026/0250 hrs",
-        "details": "Train No 12722",
+        "details": "12722/DAKSHIN EXP SECUNDERABAD JN (SC) Arrival* 02:50 21-Jul-2026",
         "status": "planned",
         "team_label": "UTTARPRADESH",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [
+        {
+          "mode": "rail",
+          "station": "Hyderabad Rly. Station",
+          "arrival": "20.07.2026/1725 hrs",
+          "details": "Train No. 07076 Hyderabad Decan Arrival* 1725 hrs 20-Jul-2026",
+          "status": "planned",
+          "direction": "arrival"
+        }
+      ]
     },
     {
       "org": "HARYANA",
@@ -330,7 +399,8 @@
         "arrival": "21.07.2026/1555 hrs",
         "details": "Telangana Express Arrival on 21.07.2026 at 15:55 at Secunderabad Junction",
         "status": "planned",
-        "team_label": "Haryana Police"
+        "team_label": "Haryana Police",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -340,9 +410,10 @@
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "20.07.2026/1340 hrs",
-        "details": "TRAIN NO 12438, HZ. NIZAMUDIN TO SECUNDERABAD JN.",
+        "details": "TRAIN NO 12438, HZ. NIZAMUDIN TO SECUNDERABAD JN.\nCOACH 02 PLAYERS 27, PHYSIO 01",
         "status": "planned",
-        "team_label": "ITBP WUSHU TEAM"
+        "team_label": "ITBP WUSHU TEAM",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
@@ -351,7 +422,8 @@
           "arrival": "20.07.2026/2210 hrs",
           "details": "Duronto12214 date- 20-07-2026 time- 2210 Delhi to secendrabaad 19 players",
           "status": "planned",
-          "team_label": "ITBP"
+          "team_label": "ITBP",
+          "direction": "arrival"
         },
         {
           "mode": "rail",
@@ -359,7 +431,16 @@
           "arrival": "21.07.2026/1435 hrs",
           "details": "Train no. 12286 Duronto Express ,Date of arrival 21-07-26 Time 14:35 at Secunderabad JN",
           "status": "planned",
-          "team_label": "ITBP"
+          "team_label": "ITBP",
+          "direction": "arrival"
+        },
+        {
+          "mode": "flight",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "17.07.2026/0919 hrs",
+          "details": "",
+          "status": "planned",
+          "direction": "arrival"
         }
       ]
     },
@@ -371,7 +452,8 @@
         "arrival": "22.07.2026/0810 hrs",
         "details": "By CHARMINAR SF EXP (Train No. 12759) on 22.07.2026 @ 08:10 Hrs., at Hyderabad Deccan Railway Station",
         "status": "planned",
-        "team_label": "TAMIL NADU"
+        "team_label": "TAMIL NADU",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -384,7 +466,8 @@
         "details": "By Bus — Vaibhav Jalmi",
         "status": "planned",
         "team_label": "GOA",
-        "bus_role": "alighting"
+        "bus_role": "alighting",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -407,7 +490,8 @@
         "arrival": "21.07.2026/0645 hrs",
         "details": "Arrival at Charlapalli Rly. Station Train No. 20809 / SBP NED SF — 21.07.2026 / 0645 hrs",
         "status": "planned",
-        "team_label": "JHARKHAND"
+        "team_label": "JHARKHAND",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -419,7 +503,8 @@
         "arrival": "21.07.2026/1412 hrs",
         "details": "(1.) T/No.12286 Duranto Exp ,Date of arrival 21/7/16,Time of arrival -1412 hrs at Sikandarabad R/Station . Total players-94",
         "status": "planned",
-        "team_label": "Border Security Force"
+        "team_label": "Border Security Force",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
@@ -428,7 +513,8 @@
           "arrival": "22.07.2026/1555 hrs",
           "details": "(2.)T/No.12724 Telangana Exp, Date of arrival 22/7/26,Time of arrival 1555 hrs at Sikandarabad r/station. Total players- 12(Men-5, women-7)",
           "status": "planned",
-          "team_label": "Border Security Force"
+          "team_label": "Border Security Force",
+          "direction": "arrival"
         }
       ]
     },
@@ -440,7 +526,8 @@
         "arrival": "21.07.2026/0500 hrs",
         "details": "07194 Hyderabad Deccan arrival 5am 21 July — Secunderabad Jn",
         "status": "planned",
-        "team_label": "CRPF"
+        "team_label": "CRPF",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -452,7 +539,8 @@
         "arrival": "21.07.2026/0350 hrs",
         "details": "12722, Date- 21/07, Time- 0350 , Station- Secunderabad, Personnel- 16",
         "status": "planned",
-        "team_label": "SSB"
+        "team_label": "SSB",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
@@ -461,7 +549,8 @@
           "arrival": "21.07.2026/1030 hrs",
           "details": "12703, Date- 21/07, Time- 1030, Station- Secunderabad, Personnel- 20",
           "status": "planned",
-          "team_label": "SSB"
+          "team_label": "SSB",
+          "direction": "arrival"
         },
         {
           "mode": "rail",
@@ -469,7 +558,8 @@
           "arrival": "22.07.2026/1715 hrs",
           "details": "22692, Date- 22/07, Time- 1715 , Station- Secunderabad, Personnel- 66",
           "status": "planned",
-          "team_label": "SSB"
+          "team_label": "SSB",
+          "direction": "arrival"
         },
         {
           "mode": "flight",
@@ -477,7 +567,8 @@
           "arrival": "21.07.2026/1445 hrs",
           "details": "Air India arrival 21.07.2026 / 1445 hrs Hyderabad Airport (6 A)",
           "status": "planned",
-          "team_label": "SSB"
+          "team_label": "SSB",
+          "direction": "arrival"
         }
       ]
     },
@@ -487,9 +578,10 @@
         "mode": "rail",
         "station": "Charlapalli Rly. Stn.",
         "arrival": "20.07.2026/1750 hrs",
-        "details": "Arrive on 20/07/2026 at 17:50 hrs at Charlapalli Railway Station",
+        "details": "Arrive on 20/07/2026 at 17:30 hrs. at Charlapalli Railway Station by SRC CHZ SPL (07222) Train",
         "status": "planned",
-        "team_label": "West Bengal Police"
+        "team_label": "West Bengal Police",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -499,9 +591,10 @@
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "21.07.2026/0745 hrs",
-        "details": "BBSR - Secunderabad",
+        "details": "BBSR - Secunderabad\nVisakha Express \nTrain No. 17015\nArrival at Secunderabad on 21.07.2026 at 07.45 AM",
         "status": "planned",
-        "team_label": "Odisha"
+        "team_label": "Odisha",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -513,7 +606,8 @@
         "arrival": "21.07.2026/1545 hrs",
         "details": "TRAIN NO.17606, BGKT KCG EXPRESS, Arrival Date 21. Jul. 2026 KACHEGUDA STATION",
         "status": "planned",
-        "team_label": "Madhya Pradesh"
+        "team_label": "Madhya Pradesh",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -522,10 +616,11 @@
       "travel": {
         "mode": "flight",
         "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-        "arrival": "",
+        "arrival": "21.07.2026/2330 hrs",
         "details": "Indigo flight no. 6E187 date 21, Time 23.30 Rajiv Gandhi International airport",
         "status": "planned",
-        "team_label": "Manipur Police"
+        "team_label": "Manipur Police",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -537,7 +632,8 @@
         "arrival": "21.07.2026/1555 hrs",
         "details": "07194, 21.07.2026, 15.55 Hrs, Secandrabad",
         "status": "planned",
-        "team_label": "KERALA POLICE"
+        "team_label": "KERALA POLICE",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -549,7 +645,8 @@
         "arrival": "21.07.2026/1435 hrs",
         "details": "Teams of Judo, Krate, Wushu and Penchek Silate by tr Duranato exp dep from Delhi 1555 hrs on 20July arr at 1435 hrs on 21July, Taekwando team by tr Dakshin exp at 2250 hrs",
         "status": "planned",
-        "team_label": "CISF"
+        "team_label": "CISF",
+        "direction": "arrival"
       },
       "travel_extra": [
         {
@@ -558,15 +655,17 @@
           "arrival": "21.07.2026/2250 hrs",
           "details": "Teams of Judo, Krate, Wushu and Penchek Silate by tr Duranato exp dep from Delhi 1555 hrs on 20July arr at 1435 hrs on 21July, Taekwando team by tr Dakshin exp at 2250 hrs",
           "status": "planned",
-          "team_label": "CISF"
+          "team_label": "CISF",
+          "direction": "arrival"
         },
         {
           "mode": "flight",
           "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "",
+          "arrival": "20.07.2026/1410 hrs",
           "details": "Team coaches of judo,taekwando by air 20July 26 dep from Delhi 1410  hrs arr Hyd 1630 hrs ,Manager CISF by air 20July 26 dep from Delhi 1615 hrs arr Hyd 1830 hrs",
           "status": "planned",
-          "team_label": "CISF"
+          "team_label": "CISF",
+          "direction": "arrival"
         }
       ]
     },
@@ -579,7 +678,8 @@
         "details": "By Bus — Katta Dayanand",
         "status": "planned",
         "team_label": "Telangana Police",
-        "bus_role": "alighting"
+        "bus_role": "alighting",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -591,10 +691,11 @@
         "arrival": "19.07.2026/2045 hrs",
         "details": "TAIN NO- 07029 FROM GHY TO CSZ",
         "status": "planned",
-        "team_label": "RPF"
+        "team_label": "RPF",
+        "direction": "arrival"
       },
       "travel_extra": []
     }
   ],
-  "updated_at": "2026-07-19T19:05:16"
+  "updated_at": "2026-07-20T17:13:48"
 }

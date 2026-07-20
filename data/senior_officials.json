@@ -1,0 +1,30 @@
+{
+  "officials": [
+    {
+      "id": "so_9e06ad3cfd",
+      "vehicle_id": "vh_c2a75d01c4",
+      "lo_officer_id": "lo_6cc611ef39",
+      "name": "Praveer Ranjan",
+      "rank": "DG",
+      "unit": "CISF",
+      "designation": "",
+      "mobile": "",
+      "cisf_no": "",
+      "driver_adm_person_id": "p_8a9de32e5a"
+    },
+    {
+      "id": "so_04f5f6daa2",
+      "driver_adm_person_id": "p_296eba85f1",
+      "vehicle_id": "vh_9bef9fb678",
+      "lo_officer_id": "lo_ea164ebaf8",
+      "name": "Vijay Prakash",
+      "rank": "ADG/HQ",
+      "unit": "CISF",
+      "designation": "ADG/HQ",
+      "mobile": "",
+      "cisf_no": ""
+    }
+  ],
+  "assignments": [],
+  "updated_at": "2026-07-20T19:52:56"
+}

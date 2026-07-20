@@ -889,6 +889,146 @@
       "mobile": "8949592323",
       "stay": "",
       "room": ""
+    },
+    {
+      "id": "p_5baf11dd77",
+      "cisf_no": "210609585",
+      "name": "Tsuveo Khamo",
+      "rank": "CT/GD",
+      "unit": "NAPS NARORA",
+      "mobile": "6009027447",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_568efa84a0",
+      "cisf_no": "210604890",
+      "name": "Abdul Basil Rahman P",
+      "rank": "CT/GD",
+      "unit": "BCCL Dhanbad",
+      "mobile": "8606609471",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_8830e7a6d4",
+      "cisf_no": "003610598",
+      "name": "S Muruganatham",
+      "rank": "CT/TM",
+      "unit": "SDSC Sriharikota",
+      "mobile": "9958081393",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_8a9de32e5a",
+      "cisf_no": "",
+      "name": "Pradeep Kumar",
+      "rank": "HC",
+      "unit": "NISA",
+      "mobile": "8588920177",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_296eba85f1",
+      "cisf_no": "",
+      "name": "R.Krinthi",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "8008010644",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_3b3473e237",
+      "cisf_no": "",
+      "name": "K.Naresh Goud",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "8747280044",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_e3ead56efc",
+      "cisf_no": "",
+      "name": "SK Khaseem Shareef",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "8712533599",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_a15054ffdf",
+      "cisf_no": "",
+      "name": "G.Ganesh",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "6301640619",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_a583261d06",
+      "cisf_no": "",
+      "name": "Mathu kumar A",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "9034417092",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_d95b815b8e",
+      "cisf_no": "",
+      "name": "B.Ganesh Reddy",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "9908527154",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_aadf7e52d0",
+      "cisf_no": "",
+      "name": "G.Rajashekar Reddy",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "9908527154",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_3f166e39fc",
+      "cisf_no": "",
+      "name": "R.Ramesh",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "7093977638",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_5db70ca76d",
+      "cisf_no": "",
+      "name": "T.Venkat sai",
+      "rank": "",
+      "unit": "TG",
+      "mobile": "9849612331",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_4167cd73e2",
+      "cisf_no": "",
+      "name": "B.Ganesh Reddy",
+      "rank": "",
+      "unit": "NISA",
+      "mobile": "9908527154",
+      "stay": "",
+      "room": ""
     }
   ],
   "tasks": [
@@ -1577,7 +1717,133 @@
       "from_date": "",
       "to_date": "",
       "notes": ""
+    },
+    {
+      "id": "d_54227906fd",
+      "task_id": "t_d435021562",
+      "person_id": "p_5baf11dd77",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_a7ab773535",
+      "task_id": "t_d435021562",
+      "person_id": "p_568efa84a0",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_51479434ce",
+      "task_id": "t_d435021562",
+      "person_id": "p_8830e7a6d4",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_24255466f1",
+      "task_id": "t_a0522c42a3",
+      "person_id": "p_568efa84a0",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_8a0d1ca653",
+      "task_id": "t_429e388fea",
+      "person_id": "p_8a9de32e5a",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_6077da9c99",
+      "task_id": "t_429e388fea",
+      "person_id": "p_296eba85f1",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_6670df903a",
+      "task_id": "t_429e388fea",
+      "person_id": "p_3b3473e237",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_eaf95653c3",
+      "task_id": "t_429e388fea",
+      "person_id": "p_e3ead56efc",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_474adc85d6",
+      "task_id": "t_429e388fea",
+      "person_id": "p_a15054ffdf",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_6d74e0c073",
+      "task_id": "t_429e388fea",
+      "person_id": "p_a583261d06",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_89be10516d",
+      "task_id": "t_429e388fea",
+      "person_id": "p_aadf7e52d0",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_020e86f9c6",
+      "task_id": "t_429e388fea",
+      "person_id": "p_3f166e39fc",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_9baf70259a",
+      "task_id": "t_429e388fea",
+      "person_id": "p_5db70ca76d",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_ea65e51e60",
+      "task_id": "t_429e388fea",
+      "person_id": "p_4167cd73e2",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
     }
   ],
-  "updated_at": "2026-07-18T19:36:14"
+  "updated_at": "2026-07-20T19:08:05"
 }

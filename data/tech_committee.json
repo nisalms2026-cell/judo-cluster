@@ -13,12 +13,22 @@
       "sno": 1,
       "name": "Mohmad Iqbal",
       "unit": "JAMMU & KASHMIR",
-      "arrival": "21/07/2026",
+      "arrival": "24.07.2026",
       "departure": "31/07/2026",
       "mobile": "9797567891",
       "email": "",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel_extra": [],
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_02",
@@ -26,12 +36,20 @@
       "sno": 2,
       "name": "Tariq Ahmad Zargar",
       "unit": "JAMMU & KASHMIR",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1710 hrs",
       "departure": "31/07/2026",
       "mobile": "7006738504",
       "email": "tariqzargar3316@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "21.07.2026/1710 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_03",
@@ -39,12 +57,20 @@
       "sno": 3,
       "name": "Philia",
       "unit": "Daman & Diu",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0730 hrs",
       "departure": "31/07/2026",
       "mobile": "9377632395",
       "email": "adeeveee@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_04",
@@ -52,12 +78,20 @@
       "sno": 4,
       "name": "Alexander Thomas",
       "unit": "Daman & Diu",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0730 hrs",
       "departure": "31/07/2026",
       "mobile": "7016487954",
       "email": "myousha341@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_05",
@@ -65,12 +99,20 @@
       "sno": 5,
       "name": "Abhay Shriwas",
       "unit": "Madhya Pradesh",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/1715 hrs",
       "departure": "30/07/2026",
       "mobile": "7771036555",
       "email": "abhayshriwas1506@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_06",
@@ -78,12 +120,20 @@
       "sno": 6,
       "name": "Prem Singh Thapa",
       "unit": "Odisha",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0330 hrs",
       "departure": "30/07/2026",
       "mobile": "9777606172",
       "email": "premsingh.thapa001@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "24.07.2026/0330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_07",
@@ -91,12 +141,20 @@
       "sno": 7,
       "name": "Dr. Kiran Kashyap",
       "unit": "Andhra Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1715 hrs",
       "departure": "30/07/2026",
       "mobile": "8899761062",
       "email": "kirankashyap9791@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_08",
@@ -104,12 +162,21 @@
       "sno": 8,
       "name": "Arko Mitesh",
       "unit": "Andhra Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026",
       "departure": "31/07/2026",
       "mobile": "8885732267",
       "email": "arkomitesh88@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_09",
@@ -117,12 +184,21 @@
       "sno": 9,
       "name": "Ulavapati John Binny",
       "unit": "Andhra Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026",
       "departure": "31/07/2026",
       "mobile": "7331140472",
       "email": "johnbinny595@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_10",
@@ -130,12 +206,20 @@
       "sno": 10,
       "name": "Kommu Prem Kumar",
       "unit": "Andhra Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0650 hrs",
       "departure": "31/07/2026",
       "mobile": "6304582915",
       "email": "kommupremkumar597@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0650 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_11",
@@ -143,12 +227,21 @@
       "sno": 11,
       "name": "Mohammed Shoaib",
       "unit": "Andhra Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026",
       "departure": "31/07/2026",
       "mobile": "7396606043",
       "email": "shoaibmohammed6060@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_12",
@@ -156,12 +249,21 @@
       "sno": 12,
       "name": "Dara Prasad",
       "unit": "Andhra Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026",
       "departure": "31/07/2026",
       "mobile": "9392901079",
       "email": "pdnecn@narayanagroup.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_13",
@@ -182,12 +284,20 @@
       "sno": 14,
       "name": "Abdullah",
       "unit": "Delhi",
-      "arrival": "24/07/2026",
+      "arrival": "23.07.2026/1715 hrs",
       "departure": "30/07/2026",
       "mobile": "8130528511",
       "email": "abdullah231944@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "23.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_15",
@@ -195,12 +305,20 @@
       "sno": 15,
       "name": "Sahdev",
       "unit": "Haryana",
-      "arrival": "24/07/2026",
+      "arrival": "25.07.2026/0250 hrs",
       "departure": "31/07/2026",
       "mobile": "9991937698",
       "email": "sah999dev@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "25.07.2026/0250 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_16",
@@ -208,12 +326,21 @@
       "sno": 16,
       "name": "Atul",
       "unit": "Haryana",
-      "arrival": "25/07/2026",
+      "arrival": "25.07.2026/0330 hrs",
       "departure": "29/07/2026",
       "mobile": "9468128349",
       "email": "psilatbhiwani@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "25.07.2026/0330 hrs",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_17",
@@ -221,12 +348,21 @@
       "sno": 17,
       "name": "Abdul Razak Tailore",
       "unit": "Karnataka",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026",
       "departure": "30/07/2026",
       "mobile": "9900399243",
       "email": "karnatakamartialarts@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ps_18",
@@ -273,13 +409,21 @@
       "sno": 21,
       "name": "Roopali Wagh",
       "unit": "Maharashtra",
-      "arrival": "23/07/2026",
+      "arrival": "21.07.2026/1455 hrs",
       "departure": "30/07/2026",
       "mobile": "8975367050",
       "email": "waghroopali1311@gmail.com",
       "role": "Technical Official",
       "rank": "",
-      "gender": ""
+      "gender": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1455 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_22",
@@ -287,12 +431,20 @@
       "sno": 22,
       "name": "Mayuri Gunjal",
       "unit": "Maharashtra",
-      "arrival": "23/07/2026",
+      "arrival": "23.07.2026/1455 hrs",
       "departure": "30/07/2026",
       "mobile": "9766387425",
       "email": "mayurig295@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "23.07.2026/1455 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_23",
@@ -300,12 +452,20 @@
       "sno": 23,
       "name": "Sajad Ahmad Butt",
       "unit": "JAMMU & KASHMIR",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1710 hrs",
       "departure": "31/07/2026",
       "mobile": "8825099237",
       "email": "sajad1butt@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "21.07.2026/1710 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_24",
@@ -313,12 +473,20 @@
       "sno": 24,
       "name": "Ravi Choudhary",
       "unit": "Rajasthan",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/0055 hrs",
       "departure": "30/07/2026",
       "mobile": "9660621684",
       "email": "ravichoudhary1684@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/0055 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_25",
@@ -352,12 +520,20 @@
       "sno": 27,
       "name": "Vinay Vishwakarma",
       "unit": "Uttar Pradesh",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/2130 hrs",
       "departure": "29/07/2026",
       "mobile": "9044499954",
       "email": "vinayvishwakarma2000@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/2130 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_28",
@@ -365,12 +541,20 @@
       "sno": 28,
       "name": "Ram Jeet",
       "unit": "Uttar Pradesh",
-      "arrival": "25/07/2026",
+      "arrival": "24.07.2026/2030 hrs",
       "departure": "29/07/2026",
       "mobile": "7376787808",
       "email": "ramjeetrishi7376@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "24.07.2026/2030 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_29",
@@ -378,12 +562,20 @@
       "sno": 29,
       "name": "Raja Das",
       "unit": "West Bengal",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1030 hrs",
       "departure": "31/07/2026",
       "mobile": "8017795158",
       "email": "silatrajaphysio@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1030 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_30",
@@ -391,12 +583,20 @@
       "sno": 30,
       "name": "Shwetam Subhash Buggawar",
       "unit": "Maharashtra",
-      "arrival": "23/07/2026",
+      "arrival": "23.07.2026/1730 hrs",
       "departure": "30/07/2026",
       "mobile": "7264894564",
       "email": "",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "23.07.2026/1730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_31",
@@ -404,12 +604,20 @@
       "sno": 31,
       "name": "Princess",
       "unit": "Daman & Diu",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0730 hrs",
       "departure": "31/07/2026",
       "mobile": "8469346876",
       "email": "pencaksilatdamandiu@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_32",
@@ -417,12 +625,20 @@
       "sno": 32,
       "name": "Dolly Kumari Singh",
       "unit": "Jharkhand",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0330 hrs",
       "departure": "31/07/2026",
       "mobile": "7366913463",
       "email": "dollyisingh23@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "24.07.2026/0330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_33",
@@ -430,12 +646,20 @@
       "sno": 33,
       "name": "Mitali Thakur",
       "unit": "Bihar",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1715 hrs",
       "departure": "30/07/2026",
       "mobile": "9205434930",
       "email": "mitalithakur12345@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_34",
@@ -443,12 +667,20 @@
       "sno": 34,
       "name": "Arvinder Kumar",
       "unit": "Punjab",
-      "arrival": "24/07/2026",
+      "arrival": "23.07.2026/1710 hrs",
       "departure": "30/07/2026",
       "mobile": "9256411495",
       "email": "arvinderkumar84@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "23.07.2026/1710 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_35",
@@ -456,12 +688,20 @@
       "sno": 35,
       "name": "Mohammad Aadil",
       "unit": "Bihar",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0330 hrs",
       "departure": "30/07/2026",
       "mobile": "7549666780",
       "email": "mohammadaadil7549@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "24.07.2026/0330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ps_36",
@@ -469,12 +709,20 @@
       "sno": 36,
       "name": "Numan Bin Reyaz",
       "unit": "JAMMU & KASHMIR",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1710 hrs",
       "departure": "31/07/2026",
       "mobile": "9622777707",
       "email": "numansofi99@gmail.com",
       "role": "Technical Official",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "21.07.2026/1710 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_01",
@@ -482,12 +730,20 @@
       "sno": 1,
       "name": "Ms. Geetanjali Panda",
       "unit": "Odisha",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1445 hrs",
       "departure": "25/07/2026",
       "mobile": "9777044844",
       "email": "gitanjalipanda@gmail.com",
       "role": "CM",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/1445 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_02",
@@ -495,12 +751,20 @@
       "sno": 2,
       "name": "Mr. Umesh Kr. Singh",
       "unit": "Uttar Pradesh",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/2050 hrs",
       "departure": "25/07/2026",
       "mobile": "7007122388",
       "email": "umeshjudoref@yahoo.co.in",
       "role": "Jury",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/2050 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_03",
@@ -508,12 +772,20 @@
       "sno": 3,
       "name": "Mr. Dip Kumar Saha",
       "unit": "West Bengal",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1100 hrs",
       "departure": "25/07/2026",
       "mobile": "9830032804",
       "email": "jaihok@gmail.com",
       "role": "Jury",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/1100 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_04",
@@ -521,12 +793,20 @@
       "sno": 4,
       "name": "Dr. Sher Singh",
       "unit": "Rajasthan",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1640 hrs",
       "departure": "25/07/2026",
       "mobile": "9414501972",
       "email": "shersinghjudocoach@gmail.com",
       "role": "Jury",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/1640 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_05",
@@ -534,12 +814,20 @@
       "sno": 5,
       "name": "Ms. Shilpa Sherigar",
       "unit": "Mumbai",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1140 hrs",
       "departure": "25/07/2026",
       "mobile": "9833083922",
       "email": "shilpa.serigar@gmail.com",
       "role": "Jury",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/1140 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_06",
@@ -625,12 +913,20 @@
       "sno": 12,
       "name": "Mr. Muktar Ahmed",
       "unit": "Assam",
-      "arrival": "21/07/2026",
+      "arrival": "20.07.2026/0810 hrs",
       "departure": "25/07/2026",
       "mobile": "9864850109",
       "email": "muktar.ahmed0786@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "20.07.2026/0810 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_13",
@@ -638,13 +934,21 @@
       "sno": 13,
       "name": "Mr. Gunamoni",
       "unit": "Manipur",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/2255 hrs",
       "departure": "25/07/2026",
       "mobile": "7005321815",
       "email": "indra.soibam@gmail.com",
       "role": "NTO",
       "rank": "",
-      "gender": ""
+      "gender": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/2255 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_14",
@@ -652,13 +956,22 @@
       "sno": 14,
       "name": "Mr. Nagaraju",
       "unit": "Telangana",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026",
       "departure": "25/07/2026",
       "mobile": "9701224179",
       "email": "raj.wishesmore@gmail.com",
       "role": "NTO",
       "rank": "",
-      "gender": ""
+      "gender": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "22.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_jd_15",
@@ -679,12 +992,21 @@
       "sno": 16,
       "name": "Mr. Ch. Ramu",
       "unit": "Telangana",
-      "arrival": "21/07/2026",
+      "arrival": "20.07.2026",
       "departure": "25/07/2026",
       "mobile": "9550873633",
       "email": "ramujudoka@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "20.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_jd_17",
@@ -705,12 +1027,20 @@
       "sno": 18,
       "name": "Mr. Sushil Sen",
       "unit": "Rajasthan",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1200 hrs",
       "departure": "25/07/2026",
       "mobile": "9352501410",
       "email": "sen.sushil02@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/1200 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_19",
@@ -718,12 +1048,20 @@
       "sno": 19,
       "name": "Mr. Sameer Ch. Paul",
       "unit": "West Bengal",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1100 hrs",
       "departure": "25/07/2026",
       "mobile": "9163728578",
       "email": "psamirchandra12@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/1100 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_20",
@@ -744,12 +1082,20 @@
       "sno": 21,
       "name": "Mr. Naveen Solanki",
       "unit": "Haryana",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/0235 hrs",
       "departure": "25/07/2026",
       "mobile": "9823678650",
       "email": "haryanajudoassociation@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/0235 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_22",
@@ -757,12 +1103,20 @@
       "sno": 22,
       "name": "Mr. Ravinder Dahiya",
       "unit": "Delhi",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1640 hrs",
       "departure": "25/07/2026",
       "mobile": "8860071140",
       "email": "ravinderjudo@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/1640 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_23",
@@ -770,12 +1124,20 @@
       "sno": 23,
       "name": "Mr. Hemanant Rathi",
       "unit": "Delhi",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/0235 hrs",
       "departure": "25/07/2026",
       "mobile": "8976523888",
       "email": "delhijudocouncil1976@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/0235 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_24",
@@ -796,12 +1158,20 @@
       "sno": 25,
       "name": "Mr. Arun Diwedi",
       "unit": "Chhattisgarh",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/0830 hrs",
       "departure": "25/07/2026",
       "mobile": "8839018382",
       "email": "cgpjudobhilai@gmail.com",
       "role": "TTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0830 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_26",
@@ -822,12 +1192,20 @@
       "sno": 27,
       "name": "Mr. Sheikh Shareef",
       "unit": "Chhattisgarh",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/0830 hrs",
       "departure": "25/07/2026",
       "mobile": "9165158990",
       "email": "shekhs512@gmail.com",
       "role": "TTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0830 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_jd_28",
@@ -848,12 +1226,21 @@
       "sno": 29,
       "name": "Mr. Sairam Yadav",
       "unit": "Telangana",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026",
       "departure": "25/07/2026",
       "mobile": "9154068389",
       "email": "bairaboinasairam@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "22.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_jd_30",
@@ -861,12 +1248,20 @@
       "sno": 30,
       "name": "Mr. Arun S.",
       "unit": "Kerala",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1100 hrs",
       "departure": "25/07/2026",
       "mobile": "9446032170",
       "email": "arunsurendran@gmail.com",
       "role": "NTO",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/1100 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_01",
@@ -874,13 +1269,22 @@
       "sno": 1,
       "name": "Abdul Omer",
       "unit": "Telangana",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026",
       "departure": "26/07/2026",
       "mobile": "8885777780",
       "email": "",
       "role": "Competition Director",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "21.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ws_02",
@@ -888,13 +1292,21 @@
       "sno": 2,
       "name": "Suhel Ahmed",
       "unit": "Uttar Pradesh",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/0130 hrs",
       "departure": "26/07/2026",
       "mobile": "9759878686",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/0130 hrs",
+        "details": "FLIGHT NO. 6E0882",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_03",
@@ -902,13 +1314,21 @@
       "sno": 3,
       "name": "Sambhu Set",
       "unit": "West Bengal",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/1750 hrs",
       "departure": "27/07/2026",
       "mobile": "9062612345",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "22.07.2026/1750 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_04",
@@ -916,13 +1336,21 @@
       "sno": 4,
       "name": "Kuldeep Handoo",
       "unit": "JAMMU & KASHMIR",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1635 hrs",
       "departure": "26/07/2026",
       "mobile": "9797455055",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/1635 hrs",
+        "details": "FLIGHT NO. 6E2456, 6E2491 \n",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_05",
@@ -930,13 +1358,21 @@
       "sno": 5,
       "name": "Pradyumna Behera",
       "unit": "Odisha",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/0940 hrs",
       "departure": "26/07/2026",
       "mobile": "9437032264",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/0940 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_06",
@@ -944,13 +1380,21 @@
       "sno": 6,
       "name": "D. Kondiah",
       "unit": "Chhattisgarh",
-      "arrival": "18/07/2026",
+      "arrival": "18.07.2026/1705 hrs",
       "departure": "27/07/2026",
       "mobile": "8817399955",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "18.07.2026/1705 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_07",
@@ -958,13 +1402,21 @@
       "sno": 7,
       "name": "Arif C. P",
       "unit": "Kerala",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1730 hrs",
       "departure": "26/07/2026",
       "mobile": "9447204733",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "21.07.2026/1730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_08",
@@ -972,13 +1424,21 @@
       "sno": 8,
       "name": "Aashok Mukashi",
       "unit": "Karnataka",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/0700 hrs",
       "departure": "25/07/2026",
       "mobile": "9036918771",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0700 hrs",
+        "details": "Train no.- 16536, 22691",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_09",
@@ -986,13 +1446,21 @@
       "sno": 9,
       "name": "Rajeev Dagar",
       "unit": "Haryana",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/0130 hrs",
       "departure": "26/07/2026",
       "mobile": "9812131285",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/0130 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_10",
@@ -1000,13 +1468,21 @@
       "sno": 10,
       "name": "Binopani Devi",
       "unit": "Manipur",
-      "arrival": "19/07/2026",
+      "arrival": "21.07.2026/2330 hrs",
       "departure": "26/07/2026",
       "mobile": "9233523914",
       "email": "",
       "role": "",
       "gender": "F",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/2330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_11",
@@ -1014,13 +1490,21 @@
       "sno": 11,
       "name": "Shashank Pal",
       "unit": "Delhi",
-      "arrival": "20/07/2026",
+      "arrival": "20.07.2026/1340 hrs",
       "departure": "27/07/2026",
       "mobile": "7982198491",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "20.07.2026/1340 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_12",
@@ -1028,13 +1512,21 @@
       "sno": 12,
       "name": "Thangapandian",
       "unit": "Tamil Nadu",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/0650 hrs",
       "departure": "27/07/2026",
       "mobile": "9843357138",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0650 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_13",
@@ -1042,13 +1534,21 @@
       "sno": 13,
       "name": "Sathyabheman",
       "unit": "Tamil Nadu",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1845 hrs",
       "departure": "26/07/2026",
       "mobile": "9698742373",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/1845 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_14",
@@ -1056,13 +1556,21 @@
       "sno": 14,
       "name": "Sangemesh Layadagundi",
       "unit": "Karnataka",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/0700 hrs",
       "departure": "26/07/2026",
       "mobile": "9448268009",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/0700 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_15",
@@ -1070,13 +1578,22 @@
       "sno": 15,
       "name": "Sriramula Saikrishna",
       "unit": "Telangana",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026",
       "departure": "26/07/2026",
       "mobile": "9704659782",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "21.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ws_16",
@@ -1084,13 +1601,22 @@
       "sno": 16,
       "name": "A. Prathiksha",
       "unit": "Telangana",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026",
       "departure": "26/07/2026",
       "mobile": "8639413103",
       "email": "",
       "role": "",
       "gender": "F",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "21.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ws_17",
@@ -1098,13 +1624,21 @@
       "sno": 17,
       "name": "Pradeep V. S.",
       "unit": "Kerala",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1102 hrs",
       "departure": "31/07/2026",
       "mobile": "9809404343",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1102 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_18",
@@ -1112,13 +1646,21 @@
       "sno": 18,
       "name": "Ajay Paul",
       "unit": "JAMMU & KASHMIR",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/1710 hrs",
       "departure": "27/07/2026",
       "mobile": "9622572828",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "22.07.2026/1710 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_19",
@@ -1126,13 +1668,21 @@
       "sno": 19,
       "name": "Raghvendra Singh",
       "unit": "Gujrat",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/0810 hrs",
       "departure": "26/07/2026",
       "mobile": "8384849529",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "22.07.2026/0810 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_20",
@@ -1140,13 +1690,21 @@
       "sno": 20,
       "name": "Kutubudin",
       "unit": "West Bengal",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1750 hrs",
       "departure": "27/07/2026",
       "mobile": "8250450395",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "22.07.2026/1750 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_21",
@@ -1168,13 +1726,21 @@
       "sno": 22,
       "name": "Sandeep Kashyap",
       "unit": "Haryana",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026",
       "departure": "26/07/2026",
       "mobile": "9017938190",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_23",
@@ -1182,13 +1748,21 @@
       "sno": 23,
       "name": "Bimla Topo",
       "unit": "Jharkhand",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/0645 hrs",
       "departure": "31/07/2026",
       "mobile": "9541326873",
       "email": "",
       "role": "",
       "gender": "F",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "21.07.2026/0645 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_24",
@@ -1196,13 +1770,21 @@
       "sno": 24,
       "name": "Alaya Kumari",
       "unit": "Tamil Nadu",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/0810 hrs",
       "departure": "26/07/2026",
       "mobile": "9840783469",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/0810 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_25",
@@ -1210,13 +1792,21 @@
       "sno": 25,
       "name": "Sanathoibi Chanu",
       "unit": "Manipur",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/2330 hrs",
       "departure": "26/07/2026",
       "mobile": "7421856672",
       "email": "",
       "role": "",
       "gender": "F",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "21.07.2026/2330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_26",
@@ -1224,13 +1814,21 @@
       "sno": 26,
       "name": "Bhagwat Parshad",
       "unit": "Punjab",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/1715 hrs",
       "departure": "26/07/2026",
       "mobile": "7355039349",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_27",
@@ -1238,13 +1836,21 @@
       "sno": 27,
       "name": "Nagesh Kamble",
       "unit": "SAI",
-      "arrival": "19/07/2026",
+      "arrival": "19.07.2026/0840 hrs",
       "departure": "27/07/2026",
       "mobile": "9398865977",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "19.07.2026/0840 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_28",
@@ -1252,13 +1858,21 @@
       "sno": 28,
       "name": "Manish Giri",
       "unit": "Haryana",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/1555 hrs",
       "departure": "25/07/2026",
       "mobile": "8800181016",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/1555 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_29",
@@ -1294,13 +1908,22 @@
       "sno": 31,
       "name": "B. Sai Mohan Kumar",
       "unit": "Andhra Pradesh",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026",
       "departure": "26/07/2026",
       "mobile": "9032084668",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "22.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_ws_32",
@@ -1308,13 +1931,21 @@
       "sno": 32,
       "name": "Tara Kumari",
       "unit": "Jharkhand",
-      "arrival": "21/07/2026",
+      "arrival": "21.07.2026/1855 hrs",
       "departure": "27/07/2026",
       "mobile": "7209904423",
       "email": "",
       "role": "",
       "gender": "F",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/1855 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_33",
@@ -1322,13 +1953,21 @@
       "sno": 33,
       "name": "Anjumoni Phulkonwar",
       "unit": "Assam",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/1000 hrs",
       "departure": "27/07/2026",
       "mobile": "9678309772",
       "email": "",
       "role": "",
       "gender": "F",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "22.07.2026/1000 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_34",
@@ -1336,13 +1975,21 @@
       "sno": 34,
       "name": "Ratul Saikia",
       "unit": "Assam",
-      "arrival": "21/07/2026",
+      "arrival": "22.07.2026/1918 hrs",
       "departure": "26/07/2026",
       "mobile": "",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "22.07.2026/1918 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_ws_35",
@@ -1350,13 +1997,21 @@
       "sno": 35,
       "name": "Vikram Singh",
       "unit": "Rajasthan",
-      "arrival": "22/07/2026",
+      "arrival": "22.07.2026/1545 hrs",
       "departure": "25/07/2026",
       "mobile": "8290924028",
       "email": "",
       "role": "",
       "gender": "M",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Kacheguda Station",
+        "arrival": "22.07.2026/1545 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_01",
@@ -1364,13 +2019,21 @@
       "sno": 1,
       "name": "Subhash Gokul Patil",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "23.07.2026",
       "departure": "27/07/2026",
       "mobile": "9821650444",
       "email": "",
       "role": "Tournament Director",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "23.07.2026",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_02",
@@ -1378,13 +2041,21 @@
       "sno": 2,
       "name": "Prashant Gharat",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1205 hrs",
       "departure": "27/07/2026",
       "mobile": "9773360082",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/1205 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_03",
@@ -1392,13 +2063,21 @@
       "sno": 3,
       "name": "Vitthal Shedage",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1205 hrs",
       "departure": "27/07/2026",
       "mobile": "9850842593",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/1205 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_04",
@@ -1406,13 +2085,21 @@
       "sno": 4,
       "name": "P. Akhil",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0635 hrs",
       "departure": "27/07/2026",
       "mobile": "9494946207",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0635 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_05",
@@ -1420,13 +2107,21 @@
       "sno": 5,
       "name": "Mallela Ramanjineyulu",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/0500 hrs",
       "departure": "27/07/2026",
       "mobile": "9492878359",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Kacheguda Station",
+        "arrival": "24.07.2026/0500 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_06",
@@ -1434,13 +2129,21 @@
       "sno": 6,
       "name": "Gedela Rajesh",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0635 hrs",
       "departure": "27/07/2026",
       "mobile": "7386664660",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0635 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_07",
@@ -1448,13 +2151,21 @@
       "sno": 7,
       "name": "Vikas Thapa",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0350 hrs",
       "departure": "27/07/2026",
       "mobile": "8839015446",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/0350 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_08",
@@ -1462,13 +2173,21 @@
       "sno": 8,
       "name": "Yash Kaushal",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0350 hrs",
       "departure": "27/07/2026",
       "mobile": "8966942580",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/0350 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_09",
@@ -1476,13 +2195,21 @@
       "sno": 9,
       "name": "Kishan Parki",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0430 hrs",
       "departure": "27/07/2026",
       "mobile": "8980174704",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/0430 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_10",
@@ -1490,13 +2217,21 @@
       "sno": 10,
       "name": "Jay Panchal",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0430 hrs",
       "departure": "27/07/2026",
       "mobile": "9408841353",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "24.07.2026/0430 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_11",
@@ -1504,13 +2239,22 @@
       "sno": 11,
       "name": "Naveen Chandra U.",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0700 hrs",
       "departure": "27/07/2026",
       "mobile": "9886142662",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026/0700 hrs",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_tk_12",
@@ -1518,13 +2262,22 @@
       "sno": 12,
       "name": "C. Durai",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "23.07.2026/0700 hrs",
       "departure": "27/07/2026",
       "mobile": "9886869205",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "23.07.2026/0700 hrs",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_tk_13",
@@ -1532,13 +2285,21 @@
       "sno": 13,
       "name": "Kothandan S.",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/0755 hrs",
       "departure": "28/07/2026",
       "mobile": "9894531007",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Kacheguda Station",
+        "arrival": "24.07.2026/0755 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_14",
@@ -1546,13 +2307,21 @@
       "sno": 14,
       "name": "F. Joseph Antony Pio Jefrish",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/0755 hrs",
       "departure": "28/07/2026",
       "mobile": "9585322765",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Kacheguda Station",
+        "arrival": "24.07.2026/0755 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_15",
@@ -1560,13 +2329,21 @@
       "sno": 15,
       "name": "K. Manohar",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/0755 hrs",
       "departure": "28/07/2026",
       "mobile": "9884443357",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Kacheguda Station",
+        "arrival": "24.07.2026/0755 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_16",
@@ -1574,13 +2351,21 @@
       "sno": 16,
       "name": "Vijay Mokashi",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0400 hrs",
       "departure": "28/07/2026",
       "mobile": "9049982292",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0400 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_17",
@@ -1588,13 +2373,22 @@
       "sno": 17,
       "name": "Pradeep Kumar S.",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026",
       "departure": "28/07/2026",
       "mobile": "7799177061",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "24.07.2026",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_tk_18",
@@ -1602,13 +2396,21 @@
       "sno": 18,
       "name": "Prayag Singh",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "23.07.2026/2245 hrs",
       "departure": "28/07/2026",
       "mobile": "9450727113",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "23.07.2026/2245 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_19",
@@ -1616,13 +2418,21 @@
       "sno": 19,
       "name": "Mohd Ashiq",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1145 hrs",
       "departure": "28/07/2026",
       "mobile": "8589009099",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "24.07.2026/1145 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_20",
@@ -1630,13 +2440,21 @@
       "sno": 20,
       "name": "Akhilesh Kevarth",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0830 hrs",
       "departure": "27/07/2026",
       "mobile": "9399099229",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0830 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_21",
@@ -1644,13 +2462,21 @@
       "sno": 21,
       "name": "Rajani Lahare",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/0830 hrs",
       "departure": "27/07/2026",
       "mobile": "9770265927",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/0830 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_22",
@@ -1658,13 +2484,21 @@
       "sno": 22,
       "name": "Jyoti",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1220 hrs",
       "departure": "27/07/2026",
       "mobile": "9760673216",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "24.07.2026/1220 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_23",
@@ -1672,13 +2506,21 @@
       "sno": 23,
       "name": "Dhashnapriya E.",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026",
       "departure": "27/07/2026",
       "mobile": "",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_24",
@@ -1686,13 +2528,21 @@
       "sno": 24,
       "name": "Hijam Ione Dallo Rihmo",
       "unit": "",
-      "arrival": "24/07/2026",
+      "arrival": "24.07.2026/1200 hrs",
       "departure": "28/07/2026",
       "mobile": "8745842781",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "24.07.2026/1200 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_25",
@@ -1700,13 +2550,21 @@
       "sno": 25,
       "name": "Rizwan Ahmed",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/1100 hrs",
       "departure": "27/07/2026",
       "mobile": "7003247762",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1100 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_tk_26",
@@ -1714,13 +2572,21 @@
       "sno": 26,
       "name": "Sanjay Rana",
       "unit": "",
-      "arrival": "23/07/2026",
+      "arrival": "24.07.2026/1100 hrs",
       "departure": "27/07/2026",
       "mobile": "8777833625",
       "email": "",
       "role": "Technical Official",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1100 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_01",
@@ -1728,13 +2594,22 @@
       "sno": 1,
       "name": "Baskar Sindouvassane",
       "unit": "",
-      "arrival": "26/07/2026",
+      "arrival": "25.07.2026/0740 hrs",
       "departure": "29/07/2026",
       "mobile": "9994599886",
       "email": "",
       "role": "By Road",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "25.07.2026/0740 hrs",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_kr_02",
@@ -1742,13 +2617,21 @@
       "sno": 2,
       "name": "R. Muthuraju",
       "unit": "",
-      "arrival": "26/07/2026 17:30",
+      "arrival": "26.07.2026/1730 hrs",
       "departure": "29/07/2026 18:10",
       "mobile": "9894699949",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/1730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_03",
@@ -1756,13 +2639,21 @@
       "sno": 3,
       "name": "M. Ganeshmoorthy",
       "unit": "",
-      "arrival": "25/07/2026 12:50",
+      "arrival": "25.07.2026/1250 hrs",
       "departure": "30/07/2026 17:55",
       "mobile": "9585555758",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1250 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_04",
@@ -1770,13 +2661,21 @@
       "sno": 4,
       "name": "A. Peter Paul",
       "unit": "",
-      "arrival": "26/07/2026 17:30",
+      "arrival": "26.07.2026/1730 hrs",
       "departure": "",
       "mobile": "8122059975",
       "email": "",
       "role": "",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/1730 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_05",
@@ -1798,13 +2697,21 @@
       "sno": 6,
       "name": "Sathishkumar Raji",
       "unit": "",
-      "arrival": "25/07/2026 12:50",
+      "arrival": "25.07.2026/1250 hrs",
       "departure": "30/07/2026 17:55",
       "mobile": "7200590018",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1250 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_07",
@@ -1812,13 +2719,21 @@
       "sno": 7,
       "name": "Sunil Kumar",
       "unit": "",
-      "arrival": "26/07/2026 09:25",
+      "arrival": "26.07.2026/0925 hrs",
       "departure": "30/07/2026 16:40",
       "mobile": "9946087575",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/0925 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_08",
@@ -1826,13 +2741,21 @@
       "sno": 8,
       "name": "Sriya Shiju",
       "unit": "",
-      "arrival": "26/07/2026 09:25",
+      "arrival": "26.07.2026/0925 hrs",
       "departure": "30/07/2026 16:40",
       "mobile": "6238392069",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/0925 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_09",
@@ -1840,13 +2763,21 @@
       "sno": 9,
       "name": "Anjana P Kumar",
       "unit": "",
-      "arrival": "26/07/2026 09:25",
+      "arrival": "26.07.2026/0925 hrs",
       "departure": "30/07/2026 16:40",
       "mobile": "9526152158",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/0925 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_10",
@@ -1854,13 +2785,21 @@
       "sno": 10,
       "name": "Arshad NTK",
       "unit": "",
-      "arrival": "26/07/2026 09:25",
+      "arrival": "26.07.2026/0925 hrs",
       "departure": "30/07/2026 16:40",
       "mobile": "9961100878",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/0925 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_11",
@@ -1868,13 +2807,21 @@
       "sno": 11,
       "name": "Amit Gupta",
       "unit": "",
-      "arrival": "25/07/2026 16:30",
+      "arrival": "25.07.2026/1630 hrs",
       "departure": "31/07/2026 14:40",
       "mobile": "9911090464",
       "email": "",
       "role": "Akasa Air",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1630 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_12",
@@ -1882,13 +2829,21 @@
       "sno": 12,
       "name": "Sonu Nishad",
       "unit": "",
-      "arrival": "25/07/2026 16:30",
+      "arrival": "25.07.2026/1630 hrs",
       "departure": "31/07/2026 14:40",
       "mobile": "7417661836",
       "email": "",
       "role": "Akasa Air",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1630 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_13",
@@ -1896,13 +2851,21 @@
       "sno": 13,
       "name": "Rajesh Kaushik",
       "unit": "",
-      "arrival": "25/07/2026 16:30",
+      "arrival": "25.07.2026/1630 hrs",
       "departure": "31/07/2026 14:40",
       "mobile": "9548110359",
       "email": "",
       "role": "Akasa Air",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1630 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_14",
@@ -1910,13 +2873,21 @@
       "sno": 14,
       "name": "Paritosh Sharma",
       "unit": "",
-      "arrival": "26/07/2026 17:15",
+      "arrival": "26.07.2026/0515 hrs",
       "departure": "30/07/2026",
       "mobile": "9827392060",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "26.07.2026/0515 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_15",
@@ -1924,13 +2895,21 @@
       "sno": 15,
       "name": "Vishnu Kant Ojha",
       "unit": "",
-      "arrival": "26/07/2026 17:15",
+      "arrival": "26.07.2026/1715 hrs",
       "departure": "30/07/2026",
       "mobile": "7697317031",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "26.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_16",
@@ -1938,13 +2917,21 @@
       "sno": 16,
       "name": "Mohammad Riyaz",
       "unit": "",
-      "arrival": "25/07/2026 07:50",
+      "arrival": "26.07.2026/1715 hrs",
       "departure": "30/07/2026",
       "mobile": "9131251646",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "26.07.2026/1715 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_17",
@@ -1952,13 +2939,21 @@
       "sno": 17,
       "name": "Debasish Mondal",
       "unit": "",
-      "arrival": "25/07/2026 19:15",
+      "arrival": "25.07.2026/1915 hrs",
       "departure": "30/07/2026 11:55",
       "mobile": "9732666758",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1915 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_18",
@@ -1966,13 +2961,21 @@
       "sno": 18,
       "name": "Bhoju Hela",
       "unit": "",
-      "arrival": "25/07/2026 19:15",
+      "arrival": "25.07.2026/1915 hrs",
       "departure": "30/07/2026 11:55",
       "mobile": "9831966188",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1915 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_19",
@@ -1980,13 +2983,21 @@
       "sno": 19,
       "name": "B. B. Sharma",
       "unit": "",
-      "arrival": "25/07/2026 20:00",
+      "arrival": "25.07.2026/2000 hrs",
       "departure": "30/07/2026",
       "mobile": "7002130365",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "25.07.2026/2000 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_20",
@@ -1994,13 +3005,21 @@
       "sno": 20,
       "name": "Kuldeep Singh",
       "unit": "",
-      "arrival": "25/07/2026 16:40",
+      "arrival": "25.07.2026/1640 hrs",
       "departure": "31/07/2026 06:45",
       "mobile": "7002130365",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1640 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_21",
@@ -2008,13 +3027,21 @@
       "sno": 21,
       "name": "Amit Khatri",
       "unit": "",
-      "arrival": "25/07/2026 13:20",
+      "arrival": "25.07.2026/1320 hrs",
       "departure": "30/07/2026 18:50",
       "mobile": "9819752127",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1320 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_22",
@@ -2022,13 +3049,21 @@
       "sno": 22,
       "name": "Navin Kunwar",
       "unit": "",
-      "arrival": "25/07/2026 13:20",
+      "arrival": "25.07.2026/1320 hrs",
       "departure": "30/07/2026 18:50",
       "mobile": "9769733535",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1320 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_23",
@@ -2036,13 +3071,21 @@
       "sno": 23,
       "name": "Kakio Siga",
       "unit": "",
-      "arrival": "25/07/2026 11:35",
+      "arrival": "26.07.2026/1135 hrs",
       "departure": "30/07/2026 05:20",
       "mobile": "9402225369",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "26.07.2026/1135 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_24",
@@ -2050,13 +3093,21 @@
       "sno": 24,
       "name": "Jabamani",
       "unit": "",
-      "arrival": "25/07/2026 05:00",
+      "arrival": "25.07.2026/0700 hrs",
       "departure": "30/07/2026 19:05",
       "mobile": "9741018686",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Kacheguda Station",
+        "arrival": "25.07.2026/0700 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_25",
@@ -2064,13 +3115,21 @@
       "sno": 25,
       "name": "S. Chandrasekhar",
       "unit": "",
-      "arrival": "25/07/2026 17:45",
+      "arrival": "25.07.2026/1630 hrs",
       "departure": "30/07/2026 20:05",
       "mobile": "9035166703",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1630 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_26",
@@ -2078,13 +3137,21 @@
       "sno": 26,
       "name": "Ashok Darda",
       "unit": "",
-      "arrival": "25/07/2026 14:35",
+      "arrival": "25.07.2026/0235 hrs",
       "departure": "30/07/2026 12:50",
       "mobile": "9871687274",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "25.07.2026/0235 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_27",
@@ -2092,13 +3159,21 @@
       "sno": 27,
       "name": "Anirban Chakraborty",
       "unit": "",
-      "arrival": "25/07/2026 17:20",
+      "arrival": "25.07.2026/1720 hrs",
       "departure": "02/08/2026 08:40",
       "mobile": "8822849241",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1720 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_28",
@@ -2106,13 +3181,21 @@
       "sno": 28,
       "name": "Ananta Changmai",
       "unit": "",
-      "arrival": "24/07/2026 04:20",
+      "arrival": "25.07.2026/0420 hrs",
       "departure": "01/08/2026 16:25",
       "mobile": "9101128026",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "25.07.2026/0420 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_29",
@@ -2120,13 +3203,21 @@
       "sno": 29,
       "name": "Ashok Sinha",
       "unit": "",
-      "arrival": "24/07/2026 04:20",
+      "arrival": "25.07.2026/0420 hrs",
       "departure": "01/08/2026 16:25",
       "mobile": "9085991037",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "25.07.2026/0420 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_30",
@@ -2134,13 +3225,21 @@
       "sno": 30,
       "name": "Tribedi Dutta",
       "unit": "",
-      "arrival": "24/07/2026 04:20",
+      "arrival": "25.07.2026/0420 hrs",
       "departure": "01/08/2026 16:25",
       "mobile": "9678623520",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "25.07.2026/0420 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_31",
@@ -2148,13 +3247,21 @@
       "sno": 31,
       "name": "D. Lallawmuani",
       "unit": "",
-      "arrival": "25/07/2026 23:30",
+      "arrival": "25.07.2026/2330 hrs",
       "departure": "30/07/2026 05:30",
       "mobile": "",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/2330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_32",
@@ -2162,13 +3269,21 @@
       "sno": 32,
       "name": "Pawan Kumar Sharma",
       "unit": "",
-      "arrival": "25/07/2026 16:40",
+      "arrival": "25.07.2026/1640 hrs",
       "departure": "31/07/2026 06:45",
       "mobile": "7888305968",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/1640 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_33",
@@ -2176,13 +3291,21 @@
       "sno": 33,
       "name": "Lalam Thara",
       "unit": "",
-      "arrival": "25/07/2026 23:30",
+      "arrival": "25.07.2026/2330 hrs",
       "departure": "31/07/2026 05:30",
       "mobile": "",
       "email": "",
       "role": "Indigo",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "flight",
+        "status": "planned",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "25.07.2026/2330 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_34",
@@ -2190,13 +3313,21 @@
       "sno": 34,
       "name": "Sivashanmugam M. M.",
       "unit": "",
-      "arrival": "24/07/2026 11:02",
+      "arrival": "24.07.2026/1102 hrs",
       "departure": "30/07/2026",
       "mobile": "9943094435",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1102 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_35",
@@ -2204,13 +3335,21 @@
       "sno": 35,
       "name": "Lielakrishnan R.",
       "unit": "",
-      "arrival": "24/07/2026 11:02",
+      "arrival": "24.07.2026/1102 hrs",
       "departure": "30/07/2026",
       "mobile": "6385469650",
       "email": "",
       "role": "Train",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "rail",
+        "status": "planned",
+        "station": "Secunderabad Jn",
+        "arrival": "24.07.2026/1102 hrs",
+        "details": "",
+        "direction": "arrival"
+      }
     },
     {
       "id": "tc_kr_36",
@@ -2218,13 +3357,22 @@
       "sno": 36,
       "name": "N. Chandrasekar",
       "unit": "",
-      "arrival": "25/07/2026",
+      "arrival": "25.07.2026/0740 hrs",
       "departure": "30/07/2026",
       "mobile": "9600648090",
       "email": "",
       "role": "By Road",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "25.07.2026/0740 hrs",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     },
     {
       "id": "tc_kr_37",
@@ -2232,14 +3380,23 @@
       "sno": 37,
       "name": "Puthupattan",
       "unit": "",
-      "arrival": "25/07/2026",
+      "arrival": "25.07.2026/0740 hrs",
       "departure": "30/07/2026",
       "mobile": "8754422891",
       "email": "",
       "role": "By Road",
       "gender": "",
-      "rank": ""
+      "rank": "",
+      "travel": {
+        "mode": "bus",
+        "status": "planned",
+        "station": "Bus Alighting Point",
+        "arrival": "25.07.2026/0740 hrs",
+        "details": "By Bus",
+        "direction": "arrival",
+        "bus_role": "alighting"
+      }
     }
   ],
-  "updated_at": "2026-07-19T13:09:19"
+  "updated_at": "2026-07-20T18:44:11"
 }

@@ -248,6 +248,33 @@ def put_arrival(org):
         return jsonify(store.save_arrival_row(org, travel, extra, field=field, leg_index=leg_index))
 
 
+@app.route("/api/arrival/<path:org>/legs", methods=["POST"])
+def post_arrival_leg(org):
+    payload = request.get_json(force=True) or {}
+    field = payload.get("field") or "travel"
+    if payload.get("direction") == "departure" or field == "travel_departure":
+        field = "travel_departure"
+    with LOCK:
+        try:
+            return jsonify(store.add_arrival_leg(org, field=field))
+        except KeyError as e:
+            return jsonify({"error": str(e)}), 404
+
+
+@app.route("/api/arrival/<path:org>/legs/<int:leg_index>", methods=["DELETE"])
+def delete_arrival_leg(org, leg_index):
+    field = request.args.get("field") or "travel"
+    if request.args.get("direction") == "departure" or field == "travel_departure":
+        field = "travel_departure"
+    with LOCK:
+        try:
+            return jsonify(store.remove_arrival_leg(org, leg_index, field=field))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+        except KeyError as e:
+            return jsonify({"error": str(e)}), 404
+
+
 @app.route("/api/hubs", methods=["PUT"])
 def put_hubs():
     payload = request.get_json(force=True) or {}
@@ -415,6 +442,179 @@ def delete_lo_assignment(assignment_id):
             return jsonify({"error": "Assignment not found"}), 404
 
 
+@app.route("/api/fleet/vehicles", methods=["POST"])
+def post_fleet_vehicle():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_fleet_vehicle(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/fleet/vehicles/<vehicle_id>", methods=["PUT"])
+def put_fleet_vehicle(vehicle_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_fleet_vehicle(payload, vehicle_id=vehicle_id))
+        except KeyError:
+            return jsonify({"error": "Vehicle not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/fleet/vehicles/<vehicle_id>", methods=["DELETE"])
+def delete_fleet_vehicle(vehicle_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_fleet_vehicle(vehicle_id))
+        except KeyError:
+            return jsonify({"error": "Vehicle not found"}), 404
+
+
+# ── Senior Officials ───────────────────────────────────────
+@app.route("/api/so/officials/<official_id>/driver", methods=["PUT"])
+def put_so_driver_assign(official_id):
+    payload = request.get_json(force=True) or {}
+    person_id = payload.get("person_id") or payload.get("adm_person_id") or payload.get("driver_adm_person_id") or ""
+    with LOCK:
+        try:
+            return jsonify(store.assign_so_driver(official_id, person_id))
+        except KeyError:
+            return jsonify({"error": "Official or ADM driver not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/officials/<official_id>/sync-driver", methods=["PUT"])
+def put_so_driver_sync(official_id):
+    with LOCK:
+        try:
+            return jsonify(store.sync_so_driver_from_adm(official_id))
+        except KeyError:
+            return jsonify({"error": "Official not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/officials", methods=["POST"])
+def post_so_official():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_so_official(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/officials/<official_id>", methods=["PUT"])
+def put_so_official(official_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_so_official(payload, official_id=official_id))
+        except KeyError:
+            return jsonify({"error": "Official not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/officials/<official_id>", methods=["DELETE"])
+def delete_so_official(official_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_so_official(official_id))
+        except KeyError:
+            return jsonify({"error": "Official not found"}), 404
+
+
+@app.route("/api/so/officials/<official_id>/vehicle", methods=["PUT"])
+def put_so_vehicle_assign(official_id):
+    payload = request.get_json(force=True) or {}
+    vehicle_id = payload.get("vehicle_id", "")
+    with LOCK:
+        try:
+            return jsonify(store.assign_so_vehicle(official_id, vehicle_id))
+        except KeyError:
+            return jsonify({"error": "Official or vehicle not found"}), 404
+
+
+@app.route("/api/so/officials/<official_id>/lo", methods=["PUT"])
+def put_so_lo_assign(official_id):
+    payload = request.get_json(force=True) or {}
+    officer_id = payload.get("officer_id") or payload.get("lo_officer_id") or ""
+    with LOCK:
+        try:
+            return jsonify(store.assign_so_lo_officer(official_id, officer_id))
+        except KeyError:
+            return jsonify({"error": "Official or Liaison Officer not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/vehicles", methods=["POST"])
+def post_so_vehicle():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_fleet_vehicle(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/vehicles/<vehicle_id>", methods=["PUT"])
+def put_so_vehicle(vehicle_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_fleet_vehicle(payload, vehicle_id=vehicle_id))
+        except KeyError:
+            return jsonify({"error": "Vehicle not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/vehicles/<vehicle_id>", methods=["DELETE"])
+def delete_so_vehicle(vehicle_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_fleet_vehicle(vehicle_id))
+        except KeyError:
+            return jsonify({"error": "Vehicle not found"}), 404
+
+
+@app.route("/api/so/assignments", methods=["POST"])
+def post_so_assignment():
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_so_lo_assignment(payload))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/assignments/<assignment_id>", methods=["PUT"])
+def put_so_assignment(assignment_id):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_so_lo_assignment(payload, assignment_id=assignment_id))
+        except KeyError:
+            return jsonify({"error": "Assignment not found"}), 404
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/so/assignments/<assignment_id>", methods=["DELETE"])
+def delete_so_assignment(assignment_id):
+    with LOCK:
+        try:
+            return jsonify(store.delete_so_lo_assignment(assignment_id))
+        except KeyError:
+            return jsonify({"error": "Assignment not found"}), 404
+
+
 # ── Technical Committee ────────────────────────────────────
 @app.route("/api/tc/members", methods=["POST"])
 def post_tc_member():
@@ -436,6 +636,50 @@ def put_tc_member(member_id):
             return jsonify({"error": "Member not found"}), 404
         except ValueError as e:
             return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/tc/members/<member_id>/travel", methods=["PUT"])
+def put_tc_travel(member_id):
+    payload = request.get_json(force=True) or {}
+    travel = payload.get("travel") or payload
+    field = payload.get("field") or "travel"
+    if payload.get("direction") == "departure" or (
+        isinstance(travel, dict) and travel.get("direction") == "departure"
+    ):
+        field = "travel_departure"
+    leg_index = int(payload.get("leg_index") or 0)
+    with LOCK:
+        try:
+            return jsonify(store.save_tc_travel(member_id, travel, field=field, leg_index=leg_index))
+        except KeyError:
+            return jsonify({"error": "Member not found"}), 404
+
+
+@app.route("/api/tc/members/<member_id>/legs", methods=["POST"])
+def post_tc_leg(member_id):
+    payload = request.get_json(force=True) or {}
+    field = payload.get("field") or "travel"
+    if payload.get("direction") == "departure" or field == "travel_departure":
+        field = "travel_departure"
+    with LOCK:
+        try:
+            return jsonify(store.add_tc_leg(member_id, field=field))
+        except KeyError:
+            return jsonify({"error": "Member not found"}), 404
+
+
+@app.route("/api/tc/members/<member_id>/legs/<int:leg_index>", methods=["DELETE"])
+def delete_tc_leg(member_id, leg_index):
+    field = request.args.get("field") or "travel"
+    if request.args.get("direction") == "departure" or field == "travel_departure":
+        field = "travel_departure"
+    with LOCK:
+        try:
+            return jsonify(store.remove_tc_leg(member_id, leg_index, field=field))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+        except KeyError:
+            return jsonify({"error": "Member or leg not found"}), 404
 
 
 @app.route("/api/tc/members/<member_id>", methods=["DELETE"])

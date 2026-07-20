@@ -138,18 +138,18 @@
     },
     {
       "id": "lo_8deb5a7883",
-      "cisf_no": "",
+      "cisf_no": "071731951",
       "name": "Madhu Ammgothu",
       "rank": "HC/GD",
-      "unit": "ASG Hyderabad",
+      "unit": "Midhani Kanchanbagh",
       "mobile": "6361658260"
     },
     {
       "id": "lo_49915e07a4",
-      "cisf_no": "",
+      "cisf_no": "150102090",
       "name": "Mane Venkati Madhukar",
       "rank": "ASI/EXE",
-      "unit": "ASG Hyderabad",
+      "unit": "BHEL Hyderabad",
       "mobile": "8805101416"
     },
     {
@@ -279,15 +279,71 @@
       "rank": "ASI/Exe",
       "unit": "ASG Hyderabad",
       "mobile": "9441456065"
+    },
+    {
+      "id": "lo_5bccc9ac8c",
+      "cisf_no": "943510835",
+      "name": "Chakrahari Venkata Raju",
+      "rank": "ASI",
+      "unit": "SJM Hyderabad",
+      "mobile": "8848810536"
+    },
+    {
+      "id": "lo_58b07abab1",
+      "cisf_no": "943511728",
+      "name": "P Srinivas Rao",
+      "rank": "ASI/EXE",
+      "unit": "STPP (S)",
+      "mobile": "7204459281"
+    },
+    {
+      "id": "lo_585eb9315e",
+      "cisf_no": "094522402",
+      "name": "Govind Gouda MC",
+      "rank": "HC/GD",
+      "unit": "STPP (S)",
+      "mobile": "7892336038"
+    },
+    {
+      "id": "lo_f5205d87fe",
+      "cisf_no": "945020895",
+      "name": "Prakash Mondal",
+      "rank": "ASI/EXE",
+      "unit": "SCCL Singrani",
+      "mobile": "6383068576"
+    },
+    {
+      "id": "lo_71d25c9ca1",
+      "cisf_no": "092210462",
+      "name": "Mamidi Ramesh Kumar",
+      "rank": "HC/GD",
+      "unit": "SCCL Singrani",
+      "mobile": "9452793165"
+    },
+    {
+      "id": "lo_6cc611ef39",
+      "cisf_no": "",
+      "name": "Ashwin George",
+      "rank": "DC",
+      "unit": "NISA",
+      "mobile": "9890402989"
+    },
+    {
+      "id": "lo_ea164ebaf8",
+      "cisf_no": "",
+      "name": "Pradeep",
+      "rank": "Insp",
+      "unit": "NISA",
+      "mobile": "8902681051"
     }
   ],
   "assignments": [
     {
       "id": "la_2f63d95a14",
       "team_org": "Andhra Pradesh",
-      "officer_id": "lo_95e10bf49b",
-      "doa": "Bus",
-      "location": "TGPA",
+      "officer_id": "",
+      "doa": "",
+      "location": "",
       "notes": ""
     },
     {
@@ -557,7 +613,7 @@
     {
       "id": "la_2f8be2bda9",
       "team_org": "TELANGANA POLICE",
-      "officer_id": "lo_db4a04e566",
+      "officer_id": "lo_5bccc9ac8c",
       "doa": "",
       "location": "Own Location",
       "notes": ""
@@ -571,5 +627,5 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-07-19T17:33:07"
+  "updated_at": "2026-07-20T19:36:42"
 }

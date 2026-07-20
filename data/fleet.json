@@ -1,0 +1,125 @@
+{
+  "vehicles": [
+    {
+      "id": "vh_c2a75d01c4",
+      "official_id": "so_9e06ad3cfd",
+      "label": "Safari",
+      "reg_no": "TS-08X-5145",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "assigned"
+    },
+    {
+      "id": "vh_9bef9fb678",
+      "official_id": "so_04f5f6daa2",
+      "label": "Innova",
+      "reg_no": "TS-09A-5599",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "assigned"
+    },
+    {
+      "id": "vh_2509751efe",
+      "official_id": "",
+      "label": "Innova",
+      "reg_no": "TS-09A-7788",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_2373fa4dc3",
+      "official_id": "",
+      "label": "Innova",
+      "reg_no": "TS-09A-9090",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_548e004a97",
+      "official_id": "",
+      "label": "Innova",
+      "reg_no": "TS-09PA-4636",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_a788038403",
+      "official_id": "",
+      "label": "Innova",
+      "reg_no": "TS09PA4650",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_a0da58eb8c",
+      "official_id": "",
+      "label": "Ertiga",
+      "reg_no": "TS-08GR-7072",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_b95bffeb99",
+      "official_id": "",
+      "label": "Bolero",
+      "reg_no": "TS-09PC-1207",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_c0a9a3855e",
+      "official_id": "",
+      "label": "Bolero",
+      "reg_no": "TS-09PA-4442",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    },
+    {
+      "id": "vh_be2a52f53d",
+      "official_id": "",
+      "label": "Bolero",
+      "reg_no": "TS-09PC-3925",
+      "type": "car",
+      "capacity": 0,
+      "driver_name": "",
+      "driver_mobile": "",
+      "notes": "",
+      "status": "available"
+    }
+  ],
+  "updated_at": "2026-07-20T19:52:56"
+}

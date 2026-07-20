@@ -9,6 +9,8 @@ data/
   directory.json      — team manager contacts
   adm_staff.json      — ADM staff persons, tasks, detailments
   lo.json             — liaison officers + team assignments
+  senior_officials.json — senior officials, LO assignment sync
+  fleet.json            — central vehicle registry + allotments
   tech_committee.json — technical committee members by game
   players.json        — athlete roster by sport (AIPSCB MIS import)
 """
@@ -34,6 +36,8 @@ FILES = {
     "directory": os.path.join(DATA_DIR, "directory.json"),
     "adm_staff": os.path.join(DATA_DIR, "adm_staff.json"),
     "lo": os.path.join(DATA_DIR, "lo.json"),
+    "senior_officials": os.path.join(DATA_DIR, "senior_officials.json"),
+    "fleet": os.path.join(DATA_DIR, "fleet.json"),
     "tech_committee": os.path.join(DATA_DIR, "tech_committee.json"),
     "players": os.path.join(DATA_DIR, "players.json"),
 }
@@ -169,6 +173,8 @@ def empty_bundle():
         "tgpa_mess": {"dining_tgpa": [], "own_mess": [], "note": ""},
         "adm_staff": {"persons": [], "tasks": [], "detailments": []},
         "lo": {"officers": [], "assignments": []},
+        "senior_officials": {"officials": [], "assignments": []},
+        "fleet": {"vehicles": []},
         "tech_committee": {"games": list(TC_GAMES), "members": []},
         "players": {"sports": list(PLAYER_SPORTS), "players": []},
         "summary": build_summary([]),
@@ -257,6 +263,7 @@ def merge_bundle() -> dict:
     arrival = _read(FILES["arrival"], {"rows": []})
     directory = _read(FILES["directory"], {"rows": []})
     _migrate_lo_from_adm()
+    _migrate_fleet_from_senior()
     adm = _read(FILES["adm_staff"], {"persons": [], "tasks": [], "detailments": []})
     adm_staff = {
         "persons": adm.get("persons") or [],
@@ -268,6 +275,13 @@ def merge_bundle() -> dict:
         "officers": lo.get("officers") or [],
         "assignments": lo.get("assignments") or [],
     }
+    so = _read(FILES["senior_officials"], {"officials": [], "assignments": []})
+    so_data = {
+        "officials": so.get("officials") or [],
+        "assignments": so.get("assignments") or [],
+    }
+    fleet = _read(FILES["fleet"], {"vehicles": []})
+    fleet_data = {"vehicles": fleet.get("vehicles") or []}
     tc = _read(FILES["tech_committee"], {"games": list(TC_GAMES), "members": []})
     tc_data = {
         "games": tc.get("games") or list(TC_GAMES),
@@ -338,6 +352,8 @@ def merge_bundle() -> dict:
         directory.get("updated_at"),
         adm.get("updated_at"),
         lo.get("updated_at"),
+        so.get("updated_at"),
+        fleet.get("updated_at"),
         tc.get("updated_at"),
         pl.get("updated_at"),
     ]
@@ -369,6 +385,8 @@ def merge_bundle() -> dict:
         "tgpa_mess": mess.get("tgpa_mess") or {"dining_tgpa": [], "own_mess": [], "note": ""},
         "adm_staff": adm_staff,
         "lo": lo_data,
+        "senior_officials": so_data,
+        "fleet": fleet_data,
         "tech_committee": tc_data,
         "players": players_data,
         "summary": build_summary(units),
@@ -380,6 +398,8 @@ def merge_bundle() -> dict:
             "event": FILES["event"],
             "adm_staff": FILES["adm_staff"],
             "lo": FILES["lo"],
+            "senior_officials": FILES["senior_officials"],
+            "fleet": FILES["fleet"],
             "tech_committee": FILES["tech_committee"],
             "players": FILES["players"],
         },
@@ -508,6 +528,55 @@ def save_arrival_row(
     # Preserve hubs + any other keys on write
     out = {"hubs": hubs, "rows": rows}
     _write(FILES["arrival"], out)
+    return merge_bundle()
+
+
+def add_arrival_leg(org: str, field: str = "travel") -> dict:
+    """Append a blank movement leg (travel_extra or travel_departure_extra)."""
+    key = "travel_departure" if field == "travel_departure" else "travel"
+    extra_key = "travel_departure_extra" if key == "travel_departure" else "travel_extra"
+    blank = {"mode": "rail", "station": "", "arrival": "", "details": "", "status": "awaited"}
+    doc = _read(FILES["arrival"], {"rows": [], "hubs": DEFAULT_HUBS})
+    rows = doc.get("rows") or []
+    hubs = normalize_hubs(doc.get("hubs"))
+    row = _find_row_by_org(rows, org)
+    if not row:
+        canonical = _resolve_org_name(org)
+        row = {
+            "org": canonical,
+            "travel": dict(blank),
+            "travel_extra": [],
+        }
+        rows.append(row)
+    if not row.get(key):
+        row[key] = dict(blank)
+    extras = list(row.get(extra_key) or [])
+    extras.append(dict(blank))
+    row[extra_key] = extras
+    _write(FILES["arrival"], {"hubs": hubs, "rows": rows})
+    return merge_bundle()
+
+
+def remove_arrival_leg(org: str, leg_index: int, field: str = "travel") -> dict:
+    """Remove an extra movement leg (leg_index 1+). Primary leg 0 is kept."""
+    leg_index = int(leg_index)
+    if leg_index <= 0:
+        raise ValueError("Primary leg cannot be removed")
+    key = "travel_departure" if field == "travel_departure" else "travel"
+    extra_key = "travel_departure_extra" if key == "travel_departure" else "travel_extra"
+    doc = _read(FILES["arrival"], {"rows": [], "hubs": DEFAULT_HUBS})
+    rows = doc.get("rows") or []
+    hubs = normalize_hubs(doc.get("hubs"))
+    row = _find_row_by_org(rows, org)
+    if not row:
+        raise KeyError(org)
+    extras = list(row.get(extra_key) or [])
+    idx = leg_index - 1
+    if idx < 0 or idx >= len(extras):
+        raise KeyError(leg_index)
+    extras.pop(idx)
+    row[extra_key] = extras
+    _write(FILES["arrival"], {"hubs": hubs, "rows": rows})
     return merge_bundle()
 
 
@@ -677,8 +746,6 @@ def validate_person_fields(payload: dict, *, require_all: bool = True) -> dict:
             mobile = ""
     if require_all and not name:
         raise ValueError("Name is required")
-    if require_all and not rank:
-        raise ValueError("Rank is required")
     if require_all and not unit:
         raise ValueError("Unit is required")
     # Stay is optional at onboard — blank means not allotted yet
@@ -994,7 +1061,7 @@ def save_lo_assignment(payload: dict, assignment_id: str | None = None) -> dict:
     doc = _lo_doc()
     officers = {o["id"]: o for o in (doc.get("officers") or []) if o.get("id")}
     assignments = doc.get("assignments") or []
-    team_org = (payload.get("team_org") or payload.get("org") or "").strip().upper()
+    team_org = _resolve_org_name((payload.get("team_org") or payload.get("org") or "").strip())
     officer_id = (payload.get("officer_id") or "").strip()
     notes = (payload.get("notes") or "").strip()
     doa = (payload.get("doa") or "").strip()
@@ -1025,14 +1092,14 @@ def save_lo_assignment(payload: dict, assignment_id: str | None = None) -> dict:
         for a in assignments:
             if (
                 a.get("id") != assignment_id
-                and a.get("team_org") == team_org
+                and _org_key(a.get("team_org")) == _org_key(team_org)
                 and officer_id
                 and a.get("officer_id") == officer_id
             ):
                 raise ValueError("This officer is already assigned to that team")
         found.update(fields)
     else:
-        existing = next((a for a in assignments if a.get("team_org") == team_org), None)
+        existing = next((a for a in assignments if _org_key(a.get("team_org")) == _org_key(team_org)), None)
         if existing:
             existing.update(fields)
         else:
@@ -1049,6 +1116,524 @@ def delete_lo_assignment(assignment_id: str) -> dict:
     if len(doc["assignments"]) == before:
         raise KeyError(assignment_id)
     return _write_lo(doc)
+
+
+# ── Fleet (central vehicle registry) ───────────────────────────
+
+VEHICLE_TYPES = ["bus", "car", "van", "tempo"]
+
+
+def _fleet_doc() -> dict:
+    doc = _read(FILES["fleet"], {"vehicles": []})
+    doc["vehicles"] = doc.get("vehicles") or []
+    return doc
+
+
+def _write_fleet(doc: dict) -> dict:
+    _write(FILES["fleet"], {"vehicles": doc.get("vehicles") or []})
+    return merge_bundle()
+
+
+def _find_fleet_vehicle(doc: dict, vehicle_id: str) -> dict | None:
+    for v in doc.get("vehicles") or []:
+        if v.get("id") == vehicle_id:
+            return v
+    return None
+
+
+def _migrate_fleet_from_senior() -> None:
+    """One-time move of vehicles from senior_officials.json into fleet.json."""
+    fleet = _read(FILES["fleet"], {"vehicles": []})
+    if fleet.get("vehicles"):
+        return
+    so = _read(FILES["senior_officials"], {"officials": [], "vehicles": [], "assignments": []})
+    legacy = so.get("vehicles") or []
+    if not legacy:
+        return
+    _write(FILES["fleet"], {"vehicles": legacy})
+    _write(FILES["senior_officials"], {
+        "officials": so.get("officials") or [],
+        "assignments": so.get("assignments") or [],
+    })
+
+
+def validate_vehicle_fields(payload: dict, *, require_all: bool = True) -> dict:
+    label = (payload.get("label") or "").strip()
+    reg_no = (payload.get("reg_no") or "").strip().upper()
+    vtype = (payload.get("type") or payload.get("vehicle_type") or "car").strip().lower()
+    driver_name = (payload.get("driver_name") or "").strip()
+    driver_mobile = _digits_only(payload.get("driver_mobile", ""))
+    notes = (payload.get("notes") or "").strip()
+    capacity_raw = payload.get("capacity", "")
+    capacity = int(capacity_raw) if str(capacity_raw).strip().isdigit() else 0
+    status = (payload.get("status") or "available").strip().lower()
+    if vtype not in VEHICLE_TYPES:
+        raise ValueError(f"Type must be one of: {', '.join(VEHICLE_TYPES)}")
+    if status not in ("available", "assigned", "maintenance"):
+        status = "available"
+    if require_all and not label:
+        raise ValueError("Vehicle label is required")
+    if driver_mobile and len(driver_mobile) != 10:
+        raise ValueError("Driver mobile must be exactly 10 digits")
+    return {
+        "label": label,
+        "reg_no": reg_no,
+        "type": vtype,
+        "capacity": capacity,
+        "driver_name": driver_name,
+        "driver_mobile": driver_mobile,
+        "notes": notes,
+        "status": status,
+    }
+
+
+def save_fleet_vehicle(payload: dict, vehicle_id: str | None = None) -> dict:
+    doc = _fleet_doc()
+    vehicles = doc.get("vehicles") or []
+    fields = validate_vehicle_fields(payload, require_all=not vehicle_id)
+    if vehicle_id:
+        found = _find_fleet_vehicle(doc, vehicle_id)
+        if not found:
+            raise KeyError(vehicle_id)
+        if found.get("official_id") and fields.get("status") == "available":
+            fields["status"] = "assigned"
+        found.update(fields)
+    else:
+        vehicles.append({"id": _new_id("vh"), "official_id": "", **fields})
+    doc["vehicles"] = vehicles
+    return _write_fleet(doc)
+
+
+def delete_fleet_vehicle(vehicle_id: str) -> dict:
+    doc = _fleet_doc()
+    vehicles = doc.get("vehicles") or []
+    found = _find_fleet_vehicle(doc, vehicle_id)
+    if not found:
+        raise KeyError(vehicle_id)
+    oid = found.get("official_id")
+    if oid:
+        so = _so_doc()
+        off = _find_so_official(so, oid)
+        if off and off.get("vehicle_id") == vehicle_id:
+            off["vehicle_id"] = ""
+        _write(FILES["senior_officials"], {
+            "officials": so.get("officials") or [],
+            "assignments": so.get("assignments") or [],
+        })
+    doc["vehicles"] = [v for v in vehicles if v.get("id") != vehicle_id]
+    return _write_fleet(doc)
+
+
+# ── Senior Officials (onboard → driver → vehicle → LO) ─────────
+
+def _so_doc() -> dict:
+    doc = _read(FILES["senior_officials"], {"officials": [], "assignments": []})
+    doc["officials"] = doc.get("officials") or []
+    doc["assignments"] = doc.get("assignments") or []
+    return doc
+
+
+def _write_so(doc: dict) -> dict:
+    _write(FILES["senior_officials"], {
+        "officials": doc.get("officials") or [],
+        "assignments": doc.get("assignments") or [],
+    })
+    return merge_bundle()
+
+
+def _find_so_official(doc: dict, official_id: str) -> dict | None:
+    for o in doc.get("officials") or []:
+        if o.get("id") == official_id:
+            return o
+    return None
+
+
+def _official_name_by_id(official_id: str) -> str:
+    if not official_id:
+        return ""
+    off = _find_so_official(_so_doc(), official_id)
+    if not off:
+        return ""
+    return (off.get("name") or "").strip()
+
+
+def assign_so_vehicle(official_id: str, vehicle_id: str) -> dict:
+    so = _so_doc()
+    official = _find_so_official(so, official_id)
+    if not official:
+        raise KeyError(official_id)
+    fleet = _fleet_doc()
+    vehicle_id = (vehicle_id or "").strip()
+    if vehicle_id:
+        if not official.get("driver_adm_person_id"):
+            raise ValueError("Allot an ADM driver before assigning a vehicle")
+        veh = _find_fleet_vehicle(fleet, vehicle_id)
+        if not veh:
+            raise KeyError(vehicle_id)
+        prev_oid = veh.get("official_id")
+        if prev_oid and prev_oid != official_id:
+            prev = _find_so_official(so, prev_oid)
+            if prev and prev.get("vehicle_id") == vehicle_id:
+                prev["vehicle_id"] = ""
+        for v in fleet.get("vehicles") or []:
+            if v.get("official_id") == official_id and v.get("id") != vehicle_id:
+                v["official_id"] = ""
+                if v.get("status") == "assigned":
+                    v["status"] = "available"
+        old_vid = official.get("vehicle_id")
+        if old_vid and old_vid != vehicle_id:
+            old = _find_fleet_vehicle(fleet, old_vid)
+            if old:
+                old["official_id"] = ""
+                old["status"] = "available"
+        official["vehicle_id"] = vehicle_id
+        veh["official_id"] = official_id
+        veh["status"] = "assigned"
+    else:
+        old_vid = official.get("vehicle_id")
+        if old_vid:
+            old = _find_fleet_vehicle(fleet, old_vid)
+            if old:
+                old["official_id"] = ""
+                old["status"] = "available"
+        official["vehicle_id"] = ""
+    _write(FILES["senior_officials"], {
+        "officials": so.get("officials") or [],
+        "assignments": so.get("assignments") or [],
+    })
+    _write(FILES["fleet"], {"vehicles": fleet.get("vehicles") or []})
+    return merge_bundle()
+
+
+# Aliases for legacy /api/so/vehicles routes
+save_so_vehicle = save_fleet_vehicle
+delete_so_vehicle = delete_fleet_vehicle
+
+
+def _adm_doc() -> dict:
+    return _read(FILES["adm_staff"], {"persons": [], "tasks": [], "detailments": []})
+
+
+def _adm_driver_task_id() -> str | None:
+    for t in (_adm_doc().get("tasks") or []):
+        if (t.get("title") or "").strip().lower() == "driver":
+            return t.get("id")
+    return None
+
+
+def _find_adm_person(person_id: str) -> dict | None:
+    for p in (_adm_doc().get("persons") or []):
+        if p.get("id") == person_id:
+            return p
+    return None
+
+
+def _is_adm_driver(person_id: str) -> bool:
+    task_id = _adm_driver_task_id()
+    if not task_id or not person_id:
+        return False
+    for d in (_adm_doc().get("detailments") or []):
+        if d.get("person_id") == person_id and d.get("task_id") == task_id:
+            return True
+    return False
+
+
+def _adm_driver_role(person_id: str) -> str:
+    task_id = _adm_driver_task_id()
+    if not task_id:
+        return ""
+    for d in (_adm_doc().get("detailments") or []):
+        if d.get("person_id") == person_id and d.get("task_id") == task_id:
+            return (d.get("role") or "").strip()
+    return ""
+
+
+def _official_fields_from_adm_person(person: dict, *, designation: str = "") -> dict:
+    return {
+        "cisf_no": person.get("cisf_no") or "",
+        "name": person.get("name") or "",
+        "rank": person.get("rank") or "",
+        "unit": person.get("unit") or "",
+        "mobile": person.get("mobile") or "",
+        "designation": designation or "Driver",
+    }
+
+
+def assign_so_driver(official_id: str, adm_person_id: str) -> dict:
+    doc = _so_doc()
+    official = _find_so_official(doc, official_id)
+    if not official:
+        raise KeyError(official_id)
+    adm_person_id = (adm_person_id or "").strip()
+    if adm_person_id:
+        if not _adm_driver_task_id():
+            raise ValueError("Driver task not found in ADM Staff — create it under ADM tasks")
+        person = _find_adm_person(adm_person_id)
+        if not person:
+            raise KeyError(adm_person_id)
+        if not _is_adm_driver(adm_person_id):
+            raise ValueError("Person must be detailed to Driver task in ADM Staff")
+        for o in doc.get("officials") or []:
+            if o.get("id") != official_id and o.get("driver_adm_person_id") == adm_person_id:
+                raise ValueError(f"{person.get('name') or 'Driver'} is already allotted to another senior official")
+        official["driver_adm_person_id"] = adm_person_id
+    else:
+        official["driver_adm_person_id"] = ""
+    return _write_so(doc)
+
+
+def sync_so_driver_from_adm(official_id: str) -> dict:
+    """Re-validate ADM driver link after ADM edits."""
+    doc = _so_doc()
+    found = _find_so_official(doc, official_id)
+    if not found:
+        raise KeyError(official_id)
+    adm_id = (found.get("driver_adm_person_id") or "").strip()
+    if not adm_id:
+        raise ValueError("No ADM driver allotted to this senior official")
+    person = _find_adm_person(adm_id)
+    if not person:
+        raise ValueError("Allotted ADM driver not found — pick another driver")
+    if not _is_adm_driver(adm_id):
+        raise ValueError("Allotted person is no longer on Driver task in ADM Staff")
+    return _write_so(doc)
+
+
+def _resolve_team_org(org: str) -> str:
+    return _resolve_org_name(org)
+
+
+def _sync_senior_to_lo_pool(official: dict) -> str:
+    """Create or update matching LO pool record for a senior official."""
+    lo_doc = _lo_doc()
+    officers = lo_doc.get("officers") or []
+    lo_id = (official.get("lo_officer_id") or "").strip()
+    fields = {
+        "cisf_no": official.get("cisf_no") or "",
+        "name": official.get("name") or "",
+        "rank": official.get("rank") or "",
+        "unit": official.get("unit") or "",
+        "mobile": official.get("mobile") or "",
+    }
+    if lo_id:
+        found = False
+        for o in officers:
+            if o.get("id") == lo_id:
+                o.update(fields)
+                found = True
+                break
+        if not found:
+            lo_id = _new_id("lo")
+            officers.append({"id": lo_id, **fields})
+            official["lo_officer_id"] = lo_id
+    else:
+        lo_id = _new_id("lo")
+        officers.append({"id": lo_id, **fields})
+        official["lo_officer_id"] = lo_id
+    _write(FILES["lo"], {
+        "officers": officers,
+        "assignments": lo_doc.get("assignments") or [],
+    })
+    return lo_id
+
+
+def validate_so_official_fields(payload: dict, *, require_all: bool = True) -> dict:
+    cisf_no = _digits_only(payload.get("cisf_no", ""))
+    mobile = _digits_only(payload.get("mobile", ""))
+    name = (payload.get("name") or "").strip()
+    rank = (payload.get("rank") or "").strip()
+    unit = (payload.get("unit") or "").strip()
+    designation = (payload.get("designation") or "").strip()
+    if require_all or "mobile" in payload:
+        if mobile and len(mobile) != 10:
+            raise ValueError("Mobile No must be exactly 10 digits")
+    if require_all or "cisf_no" in payload:
+        if cisf_no and len(cisf_no) != 9:
+            raise ValueError("CISF No must be exactly 9 digits")
+    if require_all and not name:
+        raise ValueError("Name is required")
+    out = {}
+    if require_all or "name" in payload:
+        out["name"] = name
+    if require_all or "rank" in payload:
+        out["rank"] = rank
+    if require_all or "unit" in payload:
+        out["unit"] = unit
+    if require_all or "designation" in payload:
+        out["designation"] = designation
+    if require_all or "mobile" in payload:
+        out["mobile"] = mobile
+    if require_all or "cisf_no" in payload:
+        out["cisf_no"] = cisf_no
+    return out
+
+
+def save_so_official(payload: dict, official_id: str | None = None) -> dict:
+    doc = _so_doc()
+    officials = doc.get("officials") or []
+    fields = validate_so_official_fields(payload, require_all=not official_id)
+    if official_id:
+        found = _find_so_official(doc, official_id)
+        if not found:
+            raise KeyError(official_id)
+        merged = {**found, **fields}
+        fields = validate_so_official_fields(merged, require_all=True)
+        if fields.get("cisf_no"):
+            for o in officials:
+                if o.get("id") != official_id and o.get("cisf_no") == fields["cisf_no"]:
+                    raise ValueError(f"CISF No {fields['cisf_no']} already onboarded")
+        found.update(fields)
+    else:
+        if fields.get("cisf_no"):
+            for o in officials:
+                if o.get("cisf_no") == fields["cisf_no"]:
+                    raise ValueError(f"CISF No {fields['cisf_no']} already onboarded")
+        officials.append({
+            "id": _new_id("so"),
+            "driver_adm_person_id": "",
+            "vehicle_id": "",
+            "lo_officer_id": "",
+            **fields,
+        })
+    doc["officials"] = officials
+    return _write_so(doc)
+
+
+def assign_so_lo_officer(official_id: str, lo_officer_id: str) -> dict:
+    """Allot a separate Liaison Officer (from lo.json pool) to a senior official."""
+    doc = _so_doc()
+    official = _find_so_official(doc, official_id)
+    if not official:
+        raise KeyError(official_id)
+    lo_officer_id = (lo_officer_id or "").strip()
+    if lo_officer_id:
+        lo_doc = _lo_doc()
+        officer = next(
+            (o for o in (lo_doc.get("officers") or []) if o.get("id") == lo_officer_id),
+            None,
+        )
+        if not officer:
+            raise KeyError(lo_officer_id)
+        for o in doc.get("officials") or []:
+            if o.get("id") != official_id and o.get("lo_officer_id") == lo_officer_id:
+                raise ValueError(
+                    f"{officer.get('name') or 'Liaison Officer'} is already allotted to another senior official"
+                )
+        official["lo_officer_id"] = lo_officer_id
+    else:
+        official["lo_officer_id"] = ""
+    return _write_so(doc)
+
+
+def delete_so_official(official_id: str) -> dict:
+    doc = _so_doc()
+    officials = doc.get("officials") or []
+    found = _find_so_official(doc, official_id)
+    if not found:
+        raise KeyError(official_id)
+    vid = found.get("vehicle_id")
+    if vid:
+        fleet = _fleet_doc()
+        veh = _find_fleet_vehicle(fleet, vid)
+        if veh:
+            veh["official_id"] = ""
+            veh["status"] = "available"
+            _write(FILES["fleet"], {"vehicles": fleet.get("vehicles") or []})
+    doc["officials"] = [o for o in officials if o.get("id") != official_id]
+    doc["assignments"] = [a for a in (doc.get("assignments") or []) if a.get("official_id") != official_id]
+    return _write_so(doc)
+
+
+def save_so_lo_assignment(payload: dict, assignment_id: str | None = None) -> dict:
+    doc = _so_doc()
+    officials = {o["id"]: o for o in (doc.get("officials") or []) if o.get("id")}
+    assignments = doc.get("assignments") or []
+    team_org = _resolve_team_org(payload.get("team_org") or payload.get("org") or "")
+    official_id = (payload.get("official_id") or "").strip()
+    doa = (payload.get("doa") or "").strip()
+    location = (payload.get("location") or "").strip()
+    if location.upper() == "TOWER":
+        location = "Sport Tower"
+    elif location.upper() == "OWN":
+        location = "Own Location"
+    if not team_org:
+        raise ValueError("Team is required")
+    if official_id:
+        official = officials.get(official_id)
+        if not official:
+            raise ValueError("Valid senior official is required")
+        for a in assignments:
+            if a.get("official_id") == official_id and _org_key(a.get("team_org")) != _org_key(team_org):
+                old_team = a.get("team_org")
+                a["official_id"] = ""
+                a["doa"] = ""
+                a["location"] = ""
+                a["notes"] = ""
+                lo_assign = next(
+                    (x for x in (_lo_doc().get("assignments") or [])
+                     if _org_key(x.get("team_org")) == _org_key(old_team)),
+                    None,
+                )
+                if lo_assign:
+                    save_lo_assignment({"team_org": old_team, "officer_id": "", "doa": "", "location": ""})
+        lo_id = _sync_senior_to_lo_pool(official)
+        save_lo_assignment({
+            "team_org": team_org,
+            "officer_id": lo_id,
+            "doa": doa,
+            "location": location,
+            "notes": (payload.get("notes") or "").strip(),
+        })
+    fields = {
+        "team_org": team_org,
+        "official_id": official_id,
+        "doa": doa,
+        "location": location,
+        "notes": (payload.get("notes") or "").strip(),
+    }
+    if assignment_id:
+        found = None
+        for a in assignments:
+            if a.get("id") == assignment_id:
+                found = a
+                break
+        if not found:
+            raise KeyError(assignment_id)
+        if not official_id:
+            lo_assign = next((a for a in (_lo_doc().get("assignments") or []) if _org_key(a.get("team_org")) == _org_key(team_org)), None)
+            if lo_assign:
+                save_lo_assignment({"team_org": team_org, "officer_id": "", "doa": "", "location": ""})
+        found.update(fields)
+    else:
+        existing = next((a for a in assignments if _org_key(a.get("team_org")) == _org_key(team_org)), None)
+        if existing:
+            if not official_id:
+                save_lo_assignment({"team_org": team_org, "officer_id": "", "doa": "", "location": ""})
+            existing.update(fields)
+        else:
+            if not official_id:
+                raise ValueError("Pick a senior official")
+            assignments.append({"id": _new_id("sla"), **fields})
+    doc["assignments"] = assignments
+    return _write_so(doc)
+
+
+def delete_so_lo_assignment(assignment_id: str) -> dict:
+    doc = _so_doc()
+    assignments = doc.get("assignments") or []
+    found = None
+    for a in assignments:
+        if a.get("id") == assignment_id:
+            found = a
+            break
+    if not found:
+        raise KeyError(assignment_id)
+    team_org = found.get("team_org")
+    lo_assign = next((a for a in (_lo_doc().get("assignments") or []) if _org_key(a.get("team_org")) == _org_key(team_org)), None)
+    if lo_assign:
+        save_lo_assignment({"team_org": team_org, "officer_id": "", "doa": "", "location": ""})
+    doc["assignments"] = [a for a in assignments if a.get("id") != assignment_id]
+    return _write_so(doc)
 
 
 # ── Technical Committee ───────────────────────────────────────
@@ -1159,6 +1744,95 @@ def delete_tc_member(member_id: str) -> dict:
     doc["members"] = [m for m in members if m.get("id") != member_id]
     if len(doc["members"]) == before:
         raise KeyError(member_id)
+    return _write_tc(doc)
+
+
+def _find_tc_member(members: list, member_id: str) -> dict | None:
+    for m in members:
+        if m.get("id") == member_id:
+            return m
+    return None
+
+
+def _tc_sync_summary_dates(member: dict) -> None:
+    """Keep roster arrival/departure text aligned with primary movement legs."""
+    travel = member.get("travel") or {}
+    if travel.get("arrival"):
+        member["arrival"] = str(travel["arrival"]).split("\n")[0].strip()
+    dep = member.get("travel_departure") or {}
+    if dep.get("arrival"):
+        member["departure"] = str(dep["arrival"]).split("\n")[0].strip()
+
+
+def save_tc_travel(
+    member_id: str,
+    travel: dict,
+    field: str = "travel",
+    leg_index: int = 0,
+) -> dict:
+    """Save arrival or departure leg on a tech committee member."""
+    key = "travel_departure" if field == "travel_departure" else "travel"
+    extra_key = "travel_departure_extra" if key == "travel_departure" else "travel_extra"
+    leg_index = int(leg_index or 0)
+    doc = _tc_doc()
+    members = doc.get("members") or []
+    member = _find_tc_member(members, member_id)
+    if not member:
+        raise KeyError(member_id)
+    blank = {"mode": "rail", "station": "", "arrival": "", "details": "", "status": "awaited"}
+    if leg_index <= 0:
+        cur = member.get(key) or {}
+        cur.update(travel or {})
+        member[key] = cur
+    else:
+        extras = list(member.get(extra_key) or [])
+        idx = leg_index - 1
+        while len(extras) <= idx:
+            extras.append(dict(blank))
+        cur = dict(extras[idx] or {})
+        cur.update(travel or {})
+        extras[idx] = cur
+        member[extra_key] = extras
+    _tc_sync_summary_dates(member)
+    return _write_tc(doc)
+
+
+def add_tc_leg(member_id: str, field: str = "travel") -> dict:
+    """Append a blank movement leg on a tech committee member."""
+    key = "travel_departure" if field == "travel_departure" else "travel"
+    extra_key = "travel_departure_extra" if key == "travel_departure" else "travel_extra"
+    blank = {"mode": "rail", "station": "", "arrival": "", "details": "", "status": "awaited"}
+    doc = _tc_doc()
+    members = doc.get("members") or []
+    member = _find_tc_member(members, member_id)
+    if not member:
+        raise KeyError(member_id)
+    if not member.get(key):
+        member[key] = dict(blank)
+    extras = list(member.get(extra_key) or [])
+    extras.append(dict(blank))
+    member[extra_key] = extras
+    return _write_tc(doc)
+
+
+def remove_tc_leg(member_id: str, leg_index: int, field: str = "travel") -> dict:
+    """Remove an extra movement leg on a tech committee member."""
+    leg_index = int(leg_index)
+    if leg_index <= 0:
+        raise ValueError("Primary leg cannot be removed")
+    key = "travel_departure" if field == "travel_departure" else "travel"
+    extra_key = "travel_departure_extra" if key == "travel_departure" else "travel_extra"
+    doc = _tc_doc()
+    members = doc.get("members") or []
+    member = _find_tc_member(members, member_id)
+    if not member:
+        raise KeyError(member_id)
+    extras = list(member.get(extra_key) or [])
+    idx = leg_index - 1
+    if idx < 0 or idx >= len(extras):
+        raise KeyError(leg_index)
+    extras.pop(idx)
+    member[extra_key] = extras
     return _write_tc(doc)
 
 
