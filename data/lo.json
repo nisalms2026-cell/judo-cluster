@@ -33,6 +33,30 @@
       "mobile": "8440809321"
     },
     {
+      "id": "lo_15ad52601b",
+      "cisf_no": "934652616",
+      "name": "Bharat Bhushan",
+      "rank": "ASI/Exe",
+      "unit": "ASG Bangalore",
+      "mobile": "7999739490"
+    },
+    {
+      "id": "lo_1969b9d49a",
+      "cisf_no": "933510216",
+      "name": "Chandakant Chavan",
+      "rank": "ASI/EXE",
+      "unit": "BDL Bhanur",
+      "mobile": "8630599323"
+    },
+    {
+      "id": "lo_c13341ace5",
+      "cisf_no": "972520179",
+      "name": "Chavan Suryakant Gopal",
+      "rank": "ASI/EXE",
+      "unit": "RTPS Raichur",
+      "mobile": "9422363764"
+    },
+    {
       "id": "lo_c34c20b242",
       "cisf_no": "904730458",
       "name": "D Chandra Sekhar",
@@ -47,6 +71,14 @@
       "rank": "ASI/Exe",
       "unit": "IG Mint",
       "mobile": "9699451859"
+    },
+    {
+      "id": "lo_2f0091bf0d",
+      "cisf_no": "885010480",
+      "name": "G Balaswami",
+      "rank": "ASI/EXE",
+      "unit": "SVP-NPA Hyderabad",
+      "mobile": "8750732579"
     },
     {
       "id": "lo_d501ec3464",
@@ -73,12 +105,28 @@
       "mobile": "9600972871"
     },
     {
-      "id": "lo_8a5cd968a5",
+      "id": "lo_e18cb2e289",
+      "cisf_no": "077241414",
+      "name": "Jitender",
+      "rank": "HC/GD",
+      "unit": "ASG Bangalore",
+      "mobile": "8280094154"
+    },
+    {
+      "id": "lo_4e1c1377de",
       "cisf_no": "140504679",
       "name": "K Nagarajuna",
       "rank": "CT/GD",
       "unit": "HPCL Vizag",
-      "mobile": "9866484534"
+      "mobile": "9866484334"
+    },
+    {
+      "id": "lo_5ad30e500f",
+      "cisf_no": "062302438",
+      "name": "Kailash Singh Yadav",
+      "rank": "HC/GD",
+      "unit": "ASG Bangalore",
+      "mobile": "9479094620"
     },
     {
       "id": "lo_e8d040c5cf",
@@ -87,6 +135,22 @@
       "rank": "HC/GD",
       "unit": "VPA Vizag",
       "mobile": "9433055011"
+    },
+    {
+      "id": "lo_8deb5a7883",
+      "cisf_no": "",
+      "name": "Madhu Ammgothu",
+      "rank": "HC/GD",
+      "unit": "ASG Hyderabad",
+      "mobile": "6361658260"
+    },
+    {
+      "id": "lo_49915e07a4",
+      "cisf_no": "",
+      "name": "Mane Venkati Madhukar",
+      "rank": "ASI/EXE",
+      "unit": "ASG Hyderabad",
+      "mobile": "8805101416"
     },
     {
       "id": "lo_9d8a3c2d5d",
@@ -103,6 +167,14 @@
       "rank": "ASI/Exe",
       "unit": "ASG Hyderabad",
       "mobile": "9198720178"
+    },
+    {
+      "id": "lo_73ceaaae22",
+      "cisf_no": "170701969",
+      "name": "Pankaj Kumar",
+      "rank": "ASI/Exe",
+      "unit": "ASG Bangalore",
+      "mobile": "9829310606"
     },
     {
       "id": "lo_c0bba8295d",
@@ -137,12 +209,20 @@
       "mobile": "8130255042"
     },
     {
-      "id": "lo_eeaa994960",
+      "id": "lo_01e2e20c66",
       "cisf_no": "094690088",
       "name": "Ramaala Nagaraju",
       "rank": "HC/GD",
       "unit": "DAE (K)",
-      "mobile": "0963118874"
+      "mobile": "9631118874"
+    },
+    {
+      "id": "lo_95e10bf49b",
+      "cisf_no": "894523418",
+      "name": "Randive B D",
+      "rank": "ASI/EXE",
+      "unit": "BDL Kanchanbagh",
+      "mobile": "9082699809"
     },
     {
       "id": "lo_121d1f2c05",
@@ -161,6 +241,14 @@
       "mobile": "6202556722"
     },
     {
+      "id": "lo_ed05efb9b9",
+      "cisf_no": "230109490",
+      "name": "Sumit Kumar Sahu",
+      "rank": "CT/GD",
+      "unit": "RTPS Raichur",
+      "mobile": "7682872355"
+    },
+    {
       "id": "lo_e3171d05a5",
       "cisf_no": "014400137",
       "name": "Sunil Kumar",
@@ -169,9 +257,17 @@
       "mobile": "9196014806"
     },
     {
+      "id": "lo_736913fcfd",
+      "cisf_no": "170802693",
+      "name": "Sushil Kumar",
+      "rank": "ASI/Exe",
+      "unit": "ASG Bangalore",
+      "mobile": "8979772371"
+    },
+    {
       "id": "lo_7975bbeb74",
       "cisf_no": "170517397",
-      "name": "Uinwar Ganesh Rameshwar",
+      "name": "Unwar Ganesh Rameshwar",
       "rank": "ASI/Exe",
       "unit": "ASG Hyderabad",
       "mobile": "9423390018"
@@ -183,93 +279,37 @@
       "rank": "ASI/Exe",
       "unit": "ASG Hyderabad",
       "mobile": "9441456065"
-    },
-    {
-      "id": "lo_15ad52601b",
-      "cisf_no": "934652616",
-      "name": "Bharat Bhushan",
-      "rank": "ASI/Exe",
-      "unit": "ASG Bangalore",
-      "mobile": "7999739490"
-    },
-    {
-      "id": "lo_73ceaaae22",
-      "cisf_no": "170701969",
-      "name": "Pankaj Kumar",
-      "rank": "ASI/Exe",
-      "unit": "ASG Bangalore",
-      "mobile": "9829310606"
-    },
-    {
-      "id": "lo_736913fcfd",
-      "cisf_no": "170802693",
-      "name": "Sushil Kumar",
-      "rank": "ASI/Exe",
-      "unit": "ASG Bangalore",
-      "mobile": "8979772371"
-    },
-    {
-      "id": "lo_5ad30e500f",
-      "cisf_no": "062302438",
-      "name": "Kailash Singh Yadav",
-      "rank": "HC/GD",
-      "unit": "ASG Bangalore",
-      "mobile": "9479094620"
-    },
-    {
-      "id": "lo_e18cb2e289",
-      "cisf_no": "077241414",
-      "name": "Jitender",
-      "rank": "HC/GD",
-      "unit": "ASG Bangalore",
-      "mobile": "8280094154"
-    },
-    {
-      "id": "lo_2f0091bf0d",
-      "cisf_no": "885010480",
-      "name": "G Balaswami",
-      "rank": "ASI/EXE",
-      "unit": "SVP-NPA Hyderabad",
-      "mobile": "8750732579"
-    },
-    {
-      "id": "lo_c13341ace5",
-      "cisf_no": "972520179",
-      "name": "Chavan Suryakant Gopal",
-      "rank": "ASI/EXE",
-      "unit": "RTPS Raichur",
-      "mobile": "9422363764"
-    },
-    {
-      "id": "lo_ed05efb9b9",
-      "cisf_no": "230109490",
-      "name": "Sumit Kumar Sahu",
-      "rank": "CT/GD",
-      "unit": "RTPS Raichur",
-      "mobile": "7682872355"
-    },
-    {
-      "id": "lo_1969b9d49a",
-      "cisf_no": "933510216",
-      "name": "Chandakant Chavan",
-      "rank": "ASI/EXE",
-      "unit": "BDL Bhanur",
-      "mobile": "8630599323"
-    },
-    {
-      "id": "lo_95e10bf49b",
-      "cisf_no": "894523418",
-      "name": "Randive B D",
-      "rank": "ASI/EXE",
-      "unit": "BDL Kanchanbagh",
-      "mobile": "9082699809"
     }
   ],
   "assignments": [
     {
-      "id": "la_3dd13c2e6c",
-      "team_org": "JAMMU & KASHMIR",
-      "officer_id": "lo_7ff8f36103",
+      "id": "la_2f63d95a14",
+      "team_org": "Andhra Pradesh",
+      "officer_id": "lo_95e10bf49b",
+      "doa": "Bus",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_4067451f63",
+      "team_org": "ARUNACHAL PRADESH",
+      "officer_id": "lo_7975bbeb74",
+      "doa": "19.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_a579796efe",
+      "team_org": "ASSAM POLICE",
+      "officer_id": "lo_e3f7742420",
+      "doa": "18.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_f418b46d98",
+      "team_org": "ASSAM RIFLES",
+      "officer_id": "lo_8fa1a55b70",
       "doa": "21.07.2026",
       "location": "TGPA",
       "notes": ""
@@ -283,74 +323,50 @@
       "notes": ""
     },
     {
-      "id": "la_4067451f63",
-      "team_org": "ARUNACHAL PRADESH",
-      "officer_id": "lo_7975bbeb74",
-      "doa": "19.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_11460b1a1c",
-      "team_org": "SSB",
-      "officer_id": "lo_121d1f2c05",
-      "doa": "21.07.2026",
-      "location": "Sport Tower",
-      "notes": ""
-    },
-    {
-      "id": "la_320dc14358",
-      "team_org": "MIZORAM POLICE",
-      "officer_id": "lo_b8c5a9029e",
+      "id": "la_1bb0986561",
+      "team_org": "CHANDIGARH POLICE",
+      "officer_id": "lo_3b5974c527",
       "doa": "21.07.2026",
       "location": "TGPA",
       "notes": ""
     },
     {
-      "id": "la_a579796efe",
-      "team_org": "ASSAM POLICE",
-      "officer_id": "lo_e3f7742420",
-      "doa": "18.07.2026",
+      "id": "la_6ef65aad9a",
+      "team_org": "DELHI POLICE",
+      "officer_id": "lo_9d8a3c2d5d",
+      "doa": "21.07.2026",
       "location": "TGPA",
       "notes": ""
     },
     {
-      "id": "la_cb858a4621",
-      "team_org": "ITBP",
-      "officer_id": "lo_1887e0fb83",
-      "doa": "20.07.2026",
+      "id": "la_b905343eeb",
+      "team_org": "Gujrat",
+      "officer_id": "lo_ed05efb9b9",
+      "doa": "22.07.2026",
       "location": "TGPA",
       "notes": ""
     },
     {
-      "id": "la_095d891b32",
-      "team_org": "RPF",
-      "officer_id": "lo_db4a04e566",
-      "doa": "19.07.2026",
-      "location": "Own Location",
+      "id": "la_4dbb8979db",
+      "team_org": "HIMACHAL PRADESH POLICE",
+      "officer_id": "lo_4e24f4ec6d",
+      "doa": "21.07.2026",
+      "location": "TGPA",
       "notes": ""
     },
     {
-      "id": "la_6f933aa1d2",
-      "team_org": "MANIPUR POLICE",
-      "officer_id": "lo_e3171d05a5",
+      "id": "la_3dd13c2e6c",
+      "team_org": "JAMMU & KASHMIR",
+      "officer_id": "lo_7ff8f36103",
       "doa": "21.07.2026",
-      "location": "Sport Tower",
+      "location": "TGPA",
       "notes": ""
     },
     {
-      "id": "la_a95242e6fd",
-      "team_org": "CISF",
-      "officer_id": "lo_c0bba8295d",
-      "doa": "21.07.2026",
-      "location": "Own Location",
-      "notes": ""
-    },
-    {
-      "id": "la_c48b0971f5",
-      "team_org": "JHARKHAND",
-      "officer_id": "lo_15ad52601b",
-      "doa": "21.07.2026",
+      "id": "la_c408599ebd",
+      "team_org": "KARNATAKA POLICE",
+      "officer_id": "lo_c13341ace5",
+      "doa": "22.07.2026",
       "location": "TGPA",
       "notes": ""
     },
@@ -358,6 +374,14 @@
       "id": "la_2462eea615",
       "team_org": "MAHARASHTRA POLICE",
       "officer_id": "lo_73ceaaae22",
+      "doa": "21.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_320dc14358",
+      "team_org": "MIZORAM POLICE",
+      "officer_id": "lo_b8c5a9029e",
       "doa": "21.07.2026",
       "location": "TGPA",
       "notes": ""
@@ -371,113 +395,9 @@
       "notes": ""
     },
     {
-      "id": "la_162fe4692e",
-      "team_org": "SIKKIM POLICE",
-      "officer_id": "lo_5ad30e500f",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_aa5bbba48d",
-      "team_org": "WEST BENGAL POLICE",
-      "officer_id": "lo_e18cb2e289",
-      "doa": "20.07.2026",
-      "location": "Sport Tower",
-      "notes": ""
-    },
-    {
       "id": "la_01519a10ec",
       "team_org": "RAJASTHAN POLICE",
-      "officer_id": "lo_eeaa994960",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_4dbb8979db",
-      "team_org": "HIMACHAL PRADESH POLICE",
-      "officer_id": "lo_4e24f4ec6d",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_36d34c1fe4",
-      "team_org": "MADHYA PRADESH POLICE",
-      "officer_id": "lo_6cbd1996e2",
-      "doa": "21.07.2026",
-      "location": "Sport Tower",
-      "notes": ""
-    },
-    {
-      "id": "la_d86cdc0aab",
-      "team_org": "UTTARPRADESH",
-      "officer_id": "lo_c34c20b242",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_e1f7c07efb",
-      "team_org": "CRPF",
-      "officer_id": "lo_d501ec3464",
-      "doa": "21.07.2026",
-      "location": "Sport Tower",
-      "notes": ""
-    },
-    {
-      "id": "la_12d5128650",
-      "team_org": "ORISSA POLICE",
-      "officer_id": "lo_7b9d5419ad",
-      "doa": "21.07.2026",
-      "location": "Sport Tower",
-      "notes": ""
-    },
-    {
-      "id": "la_494df2b332",
-      "team_org": "BSF",
-      "officer_id": "lo_8a5cd968a5",
-      "doa": "21.07.2026",
-      "location": "NITHM",
-      "notes": ""
-    },
-    {
-      "id": "la_dd993e3a85",
-      "team_org": "HARYANA",
-      "officer_id": "lo_7bafa368d6",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_68d2df28a9",
-      "team_org": "KERALA POLICE",
-      "officer_id": "lo_becc339d22",
-      "doa": "21.07.2026",
-      "location": "Sport Tower",
-      "notes": ""
-    },
-    {
-      "id": "la_6ef65aad9a",
-      "team_org": "DELHI POLICE",
-      "officer_id": "lo_9d8a3c2d5d",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_f418b46d98",
-      "team_org": "ASSAM RIFLES",
-      "officer_id": "lo_8fa1a55b70",
-      "doa": "21.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_1bb0986561",
-      "team_org": "CHANDIGARH POLICE",
-      "officer_id": "lo_3b5974c527",
+      "officer_id": "lo_01e2e20c66",
       "doa": "21.07.2026",
       "location": "TGPA",
       "notes": ""
@@ -491,26 +411,10 @@
       "notes": ""
     },
     {
-      "id": "la_17be1b5445",
-      "team_org": "TAMILNADU",
-      "officer_id": "lo_2f0091bf0d",
-      "doa": "22.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_c408599ebd",
-      "team_org": "KARNATAKA POLICE",
-      "officer_id": "lo_c13341ace5",
-      "doa": "22.07.2026",
-      "location": "TGPA",
-      "notes": ""
-    },
-    {
-      "id": "la_b905343eeb",
-      "team_org": "Gujrat",
-      "officer_id": "lo_ed05efb9b9",
-      "doa": "22.07.2026",
+      "id": "la_162fe4692e",
+      "team_org": "SIKKIM POLICE",
+      "officer_id": "lo_5ad30e500f",
+      "doa": "21.07.2026",
       "location": "TGPA",
       "notes": ""
     },
@@ -523,13 +427,149 @@
       "notes": ""
     },
     {
-      "id": "la_2f63d95a14",
-      "team_org": "Andhra Pradesh",
-      "officer_id": "lo_95e10bf49b",
-      "doa": "Bus",
+      "id": "la_d86cdc0aab",
+      "team_org": "UTTARPRADESH",
+      "officer_id": "lo_c34c20b242",
+      "doa": "21.07.2026",
       "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_dd993e3a85",
+      "team_org": "HARYANA",
+      "officer_id": "lo_7bafa368d6",
+      "doa": "21.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_cb858a4621",
+      "team_org": "ITBP",
+      "officer_id": "lo_1887e0fb83",
+      "doa": "20.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_17be1b5445",
+      "team_org": "TAMILNADU",
+      "officer_id": "lo_2f0091bf0d",
+      "doa": "22.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_98213229c5",
+      "team_org": "GOA",
+      "officer_id": "lo_8deb5a7883",
+      "doa": "",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_2181f6e11b",
+      "team_org": "NSG",
+      "officer_id": "lo_49915e07a4",
+      "doa": "",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_c48b0971f5",
+      "team_org": "JHARKHAND",
+      "officer_id": "lo_15ad52601b",
+      "doa": "21.07.2026",
+      "location": "TGPA",
+      "notes": ""
+    },
+    {
+      "id": "la_494df2b332",
+      "team_org": "BSF",
+      "officer_id": "lo_4e1c1377de",
+      "doa": "21.07.2026",
+      "location": "NITHM",
+      "notes": ""
+    },
+    {
+      "id": "la_e1f7c07efb",
+      "team_org": "CRPF",
+      "officer_id": "lo_d501ec3464",
+      "doa": "21.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_11460b1a1c",
+      "team_org": "SSB",
+      "officer_id": "lo_121d1f2c05",
+      "doa": "21.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_aa5bbba48d",
+      "team_org": "WEST BENGAL POLICE",
+      "officer_id": "lo_e18cb2e289",
+      "doa": "20.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_12d5128650",
+      "team_org": "ORISSA POLICE",
+      "officer_id": "lo_7b9d5419ad",
+      "doa": "21.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_36d34c1fe4",
+      "team_org": "MADHYA PRADESH POLICE",
+      "officer_id": "lo_6cbd1996e2",
+      "doa": "21.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_6f933aa1d2",
+      "team_org": "MANIPUR POLICE",
+      "officer_id": "lo_e3171d05a5",
+      "doa": "21.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_68d2df28a9",
+      "team_org": "KERALA POLICE",
+      "officer_id": "lo_becc339d22",
+      "doa": "21.07.2026",
+      "location": "Sport Tower",
+      "notes": ""
+    },
+    {
+      "id": "la_a95242e6fd",
+      "team_org": "CISF",
+      "officer_id": "lo_c0bba8295d",
+      "doa": "21.07.2026",
+      "location": "Own Location",
+      "notes": ""
+    },
+    {
+      "id": "la_2f8be2bda9",
+      "team_org": "TELANGANA POLICE",
+      "officer_id": "lo_db4a04e566",
+      "doa": "",
+      "location": "Own Location",
+      "notes": ""
+    },
+    {
+      "id": "la_095d891b32",
+      "team_org": "RPF",
+      "officer_id": "lo_db4a04e566",
+      "doa": "19.07.2026",
+      "location": "Own Location",
       "notes": ""
     }
   ],
-  "updated_at": "2026-07-18T19:42:46"
+  "updated_at": "2026-07-19T17:33:07"
 }

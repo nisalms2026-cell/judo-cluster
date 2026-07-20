@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-19T17:41:16",
+  "updated_at": "2026-07-19T19:05:16",
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -159,7 +159,7 @@
         {
           "mode": "flight",
           "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "",
+          "arrival": "20.07.2026/2300 hrs",
           "details": "Arrival on July 20,2026. Time: 23:00 ( night)at Shamshabad Rajiv Gandhi, T- NA",
           "status": "planned",
           "team_label": "Assam Police"
@@ -994,9 +994,10 @@
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "21.07.2026/0250 hrs",
-        "details": "12722/DAKSHIN EXP SECUNDERABAD JN (SC) Arrival* 02:50 21-Jul-2026",
+        "details": "Train No 12722",
         "status": "planned",
-        "team_label": "UTTARPRADESH"
+        "team_label": "UTTARPRADESH",
+        "direction": "arrival"
       }
     },
     {
@@ -1079,7 +1080,7 @@
       },
       "doctor": 1,
       "strength": {
-        "gos_m": 3,
+        "gos_m": 2,
         "sos_m": 1,
         "ors_m": 68,
         "gos_f": 0,
@@ -1401,7 +1402,7 @@
       },
       "doctor": 1,
       "strength": {
-        "gos_m": 1,
+        "gos_m": 0,
         "sos_m": 3,
         "ors_m": 55,
         "gos_f": 3,
@@ -1673,11 +1674,11 @@
       "doctor": 0,
       "strength": {
         "gos_m": 0,
-        "sos_m": 5,
-        "ors_m": 38,
-        "gos_f": 2,
-        "sos_f": 0,
-        "ors_f": 4
+        "sos_m": 1,
+        "ors_m": 40,
+        "gos_f": 1,
+        "sos_f": 2,
+        "ors_f": 5
       },
       "total": 49,
       "mess": "Own Arrangement",
@@ -34312,11 +34313,11 @@
   "summary": {
     "teams": 36,
     "strength": 1646,
-    "male": 1119,
-    "female": 527,
-    "gos": 21,
-    "sos": 132,
-    "ors": 1493,
+    "male": 1115,
+    "female": 529,
+    "gos": 18,
+    "sos": 130,
+    "ors": 1496,
     "by_location": {
       "TGPA": {
         "teams": 25,
@@ -34343,13 +34344,14 @@
     "travel_planned": 35,
     "travel_awaited": 1,
     "strength_detail": {
-      "gos_m": 15,
-      "sos_m": 94,
-      "ors_m": 1010,
-      "gos_f": 6,
-      "sos_f": 38,
-      "ors_f": 483
-    }
+      "gos_m": 13,
+      "sos_m": 90,
+      "ors_m": 1012,
+      "gos_f": 5,
+      "sos_f": 40,
+      "ors_f": 484
+    },
+    "doctors": 2
   },
   "static": true,
   "mode": "view"

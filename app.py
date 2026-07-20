@@ -243,8 +243,9 @@ def put_arrival(org):
     field = payload.get("field") or "travel"
     if payload.get("direction") == "departure" or (isinstance(travel, dict) and travel.get("direction") == "departure"):
         field = "travel_departure"
+    leg_index = int(payload.get("leg_index") or 0)
     with LOCK:
-        return jsonify(store.save_arrival_row(org, travel, extra, field=field))
+        return jsonify(store.save_arrival_row(org, travel, extra, field=field, leg_index=leg_index))
 
 
 @app.route("/api/hubs", methods=["PUT"])
@@ -517,9 +518,9 @@ def add_unit():
         "support": {"male": 0, "female": 0},
         "coach_male": {"sos": 0, "ors": 0},
         "coach_female": {"gos": 0, "sos": 0, "ors": 0},
-        "doctor": 0,
+        "doctor": int(payload.get("doctor", 0) or 0),
         "strength": strength,
-        "total": sum(strength.values()),
+        "total": sum(strength.values()) + int(payload.get("doctor", 0) or 0),
         "mess": payload.get("mess", ""),
         "travel": {"station": "", "arrival": "", "details": "", "status": "awaited"},
     }
@@ -536,7 +537,7 @@ def update_unit_compat(org):
     with LOCK:
         try:
             data = None
-            acc_keys = {"location", "gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f"}
+            acc_keys = {"location", "gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f", "doctor"}
             if acc_keys & set(payload.keys()):
                 data = store.save_accommodation_row(org, payload)
             if "mess" in payload:

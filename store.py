@@ -64,6 +64,48 @@ def _write(path, payload):
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
 
+def _org_key(org: str) -> str:
+    return (org or "").strip().upper()
+
+
+def _find_row_by_org(rows, org: str):
+    key = _org_key(org)
+    if not key:
+        return None
+    for r in rows or []:
+        if _org_key(r.get("org")) == key:
+            return r
+    return None
+
+
+def _resolve_org_name(org: str) -> str:
+    """Return canonical org label (accommodation spelling when available)."""
+    raw = (org or "").strip()
+    key = _org_key(raw)
+    if not key:
+        return raw
+    acc = _read(FILES["accommodation"], {"rows": []})
+    hit = _find_row_by_org(acc.get("rows") or [], raw)
+    if hit:
+        return hit["org"]
+    for path in (FILES["arrival"], FILES["mess"], FILES["directory"]):
+        doc = _read(path, {"rows": []})
+        hit = _find_row_by_org(doc.get("rows") or [], raw)
+        if hit:
+            return hit["org"]
+    return raw
+
+
+def _lookup_by_org(mapping: dict, org: str):
+    if org in mapping:
+        return mapping[org]
+    key = _org_key(org)
+    for k, v in mapping.items():
+        if _org_key(k) == key:
+            return v
+    return None
+
+
 DEFAULT_VENUES = ["TGPA", "Sport Tower", "NITHM", "Own Location"]
 
 DEFAULT_HUBS = {
@@ -179,6 +221,7 @@ def split_from_bundle(data: dict):
                 "travel": u.get("travel") or {"station": "", "arrival": "", "details": "", "status": "awaited"},
                 "travel_extra": u.get("travel_extra") or [],
                 **({"travel_departure": u["travel_departure"]} if u.get("travel_departure") else {}),
+                **({"travel_departure_extra": u["travel_departure_extra"]} if u.get("travel_departure_extra") else {}),
             }
             for u in units
         ]
@@ -263,11 +306,11 @@ def merge_bundle() -> dict:
             "coach_female": {"gos": 0, "sos": 0, "ors": 0},
             "doctor": 0,
         }
-        tr = arr_map.get(org) or {}
+        tr = _lookup_by_org(arr_map, org) or {}
         unit = {
             "org": org,
             "location": a.get("location", "TGPA"),
-            "manager": dir_map.get(org) or {"name": "", "rank": "", "phone": ""},
+            "manager": _lookup_by_org(dir_map, org) or {"name": "", "rank": "", "phone": ""},
             "count_gos": a.get("count_gos") or {"male": 0, "female": 0},
             "count_sos": a.get("count_sos") or {"male": 0, "female": 0},
             "support": a.get("support") or {"male": 0, "female": 0},
@@ -276,13 +319,15 @@ def merge_bundle() -> dict:
             "doctor": a.get("doctor", 0),
             "strength": a.get("strength") or {},
             "total": a.get("total", 0),
-            "mess": mess_map.get(org, ""),
+            "mess": _lookup_by_org(mess_map, org) or "",
             "travel": tr.get("travel") or {"station": "", "arrival": "", "details": "", "status": "awaited"},
         }
         if tr.get("travel_extra"):
             unit["travel_extra"] = tr["travel_extra"]
         if tr.get("travel_departure"):
             unit["travel_departure"] = tr["travel_departure"]
+        if tr.get("travel_departure_extra"):
+            unit["travel_departure_extra"] = tr["travel_departure_extra"]
         units.append(unit)
 
     stamps = [
@@ -342,23 +387,21 @@ def merge_bundle() -> dict:
 
 
 def save_accommodation_row(org: str, patch: dict) -> dict:
-    org = org.strip().upper()
     doc = _read(FILES["accommodation"], {"rows": [], "venues": list(DEFAULT_VENUES)})
     rows = doc.get("rows") or []
-    found = False
-    for r in rows:
-        if r["org"] == org:
-            found = True
-            if "location" in patch:
-                r["location"] = (patch["location"] or "TGPA").strip()
-            strength = r.setdefault("strength", {})
-            for key in ("gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f"):
-                if key in patch:
-                    strength[key] = int(patch[key] or 0)
-            r["total"] = sum(int(strength.get(k, 0) or 0) for k in ("gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f"))
-            break
-    if not found:
+    r = _find_row_by_org(rows, org)
+    if not r:
         raise KeyError(org)
+    if "location" in patch:
+        r["location"] = (patch["location"] or "TGPA").strip()
+    strength = r.setdefault("strength", {})
+    for key in ("gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f"):
+        if key in patch:
+            strength[key] = int(patch[key] or 0)
+    if "doctor" in patch:
+        r["doctor"] = int(patch["doctor"] or 0)
+    dr = int(r.get("doctor") or 0)
+    r["total"] = sum(int(strength.get(k, 0) or 0) for k in ("gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f")) + dr
     venues = normalize_venues(doc.get("venues"), rows)
     _write(FILES["accommodation"], {"venues": venues, "rows": rows})
     return merge_bundle()
@@ -392,17 +435,13 @@ def delete_venue(name: str) -> dict:
     return merge_bundle()
 
 def save_mess_row(org: str, mess_value: str) -> dict:
-    org = org.strip().upper()
     doc = _read(FILES["mess"], {"by_unit": [], "tgpa_mess": {}})
     rows = doc.get("by_unit") or []
-    found = False
-    for r in rows:
-        if r["org"] == org:
-            r["mess"] = mess_value
-            found = True
-            break
-    if not found:
-        rows.append({"org": org, "mess": mess_value})
+    row = _find_row_by_org(rows, org)
+    if row:
+        row["mess"] = mess_value
+    else:
+        rows.append({"org": _resolve_org_name(org), "mess": mess_value})
     _write(FILES["mess"], {"by_unit": rows, "tgpa_mess": doc.get("tgpa_mess") or {}})
     return merge_bundle()
 
@@ -413,30 +452,58 @@ def save_tgpa_mess(tgpa_mess: dict) -> dict:
     return merge_bundle()
 
 
-def save_arrival_row(org: str, travel: dict, travel_extra=None, field: str = "travel") -> dict:
-    """Save arrival or departure leg. field is 'travel' or 'travel_departure'."""
-    org = org.strip().upper()
+def save_arrival_row(
+    org: str,
+    travel: dict,
+    travel_extra=None,
+    field: str = "travel",
+    leg_index: int = 0,
+) -> dict:
+    """Save arrival or departure leg. field is 'travel' or 'travel_departure'.
+
+    leg_index 0 updates primary travel / travel_departure;
+    1+ updates travel_extra or travel_departure_extra[leg_index - 1].
+    """
     key = "travel_departure" if field == "travel_departure" else "travel"
+    extra_key = "travel_departure_extra" if key == "travel_departure" else "travel_extra"
+    leg_index = int(leg_index or 0)
     doc = _read(FILES["arrival"], {"rows": [], "hubs": DEFAULT_HUBS})
     rows = doc.get("rows") or []
     hubs = normalize_hubs(doc.get("hubs"))
-    found = False
-    for r in rows:
-        if r["org"] == org:
-            found = True
-            cur = r.get(key) or {}
+    row = _find_row_by_org(rows, org)
+    blank = {"station": "", "arrival": "", "details": "", "status": "awaited"}
+    if row:
+        if leg_index <= 0:
+            cur = row.get(key) or {}
             cur.update(travel or {})
-            r[key] = cur
+            row[key] = cur
             if travel_extra is not None and key == "travel":
-                r["travel_extra"] = travel_extra
-            break
-    if not found:
+                row["travel_extra"] = travel_extra
+        else:
+            extras = list(row.get(extra_key) or [])
+            idx = leg_index - 1
+            while len(extras) <= idx:
+                extras.append(dict(blank))
+            cur = dict(extras[idx] or {})
+            cur.update(travel or {})
+            extras[idx] = cur
+            row[extra_key] = extras
+    else:
+        canonical = _resolve_org_name(org)
         row = {
-            "org": org,
-            "travel": {"station": "", "arrival": "", "details": "", "status": "awaited"},
+            "org": canonical,
+            "travel": dict(blank),
             "travel_extra": travel_extra or [],
         }
-        row[key] = travel or {"station": "", "arrival": "", "details": "", "status": "awaited"}
+        if leg_index <= 0:
+            row[key] = {**blank, **(travel or {})}
+        else:
+            extras = []
+            idx = leg_index - 1
+            while len(extras) <= idx:
+                extras.append(dict(blank))
+            extras[idx] = {**blank, **(travel or {})}
+            row[extra_key] = extras
         rows.append(row)
     # Preserve hubs + any other keys on write
     out = {"hubs": hubs, "rows": rows}
@@ -454,19 +521,15 @@ def save_hubs(hubs: dict) -> dict:
 
 
 def save_directory_row(org: str, manager: dict) -> dict:
-    org = org.strip().upper()
     doc = _read(FILES["directory"], {"rows": []})
     rows = doc.get("rows") or []
-    found = False
-    for r in rows:
-        if r["org"] == org:
-            found = True
-            cur = r.get("manager") or {}
-            cur.update({k: manager[k] for k in ("name", "rank", "phone") if k in manager})
-            r["manager"] = cur
-            break
-    if not found:
-        rows.append({"org": org, "manager": manager})
+    row = _find_row_by_org(rows, org)
+    if row:
+        cur = row.get("manager") or {}
+        cur.update({k: manager[k] for k in ("name", "rank", "phone") if k in manager})
+        row["manager"] = cur
+    else:
+        rows.append({"org": _resolve_org_name(org), "manager": manager})
     _write(FILES["directory"], {"rows": rows})
     return merge_bundle()
 
@@ -516,30 +579,32 @@ def add_unit(unit: dict) -> dict:
 
 
 def delete_unit(org: str) -> dict:
-    org = org.strip().upper()
+    key = _org_key(org)
+    if not key:
+        raise KeyError(org)
     removed = False
-    for key in ("accommodation", "arrival", "directory"):
-        doc = _read(FILES[key], {"rows": [], "venues": list(DEFAULT_VENUES)} if key == "accommodation" else {"rows": []})
+    for file_key in ("accommodation", "arrival", "directory"):
+        doc = _read(FILES[file_key], {"rows": [], "venues": list(DEFAULT_VENUES)} if file_key == "accommodation" else {"rows": []})
         before = len(doc.get("rows") or [])
-        doc["rows"] = [r for r in (doc.get("rows") or []) if r.get("org") != org]
+        doc["rows"] = [r for r in (doc.get("rows") or []) if _org_key(r.get("org")) != key]
         if len(doc["rows"]) < before:
             removed = True
-        if key == "accommodation":
-            _write(FILES[key], {
+        if file_key == "accommodation":
+            _write(FILES[file_key], {
                 "venues": normalize_venues(doc.get("venues"), doc["rows"]),
                 "rows": doc["rows"],
             })
-        elif key == "arrival":
-            _write(FILES[key], {
+        elif file_key == "arrival":
+            _write(FILES[file_key], {
                 "hubs": normalize_hubs(doc.get("hubs")),
                 "rows": doc["rows"],
             })
         else:
-            _write(FILES[key], {"rows": doc["rows"]})
+            _write(FILES[file_key], {"rows": doc["rows"]})
 
     mess = _read(FILES["mess"], {"by_unit": [], "tgpa_mess": {}})
     before = len(mess.get("by_unit") or [])
-    mess["by_unit"] = [r for r in (mess.get("by_unit") or []) if r.get("org") != org]
+    mess["by_unit"] = [r for r in (mess.get("by_unit") or []) if _org_key(r.get("org")) != key]
     if len(mess["by_unit"]) < before:
         removed = True
     _write(FILES["mess"], {"by_unit": mess["by_unit"], "tgpa_mess": mess.get("tgpa_mess") or {}})

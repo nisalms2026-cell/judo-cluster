@@ -77,7 +77,7 @@
         {
           "mode": "flight",
           "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "",
+          "arrival": "20.07.2026/2300 hrs",
           "details": "Arrival on July 20,2026. Time: 23:00 ( night)at Shamshabad Rajiv Gandhi, T- NA",
           "status": "planned",
           "team_label": "Assam Police"
@@ -315,9 +315,10 @@
         "mode": "rail",
         "station": "Secunderabad Jn",
         "arrival": "21.07.2026/0250 hrs",
-        "details": "12722/DAKSHIN EXP SECUNDERABAD JN (SC) Arrival* 02:50 21-Jul-2026",
+        "details": "Train No 12722",
         "status": "planned",
-        "team_label": "UTTARPRADESH"
+        "team_label": "UTTARPRADESH",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -595,5 +596,5 @@
       "travel_extra": []
     }
   ],
-  "updated_at": "2026-07-18T19:26:02"
+  "updated_at": "2026-07-19T19:05:16"
 }

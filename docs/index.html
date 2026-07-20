@@ -985,6 +985,7 @@ body.mode-view .dir-fields input {
 
 .home-rank-fill .m { background: var(--info); height: 100%; }
 .home-rank-fill .f { background: var(--warning); height: 100%; }
+.home-rank-fill .dr { background: #7C3AED; height: 100%; }
 
 .home-rank-legend {
   display: flex;
@@ -1904,11 +1905,13 @@ body.mode-view #view-accommodation .acc-venue-legend { display: none !important;
 .acc-toolbar { display: none; }
 
 .acc-table { table-layout: fixed; width: 100%; }
-.acc-table col.c-org { width: 22%; }
-.acc-table col.c-loc { width: 14%; }
-.acc-table col.c-n { width: 7.5%; }
-.acc-table col.c-tot { width: 8%; }
+.acc-table col.c-org { width: 19%; }
+.acc-table col.c-loc { width: 12%; }
+.acc-table col.c-n { width: 6.5%; }
+.acc-table col.c-dr { width: 5%; }
+.acc-table col.c-tot { width: 7%; }
 .acc-table col.c-act { width: 9%; }
+.acc-table .acc-dr-col { text-align: center; font-variant-numeric: tabular-nums; }
 .acc-table .total-col { font-weight: 600; color: var(--text); }
 
 .acc-table input.num-input,
@@ -2305,6 +2308,25 @@ body.mode-view #view-accommodation .acc-venue-legend { display: none !important;
 
 .arr-controls .mode-tabs { margin: 0; }
 .arr-controls .filter-btns { flex: 1; min-width: 200px; }
+
+.arr-org-filter {
+  min-width: 180px;
+  max-width: 280px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-ctrl);
+  font-family: var(--font);
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.arr-org-filter:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
 
 .arr-controls-meta {
   display: flex;
@@ -4113,12 +4135,13 @@ footer {
           <section class="home-panel">
             <div class="home-panel-head">
               <h2>Strength by rank</h2>
-              <span class="home-panel-tag">GOs · SOs · ORs</span>
+              <span class="home-panel-tag">GOs · SOs · ORs · Dr.</span>
             </div>
             <div id="homeRanks"></div>
             <div class="home-rank-legend">
               <span><i style="background:var(--info)"></i>Male</span>
               <span><i style="background:var(--warning)"></i>Female</span>
+              <span><i style="background:#7C3AED"></i>Dr.</span>
             </div>
             <div class="home-rank-foot" id="homeRankFoot"></div>
           </section>
@@ -4172,6 +4195,7 @@ footer {
           <label>GOs F<input class="num-field" type="number" id="newGOsF" value="0" min="0"></label>
           <label>SOs F<input class="num-field" type="number" id="newSOsF" value="0" min="0"></label>
           <label>ORs F<input class="num-field" type="number" id="newORsF" value="0" min="0"></label>
+          <label>Dr.<input class="num-field" type="number" id="newDr" value="0" min="0"></label>
           <button type="button" class="btn primary" id="saveAdd">Save</button>
         </div>
         <div class="table-wrap">
@@ -4181,6 +4205,7 @@ footer {
               <col class="c-loc">
               <col class="c-n"><col class="c-n"><col class="c-n">
               <col class="c-n"><col class="c-n"><col class="c-n">
+              <col class="c-dr">
               <col class="c-tot">
               <col class="c-act">
             </colgroup>
@@ -4189,6 +4214,7 @@ footer {
                 <th>Organisation</th><th>Location</th>
                 <th>GOs M</th><th>SOs M</th><th>ORs M</th>
                 <th>GOs F</th><th>SOs F</th><th>ORs F</th>
+                <th>Dr.</th>
                 <th>Total</th><th></th>
               </tr>
             </thead>
@@ -4276,6 +4302,9 @@ footer {
     <div class="arr-controls">
       <div class="mode-tabs" id="arrTransportTabs"></div>
       <div class="filter-btns" id="arrDayFilters"></div>
+      <select id="arrOrgFilter" class="arr-org-filter" aria-label="Filter by state">
+        <option value="ALL">All states / teams</option>
+      </select>
       <div class="arr-controls-meta">
         <span id="arrFilterHint">All hubs · All days</span>
         <div class="arr-controls-actions edit-only">
@@ -4297,6 +4326,9 @@ footer {
     <div class="arr-edit-panel edit-only" id="arrEditPanel">
       <label>Organisation
         <select id="arrEditOrg"></select>
+      </label>
+      <label id="arrEditLegWrap" style="display:none">Movement leg
+        <select id="arrEditLeg"></select>
       </label>
       <label>Mode
         <select id="arrEditMode">
@@ -4877,6 +4909,7 @@ let activeLoc = 'ALL';
 let searchTerm = '';
 let messFilter = 'ALL'; // ALL | TGPA | Own Arrangement | NITHM | UNASSIGNED
 let arrDay = 'ALL';
+let arrOrg = 'ALL';
 let arrTransport = 'ALL'; // ALL | rail | flight | bus
 let arrHub = 'ALL';
 let arrSearch = '';
@@ -4902,6 +4935,7 @@ let plSearchQ = '';
 let APP_MODE = 'edit'; // view | edit
 let IS_STATIC = false; // GitHub Pages — read-only data/bundle.json
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
+let arrEditLegIndex = 0; // 0 = primary travel, 1+ = travel_extra
 let saveInFlight = false;
 const AUTH_KEY = 'judo_cluster_auth_v1';
 
@@ -5074,6 +5108,28 @@ function sTotal(u){
   return (s.gos_m||0)+(s.sos_m||0)+(s.ors_m||0)+(s.gos_f||0)+(s.sos_f||0)+(s.ors_f||0);
 }
 
+function accTotal(u){
+  return sTotal(u) + (u.doctor || 0);
+}
+
+function strengthDetailFromUnits(units){
+  const g = {gos_m:0,sos_m:0,ors_m:0,gos_f:0,sos_f:0,ors_f:0};
+  let doctors = 0;
+  (units || []).forEach(u => {
+    const s = u.strength || {};
+    g.gos_m += s.gos_m || 0;
+    g.sos_m += s.sos_m || 0;
+    g.ors_m += s.ors_m || 0;
+    g.gos_f += s.gos_f || 0;
+    g.sos_f += s.sos_f || 0;
+    g.ors_f += s.ors_f || 0;
+    doctors += u.doctor || 0;
+  });
+  return { ...g, doctors };
+}
+
+const ACC_STRENGTH_FIELDS = ['gos_m','sos_m','ors_m','gos_f','sos_f','ors_f'];
+
 async function fetchData(){
   if(saveInFlight) return;
   try{
@@ -5204,11 +5260,12 @@ function renderHome(){
     </article>`;
   }).join('') || '<div class="home-alert-empty">Add venues on the Accommodation tab</div>';
 
-  const d = sum.strength_detail || {};
+  const d = strengthDetailFromUnits(data.units || []);
   const ranks = [
-    {name:'GOs', m:d.gos_m||0, f:d.gos_f||0},
-    {name:'SOs', m:d.sos_m||0, f:d.sos_f||0},
-    {name:'ORs', m:d.ors_m||0, f:d.ors_f||0},
+    {name:'GOs', m:d.gos_m||0, f:d.gos_f||0, kind:'rank'},
+    {name:'SOs', m:d.sos_m||0, f:d.sos_f||0, kind:'rank'},
+    {name:'ORs', m:d.ors_m||0, f:d.ors_f||0, kind:'rank'},
+    {name:'Dr.', m:d.doctors||0, f:0, kind:'doctor'},
   ];
   const maxV = Math.max(...ranks.map(r=>r.m+r.f), 1);
   const homeRanks = document.getElementById('homeRanks');
@@ -5216,6 +5273,17 @@ function renderHome(){
     homeRanks.innerHTML = ranks.map(r=>{
       const tot = r.m + r.f;
       const share = Math.max(tot ? (tot / maxV * 100) : 0, tot ? 2 : 0).toFixed(1);
+      if(r.kind === 'doctor'){
+        return `<div class="home-rank-row">
+          <div class="home-rank-top">
+            <span class="home-rank-name">${r.name}</span>
+            <span class="home-rank-counts"><strong>${tot}</strong> · counted as GO</span>
+          </div>
+          <div class="home-rank-track" title="${tot} doctor${tot===1?'':'s'}">
+            <div class="home-rank-fill" style="width:${share}%"><div class="dr" style="width:100%"></div></div>
+          </div>
+        </div>`;
+      }
       const pm = tot ? (r.m / tot * 100) : 0;
       const pf = tot ? (100 - pm) : 0;
       return `<div class="home-rank-row">
@@ -5234,10 +5302,12 @@ function renderHome(){
   }
   const rankFoot = document.getElementById('homeRankFoot');
   if(rankFoot){
-    const rankTotal = (d.gos_m||0)+(d.sos_m||0)+(d.ors_m||0)+(d.gos_f||0)+(d.sos_f||0)+(d.ors_f||0);
+    const rankOnly = (d.gos_m||0)+(d.sos_m||0)+(d.ors_m||0)+(d.gos_f||0)+(d.sos_f||0)+(d.ors_f||0);
+    const reported = (data.units || []).reduce((a, u) => a + (u.total || accTotal(u)), 0);
     rankFoot.innerHTML = `
-      <span>Rank total <strong>${rankTotal}</strong></span>
-      <span>Reported strength <strong>${sum.strength||0}</strong></span>`;
+      <span>Ranks <strong>${rankOnly}</strong></span>
+      <span>Dr. <strong>${d.doctors||0}</strong></span>
+      <span>Total <strong>${reported || sum.strength || 0}</strong></span>`;
   }
 
   const alertsMeta = document.getElementById('homeAlertsMeta');
@@ -5293,6 +5363,7 @@ function updateAccDirtyUI(){
 function updateAccRowTotal(tr){
   let tot = 0;
   tr.querySelectorAll('.num-input').forEach(inp => {
+    if(!ACC_STRENGTH_FIELDS.includes(inp.dataset.field) && inp.dataset.field !== 'doctor') return;
     tot += parseInt(inp.value, 10) || 0;
   });
   const cell = tr.querySelector('.total-col');
@@ -5303,10 +5374,17 @@ function updateAccRowTotal(tr){
 function updateAccFootFromDom(){
   const rows = [...document.querySelectorAll('#accBody tr[data-org]')].filter(tr => tr.style.display !== 'none');
   const t = [0, 0, 0, 0, 0, 0];
+  let drTot = 0;
   let grand = 0;
   rows.forEach(tr => {
-    tr.querySelectorAll('.num-input').forEach((inp, i) => {
-      if(i < 6) t[i] += parseInt(inp.value, 10) || 0;
+    tr.querySelectorAll('.num-input').forEach(inp => {
+      const field = inp.dataset.field;
+      const n = parseInt(inp.value, 10) || 0;
+      if(field === 'doctor') drTot += n;
+      else {
+        const i = ACC_STRENGTH_FIELDS.indexOf(field);
+        if(i >= 0) t[i] += n;
+      }
     });
     grand += parseInt(tr.querySelector('.total-col')?.textContent, 10) || 0;
   });
@@ -5315,6 +5393,7 @@ function updateAccFootFromDom(){
   foot.innerHTML = `
     <td>TOTAL</td><td>${rows.length} units</td>
     <td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td>
+    <td>${drTot}</td>
     <td style="color:var(--orange)">${grand}</td><td></td>`;
 }
 
@@ -5406,7 +5485,7 @@ function renderAccommodation(opts){
   });
   document.getElementById('accBody').innerHTML = filtered.map(u=>{
     const s = u.strength;
-    const tot = u.total || sTotal(u);
+    const tot = u.total || accTotal(u);
     const safe = u.org.replace(/'/g, "\\'");
     const cls = locClass(u.location);
     const locCell = isEdit()
@@ -5421,6 +5500,10 @@ function renderAccommodation(opts){
       <td data-label="ORs F"><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="ors_f" value="${s.ors_f||0}"></td>`
       : `<td data-label="GOs M">${s.gos_m||0}</td><td data-label="SOs M">${s.sos_m||0}</td><td data-label="ORs M">${s.ors_m||0}</td>
       <td data-label="GOs F">${s.gos_f||0}</td><td data-label="SOs F">${s.sos_f||0}</td><td data-label="ORs F">${s.ors_f||0}</td>`;
+    const dr = u.doctor || 0;
+    const drCell = isEdit()
+      ? `<td class="acc-dr-col" data-label="Dr."><input class="num-input" type="number" min="0" step="1" inputmode="numeric" data-field="doctor" value="${dr}"></td>`
+      : `<td class="acc-dr-col" data-label="Dr.">${dr}</td>`;
     const actions = isEdit()
       ? `<td class="c-act"><div class="row-actions">
         <button class="save" onclick="saveUnit('${safe}')">Save</button>
@@ -5431,20 +5514,24 @@ function renderAccommodation(opts){
       <td class="org-name" data-label="Organisation" onclick="openUnit('${safe}')">${u.org}</td>
       <td data-label="Location">${locCell}</td>
       ${nums}
+      ${drCell}
       <td class="total-col" data-label="Total">${tot}</td>
       ${actions}</tr>`;
   }).join('');
 
   const t = [0,0,0,0,0,0];
+  let drTot = 0;
   filtered.forEach(u=>{
     const s = u.strength;
     t[0]+=s.gos_m||0; t[1]+=s.sos_m||0; t[2]+=s.ors_m||0;
     t[3]+=s.gos_f||0; t[4]+=s.sos_f||0; t[5]+=s.ors_f||0;
+    drTot += u.doctor || 0;
   });
-  const grand = filtered.reduce((a,u)=>a+(u.total||sTotal(u)),0);
+  const grand = filtered.reduce((a,u)=>a+(u.total||accTotal(u)),0);
   document.getElementById('accFoot').innerHTML = `
     <td>TOTAL</td><td>${filtered.length} units</td>
     <td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td>
+    <td>${drTot}</td>
     <td style="color:var(--orange)">${grand}</td><td></td>`;
   renderAccLocStrip();
   renderAccHeroStats(filtered.length, grand);
@@ -5700,6 +5787,7 @@ function _renderTravel(){
   const page = travelPage === 'departure' ? 'departure' : 'arrival';
   const allEvents = collectArrivalEvents(units);
   const events = allEvents.filter(e => e.direction === page);
+  const scopedEvents = arrOrg === 'ALL' ? events : events.filter(e => e.org === arrOrg);
   const awaited = units.filter(u => {
     if(page === 'departure'){
       const t = u.travel_departure;
@@ -5711,21 +5799,22 @@ function _renderTravel(){
     if(t.status === 'planned') return false;
     return travelDirectionOf(t) !== 'departure';
   });
-  const dayKeys = [...new Set(events.map(e => e.dayKey).filter(k => k !== 'UNKNOWN'))].sort();
+  const awaitedScoped = arrOrg === 'ALL' ? awaited : awaited.filter(u => u.org === arrOrg);
+  const dayKeys = [...new Set(scopedEvents.map(e => e.dayKey).filter(k => k !== 'UNKNOWN'))].sort();
   const hubs = getHubs();
 
   const byMode = {rail:0, flight:0, bus:0};
-  events.forEach(e => { byMode[e.mode] = (byMode[e.mode]||0)+1; });
+  scopedEvents.forEach(e => { byMode[e.mode] = (byMode[e.mode]||0)+1; });
 
   const kpis = document.getElementById('arrKpis');
   if(kpis){
     const busRole = page === 'departure' ? 'boarding' : 'alighting';
     kpis.innerHTML = `
-      <div class="arr-kpi"><div class="l">Movements</div><div class="v accent">${events.length}</div><div class="s">planned legs</div></div>
+      <div class="arr-kpi"><div class="l">Movements</div><div class="v accent">${scopedEvents.length}</div><div class="s">planned legs</div></div>
       <div class="arr-kpi"><div class="l">Rail</div><div class="v">${byMode.rail||0}</div><div class="s">stations</div></div>
       <div class="arr-kpi"><div class="l">Flight</div><div class="v">${byMode.flight||0}</div><div class="s">RGIA</div></div>
       <div class="arr-kpi"><div class="l">Bus</div><div class="v ok">${byMode.bus||0}</div><div class="s">${busRole}</div></div>
-      <div class="arr-kpi"><div class="l">Chase</div><div class="v warn">${awaited.length}</div><div class="s">no plan yet</div></div>`;
+      <div class="arr-kpi"><div class="l">Chase</div><div class="v warn">${awaitedScoped.length}</div><div class="s">no plan yet</div></div>`;
   }
 
   const sideTitle = document.getElementById('arrSideTitle');
@@ -5741,17 +5830,12 @@ function _renderTravel(){
   const saveHint = document.getElementById('arrEditSaveHint');
   if(saveHint){
     saveHint.textContent = page === 'departure'
-      ? 'Saves travel_departure in data/arrival.json'
-      : 'Saves arrival plan in data/arrival.json';
-  }
-
-  const modeSel = document.getElementById('arrEditMode');
-  if(modeSel){
-    modeSel.innerHTML = '<option value="rail">Railways</option><option value="flight">Flight</option><option value="bus">Bus</option>';
+      ? 'Saves departure plan in data/arrival.json (per leg when split)'
+      : 'Saves arrival plan in data/arrival.json (per leg when split)';
   }
 
   const modeTabs = [
-    {id:'ALL', label:'All', n: events.length},
+    {id:'ALL', label:'All', n: scopedEvents.length},
     {id:'rail', label:'Rail', n: byMode.rail||0},
     {id:'flight', label:'Flight', n: byMode.flight||0},
     {id:'bus', label:'Bus', n: byMode.bus||0},
@@ -5767,13 +5851,13 @@ function _renderTravel(){
   if(strip){
     const modesForStrip = arrTransport === 'ALL' ? ['rail','flight','bus'] : [arrTransport];
     const hubPills = [];
-    const allN = events.filter(e=>arrTransport==='ALL'||e.mode===arrTransport).length;
+    const allN = scopedEvents.filter(e=>arrTransport==='ALL'||e.mode===arrTransport).length;
     hubPills.push(`<button type="button" class="hub-pill ${arrHub==='ALL'?'active':''}" data-hub="ALL">All hubs<span class="n">${allN}</span></button>`);
     modesForStrip.forEach(mode=>{
       (hubs[mode]||[]).forEach(h=>{
         if(page === 'arrival' && mode === 'bus' && h.id === 'boarding') return;
         if(page === 'departure' && mode === 'bus' && h.id === 'alighting') return;
-        const n = events.filter(e => e.mode===mode && e.hubId===h.id).length;
+        const n = scopedEvents.filter(e => e.mode===mode && e.hubId===h.id).length;
         const short = (h.label||'')
           .replace('Rajiv Gandhi Intl Airport (Shamshabad)', 'RGIA')
           .replace('Hyderabad Rly. Station', 'Hyderabad')
@@ -5799,17 +5883,29 @@ function _renderTravel(){
 
   const dayHost = document.getElementById('arrDayFilters');
   if(dayHost){
-    const days = ['ALL', ...dayKeys, ...(events.some(e=>e.dayKey==='UNKNOWN') ? ['UNKNOWN'] : [])];
+    const days = ['ALL', ...dayKeys, ...(scopedEvents.some(e=>e.dayKey==='UNKNOWN') ? ['UNKNOWN'] : [])];
     dayHost.innerHTML = days.map(k=>{
       let label = k === 'ALL' ? 'All days' : (k === 'UNKNOWN' ? 'Date TBA' : formatDayLabel(k));
       label = String(label).replace(/^\w+, /,'').replace(/ 20\d\d$/,'');
-      const n = k === 'ALL' ? events.length : events.filter(e=>e.dayKey===k).length;
+      const n = k === 'ALL' ? scopedEvents.length : scopedEvents.filter(e=>e.dayKey===k).length;
       return `<button type="button" class="${arrDay===k?'active':''}" data-day="${k}">${escHtml(label)} (${n})</button>`;
     }).join('');
   }
 
+  const orgHost = document.getElementById('arrOrgFilter');
+  if(orgHost){
+    const orgs = [...new Set(units.map(u => u.org).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    orgHost.innerHTML = `<option value="ALL">All states / teams (${events.length})</option>` +
+      orgs.map(org => {
+        const n = events.filter(e => e.org === org).length;
+        const chase = awaited.filter(u => u.org === org).length;
+        const suffix = n || chase ? ` · ${n} move${n===1?'':'s'}${chase ? ` · ${chase} chase` : ''}` : '';
+        return `<option value="${escHtml(org)}"${arrOrg===org?' selected':''}>${escHtml(org)}${suffix}</option>`;
+      }).join('');
+  }
+
   const q = (arrSearch || '').toLowerCase().trim();
-  let filtered = events.filter(e=>{
+  let filtered = scopedEvents.filter(e=>{
     if(arrTransport !== 'ALL' && e.mode !== arrTransport) return false;
     if(arrHub !== 'ALL' && e.hubId !== arrHub) return false;
     if(arrDay !== 'ALL' && e.dayKey !== arrDay) return false;
@@ -5820,8 +5916,9 @@ function _renderTravel(){
 
   const modeHint = arrTransport === 'ALL' ? 'All modes' : modeLabel(arrTransport);
   const dayHint = arrDay === 'ALL' ? 'All days' : (arrDay === 'UNKNOWN' ? 'Date TBA' : formatDayLabel(arrDay));
+  const orgHint = arrOrg === 'ALL' ? 'All states' : arrOrg;
   const hint = document.getElementById('arrFilterHint');
-  if(hint) hint.textContent = `${modeHint} · ${dayHint}`;
+  if(hint) hint.textContent = `${modeHint} · ${dayHint} · ${orgHint}`;
   const countEl = document.getElementById('arrBoardCount');
   if(countEl) countEl.textContent = `${filtered.length} movement${filtered.length===1?'':'s'}`;
 
@@ -5875,17 +5972,19 @@ function _renderTravel(){
   }
 
   const badge = document.getElementById('arrAwaitedBadge');
-  if(badge) badge.textContent = String(awaited.length);
+  if(badge) badge.textContent = String(awaitedScoped.length);
   const sub = document.getElementById('arrAwaitedSub');
   if(sub){
-    sub.textContent = awaited.length
-      ? `${awaited.length} team${awaited.length===1?'':'s'} · chase for plan / ETA`
-      : `All ${page} plans received`;
+    sub.textContent = awaitedScoped.length
+      ? `${awaitedScoped.length} team${awaitedScoped.length===1?'':'s'} · chase for plan / ETA`
+      : (arrOrg === 'ALL'
+        ? `All ${page} plans received`
+        : `No chase items for ${arrOrg}`);
   }
   const list = document.getElementById('arrAwaitedList');
   if(list){
-    list.innerHTML = awaited.length
-      ? awaited.map(u=>{
+    list.innerHTML = awaitedScoped.length
+      ? awaitedScoped.map(u=>{
           const m = u.manager || {};
           const phone = (m.phone||'').replace(/\s/g,'');
           const t = page === 'departure' ? (u.travel_departure || {}) : (u.travel || {});
@@ -5958,6 +6057,12 @@ function collectArrivalEvents(units){
         legs.push({...td, direction: 'departure', bus_role: td.bus_role || 'boarding', _dir: 'departure'});
       }
     }
+    (u.travel_departure_extra||[]).forEach(t => legs.push({
+      ...t,
+      direction: 'departure',
+      bus_role: t.bus_role || 'boarding',
+      _dir: 'departure',
+    }));
     (u.travel_extra||[]).forEach(t => legs.push({...t, _dir: travelDirectionOf(t)}));
     legs.forEach((t, idx)=>{
       const arrivalLines = String(t.arrival||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
@@ -7463,6 +7568,7 @@ function openUnit(org){
       <dt>Strength</dt><dd><strong style="color:var(--orange);font-size:20px">${u.total||sTotal(u)}</strong></dd>
       <dt>Ranks M</dt><dd>GOs ${s.gos_m||0} · SOs ${s.sos_m||0} · ORs ${s.ors_m||0}</dd>
       <dt>Ranks F</dt><dd>GOs ${s.gos_f||0} · SOs ${s.sos_f||0} · ORs ${s.ors_f||0}</dd>
+      <dt>Dr.</dt><dd>${u.doctor || 0}</dd>
       <dt>Manager</dt><dd>${m.name||'—'} ${m.rank?'('+m.rank+')':''}</dd>
       <dt>Phone</dt><dd>${m.phone ? `<a href="tel:${m.phone.replace(/\s/g,'')}" style="color:var(--cyan)">${m.phone}</a>` : '—'}</dd>
       ${travelBlock('Arrival', t)}
@@ -7483,6 +7589,8 @@ function switchView(name){
     arrHub = 'ALL';
     arrTransport = 'ALL';
     arrDay = 'ALL';
+    arrOrg = 'ALL';
+    arrEditLegIndex = 0;
     document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-travel'));
   } else {
     document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-'+name));
@@ -7514,7 +7622,11 @@ function switchView(name){
   document.body.classList.toggle('on-teams', name === 'teams');
   closeNavSearch();
   applyGlobalSearch(document.getElementById('navSearch').value || '');
-  if(name === 'arrival' || name === 'departure') renderTravel();
+  if(name === 'arrival' || name === 'departure') {
+    renderTravel();
+    const panel = document.getElementById('arrEditPanel');
+    if(panel && panel.classList.contains('open')) loadArrEditFields();
+  }
   if(name === 'adm') renderAdmStaff();
   if(name === 'lo') renderLoStaff();
   if(name === 'tc') renderTechCommittee();
@@ -7737,6 +7849,10 @@ document.getElementById('arrDayFilters').addEventListener('click', e=>{
   arrDay = e.target.dataset.day;
   renderTravel();
 });
+document.getElementById('arrOrgFilter').addEventListener('change', e=>{
+  arrOrg = e.target.value || 'ALL';
+  renderTravel();
+});
 document.getElementById('arrTransportTabs').addEventListener('click', e=>{
   const btn = e.target.closest('button[data-transport]');
   if(!btn) return;
@@ -7760,6 +7876,12 @@ document.getElementById('toggleHubEdit').onclick = () => {
   fillHubEditFields();
 };
 document.getElementById('arrEditOrg').addEventListener('change', ()=>{
+  arrFormDirty = false;
+  arrEditLegIndex = 0;
+  loadArrEditFields();
+});
+document.getElementById('arrEditLeg').addEventListener('change', ()=>{
+  arrEditLegIndex = parseInt(document.getElementById('arrEditLeg').value, 10) || 0;
   arrFormDirty = false;
   loadArrEditFields();
 });
@@ -7795,6 +7917,7 @@ document.getElementById('saveAdd').onclick = async ()=>{
     gos_f: +document.getElementById('newGOsF').value||0,
     sos_f: +document.getElementById('newSOsF').value||0,
     ors_f: +document.getElementById('newORsF').value||0,
+    doctor: +document.getElementById('newDr').value||0,
   };
   if(!payload.org.trim()){ toast('Enter organisation name'); return; }
   const res = await apiFetch('/api/units', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
@@ -7952,6 +8075,7 @@ async function saveArrivalEdit(){
       travel,
       field: travelPage === 'departure' ? 'travel_departure' : 'travel',
       direction: travel.direction,
+      leg_index: arrEditLegIndex,
     };
     const res = await apiFetch('/api/arrival/'+encodeURIComponent(org), {
       method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
@@ -7963,9 +8087,9 @@ async function saveArrivalEdit(){
       arrFormDirty = false;
       arrTransport = mode;
       arrHub = 'ALL';
-      toast(org+' saved · '+(arrival || status));
+      toast(org+' saved · '+(arrival || status)+(arrEditLegIndex ? ' (leg '+(arrEditLegIndex+1)+')' : ''));
       renderAll();
-      fillArrEditOrg();
+      loadArrEditFields();
     } else {
       const err = (body && (body.error || body.hint)) || ('HTTP '+res.status);
       toast(res.status === 403 ? 'View port is read-only — use http://'+location.hostname+':5001' : ('Save failed: '+err));
@@ -8011,9 +8135,15 @@ function refreshArrEditOrgList(keepFields){
   const hubVal = keepFields ? document.getElementById('arrEditHub').value : null;
   const statusVal = keepFields ? document.getElementById('arrEditStatus').value : null;
   const detailsVal = keepFields ? document.getElementById('arrEditDetails').value : null;
+  const legVal = keepFields ? document.getElementById('arrEditLeg').value : null;
   sel.innerHTML = (data.units||[]).map(u => `<option value="${u.org}">${u.org}</option>`).join('');
   if(cur) sel.value = cur;
   if(keepFields){
+    refreshArrEditLegSelect();
+    if(legVal != null && document.getElementById('arrEditLegWrap').style.display !== 'none'){
+      document.getElementById('arrEditLeg').value = legVal;
+      arrEditLegIndex = parseInt(legVal, 10) || 0;
+    }
     if(modeVal) document.getElementById('arrEditMode').value = modeVal;
     fillArrEditHubOptions(hubVal);
     if(statusVal) document.getElementById('arrEditStatus').value = statusVal;
@@ -8028,16 +8158,76 @@ function refreshArrEditOrgList(keepFields){
 
 function fillArrEditOrg(){
   arrFormDirty = false;
+  arrEditLegIndex = 0;
   refreshArrEditOrgList(false);
 }
 
+function arrLegTravel(u, legIndex){
+  if(!u) return {};
+  if(legIndex <= 0){
+    return travelPage === 'departure'
+      ? (u.travel_departure || {})
+      : (u.travel || {});
+  }
+  const extras = travelPage === 'departure'
+    ? (u.travel_departure_extra || [])
+    : (u.travel_extra || []);
+  return extras[legIndex - 1] || {};
+}
+
+function arrLegChoices(u){
+  if(!u) return [{index: 0, t: {}}];
+  if(travelPage === 'departure'){
+    const out = [{index: 0, t: u.travel_departure || {}}];
+    (u.travel_departure_extra || []).forEach((t, i) => out.push({index: i + 1, t}));
+    return out;
+  }
+  const out = [{index: 0, t: u.travel || {}}];
+  (u.travel_extra || []).forEach((t, i) => out.push({index: i + 1, t}));
+  return out;
+}
+
+function arrLegOptionLabel(t, n){
+  const mode = travelModeOf(t);
+  const modeLab = {rail:'Rail', flight:'Flight', bus:'Bus'}[mode] || mode;
+  let hub = (t.station || '').replace('Rajiv Gandhi Intl Airport (Shamshabad)', 'RGIA');
+  if(hub.length > 28) hub = hub.slice(0, 26) + '…';
+  const stamp = parseArrivalStamp(t.arrival || '') || parseArrivalStamp(t.details || '');
+  const when = stamp ? `${pad2(stamp.d)}/${pad2(stamp.mo)}` : '';
+  return `Leg ${n} — ${modeLab}${hub ? ' · ' + hub : ''}${when ? ' · ' + when : ''}`;
+}
+
+function refreshArrEditLegSelect(){
+  const wrap = document.getElementById('arrEditLegWrap');
+  const sel = document.getElementById('arrEditLeg');
+  if(!wrap || !sel) return;
+  const org = document.getElementById('arrEditOrg').value;
+  const u = (data.units||[]).find(x => x.org === org);
+  const choices = arrLegChoices(u);
+  if(choices.length <= 1){
+    wrap.style.display = 'none';
+    arrEditLegIndex = 0;
+    sel.innerHTML = '<option value="0">Leg 1</option>';
+    return;
+  }
+  wrap.style.display = '';
+  sel.innerHTML = choices.map((c, i) =>
+    `<option value="${c.index}">${escHtml(arrLegOptionLabel(c.t, i + 1))}</option>`
+  ).join('');
+  if(!choices.some(c => c.index === arrEditLegIndex)) arrEditLegIndex = choices[0].index;
+  sel.value = String(arrEditLegIndex);
+}
+
 function loadArrEditFields(){
+  refreshArrEditLegSelect();
+  const legSel = document.getElementById('arrEditLeg');
+  if(legSel && document.getElementById('arrEditLegWrap').style.display !== 'none'){
+    arrEditLegIndex = parseInt(legSel.value, 10) || 0;
+  }
   const org = document.getElementById('arrEditOrg').value;
   const u = (data.units||[]).find(x => x.org === org);
   if(!u) return;
-  const t = travelPage === 'departure'
-    ? (u.travel_departure || {mode:'bus', bus_role:'boarding', status:'awaited', details:''})
-    : (u.travel || {});
+  const t = arrLegTravel(u, arrEditLegIndex);
   let mode = travelModeOf(t);
   if(travelPage === 'departure' && !u.travel_departure) mode = 'rail';
   const modeEl = document.getElementById('arrEditMode');

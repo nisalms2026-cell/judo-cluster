@@ -598,6 +598,7 @@ def build_summary(units):
     travel_planned = 0
     travel_awaited = 0
     g = {"gos_m": 0, "sos_m": 0, "ors_m": 0, "gos_f": 0, "sos_f": 0, "ors_f": 0}
+    doctors = 0
     for u in units:
         loc = u["location"]
         locs.setdefault(loc, {"teams": 0, "strength": 0})
@@ -607,6 +608,7 @@ def build_summary(units):
         mess[m] = mess.get(m, 0) + u["total"]
         for k in g:
             g[k] += u["strength"].get(k, 0)
+        doctors += int(u.get("doctor") or 0)
         st = u.get("travel", {}).get("status", "awaited")
         if st == "planned":
             travel_planned += 1
@@ -627,6 +629,7 @@ def build_summary(units):
         "travel_planned": travel_planned,
         "travel_awaited": travel_awaited,
         "strength_detail": g,
+        "doctors": doctors,
     }
 
 

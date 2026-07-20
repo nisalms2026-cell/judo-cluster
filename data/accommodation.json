@@ -710,9 +710,9 @@
       "org": "ITBP",
       "location": "TGPA",
       "strength": {
-        "gos_m": 1,
+        "gos_m": 2,
         "sos_m": 1,
-        "ors_m": 65,
+        "ors_m": 68,
         "gos_f": 0,
         "sos_f": 0,
         "ors_f": 40
@@ -745,9 +745,9 @@
       "org": "TAMILNADU",
       "location": "TGPA",
       "strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 40,
+        "ors_m": 51,
         "gos_f": 0,
         "sos_f": 1,
         "ors_f": 20
@@ -781,7 +781,7 @@
       "location": "TGPA",
       "strength": {
         "gos_m": 0,
-        "sos_m": 2,
+        "sos_m": 3,
         "ors_m": 8,
         "gos_f": 0,
         "sos_f": 1,
@@ -920,7 +920,7 @@
       "org": "CRPF",
       "location": "Sport Tower",
       "strength": {
-        "gos_m": 1,
+        "gos_m": 0,
         "sos_m": 3,
         "ors_m": 55,
         "gos_f": 3,
@@ -1096,11 +1096,11 @@
       "location": "Sport Tower",
       "strength": {
         "gos_m": 0,
-        "sos_m": 5,
-        "ors_m": 38,
-        "gos_f": 2,
-        "sos_f": 0,
-        "ors_f": 4
+        "sos_m": 1,
+        "ors_m": 40,
+        "gos_f": 1,
+        "sos_f": 2,
+        "ors_f": 5
       },
       "total": 49,
       "count_gos": {
@@ -1267,5 +1267,5 @@
       "doctor": 0
     }
   ],
-  "updated_at": "2026-07-19T14:06:59"
+  "updated_at": "2026-07-19T18:25:25"
 }
