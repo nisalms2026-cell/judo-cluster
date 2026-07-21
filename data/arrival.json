@@ -50,29 +50,7 @@
         "bus_role": "alighting",
         "direction": "arrival"
       },
-      "travel_extra": [
-        {
-          "mode": "rail",
-          "station": "",
-          "arrival": "",
-          "details": "",
-          "status": "awaited"
-        },
-        {
-          "mode": "rail",
-          "station": "",
-          "arrival": "",
-          "details": "",
-          "status": "awaited"
-        },
-        {
-          "mode": "rail",
-          "station": "",
-          "arrival": "",
-          "details": "",
-          "status": "awaited"
-        }
-      ]
+      "travel_extra": []
     },
     {
       "org": "ARUNACHAL PRADESH",
@@ -433,14 +411,6 @@
           "status": "planned",
           "team_label": "ITBP",
           "direction": "arrival"
-        },
-        {
-          "mode": "flight",
-          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "17.07.2026/0919 hrs",
-          "details": "",
-          "status": "planned",
-          "direction": "arrival"
         }
       ]
     },
@@ -474,11 +444,13 @@
     {
       "org": "NSG",
       "travel": {
-        "station": "",
-        "arrival": "",
-        "details": "Travel plan awaited",
-        "status": "awaited",
-        "team_label": "NSG"
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/2100 hrs",
+        "details": "Train No 12214 Duranto  Exp",
+        "status": "planned",
+        "team_label": "NSG",
+        "mode": "rail",
+        "direction": "arrival"
       },
       "travel_extra": []
     },
@@ -697,5 +669,5 @@
       "travel_extra": []
     }
   ],
-  "updated_at": "2026-07-20T17:13:48"
+  "updated_at": "2026-07-21T10:42:13"
 }

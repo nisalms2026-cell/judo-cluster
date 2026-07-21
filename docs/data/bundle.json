@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T19:52:56",
+  "updated_at": "2026-07-21T10:42:13",
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -57,30 +57,7 @@
         "team_label": "Andhra Pradesh",
         "bus_role": "alighting",
         "direction": "arrival"
-      },
-      "travel_extra": [
-        {
-          "mode": "rail",
-          "station": "",
-          "arrival": "",
-          "details": "",
-          "status": "awaited"
-        },
-        {
-          "mode": "rail",
-          "station": "",
-          "arrival": "",
-          "details": "",
-          "status": "awaited"
-        },
-        {
-          "mode": "rail",
-          "station": "",
-          "arrival": "",
-          "details": "",
-          "status": "awaited"
-        }
-      ]
+      }
     },
     {
       "org": "ARUNACHAL PRADESH",
@@ -1190,14 +1167,6 @@
           "status": "planned",
           "team_label": "ITBP",
           "direction": "arrival"
-        },
-        {
-          "mode": "flight",
-          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
-          "arrival": "17.07.2026/0919 hrs",
-          "details": "",
-          "status": "planned",
-          "direction": "arrival"
         }
       ]
     },
@@ -1343,11 +1312,13 @@
       "total": 2,
       "mess": "TGPA",
       "travel": {
-        "station": "",
-        "arrival": "",
-        "details": "Travel plan awaited",
-        "status": "awaited",
-        "team_label": "NSG"
+        "station": "Secunderabad Jn",
+        "arrival": "21.07.2026/2100 hrs",
+        "details": "Train No 12214 Duranto  Exp",
+        "status": "planned",
+        "team_label": "NSG",
+        "mode": "rail",
+        "direction": "arrival"
       }
     },
     {
@@ -36078,8 +36049,8 @@
       "Own Arrangement": 999,
       "Unassigned": 146
     },
-    "travel_planned": 35,
-    "travel_awaited": 1,
+    "travel_planned": 36,
+    "travel_awaited": 0,
     "strength_detail": {
       "gos_m": 13,
       "sos_m": 90,
