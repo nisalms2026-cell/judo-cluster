@@ -40,7 +40,11 @@ FILES = {
     "fleet": os.path.join(DATA_DIR, "fleet.json"),
     "tech_committee": os.path.join(DATA_DIR, "tech_committee.json"),
     "players": os.path.join(DATA_DIR, "players.json"),
+    "chat": os.path.join(DATA_DIR, "chat.json"),
 }
+
+CHAT_MAX_LEN = 500
+CHAT_MAX_MESSAGES = 200
 
 TC_GAMES = ["Pencak Silat", "Judo", "Wushu", "Taekwondo", "Karate"]
 PLAYER_SPORTS = ["Judo", "Karate", "Taekwondo", "Wushu", "Pencak Silat", "Taolu"]
@@ -177,6 +181,7 @@ def empty_bundle():
         "fleet": {"vehicles": []},
         "tech_committee": {"games": list(TC_GAMES), "members": []},
         "players": {"sports": list(PLAYER_SPORTS), "players": []},
+        "chat": {"messages": []},
         "summary": build_summary([]),
     }
 
@@ -293,6 +298,8 @@ def merge_bundle() -> dict:
         "sports": pl.get("sports") or list(PLAYER_SPORTS),
         "players": pl.get("players") or [],
     }
+    chat = _read(FILES["chat"], {"messages": []})
+    chat_data = {"messages": chat.get("messages") or []}
 
     mess_map = {r["org"]: r.get("mess", "") for r in mess.get("by_unit") or []}
     arr_map = {r["org"]: r for r in arrival.get("rows") or []}
@@ -356,6 +363,7 @@ def merge_bundle() -> dict:
         fleet.get("updated_at"),
         tc.get("updated_at"),
         pl.get("updated_at"),
+        chat.get("updated_at"),
     ]
     stamps = [s for s in stamps if s]
     updated_at = max(stamps) if stamps else _now()
@@ -389,6 +397,7 @@ def merge_bundle() -> dict:
         "fleet": fleet_data,
         "tech_committee": tc_data,
         "players": players_data,
+        "chat": chat_data,
         "summary": build_summary(units),
         "files": {
             "accommodation": FILES["accommodation"],
@@ -402,6 +411,7 @@ def merge_bundle() -> dict:
             "fleet": FILES["fleet"],
             "tech_committee": FILES["tech_committee"],
             "players": FILES["players"],
+            "chat": FILES["chat"],
         },
     }
 
@@ -1976,3 +1986,49 @@ def delete_player(player_id: str) -> dict:
     if len(doc["players"]) == before:
         raise KeyError(player_id)
     return _write_players(doc)
+
+
+def _chat_doc() -> dict:
+    doc = _read(FILES["chat"], {"messages": []})
+    if not isinstance(doc.get("messages"), list):
+        doc["messages"] = []
+    return doc
+
+
+def _write_chat(doc: dict) -> dict:
+    _write(FILES["chat"], {"messages": doc.get("messages") or []})
+    return merge_bundle()
+
+
+def list_chat_messages() -> list:
+    msgs = _chat_doc().get("messages") or []
+    return sorted(msgs, key=lambda m: m.get("at") or "")
+
+
+def add_chat_message(text: str) -> dict:
+    body = " ".join(str(text or "").split())
+    if not body:
+        raise ValueError("Message cannot be empty")
+    if len(body) > CHAT_MAX_LEN:
+        raise ValueError(f"Message too long (max {CHAT_MAX_LEN} characters)")
+    doc = _chat_doc()
+    messages = doc.get("messages") or []
+    messages.append({
+        "id": _new_id("msg"),
+        "text": body,
+        "at": _now(),
+    })
+    if len(messages) > CHAT_MAX_MESSAGES:
+        messages = messages[-CHAT_MAX_MESSAGES:]
+    doc["messages"] = messages
+    return _write_chat(doc)
+
+
+def delete_chat_message(message_id: str) -> dict:
+    doc = _chat_doc()
+    messages = doc.get("messages") or []
+    before = len(messages)
+    doc["messages"] = [m for m in messages if m.get("id") != message_id]
+    if len(doc["messages"]) == before:
+        raise KeyError(message_id)
+    return _write_chat(doc)

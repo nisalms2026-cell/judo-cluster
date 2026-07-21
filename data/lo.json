@@ -341,9 +341,9 @@
     {
       "id": "la_2f63d95a14",
       "team_org": "Andhra Pradesh",
-      "officer_id": "",
+      "officer_id": "lo_95e10bf49b",
       "doa": "",
-      "location": "",
+      "location": "TGPA",
       "notes": ""
     },
     {
@@ -627,5 +627,5 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-07-20T19:36:42"
+  "updated_at": "2026-07-21T10:53:38"
 }

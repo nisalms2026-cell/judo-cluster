@@ -38,6 +38,8 @@ app.config.update(
     SESSION_REFRESH_EACH_REQUEST=True,
 )
 LOCK = threading.Lock()
+CHAT_RATE_SECONDS = 20
+_chat_last_post: dict[str, float] = {}
 
 WRITE_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
 PUBLIC_PATHS = {
@@ -88,6 +90,9 @@ def block_writes_in_view_mode():
     path = request.path or "/"
     # Login/logout must work on the View server too
     if path in ("/api/login", "/api/logout"):
+        return None
+    # Anonymous ops bulletin — viewers may post on View port
+    if request.method == "POST" and path == "/api/chat":
         return None
     if request.method in WRITE_METHODS and path.startswith("/api/"):
         return jsonify({
@@ -807,6 +812,46 @@ def delete_unit(org):
             return jsonify(store.delete_unit(org))
         except KeyError:
             return jsonify({"error": "Organisation not found"}), 404
+
+
+# ── Ops bulletin (anonymous chat) ───────────────────────────
+@app.route("/api/chat", methods=["GET"])
+def get_chat():
+    with LOCK:
+        msgs = store.list_chat_messages()
+        return jsonify({"messages": msgs})
+
+
+@app.route("/api/chat", methods=["POST"])
+def post_chat():
+    import time
+    payload = request.get_json(silent=True) or {}
+    text = payload.get("text") or ""
+    ip = (request.headers.get("X-Forwarded-For") or request.remote_addr or "local").split(",")[0].strip()
+    now = time.time()
+    last = _chat_last_post.get(ip, 0)
+    if now - last < CHAT_RATE_SECONDS:
+        wait = int(CHAT_RATE_SECONDS - (now - last)) + 1
+        return jsonify({"error": f"Please wait {wait}s before posting again"}), 429
+    with LOCK:
+        try:
+            bundle = store.add_chat_message(text)
+            _chat_last_post[ip] = now
+            return jsonify({"messages": store.list_chat_messages(), "updated_at": bundle.get("updated_at")})
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/chat/<message_id>", methods=["DELETE"])
+def delete_chat(message_id):
+    if not is_edit_mode():
+        return jsonify({"error": "Delete on Edit server only (:5001)"}), 403
+    with LOCK:
+        try:
+            store.delete_chat_message(message_id)
+            return jsonify({"messages": store.list_chat_messages()})
+        except KeyError:
+            return jsonify({"error": "Message not found"}), 404
 
 
 @app.route("/api/rows", methods=["GET"])

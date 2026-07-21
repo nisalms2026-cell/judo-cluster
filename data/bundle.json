@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21T10:42:13",
+  "updated_at": "2026-07-21T11:08:25",
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -4425,9 +4425,9 @@
       {
         "id": "la_2f63d95a14",
         "team_org": "Andhra Pradesh",
-        "officer_id": "",
+        "officer_id": "lo_95e10bf49b",
         "doa": "",
-        "location": "",
+        "location": "TGPA",
         "notes": ""
       },
       {
@@ -36015,6 +36015,15 @@
           }
         ],
         "qualified": []
+      }
+    ]
+  },
+  "chat": {
+    "messages": [
+      {
+        "id": "msg_1a9435f53a",
+        "text": "Sir please type any information which is required to be updated",
+        "at": "2026-07-21T11:08:25"
       }
     ]
   },

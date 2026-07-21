@@ -3760,6 +3760,388 @@ body.mode-edit #view-fleet .fleet-edit-block {
   transform: translateY(0);
 }
 
+/* Ops bulletin — live anonymous updates */
+.ops-chat {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: min(380px, calc(100vw - 24px));
+  font-family: var(--font);
+}
+
+.ops-chat-fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px 11px 14px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: linear-gradient(135deg, #1E40AF 0%, #2563EB 55%, #3B82F6 100%);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35), 0 2px 6px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.ops-chat-fab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4), 0 4px 10px rgba(15, 23, 42, 0.14);
+}
+
+.ops-chat-fab:active { transform: translateY(0); }
+
+.ops-chat.is-open .ops-chat-fab {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.96);
+}
+
+.ops-chat-fab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.ops-chat-fab-icon svg { display: block; }
+
+.ops-chat-head-icon svg { display: block; color: rgba(255,255,255,0.92); }
+
+.ops-chat-empty-icon svg { display: block; }
+
+.ops-chat-badge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.ops-chat-badge[hidden] { display: none !important; }
+
+.ops-chat-panel {
+  width: min(380px, calc(100vw - 24px));
+  max-height: min(520px, 62vh);
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--card);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  overflow: hidden;
+  transform-origin: bottom right;
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.ops-chat-panel.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.ops-chat-panel[hidden] { display: none !important; }
+
+.ops-chat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  color: #fff;
+}
+
+.ops-chat-head-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ops-chat-head-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 18px;
+}
+
+.ops-chat-head strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.ops-chat-head-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ops-chat-close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.ops-chat-close:hover { background: rgba(255, 255, 255, 0.18); }
+
+.ops-chat-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  color: var(--secondary);
+  background: #F8FAFC;
+  border-bottom: 1px solid var(--border);
+}
+
+.ops-chat-meta-dot { opacity: 0.45; }
+
+.ops-chat-list {
+  flex: 1;
+  overflow: auto;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 140px;
+  max-height: 280px;
+  background: linear-gradient(180deg, #FAFBFC 0%, #fff 100%);
+}
+
+.ops-chat-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  color: var(--secondary);
+  font-size: 13px;
+  padding: 32px 16px;
+  line-height: 1.45;
+}
+
+.ops-chat-empty-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--selected);
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.ops-chat-empty small {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.ops-chat-msg {
+  padding: 10px 12px 10px 14px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.ops-chat-msg p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.ops-chat-msg-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.ops-chat-msg time {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--secondary);
+  letter-spacing: 0.02em;
+}
+
+.ops-chat-del {
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: #FEF2F2;
+  color: var(--danger);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ops-chat-del:hover { background: #FEE2E2; }
+
+.ops-chat-compose {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+  background: #fff;
+}
+
+.ops-chat-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary);
+}
+
+.ops-chat-compose textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  min-height: 56px;
+  max-height: 100px;
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #FAFBFC;
+  color: var(--text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.ops-chat-compose textarea:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 0.45);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.ops-chat-compose-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ops-chat-char {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.ops-chat-char.is-warn { color: var(--warning); }
+
+.ops-chat-send {
+  min-width: 88px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.ops-chat-static-note {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #92400E;
+  padding: 10px 14px;
+  border-top: 1px solid #FDE68A;
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+}
+
+.ops-chat-static-note strong { font-weight: 700; }
+
+@media (max-width: 720px) {
+  .ops-chat {
+    right: 14px;
+    bottom: calc(var(--bottom-nav-h, 64px) + env(safe-area-inset-bottom, 0px) + 14px);
+  }
+  .ops-chat-panel {
+    width: calc(100vw - 28px);
+    max-width: none;
+  }
+  .ops-chat-fab {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+  }
+  .ops-chat-fab-label { display: none; }
+  .ops-chat-fab-icon {
+    width: auto;
+    height: auto;
+    background: transparent;
+  }
+  .ops-chat-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    line-height: 18px;
+    font-size: 10px;
+    border: 2px solid #2563EB;
+  }
+}
+
 footer {
   margin-top: 40px;
   text-align: center;
@@ -5620,6 +6002,41 @@ footer {
 </aside>
 <div class="toast" id="toast"></div>
 
+<aside class="ops-chat" id="opsChat" aria-label="Ops bulletin">
+  <button type="button" class="ops-chat-fab" id="opsChatToggle" aria-expanded="false" aria-controls="opsChatPanel">
+    <span class="ops-chat-fab-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg></span>
+    <span class="ops-chat-fab-label">Bulletin</span>
+    <span class="ops-chat-badge" id="opsChatBadge" hidden>0</span>
+  </button>
+  <div class="ops-chat-panel" id="opsChatPanel" hidden role="dialog" aria-labelledby="opsChatTitle">
+    <header class="ops-chat-head">
+      <div class="ops-chat-head-main">
+        <span class="ops-chat-head-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></span>
+        <div>
+          <strong id="opsChatTitle">Ops bulletin</strong>
+          <span class="ops-chat-head-sub">Live field updates · anonymous</span>
+        </div>
+      </div>
+      <button type="button" class="ops-chat-close" id="opsChatClose" aria-label="Close">&times;</button>
+    </header>
+    <div class="ops-chat-meta">
+      <span id="opsChatCount">0 messages</span>
+      <span class="ops-chat-meta-dot">·</span>
+      <span id="opsChatHint">Cleared by ops on Edit</span>
+    </div>
+    <div class="ops-chat-list" id="opsChatList"></div>
+    <div class="ops-chat-compose" id="opsChatCompose">
+      <label class="ops-chat-label" for="opsChatInput">Post update</label>
+      <textarea id="opsChatInput" maxlength="500" placeholder="e.g. Assam team reached Charlapalli…" rows="2" autocomplete="off"></textarea>
+      <div class="ops-chat-compose-bar">
+        <span class="ops-chat-char" id="opsChatChar">0 / 500</span>
+        <button type="button" class="btn primary ops-chat-send" id="opsChatSend">Send</button>
+      </div>
+    </div>
+    <div class="ops-chat-static-note" id="opsChatStaticNote" hidden><strong>Read-only</strong> on web export — post on LAN View</div>
+  </div>
+</aside>
+
 <script>
 let data = null;
 const accDirtyOrgs = new Set(); // orgs with unsaved accommodation edits
@@ -5703,6 +6120,204 @@ function dataUrl(path){
 }
 
 function isEdit(){ return APP_MODE === 'edit' && !IS_STATIC; }
+
+let opsChatOpen = false;
+let opsChatMessages = [];
+let opsChatPollTimer = null;
+let opsChatSeenCount = 0;
+
+function setOpsChatOpen(open){
+  opsChatOpen = !!open;
+  const root = document.getElementById('opsChat');
+  const panel = document.getElementById('opsChatPanel');
+  const toggle = document.getElementById('opsChatToggle');
+  if(!panel) return;
+  if(open){
+    panel.hidden = false;
+    requestAnimationFrame(()=>{
+      panel.classList.add('is-open');
+      if(root) root.classList.add('is-open');
+    });
+    opsChatSeenCount = opsChatMessages.length;
+    if(toggle) toggle.setAttribute('aria-expanded', 'true');
+    fetchOpsChat();
+  } else {
+    panel.classList.remove('is-open');
+    if(root) root.classList.remove('is-open');
+    if(toggle) toggle.setAttribute('aria-expanded', 'false');
+    setTimeout(()=>{ if(!opsChatOpen) panel.hidden = true; }, 220);
+  }
+  updateOpsChatChrome();
+}
+
+function updateOpsChatChrome(){
+  const n = opsChatMessages.length;
+  const badge = document.getElementById('opsChatBadge');
+  const countEl = document.getElementById('opsChatCount');
+  const hint = document.getElementById('opsChatHint');
+  const input = document.getElementById('opsChatInput');
+  const charEl = document.getElementById('opsChatChar');
+  if(countEl) countEl.textContent = `${n} message${n === 1 ? '' : 's'}`;
+  if(hint){
+    hint.textContent = isEdit() ? 'Remove entries on Edit server' : 'Cleared by ops on Edit';
+  }
+  if(badge){
+    const unread = Math.max(0, n - opsChatSeenCount);
+    if(!opsChatOpen && unread > 0){
+      badge.hidden = false;
+      badge.textContent = unread > 99 ? '99+' : String(unread);
+    } else {
+      badge.hidden = true;
+    }
+  }
+  if(charEl && input){
+    const len = (input.value || '').length;
+    charEl.textContent = `${len} / 500`;
+    charEl.classList.toggle('is-warn', len > 450);
+  }
+}
+
+function getChatFromData(){
+  return (data && data.chat && data.chat.messages) ? data.chat.messages.slice() : [];
+}
+
+function formatChatTime(iso){
+  if(!iso) return '';
+  try{
+    const d = new Date(iso);
+    if(Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleString('en-IN', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit', hour12:false });
+  }catch(e){ return iso; }
+}
+
+function renderOpsChat(){
+  const list = document.getElementById('opsChatList');
+  const compose = document.getElementById('opsChatCompose');
+  const staticNote = document.getElementById('opsChatStaticNote');
+  if(!list) return;
+  const msgs = opsChatMessages.slice().sort((a,b)=>(a.at||'').localeCompare(b.at||''));
+  if(IS_STATIC){
+    if(compose) compose.hidden = true;
+    if(staticNote) staticNote.hidden = false;
+  } else {
+    if(compose) compose.hidden = false;
+    if(staticNote) staticNote.hidden = true;
+  }
+  updateOpsChatChrome();
+  if(!msgs.length){
+    list.innerHTML = `<div class="ops-chat-empty">
+      <span class="ops-chat-empty-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></span>
+      <span>No bulletin entries yet</span>
+      <small>Share a short arrival or logistics update for the ops desk.</small>
+    </div>`;
+    return;
+  }
+  list.innerHTML = msgs.map(m=>{
+    const del = isEdit() ? `<button type="button" class="ops-chat-del" data-del-chat="${escHtml(m.id)}">Remove</button>` : '';
+    return `<article class="ops-chat-msg" data-chat-id="${escHtml(m.id)}">
+      <p>${escHtml(m.text||'')}</p>
+      <div class="ops-chat-msg-foot">
+        <time datetime="${escHtml(m.at||'')}">${escHtml(formatChatTime(m.at))}</time>
+        ${del}
+      </div>
+    </article>`;
+  }).join('');
+  list.querySelectorAll('[data-del-chat]').forEach(btn=>{
+    btn.onclick = ()=> deleteOpsChatMessage(btn.dataset.delChat);
+  });
+  list.scrollTop = list.scrollHeight;
+}
+
+async function fetchOpsChat(){
+  if(IS_STATIC){
+    opsChatMessages = getChatFromData();
+    renderOpsChat();
+    return;
+  }
+  try{
+    const res = await apiFetch('/api/chat', { cache: 'no-store' });
+    if(!res.ok) return;
+    const body = await res.json();
+    opsChatMessages = body.messages || [];
+    if(data) data.chat = { messages: opsChatMessages };
+    renderOpsChat();
+  }catch(e){}
+}
+
+async function postOpsChatMessage(){
+  if(IS_STATIC){ toast('Read-only web export — use LAN View to post'); return; }
+  const input = document.getElementById('opsChatInput');
+  const text = (input && input.value || '').trim();
+  if(!text){ toast('Type a message first'); return; }
+  const btn = document.getElementById('opsChatSend');
+  if(btn) btn.disabled = true;
+  try{
+    const res = await apiFetch('/api/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ text }),
+    });
+    let body = null;
+    try{ body = await res.json(); }catch(e){}
+    if(!res.ok){
+      toast((body && body.error) || 'Post failed');
+      return;
+    }
+    opsChatMessages = (body && body.messages) || [];
+    if(data) data.chat = { messages: opsChatMessages };
+    if(input) input.value = '';
+    renderOpsChat();
+    updateOpsChatChrome();
+  }finally{
+    if(btn) btn.disabled = false;
+  }
+}
+
+async function deleteOpsChatMessage(id){
+  if(!isEdit()) return;
+  if(!confirm('Remove this bulletin message?')) return;
+  const res = await apiFetch('/api/chat/'+encodeURIComponent(id), { method:'DELETE' });
+  let body = null;
+  try{ body = await res.json(); }catch(e){}
+  if(!res.ok){
+    toast((body && body.error) || 'Remove failed');
+    return;
+  }
+  opsChatMessages = (body && body.messages) || [];
+  if(data) data.chat = { messages: opsChatMessages };
+  renderOpsChat();
+  toast('Message removed');
+}
+
+function initOpsChat(){
+  const toggle = document.getElementById('opsChatToggle');
+  const closeBtn = document.getElementById('opsChatClose');
+  const sendBtn = document.getElementById('opsChatSend');
+  const input = document.getElementById('opsChatInput');
+  if(toggle){
+    toggle.onclick = ()=> setOpsChatOpen(!opsChatOpen);
+  }
+  if(closeBtn){
+    closeBtn.onclick = ()=> setOpsChatOpen(false);
+  }
+  if(sendBtn) sendBtn.onclick = postOpsChatMessage;
+  if(input){
+    input.addEventListener('input', updateOpsChatChrome);
+    input.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' && !e.shiftKey){
+        e.preventDefault();
+        postOpsChatMessage();
+      }
+    });
+  }
+  opsChatMessages = getChatFromData();
+  opsChatSeenCount = opsChatMessages.length;
+  renderOpsChat();
+  if(opsChatPollTimer) clearInterval(opsChatPollTimer);
+  if(!IS_STATIC){
+    opsChatPollTimer = setInterval(fetchOpsChat, 8000);
+  }
+}
 
 const locClassKnown = {
   'TGPA': 'TGPA',
@@ -5879,6 +6494,10 @@ async function fetchData(){
     }
     data = fresh;
     renderAll();
+    opsChatMessages = getChatFromData();
+    if(opsChatOpen || document.getElementById('opsChatPanel') && !document.getElementById('opsChatPanel').hidden){
+      renderOpsChat();
+    }
   }catch(e){
     if(IS_STATIC && !data){
       toast('Could not load data/bundle.json — push export_static.py output');
@@ -10526,6 +11145,7 @@ async function applyMode(){
   if(addLegBtn) addLegBtn.addEventListener('click', addArrivalLeg);
   if(remLegBtn) remLegBtn.addEventListener('click', removeArrivalLeg);
   await fetchData();
+  initOpsChat();
   // Static Pages: refresh less often (updates arrive via git push)
   setInterval(fetchData, IS_STATIC ? 60000 : 10000);
 })();
