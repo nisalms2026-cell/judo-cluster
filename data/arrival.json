@@ -50,7 +50,16 @@
         "bus_role": "alighting",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0,
+        "updated_at": "2026-07-21T18:59:40"
+      }
     },
     {
       "org": "ARUNACHAL PRADESH",
@@ -667,7 +676,23 @@
         "direction": "arrival"
       },
       "travel_extra": []
+    },
+    {
+      "org": "Andhra Pradesh/arrived-strength",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "travel_extra": []
     }
   ],
-  "updated_at": "2026-07-21T10:42:13"
+  "updated_at": "2026-07-21T19:01:11"
 }

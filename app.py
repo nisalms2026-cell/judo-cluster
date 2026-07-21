@@ -166,7 +166,36 @@ def api_config():
     })
 
 
-@app.route("/api/data", methods=["GET"])
+@app.after_request
+def chat_cors_headers(resp):
+    """Allow GitHub Pages / tunnel clients to use live bulletin API."""
+    path = request.path or ""
+    if path.startswith("/api/chat"):
+        resp.headers["Access-Control-Allow-Origin"] = "*"
+        resp.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Dashboard-Token"
+        resp.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return resp
+
+
+@app.route("/api/chat", methods=["OPTIONS"])
+@app.route("/api/chat/<message_id>", methods=["OPTIONS"])
+def chat_preflight(message_id=None):
+    return "", 204
+
+
+@app.route("/api/event/chat-api", methods=["PUT"])
+def put_chat_api():
+    if not is_edit_mode():
+        return jsonify({"error": "Edit server only (:5001)"}), 403
+    payload = request.get_json(silent=True) or {}
+    with LOCK:
+        try:
+            return jsonify(store.save_chat_api(payload.get("chat_api") or ""))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+
+
+@app.route("/api/data")
 def get_data():
     import importlib
     global store
@@ -251,6 +280,13 @@ def put_arrival(org):
     leg_index = int(payload.get("leg_index") or 0)
     with LOCK:
         return jsonify(store.save_arrival_row(org, travel, extra, field=field, leg_index=leg_index))
+
+
+@app.route("/api/arrival/<path:org>/arrived-strength", methods=["PUT"])
+def put_arrived_strength(org):
+    payload = request.get_json(force=True) or {}
+    with LOCK:
+        return jsonify(store.save_arrived_strength(org, payload))
 
 
 @app.route("/api/arrival/<path:org>/legs", methods=["POST"])

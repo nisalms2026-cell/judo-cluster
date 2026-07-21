@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21T11:08:25",
+  "updated_at": "2026-07-21T19:24:17",
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -7,6 +7,7 @@
     "city": "Hyderabad",
     "mascot": "Vira"
   },
+  "chat_api": "",
   "units": [
     {
       "org": "Andhra Pradesh",
@@ -57,6 +58,15 @@
         "team_label": "Andhra Pradesh",
         "bus_role": "alighting",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0,
+        "updated_at": "2026-07-21T18:59:40"
       }
     },
     {
@@ -107,6 +117,14 @@
         "status": "planned",
         "team_label": "ARUNACHAL PRADESH",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -168,7 +186,15 @@
           "team_label": "Assam Police",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "ASSAM RIFLES",
@@ -227,7 +253,15 @@
           "status": "planned",
           "team_label": "Assam Rifles"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "BIHAR POLICE",
@@ -277,6 +311,14 @@
         "status": "planned",
         "team_label": "Bihar",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -327,6 +369,14 @@
         "status": "planned",
         "team_label": "CHANDIGARH POLICE",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -387,7 +437,15 @@
           "status": "planned",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "Gujrat",
@@ -437,6 +495,14 @@
         "status": "planned",
         "team_label": "Gujrat",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -497,7 +563,15 @@
           "status": "planned",
           "team_label": "Himachal Pradesh Police (Half Team)"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "JAMMU & KASHMIR",
@@ -558,7 +632,15 @@
           "team_label": "J&K (1)",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "KARNATAKA POLICE",
@@ -608,6 +690,14 @@
         "status": "planned",
         "team_label": "Karnataka State Police",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -668,7 +758,15 @@
           "status": "planned",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "MIZORAM POLICE",
@@ -718,6 +816,14 @@
         "status": "planned",
         "team_label": "Mizoram Police",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -788,7 +894,15 @@
           "team_label": "Punjab",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "RAJASTHAN POLICE",
@@ -838,6 +952,14 @@
         "status": "planned",
         "team_label": "Rajasthan",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -888,6 +1010,14 @@
         "status": "planned",
         "team_label": "Uttarakhand",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -938,6 +1068,14 @@
         "status": "planned",
         "team_label": "Sikkim (02)",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -988,6 +1126,14 @@
         "status": "planned",
         "team_label": "Chhattisgarh",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1048,7 +1194,15 @@
           "status": "planned",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "HARYANA",
@@ -1098,6 +1252,14 @@
         "status": "planned",
         "team_label": "Haryana Police",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1168,7 +1330,15 @@
           "team_label": "ITBP",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "TAMILNADU",
@@ -1218,6 +1388,14 @@
         "status": "planned",
         "team_label": "TAMIL NADU",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1269,6 +1447,14 @@
         "team_label": "GOA",
         "bus_role": "alighting",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1319,6 +1505,14 @@
         "team_label": "NSG",
         "mode": "rail",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1369,6 +1563,14 @@
         "status": "planned",
         "team_label": "JHARKHAND",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1430,7 +1632,15 @@
           "team_label": "Border Security Force",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "CRPF",
@@ -1480,6 +1690,14 @@
         "status": "planned",
         "team_label": "CRPF",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1559,7 +1777,15 @@
           "team_label": "SSB",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "WEST BENGAL POLICE",
@@ -1609,6 +1835,14 @@
         "status": "planned",
         "team_label": "West Bengal Police",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1659,6 +1893,14 @@
         "status": "planned",
         "team_label": "Odisha",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1709,6 +1951,14 @@
         "status": "planned",
         "team_label": "Madhya Pradesh",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1759,6 +2009,14 @@
         "status": "planned",
         "team_label": "Manipur Police",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1809,6 +2067,14 @@
         "status": "planned",
         "team_label": "KERALA POLICE",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1879,7 +2145,15 @@
           "team_label": "CISF",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
     },
     {
       "org": "TELANGANA POLICE",
@@ -1930,6 +2204,14 @@
         "team_label": "Telangana Police",
         "bus_role": "alighting",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     },
     {
@@ -1980,6 +2262,75 @@
         "status": "planned",
         "team_label": "RPF",
         "direction": "arrival"
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      }
+    },
+    {
+      "org": "Andhra Pradesh/arrived-strength",
+      "location": "TGPA",
+      "manager": {
+        "name": "",
+        "rank": "",
+        "phone": ""
+      },
+      "count_gos": {
+        "male": 0,
+        "female": 0
+      },
+      "count_sos": {
+        "male": 0,
+        "female": 0
+      },
+      "support": {
+        "male": 0,
+        "female": 0
+      },
+      "coach_male": {
+        "sos": 0,
+        "ors": 0
+      },
+      "coach_female": {
+        "gos": 0,
+        "sos": 0,
+        "ors": 0
+      },
+      "doctor": 0,
+      "strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "total": 0,
+      "mess": "",
+      "travel": {
+        "station": "",
+        "arrival": "",
+        "details": "",
+        "status": "awaited",
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
+      },
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 0,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0
       }
     }
   ],
@@ -3265,6 +3616,206 @@
         "mobile": "9908527154",
         "stay": "",
         "room": ""
+      },
+      {
+        "id": "p_bcf60a1e7c",
+        "cisf_no": "140701397",
+        "name": "Salunki Shivaji Dattatray",
+        "rank": "CT/DVR",
+        "unit": "ASG HYDERABAD",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_cdbf7c3e3c",
+        "cisf_no": "240703426",
+        "name": "Subash Choudhary",
+        "rank": "CT/DVR",
+        "unit": "ASG HYDERABAD",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_4c0403c4d8",
+        "cisf_no": "150701059",
+        "name": "Sreedhara MS",
+        "rank": "CT/DVR",
+        "unit": "8TH RB Jaipur",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_56c1788340",
+        "cisf_no": "170739014",
+        "name": "Yeravi Sanjay M",
+        "rank": "CT/DVR",
+        "unit": "9TH RB Deoli",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_d719e9a04f",
+        "cisf_no": "170739175",
+        "name": "Arun Kumar Paswan",
+        "rank": "CT/DVR",
+        "unit": "9TH RB Deoli",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_00aba51c65",
+        "cisf_no": "062309431",
+        "name": "Ashok kumar",
+        "rank": "ASI/MT",
+        "unit": "11TH RB Nashik",
+        "mobile": "9568575922",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_d901057e97",
+        "cisf_no": "114390396",
+        "name": "Kailash Kumar Berwal",
+        "rank": "HC/DVR",
+        "unit": "11TH RB NASHIK",
+        "mobile": "9521135729",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_9c4ae771d5",
+        "cisf_no": "120714579",
+        "name": "Kishori Lal Yadav",
+        "rank": "CT/DVR",
+        "unit": "11TH RB Nashik",
+        "mobile": "9079247667",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_560643d0ff",
+        "cisf_no": "150703817",
+        "name": "Rajpal",
+        "rank": "CT/DVR",
+        "unit": "IG MINT",
+        "mobile": "9414571078",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_0060bbd646",
+        "cisf_no": "110700285",
+        "name": "s Dasarath",
+        "rank": "HC/DVR",
+        "unit": "VPA VIZAG",
+        "mobile": "9949224478",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_c2928ac815",
+        "cisf_no": "110701035",
+        "name": "Gudipati Devadasu",
+        "rank": "HC/DVR",
+        "unit": "VPA VIZAG",
+        "mobile": "6303502917",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_86d069f238",
+        "cisf_no": "170740533",
+        "name": "Suresh Kumar",
+        "rank": "CT/DVR",
+        "unit": "HPCL Vizag",
+        "mobile": "9928966704",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_4a1d6e5afa",
+        "cisf_no": "087080098",
+        "name": "M Petchhi Muthu",
+        "rank": "HC/DVR",
+        "unit": "RSTPS",
+        "mobile": "9487627092",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_09f0b442de",
+        "cisf_no": "150704214",
+        "name": "Kanwar Singh",
+        "rank": "CT/DVR",
+        "unit": "RSTPS",
+        "mobile": "7976796891",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_00ae7f4f18",
+        "cisf_no": "150704384",
+        "name": "Monu Kumar",
+        "rank": "CT/DVR",
+        "unit": "Gp HQ Hyderabad",
+        "mobile": "9837338871",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_2d4f8bdac7",
+        "cisf_no": "150703525",
+        "name": "Subhash Chand Jat",
+        "rank": "CT/Dvr",
+        "unit": "SVP-NPA Hyderabad",
+        "mobile": "9461447160",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_1b0985f5ea",
+        "cisf_no": "110700382",
+        "name": "Rambabu Singarapu",
+        "rank": "HC/DVR",
+        "unit": "RTPS Raichur",
+        "mobile": "8511722338",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_24a5e27a34",
+        "cisf_no": "190703381",
+        "name": "Pradeep Kumar",
+        "rank": "CT/DVR",
+        "unit": "BDL Bhanur",
+        "mobile": "7891155374",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_5b3878b44f",
+        "cisf_no": "120721320",
+        "name": "Kora Prakash",
+        "rank": "CT/DVR",
+        "unit": "BDL Kanchanbagh",
+        "mobile": "",
+        "stay": "",
+        "room": ""
+      },
+      {
+        "id": "p_f37de43b77",
+        "cisf_no": "140702369",
+        "name": "Omprakash",
+        "rank": "CT/DVR",
+        "unit": "BBIL Hyderabad",
+        "mobile": "7780615434",
+        "stay": "",
+        "room": ""
       }
     ],
     "tasks": [
@@ -4075,6 +4626,186 @@
         "id": "d_ea65e51e60",
         "task_id": "t_429e388fea",
         "person_id": "p_4167cd73e2",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_aae7a67285",
+        "task_id": "t_429e388fea",
+        "person_id": "p_bcf60a1e7c",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_ac13fa6daa",
+        "task_id": "t_429e388fea",
+        "person_id": "p_48558af63f",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_7047f96482",
+        "task_id": "t_429e388fea",
+        "person_id": "p_4c0403c4d8",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_a450ba7b72",
+        "task_id": "t_429e388fea",
+        "person_id": "p_56c1788340",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_930e2eae95",
+        "task_id": "t_429e388fea",
+        "person_id": "p_d719e9a04f",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_46d6daa308",
+        "task_id": "t_429e388fea",
+        "person_id": "p_00aba51c65",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_ee7c2bfe6e",
+        "task_id": "t_429e388fea",
+        "person_id": "p_d901057e97",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_8a7310373f",
+        "task_id": "t_429e388fea",
+        "person_id": "p_9c4ae771d5",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_7a5d12033a",
+        "task_id": "t_429e388fea",
+        "person_id": "p_560643d0ff",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_60b943b19f",
+        "task_id": "t_429e388fea",
+        "person_id": "p_0060bbd646",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_d30bf9c40e",
+        "task_id": "t_429e388fea",
+        "person_id": "p_c2928ac815",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_3b8341a801",
+        "task_id": "t_429e388fea",
+        "person_id": "p_86d069f238",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_538e885238",
+        "task_id": "t_429e388fea",
+        "person_id": "p_4a1d6e5afa",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_81384b960e",
+        "task_id": "t_429e388fea",
+        "person_id": "p_09f0b442de",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_c3e866c8f2",
+        "task_id": "t_429e388fea",
+        "person_id": "p_00ae7f4f18",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_90105890f1",
+        "task_id": "t_429e388fea",
+        "person_id": "p_2d4f8bdac7",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_c243bd9ec8",
+        "task_id": "t_429e388fea",
+        "person_id": "p_1b0985f5ea",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_75c3f92c02",
+        "task_id": "t_429e388fea",
+        "person_id": "p_24a5e27a34",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_321ef82f5b",
+        "task_id": "t_429e388fea",
+        "person_id": "p_5b3878b44f",
+        "role": "",
+        "from_date": "",
+        "to_date": "",
+        "notes": ""
+      },
+      {
+        "id": "d_bdf9c3f338",
+        "task_id": "t_429e388fea",
+        "person_id": "p_f37de43b77",
         "role": "",
         "from_date": "",
         "to_date": "",
@@ -4895,7 +5626,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_02",
@@ -4916,7 +5648,8 @@
           "arrival": "21.07.2026/1710 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_03",
@@ -4937,7 +5670,8 @@
           "arrival": "24.07.2026/0730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_04",
@@ -4958,7 +5692,8 @@
           "arrival": "24.07.2026/0730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_05",
@@ -4979,7 +5714,8 @@
           "arrival": "24.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_06",
@@ -5000,7 +5736,8 @@
           "arrival": "24.07.2026/0330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_07",
@@ -5021,7 +5758,8 @@
           "arrival": "24.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_08",
@@ -5043,7 +5781,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_09",
@@ -5065,7 +5804,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_10",
@@ -5086,7 +5826,8 @@
           "arrival": "24.07.2026/0650 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_11",
@@ -5108,7 +5849,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_12",
@@ -5130,7 +5872,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_13",
@@ -5143,7 +5886,8 @@
         "mobile": "7354418073",
         "email": "pencaksilat.chhattisgarh@gmail.com",
         "role": "Technical Official",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_14",
@@ -5164,7 +5908,8 @@
           "arrival": "23.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_15",
@@ -5185,7 +5930,8 @@
           "arrival": "25.07.2026/0250 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_16",
@@ -5207,7 +5953,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_17",
@@ -5229,7 +5976,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_18",
@@ -5242,7 +5990,8 @@
         "mobile": "7892429941",
         "email": "harshasgowda1120@gmail.com",
         "role": "Technical Official",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_19",
@@ -5255,7 +6004,8 @@
         "mobile": "6360792526",
         "email": "doddwadakash@gmail.com",
         "role": "Technical Official",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_20",
@@ -5268,7 +6018,8 @@
         "mobile": "7701824434",
         "email": "chauhannikki189@gmail.com",
         "role": "Technical Official",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_21",
@@ -5290,7 +6041,8 @@
           "arrival": "21.07.2026/1455 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_22",
@@ -5311,7 +6063,8 @@
           "arrival": "23.07.2026/1455 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_23",
@@ -5332,7 +6085,8 @@
           "arrival": "21.07.2026/1710 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_24",
@@ -5353,7 +6107,8 @@
           "arrival": "24.07.2026/0055 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_25",
@@ -5366,7 +6121,8 @@
         "mobile": "8344278488",
         "email": "selvaask619@gmail.com",
         "role": "Technical Official",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_26",
@@ -5379,7 +6135,8 @@
         "mobile": "9347776946",
         "email": "durgasatish003@gmail.com",
         "role": "Technical Official",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_27",
@@ -5400,7 +6157,8 @@
           "arrival": "24.07.2026/2130 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_28",
@@ -5421,7 +6179,8 @@
           "arrival": "24.07.2026/2030 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_29",
@@ -5442,7 +6201,8 @@
           "arrival": "24.07.2026/1030 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_30",
@@ -5463,7 +6223,8 @@
           "arrival": "23.07.2026/1730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_31",
@@ -5484,7 +6245,8 @@
           "arrival": "24.07.2026/0730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_32",
@@ -5505,7 +6267,8 @@
           "arrival": "24.07.2026/0330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_33",
@@ -5526,7 +6289,8 @@
           "arrival": "24.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_34",
@@ -5547,7 +6311,8 @@
           "arrival": "23.07.2026/1710 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_35",
@@ -5568,7 +6333,8 @@
           "arrival": "24.07.2026/0330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ps_36",
@@ -5589,7 +6355,8 @@
           "arrival": "21.07.2026/1710 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_01",
@@ -5610,7 +6377,8 @@
           "arrival": "21.07.2026/1445 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_02",
@@ -5620,7 +6388,7 @@
         "unit": "Uttar Pradesh",
         "arrival": "21.07.2026/2050 hrs",
         "departure": "25/07/2026",
-        "mobile": "7007122388",
+        "mobile": "7007022388",
         "email": "umeshjudoref@yahoo.co.in",
         "role": "Jury",
         "rank": "",
@@ -5631,7 +6399,8 @@
           "arrival": "21.07.2026/2050 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_03",
@@ -5652,7 +6421,8 @@
           "arrival": "22.07.2026/1100 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_04",
@@ -5673,7 +6443,8 @@
           "arrival": "21.07.2026/1640 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_05",
@@ -5683,7 +6454,7 @@
         "unit": "Mumbai",
         "arrival": "22.07.2026/1140 hrs",
         "departure": "25/07/2026",
-        "mobile": "9833083922",
+        "mobile": "9833033922",
         "email": "shilpa.serigar@gmail.com",
         "role": "Jury",
         "rank": "",
@@ -5694,7 +6465,8 @@
           "arrival": "22.07.2026/1140 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_06",
@@ -5707,7 +6479,8 @@
         "mobile": "9414501972",
         "email": "kandanmanoj027@gmail.com",
         "role": "TTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_07",
@@ -5720,7 +6493,8 @@
         "mobile": "9412557909",
         "email": "sanjaygirijudo@gmail.com",
         "role": "TTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_08",
@@ -5732,8 +6506,9 @@
         "departure": "25/07/2026",
         "mobile": "9163728578",
         "email": "psamirchandra12@gmail.com",
-        "role": "TTO",
-        "rank": ""
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_09",
@@ -5746,7 +6521,8 @@
         "mobile": "9864014579",
         "email": "sp.chaliha@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_10",
@@ -5759,7 +6535,8 @@
         "mobile": "6901433244",
         "email": "madinhinamped@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_11",
@@ -5772,7 +6549,8 @@
         "mobile": "7085761147",
         "email": "rengpuia5@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_12",
@@ -5793,7 +6571,8 @@
           "arrival": "20.07.2026/0810 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_13",
@@ -5815,7 +6594,8 @@
           "arrival": "21.07.2026/2255 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_14",
@@ -5838,7 +6618,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_15",
@@ -5846,12 +6627,21 @@
         "sno": 15,
         "name": "Mr. Arun",
         "unit": "Tamil Nadu",
-        "arrival": "21/07/2026",
+        "arrival": "22.07.2026/0830 hrs",
         "departure": "25/07/2026",
         "mobile": "8975432782",
         "email": "tnja.adoffice@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "rail",
+          "status": "planned",
+          "station": "Secunderabad Jn",
+          "arrival": "22.07.2026/0830 hrs",
+          "details": "",
+          "direction": "arrival"
+        }
       },
       {
         "id": "tc_jd_16",
@@ -5873,7 +6663,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_17",
@@ -5886,7 +6677,8 @@
         "mobile": "7989495494",
         "email": "ravimetrejudo@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_18",
@@ -5907,7 +6699,8 @@
           "arrival": "22.07.2026/1200 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_19",
@@ -5928,7 +6721,8 @@
           "arrival": "22.07.2026/1100 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_20",
@@ -5941,7 +6735,8 @@
         "mobile": "9467001202",
         "email": "maanritujudo@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_21",
@@ -5951,7 +6746,7 @@
         "unit": "Haryana",
         "arrival": "21.07.2026/0235 hrs",
         "departure": "25/07/2026",
-        "mobile": "9823678650",
+        "mobile": "8398008596",
         "email": "haryanajudoassociation@gmail.com",
         "role": "NTO",
         "rank": "",
@@ -5962,7 +6757,8 @@
           "arrival": "21.07.2026/0235 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_22",
@@ -5983,7 +6779,8 @@
           "arrival": "21.07.2026/1640 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_23",
@@ -6004,7 +6801,8 @@
           "arrival": "21.07.2026/0235 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_24",
@@ -6017,7 +6815,8 @@
         "mobile": "9946982278",
         "email": "jai_76@yahoo.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_25",
@@ -6027,9 +6826,9 @@
         "unit": "Chhattisgarh",
         "arrival": "22.07.2026/0830 hrs",
         "departure": "25/07/2026",
-        "mobile": "8839018382",
+        "mobile": "8975432782",
         "email": "cgpjudobhilai@gmail.com",
-        "role": "TTO",
+        "role": "NTO",
         "rank": "",
         "travel": {
           "mode": "rail",
@@ -6038,7 +6837,8 @@
           "arrival": "22.07.2026/0830 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_26",
@@ -6051,7 +6851,8 @@
         "mobile": "9664387752",
         "email": "idarsh@gmail.com",
         "role": "TTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_27",
@@ -6063,7 +6864,7 @@
         "departure": "25/07/2026",
         "mobile": "9165158990",
         "email": "shekhs512@gmail.com",
-        "role": "TTO",
+        "role": "ITO",
         "rank": "",
         "travel": {
           "mode": "rail",
@@ -6072,7 +6873,8 @@
           "arrival": "22.07.2026/0830 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_28",
@@ -6085,7 +6887,8 @@
         "mobile": "9472240627",
         "email": "judoindiabihar@gmail.com",
         "role": "NTO",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_jd_29",
@@ -6107,7 +6910,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_jd_30",
@@ -6128,7 +6932,8 @@
           "arrival": "22.07.2026/1100 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_01",
@@ -6151,7 +6956,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_02",
@@ -6163,7 +6969,7 @@
         "departure": "26/07/2026",
         "mobile": "9759878686",
         "email": "",
-        "role": "",
+        "role": "Supervisor",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6173,7 +6979,8 @@
           "arrival": "21.07.2026/0130 hrs",
           "details": "FLIGHT NO. 6E0882",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_03",
@@ -6185,7 +6992,7 @@
         "departure": "27/07/2026",
         "mobile": "9062612345",
         "email": "",
-        "role": "",
+        "role": "Supervisor",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6195,7 +7002,8 @@
           "arrival": "22.07.2026/1750 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_04",
@@ -6207,7 +7015,7 @@
         "departure": "26/07/2026",
         "mobile": "9797455055",
         "email": "",
-        "role": "",
+        "role": "Jury of Appeal",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6217,7 +7025,8 @@
           "arrival": "22.07.2026/1635 hrs",
           "details": "FLIGHT NO. 6E2456, 6E2491 \n",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_05",
@@ -6229,7 +7038,7 @@
         "departure": "26/07/2026",
         "mobile": "9437032264",
         "email": "",
-        "role": "",
+        "role": "ITO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6239,7 +7048,8 @@
           "arrival": "22.07.2026/0940 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_06",
@@ -6251,7 +7061,7 @@
         "departure": "27/07/2026",
         "mobile": "8817399955",
         "email": "",
-        "role": "",
+        "role": "AH ITO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6261,7 +7071,8 @@
           "arrival": "18.07.2026/1705 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_07",
@@ -6273,7 +7084,7 @@
         "departure": "26/07/2026",
         "mobile": "9447204733",
         "email": "",
-        "role": "",
+        "role": "ITO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6283,7 +7094,8 @@
           "arrival": "21.07.2026/1730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_08",
@@ -6295,7 +7107,7 @@
         "departure": "25/07/2026",
         "mobile": "9036918771",
         "email": "",
-        "role": "",
+        "role": "Jury of Appeal",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6305,7 +7117,8 @@
           "arrival": "22.07.2026/0700 hrs",
           "details": "Train no.- 16536, 22691",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_09",
@@ -6317,7 +7130,7 @@
         "departure": "26/07/2026",
         "mobile": "9812131285",
         "email": "",
-        "role": "",
+        "role": "Supervisor",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6327,7 +7140,8 @@
           "arrival": "21.07.2026/0130 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_10",
@@ -6339,7 +7153,7 @@
         "departure": "26/07/2026",
         "mobile": "9233523914",
         "email": "",
-        "role": "",
+        "role": "ITO",
         "gender": "F",
         "rank": "",
         "travel": {
@@ -6349,7 +7163,8 @@
           "arrival": "21.07.2026/2330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_11",
@@ -6361,7 +7176,7 @@
         "departure": "27/07/2026",
         "mobile": "7982198491",
         "email": "",
-        "role": "",
+        "role": "ITO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6371,7 +7186,8 @@
           "arrival": "20.07.2026/1340 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_12",
@@ -6383,7 +7199,7 @@
         "departure": "27/07/2026",
         "mobile": "9843357138",
         "email": "",
-        "role": "",
+        "role": "ITO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6393,7 +7209,8 @@
           "arrival": "22.07.2026/0650 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_13",
@@ -6405,7 +7222,7 @@
         "departure": "26/07/2026",
         "mobile": "9698742373",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6415,7 +7232,8 @@
           "arrival": "21.07.2026/1845 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_14",
@@ -6427,7 +7245,7 @@
         "departure": "26/07/2026",
         "mobile": "9448268009",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6437,7 +7255,8 @@
           "arrival": "22.07.2026/0700 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_15",
@@ -6449,7 +7268,7 @@
         "departure": "26/07/2026",
         "mobile": "9704659782",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6460,7 +7279,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_16",
@@ -6472,7 +7292,7 @@
         "departure": "26/07/2026",
         "mobile": "8639413103",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "F",
         "rank": "",
         "travel": {
@@ -6483,7 +7303,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_17",
@@ -6495,7 +7316,7 @@
         "departure": "31/07/2026",
         "mobile": "9809404343",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6505,7 +7326,8 @@
           "arrival": "21.07.2026/1102 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_18",
@@ -6517,7 +7339,7 @@
         "departure": "27/07/2026",
         "mobile": "9622572828",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6527,7 +7349,8 @@
           "arrival": "22.07.2026/1710 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_19",
@@ -6539,7 +7362,7 @@
         "departure": "26/07/2026",
         "mobile": "8384849529",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6549,7 +7372,8 @@
           "arrival": "22.07.2026/0810 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_20",
@@ -6561,7 +7385,7 @@
         "departure": "27/07/2026",
         "mobile": "8250450395",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6571,7 +7395,8 @@
           "arrival": "22.07.2026/1750 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_21",
@@ -6583,9 +7408,10 @@
         "departure": "25/07/2026",
         "mobile": "9728406640",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_22",
@@ -6607,7 +7433,8 @@
           "arrival": "22.07.2026",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ws_23",
@@ -6619,7 +7446,7 @@
         "departure": "31/07/2026",
         "mobile": "9541326873",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "F",
         "rank": "",
         "travel": {
@@ -6629,7 +7456,8 @@
           "arrival": "21.07.2026/0645 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_24",
@@ -6639,9 +7467,9 @@
         "unit": "Tamil Nadu",
         "arrival": "22.07.2026/0810 hrs",
         "departure": "26/07/2026",
-        "mobile": "9840783469",
+        "mobile": "9840783479",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6651,7 +7479,8 @@
           "arrival": "22.07.2026/0810 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_25",
@@ -6663,7 +7492,7 @@
         "departure": "26/07/2026",
         "mobile": "7421856672",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "F",
         "rank": "",
         "travel": {
@@ -6673,7 +7502,8 @@
           "arrival": "21.07.2026/2330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ws_26",
@@ -6685,7 +7515,7 @@
         "departure": "26/07/2026",
         "mobile": "7355039349",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6695,7 +7525,8 @@
           "arrival": "22.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_27",
@@ -6703,21 +7534,22 @@
         "sno": 27,
         "name": "Nagesh Kamble",
         "unit": "SAI",
-        "arrival": "19.07.2026/0840 hrs",
+        "arrival": "19.07.2026/2040 hrs",
         "departure": "27/07/2026",
         "mobile": "9398865977",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
           "mode": "rail",
           "status": "planned",
           "station": "Secunderabad Jn",
-          "arrival": "19.07.2026/0840 hrs",
+          "arrival": "19.07.2026/2040 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_28",
@@ -6729,7 +7561,7 @@
         "departure": "25/07/2026",
         "mobile": "8800181016",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6739,7 +7571,8 @@
           "arrival": "22.07.2026/1555 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_29",
@@ -6751,9 +7584,10 @@
         "departure": "25/07/2026",
         "mobile": "8008136021",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_30",
@@ -6765,9 +7599,10 @@
         "departure": "26/07/2026",
         "mobile": "9059184825",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_ws_31",
@@ -6779,7 +7614,7 @@
         "departure": "26/07/2026",
         "mobile": "9032084668",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6790,7 +7625,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_32",
@@ -6802,7 +7638,7 @@
         "departure": "27/07/2026",
         "mobile": "7209904423",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "F",
         "rank": "",
         "travel": {
@@ -6812,7 +7648,8 @@
           "arrival": "21.07.2026/1855 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_33",
@@ -6820,21 +7657,22 @@
         "sno": 33,
         "name": "Anjumoni Phulkonwar",
         "unit": "Assam",
-        "arrival": "22.07.2026/1000 hrs",
+        "arrival": "22.07.2026/2200 hrs",
         "departure": "27/07/2026",
         "mobile": "9678309772",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "F",
         "rank": "",
         "travel": {
           "mode": "rail",
           "status": "planned",
           "station": "Secunderabad Jn",
-          "arrival": "22.07.2026/1000 hrs",
+          "arrival": "22.07.2026/2200 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_34",
@@ -6844,9 +7682,9 @@
         "unit": "Assam",
         "arrival": "22.07.2026/1918 hrs",
         "departure": "26/07/2026",
-        "mobile": "",
+        "mobile": "9954741132",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6856,7 +7694,8 @@
           "arrival": "22.07.2026/1918 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_ws_35",
@@ -6868,7 +7707,7 @@
         "departure": "25/07/2026",
         "mobile": "8290924028",
         "email": "",
-        "role": "",
+        "role": "NTO",
         "gender": "M",
         "rank": "",
         "travel": {
@@ -6878,7 +7717,8 @@
           "arrival": "22.07.2026/1545 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_01",
@@ -6900,7 +7740,8 @@
           "arrival": "23.07.2026",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_02",
@@ -6922,7 +7763,8 @@
           "arrival": "24.07.2026/1205 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_03",
@@ -6944,7 +7786,8 @@
           "arrival": "24.07.2026/1205 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_04",
@@ -6966,7 +7809,8 @@
           "arrival": "24.07.2026/0635 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_05",
@@ -6988,7 +7832,8 @@
           "arrival": "24.07.2026/0500 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_06",
@@ -7010,7 +7855,8 @@
           "arrival": "24.07.2026/0635 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_07",
@@ -7032,7 +7878,8 @@
           "arrival": "24.07.2026/0350 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_08",
@@ -7054,7 +7901,8 @@
           "arrival": "24.07.2026/0350 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_09",
@@ -7076,7 +7924,8 @@
           "arrival": "24.07.2026/0430 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_10",
@@ -7098,7 +7947,8 @@
           "arrival": "24.07.2026/0430 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_11",
@@ -7121,7 +7971,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_12",
@@ -7133,7 +7984,7 @@
         "departure": "27/07/2026",
         "mobile": "9886869205",
         "email": "",
-        "role": "Technical Official",
+        "role": "Jury of Appeal",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7144,7 +7995,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_13",
@@ -7166,7 +8018,8 @@
           "arrival": "24.07.2026/0755 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_14",
@@ -7188,7 +8041,8 @@
           "arrival": "24.07.2026/0755 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_15",
@@ -7210,7 +8064,8 @@
           "arrival": "24.07.2026/0755 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_16",
@@ -7232,7 +8087,8 @@
           "arrival": "24.07.2026/0400 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_17",
@@ -7255,7 +8111,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_18",
@@ -7277,7 +8134,8 @@
           "arrival": "23.07.2026/2245 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_19",
@@ -7299,7 +8157,8 @@
           "arrival": "24.07.2026/1145 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_20",
@@ -7321,7 +8180,8 @@
           "arrival": "24.07.2026/0830 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_21",
@@ -7343,7 +8203,8 @@
           "arrival": "24.07.2026/0830 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_22",
@@ -7353,7 +8214,7 @@
         "unit": "",
         "arrival": "24.07.2026/1220 hrs",
         "departure": "27/07/2026",
-        "mobile": "9760673216",
+        "mobile": "7060673216",
         "email": "",
         "role": "Technical Official",
         "gender": "",
@@ -7365,7 +8226,8 @@
           "arrival": "24.07.2026/1220 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_23",
@@ -7375,7 +8237,7 @@
         "unit": "",
         "arrival": "24.07.2026",
         "departure": "27/07/2026",
-        "mobile": "",
+        "mobile": "8220449971",
         "email": "",
         "role": "Technical Official",
         "gender": "",
@@ -7387,7 +8249,8 @@
           "arrival": "24.07.2026",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_24",
@@ -7409,7 +8272,8 @@
           "arrival": "24.07.2026/1200 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_25",
@@ -7431,7 +8295,8 @@
           "arrival": "24.07.2026/1100 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_tk_26",
@@ -7453,7 +8318,8 @@
           "arrival": "24.07.2026/1100 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_01",
@@ -7465,7 +8331,7 @@
         "departure": "29/07/2026",
         "mobile": "9994599886",
         "email": "",
-        "role": "By Road",
+        "role": "Tournament Director",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7476,7 +8342,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_02",
@@ -7488,7 +8355,7 @@
         "departure": "29/07/2026 18:10",
         "mobile": "9894699949",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7498,7 +8365,8 @@
           "arrival": "26.07.2026/1730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_03",
@@ -7510,7 +8378,7 @@
         "departure": "30/07/2026 17:55",
         "mobile": "9585555758",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7520,7 +8388,8 @@
           "arrival": "25.07.2026/1250 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_04",
@@ -7532,7 +8401,7 @@
         "departure": "",
         "mobile": "8122059975",
         "email": "",
-        "role": "",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7542,7 +8411,8 @@
           "arrival": "26.07.2026/1730 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_05",
@@ -7556,7 +8426,8 @@
         "email": "",
         "role": "Indigo",
         "gender": "",
-        "rank": ""
+        "rank": "",
+        "lo_status": "Not updated by LO"
       },
       {
         "id": "tc_kr_06",
@@ -7568,7 +8439,7 @@
         "departure": "30/07/2026 17:55",
         "mobile": "7200590018",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7578,7 +8449,8 @@
           "arrival": "25.07.2026/1250 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_07",
@@ -7590,7 +8462,7 @@
         "departure": "30/07/2026 16:40",
         "mobile": "9946087575",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7600,7 +8472,8 @@
           "arrival": "26.07.2026/0925 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_08",
@@ -7612,7 +8485,7 @@
         "departure": "30/07/2026 16:40",
         "mobile": "6238392069",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7622,7 +8495,8 @@
           "arrival": "26.07.2026/0925 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_09",
@@ -7634,7 +8508,7 @@
         "departure": "30/07/2026 16:40",
         "mobile": "9526152158",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7644,7 +8518,8 @@
           "arrival": "26.07.2026/0925 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_10",
@@ -7656,7 +8531,7 @@
         "departure": "30/07/2026 16:40",
         "mobile": "9961100878",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7666,7 +8541,8 @@
           "arrival": "26.07.2026/0925 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_11",
@@ -7678,7 +8554,7 @@
         "departure": "31/07/2026 14:40",
         "mobile": "9911090464",
         "email": "",
-        "role": "Akasa Air",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7688,7 +8564,8 @@
           "arrival": "25.07.2026/1630 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_12",
@@ -7700,7 +8577,7 @@
         "departure": "31/07/2026 14:40",
         "mobile": "7417661836",
         "email": "",
-        "role": "Akasa Air",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7710,7 +8587,8 @@
           "arrival": "25.07.2026/1630 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_13",
@@ -7722,7 +8600,7 @@
         "departure": "31/07/2026 14:40",
         "mobile": "9548110359",
         "email": "",
-        "role": "Akasa Air",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7732,7 +8610,8 @@
           "arrival": "25.07.2026/1630 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_14",
@@ -7744,7 +8623,7 @@
         "departure": "30/07/2026",
         "mobile": "9827392060",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7754,7 +8633,8 @@
           "arrival": "26.07.2026/0515 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_15",
@@ -7766,7 +8646,7 @@
         "departure": "30/07/2026",
         "mobile": "7697317031",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7776,7 +8656,8 @@
           "arrival": "26.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_16",
@@ -7788,7 +8669,7 @@
         "departure": "30/07/2026",
         "mobile": "9131251646",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7798,7 +8679,8 @@
           "arrival": "26.07.2026/1715 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_17",
@@ -7810,7 +8692,7 @@
         "departure": "30/07/2026 11:55",
         "mobile": "9732666758",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7820,7 +8702,8 @@
           "arrival": "25.07.2026/1915 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_18",
@@ -7832,7 +8715,7 @@
         "departure": "30/07/2026 11:55",
         "mobile": "9831966188",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7842,7 +8725,8 @@
           "arrival": "25.07.2026/1915 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_19",
@@ -7852,9 +8736,9 @@
         "unit": "",
         "arrival": "25.07.2026/2000 hrs",
         "departure": "30/07/2026",
-        "mobile": "7002130365",
+        "mobile": "7477613130",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7864,7 +8748,8 @@
           "arrival": "25.07.2026/2000 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_20",
@@ -7876,7 +8761,7 @@
         "departure": "31/07/2026 06:45",
         "mobile": "7002130365",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7886,7 +8771,8 @@
           "arrival": "25.07.2026/1640 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_21",
@@ -7898,7 +8784,7 @@
         "departure": "30/07/2026 18:50",
         "mobile": "9819752127",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7908,7 +8794,8 @@
           "arrival": "25.07.2026/1320 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_22",
@@ -7920,7 +8807,7 @@
         "departure": "30/07/2026 18:50",
         "mobile": "9769733535",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7930,7 +8817,8 @@
           "arrival": "25.07.2026/1320 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_23",
@@ -7942,7 +8830,7 @@
         "departure": "30/07/2026 05:20",
         "mobile": "9402225369",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7952,7 +8840,8 @@
           "arrival": "26.07.2026/1135 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_24",
@@ -7964,7 +8853,7 @@
         "departure": "30/07/2026 19:05",
         "mobile": "9741018686",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7974,7 +8863,8 @@
           "arrival": "25.07.2026/0700 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_25",
@@ -7986,7 +8876,7 @@
         "departure": "30/07/2026 20:05",
         "mobile": "9035166703",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -7996,7 +8886,8 @@
           "arrival": "25.07.2026/1630 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_26",
@@ -8008,7 +8899,7 @@
         "departure": "30/07/2026 12:50",
         "mobile": "9871687274",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8018,7 +8909,8 @@
           "arrival": "25.07.2026/0235 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_27",
@@ -8030,7 +8922,7 @@
         "departure": "02/08/2026 08:40",
         "mobile": "8822849241",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8040,7 +8932,8 @@
           "arrival": "25.07.2026/1720 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_28",
@@ -8052,7 +8945,7 @@
         "departure": "01/08/2026 16:25",
         "mobile": "9101128026",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8062,7 +8955,8 @@
           "arrival": "25.07.2026/0420 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_29",
@@ -8072,9 +8966,9 @@
         "unit": "",
         "arrival": "25.07.2026/0420 hrs",
         "departure": "01/08/2026 16:25",
-        "mobile": "9085991037",
+        "mobile": "9085997037",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8084,7 +8978,8 @@
           "arrival": "25.07.2026/0420 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_30",
@@ -8096,7 +8991,7 @@
         "departure": "01/08/2026 16:25",
         "mobile": "9678623520",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8106,7 +9001,8 @@
           "arrival": "25.07.2026/0420 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_31",
@@ -8116,9 +9012,9 @@
         "unit": "",
         "arrival": "25.07.2026/2330 hrs",
         "departure": "30/07/2026 05:30",
-        "mobile": "",
+        "mobile": "8798760355",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8128,7 +9024,8 @@
           "arrival": "25.07.2026/2330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_32",
@@ -8140,7 +9037,7 @@
         "departure": "31/07/2026 06:45",
         "mobile": "7888305968",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8150,7 +9047,8 @@
           "arrival": "25.07.2026/1640 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_33",
@@ -8160,9 +9058,9 @@
         "unit": "",
         "arrival": "25.07.2026/2330 hrs",
         "departure": "31/07/2026 05:30",
-        "mobile": "",
+        "mobile": "9862819754",
         "email": "",
-        "role": "Indigo",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8172,7 +9070,8 @@
           "arrival": "25.07.2026/2330 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_34",
@@ -8184,7 +9083,7 @@
         "departure": "30/07/2026",
         "mobile": "9943094435",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8194,7 +9093,8 @@
           "arrival": "24.07.2026/1102 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_35",
@@ -8206,7 +9106,7 @@
         "departure": "30/07/2026",
         "mobile": "6385469650",
         "email": "",
-        "role": "Train",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8216,7 +9116,8 @@
           "arrival": "24.07.2026/1102 hrs",
           "details": "",
           "direction": "arrival"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_36",
@@ -8228,7 +9129,7 @@
         "departure": "30/07/2026",
         "mobile": "9600648090",
         "email": "",
-        "role": "By Road",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8239,7 +9140,8 @@
           "details": "By Bus",
           "direction": "arrival",
           "bus_role": "alighting"
-        }
+        },
+        "lo_status": "Updated by LO"
       },
       {
         "id": "tc_kr_37",
@@ -8251,7 +9153,7 @@
         "departure": "30/07/2026",
         "mobile": "8754422891",
         "email": "",
-        "role": "By Road",
+        "role": "Technical Official",
         "gender": "",
         "rank": "",
         "travel": {
@@ -8260,6 +9162,185 @@
           "station": "Bus Alighting Point",
           "arrival": "25.07.2026/0740 hrs",
           "details": "By Bus",
+          "direction": "arrival",
+          "bus_role": "alighting"
+        },
+        "lo_status": "Updated by LO"
+      },
+      {
+        "id": "tc_38bb6ed3d5",
+        "game": "Judo",
+        "sno": 4,
+        "name": "Nitu Singh",
+        "unit": "",
+        "arrival": "21.07.2026/1100 hrs",
+        "departure": "",
+        "mobile": "9869561357",
+        "email": "",
+        "role": "ITO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "flight",
+          "status": "planned",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "21.07.2026/1100 hrs",
+          "details": "Bom-Hyd Airport 6E 5056",
+          "direction": "arrival"
+        }
+      },
+      {
+        "id": "tc_730ab05a61",
+        "game": "Judo",
+        "sno": 5,
+        "name": "Akhil Nair",
+        "unit": "",
+        "arrival": "21.07.2026/1315 hrs",
+        "departure": "",
+        "mobile": "9544804022",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "flight",
+          "status": "planned",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "21.07.2026/1315 hrs",
+          "details": "Coc-Hyd Airport 6E 6925",
+          "direction": "arrival"
+        }
+      },
+      {
+        "id": "tc_4a8b640d66",
+        "game": "Judo",
+        "sno": 20,
+        "name": "Ganesh Lodha",
+        "unit": "",
+        "arrival": "22.07.2026/1220 hrs",
+        "departure": "",
+        "mobile": "7737667493",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "flight",
+          "status": "planned",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "22.07.2026/1220 hrs",
+          "details": "6E 6324 Hyd Airport Flight",
+          "direction": "arrival"
+        }
+      },
+      {
+        "id": "tc_87138d131f",
+        "game": "Judo",
+        "sno": 67,
+        "name": "Rajkumar Gupta",
+        "unit": "",
+        "arrival": "22.07.2026/1300 hrs",
+        "departure": "",
+        "mobile": "9870922897",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "rail",
+          "status": "planned",
+          "station": "Secunderabad Jn",
+          "arrival": "22.07.2026/1300 hrs",
+          "details": "Secunderabad Jn.",
+          "direction": "arrival"
+        }
+      },
+      {
+        "id": "tc_3168cf8c7c",
+        "game": "Judo",
+        "sno": 68,
+        "name": "Pradum Patil",
+        "unit": "",
+        "arrival": "22.07.2026/1400 hrs",
+        "departure": "",
+        "mobile": "8668275400",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "rail",
+          "status": "planned",
+          "station": "Secunderabad Jn",
+          "arrival": "22.07.2026/1400 hrs",
+          "details": "12025 Hyd Deccan Stn.",
+          "direction": "arrival"
+        }
+      },
+      {
+        "id": "tc_2f5254200a",
+        "game": "Judo",
+        "sno": 78,
+        "name": "Sachin Devle",
+        "unit": "",
+        "arrival": "22.07.2026/2030 hrs",
+        "departure": "",
+        "mobile": "9545800724",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "rail",
+          "status": "planned",
+          "station": "Kacheguda Station",
+          "arrival": "22.07.2026/2030 hrs",
+          "details": "Kacheguda Stn.",
+          "direction": "arrival"
+        }
+      },
+      {
+        "id": "tc_932f813ac3",
+        "game": "Judo",
+        "sno": 112,
+        "name": "Bhavani Swami",
+        "unit": "",
+        "arrival": "22.07.2026/0700 hrs",
+        "departure": "",
+        "mobile": "9637454457",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "bus",
+          "status": "planned",
+          "station": "Bus Alighting Point",
+          "arrival": "22.07.2026/0700 hrs",
+          "details": "By Bus",
+          "direction": "arrival",
+          "bus_role": "alighting"
+        }
+      },
+      {
+        "id": "tc_cab27b71b0",
+        "game": "Judo",
+        "sno": 115,
+        "name": "M A Aziz",
+        "unit": "",
+        "arrival": "22.07.2026",
+        "departure": "",
+        "mobile": "9391146284",
+        "email": "",
+        "role": "NTO",
+        "rank": "",
+        "lo_status": "Updated by LO",
+        "travel": {
+          "mode": "bus",
+          "status": "planned",
+          "station": "Bus Alighting Point",
+          "arrival": "22.07.2026",
+          "details": "By Road (Hyderabad)",
           "direction": "arrival",
           "bus_role": "alighting"
         }
@@ -36024,11 +37105,16 @@
         "id": "msg_1a9435f53a",
         "text": "Sir please type any information which is required to be updated",
         "at": "2026-07-21T11:08:25"
+      },
+      {
+        "id": "msg_129daf1256",
+        "text": "New Arrival report tab is added, information is being filled",
+        "at": "2026-07-21T19:24:17"
       }
     ]
   },
   "summary": {
-    "teams": 36,
+    "teams": 37,
     "strength": 1646,
     "male": 1115,
     "female": 529,
@@ -36037,7 +37123,7 @@
     "ors": 1496,
     "by_location": {
       "TGPA": {
-        "teams": 25,
+        "teams": 26,
         "strength": 999
       },
       "NITHM": {
@@ -36059,7 +37145,7 @@
       "Unassigned": 146
     },
     "travel_planned": 36,
-    "travel_awaited": 0,
+    "travel_awaited": 1,
     "strength_detail": {
       "gos_m": 13,
       "sos_m": 90,

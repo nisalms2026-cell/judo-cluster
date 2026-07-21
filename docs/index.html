@@ -1628,6 +1628,7 @@ tfoot td:nth-child(2) {
 
 body.on-acc .page-head { display: none; }
 body.on-mess .page-head { display: none; }
+body.on-arr-report .page-head { display: none; }
 body.on-adm .page-head { display: none; }
 body.on-lo .page-head { display: none; }
 body.on-senior .page-head { display: none; }
@@ -1809,9 +1810,11 @@ body.mode-static .tc-officials-table td.tc-email {
 }
 
 body.mode-view .tc-officials-table col.c-name,
-body.mode-static .tc-officials-table col.c-name { width: 22%; }
+body.mode-static .tc-officials-table col.c-name { width: 20%; }
 body.mode-view .tc-officials-table col.c-pos,
-body.mode-static .tc-officials-table col.c-pos { width: 18%; }
+body.mode-static .tc-officials-table col.c-pos { width: 14%; }
+body.mode-view .tc-officials-table col.c-lo,
+body.mode-static .tc-officials-table col.c-lo { width: 13%; }
 body.mode-view .tc-officials-table col.c-mobile,
 body.mode-static .tc-officials-table col.c-mobile { width: 14%; }
 body.mode-view .tc-officials-table col.c-date,
@@ -3262,8 +3265,9 @@ body.mode-edit #view-fleet .fleet-edit-block {
   min-width: 0;
 }
 .tc-officials-table col.c-name { width: 17%; }
-.tc-officials-table col.c-pos { width: 14%; }
-.tc-officials-table col.c-mobile { width: 11%; }
+.tc-officials-table col.c-pos { width: 13%; }
+.tc-officials-table col.c-lo { width: 12%; }
+.tc-officials-table col.c-mobile { width: 10%; }
 .tc-officials-table col.c-date { width: 13%; }
 .tc-officials-table col.c-email { width: 20%; }
 .tc-officials-table col.c-act { width: 12%; }
@@ -3324,6 +3328,24 @@ body.mode-edit #view-fleet .fleet-edit-block {
   word-break: break-word;
 }
 .tc-officials-table .tc-email a:hover { text-decoration: underline; }
+
+.tc-lo-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.tc-lo-pill.is-yes {
+  color: #065F46;
+  background: #D1FAE5;
+}
+.tc-lo-pill.is-no {
+  color: #92400E;
+  background: #FEF3C7;
+}
 
 .tc-edit-table {
   table-layout: fixed;
@@ -3646,6 +3668,162 @@ body.mode-edit #view-fleet .fleet-edit-block {
 }
 
 .arr-edit-panel.open { display: flex; }
+
+.arr-headcount-wrap { width: 100%; overflow-x: auto; }
+.arr-headcount-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.arr-headcount-table th,
+.arr-headcount-table td {
+  padding: 6px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.arr-headcount-table th:first-child,
+.arr-headcount-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+.arr-headcount-table .expected-row td { color: var(--text-dim); }
+.arr-headcount-table input {
+  width: 52px;
+  text-align: center;
+  padding: 4px 6px;
+}
+.arr-headcount-total {
+  font-size: 13px;
+  color: var(--secondary);
+}
+.arr-headcount-total strong { color: var(--orange); font-size: 16px; }
+.arr-arrived-line {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+.arr-arrived-line.ok strong { color: var(--success); }
+.arr-arrived-line.partial strong { color: var(--orange); }
+.arr-arrived-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--secondary);
+  margin-top: 4px;
+}
+.arr-arrived-pill.ok { background: #ECFDF5; color: #059669; }
+.arr-arrived-pill.partial { background: #FFF7ED; color: #EA580C; }
+
+/* Arrival Report page */
+#view-arrival-report { padding-bottom: 12px; }
+.arr-report-filters { margin-bottom: 14px; }
+.arr-report-loc-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+.arr-report-loc-strip .acc-loc-pill {
+  padding: 10px 12px;
+  min-width: 0;
+}
+.arr-report-loc-strip .acc-loc-num { font-size: 20px; }
+.arr-report-loc-strip .acc-loc-sub { font-size: 10px; }
+.arr-report-filter-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+.arr-report-search {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-size: 14px;
+}
+.arr-report-status {
+  flex: 0 0 200px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-size: 13px;
+}
+.arr-report-wrap {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.arr-report-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 920px;
+  font-size: 13px;
+  border-collapse: collapse;
+}
+.arr-report-table col.c-org { width: 17%; }
+.arr-report-table col.c-loc { width: 10%; }
+.arr-report-table col.c-tot { width: 7%; }
+.arr-report-table col.c-n { width: 7%; }
+.arr-report-table col.c-status { width: 11%; }
+.arr-report-table col.c-act { width: 8%; }
+.arr-report-table th,
+.arr-report-table td {
+  padding: 10px 8px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+.arr-report-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  white-space: nowrap;
+  text-align: center;
+  background: var(--bg);
+}
+.arr-report-table th.col-org,
+.arr-report-table th.col-loc { text-align: left; }
+.arr-report-table td { text-align: center; }
+.arr-report-table td.org-cell {
+  text-align: left;
+  font-weight: 600;
+}
+.arr-report-table td.loc-cell { text-align: left; }
+.arr-report-table .rank-cell {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.arr-report-table .rank-cell.ok { color: var(--success); font-weight: 600; }
+.arr-report-table .rank-cell.partial { color: #EA580C; font-weight: 600; }
+.arr-report-table .rank-cell.muted { color: var(--text-dim); }
+.arr-report-table .total-cell {
+  font-weight: 700;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.arr-report-table tr.row-complete { background: rgba(5, 150, 105, 0.04); }
+.arr-report-table tr.row-partial { background: rgba(234, 88, 12, 0.04); }
+.arr-report-table tbody tr { cursor: default; }
+body.mode-edit .arr-report-table tbody tr { cursor: pointer; }
+body.mode-edit .arr-report-table tbody tr:hover { background: rgba(37, 99, 235, 0.05); }
+.arr-report-link {
+  font-size: 12px;
+  color: var(--primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.arr-report-link:hover { text-decoration: underline; }
 
 .arr-leg-actions {
   display: none;
@@ -4789,6 +4967,9 @@ footer {
   .home-alert-item { grid-template-columns: 1fr; gap: 6px; }
   .home-alert-time { text-align: left; }
   .acc-loc-strip { grid-template-columns: 1fr 1fr; }
+  .arr-report-loc-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .arr-report-filter-row { flex-direction: column; align-items: stretch; }
+  .arr-report-status { flex: 1 1 auto; width: 100%; }
   .acc-stat-pill { min-width: 0; flex: 1 1 40%; }
 
   .kpi-grid,
@@ -4835,6 +5016,7 @@ footer {
       <button type="button" class="active" data-view="home"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg><span class="nav-label-full">Home</span><span class="nav-label-short">Home</span></button>
       <button type="button" data-view="accommodation"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Accommodation</span><span class="nav-label-short">Stay</span></button>
       <button type="button" data-view="mess"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M8 6V4M16 6V4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Mess</span><span class="nav-label-short">Mess</span></button>
+      <button type="button" data-view="arrival-report"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 17H7A2 2 0 0 1 5 15V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2M9 17l2 2 4-4M9 11h6M9 7h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Arrival Report</span><span class="nav-label-short">Report</span></button>
       <button type="button" data-view="arrival"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Arrival</span><span class="nav-label-short">Arrive</span></button>
       <button type="button" data-view="departure"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">Departure</span><span class="nav-label-short">Depart</span></button>
       <button type="button" data-view="adm"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label-full">ADM Staff</span><span class="nav-label-short">ADM</span></button>
@@ -5067,6 +5249,7 @@ footer {
           <button type="button" class="btn" id="toggleHubEdit">Edit hubs</button>
           <button type="button" class="btn primary" id="toggleArrEdit">Edit movement</button>
         </div>
+        <a href="#" class="arr-report-link" id="gotoArrivalReport" hidden>Arrival Report →</a>
       </div>
     </div>
 
@@ -5151,6 +5334,111 @@ footer {
         <div class="side-sub" id="arrAwaitedSub">Plans not yet received</div>
         <ul class="await-list" id="arrAwaitedList"></ul>
       </aside>
+    </div>
+  </section>
+
+  <!-- ARRIVAL REPORT -->
+  <section class="view" id="view-arrival-report">
+    <div class="acc-dashboard">
+      <header class="acc-hero">
+        <div class="acc-hero-text">
+          <h2>Arrival Report</h2>
+          <p id="arrReportMeta">Team-wise GO / SO / OR headcount · arrived vs expected</p>
+        </div>
+        <div class="acc-hero-stats" id="arrReportHeroStats"></div>
+      </header>
+
+      <div class="arr-report-filters">
+        <div class="acc-loc-strip arr-report-loc-strip" id="arrReportLocStrip"></div>
+        <div class="arr-report-filter-row">
+          <input type="search" class="arr-report-search" id="arrReportSearch" placeholder="Search team…" autocomplete="off" aria-label="Search teams">
+          <select class="arr-report-status" id="arrReportStatus" aria-label="Filter by arrival status">
+            <option value="ALL">All teams</option>
+            <option value="complete">Fully arrived</option>
+            <option value="partial">Partially arrived</option>
+            <option value="none">Not started</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="acc-table-panel">
+        <div class="acc-table-bar">
+          <div class="acc-table-bar-left">
+            <h3>Team headcount</h3>
+            <span id="arrReportTableMeta">Arrived vs expected · GO / SO / OR</span>
+          </div>
+        </div>
+        <div class="table-wrap arr-report-wrap">
+          <table class="acc-table arr-report-table">
+          <colgroup>
+            <col class="c-org">
+            <col class="c-loc">
+            <col class="c-tot">
+            <col class="c-n"><col class="c-n"><col class="c-n">
+            <col class="c-n"><col class="c-n"><col class="c-n">
+            <col class="c-status">
+            <col class="c-act">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="col-org">Team</th>
+              <th class="col-loc">Stay</th>
+              <th>Total</th>
+              <th>GO M</th><th>SO M</th><th>OR M</th>
+              <th>GO F</th><th>SO F</th><th>OR F</th>
+              <th>Status</th>
+              <th class="edit-only col-act"></th>
+            </tr>
+          </thead>
+          <tbody id="arrReportBody"></tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="arr-edit-panel edit-only" id="arrHeadcountPanel">
+        <div style="grid-column:1/-1;font-size:12px;color:var(--text-dim);margin-bottom:4px;" id="arrHeadcountHint">
+          Update arrived headcount for selected team
+        </div>
+        <label>Organisation
+          <select id="arrHeadcountOrg"></select>
+        </label>
+        <div class="arr-headcount-wrap" style="grid-column:1/-1;">
+          <table class="arr-headcount-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GO M</th><th>SO M</th><th>OR M</th>
+                <th>GO F</th><th>SO F</th><th>OR F</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="expected-row">
+                <td>Expected</td>
+                <td id="arrHcExp_gos_m">0</td><td id="arrHcExp_sos_m">0</td><td id="arrHcExp_ors_m">0</td>
+                <td id="arrHcExp_gos_f">0</td><td id="arrHcExp_sos_f">0</td><td id="arrHcExp_ors_f">0</td>
+                <td id="arrHcExp_total">0</td>
+              </tr>
+              <tr class="arrived-row">
+                <td>Arrived</td>
+                <td><input type="number" min="0" step="1" id="arrHc_gos_m" inputmode="numeric"></td>
+                <td><input type="number" min="0" step="1" id="arrHc_sos_m" inputmode="numeric"></td>
+                <td><input type="number" min="0" step="1" id="arrHc_ors_m" inputmode="numeric"></td>
+                <td><input type="number" min="0" step="1" id="arrHc_gos_f" inputmode="numeric"></td>
+                <td><input type="number" min="0" step="1" id="arrHc_sos_f" inputmode="numeric"></td>
+                <td><input type="number" min="0" step="1" id="arrHc_ors_f" inputmode="numeric"></td>
+                <td id="arrHcArr_total">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="arr-headcount-total" id="arrHeadcountSummary" style="grid-column:1/-1;">Arrived <strong>0</strong> / 0 expected</div>
+        <div style="grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <button type="button" class="btn" id="arrHeadcountCopy">Mark fully arrived</button>
+          <button type="button" class="btn primary" id="arrHeadcountSave">Save headcount</button>
+        </div>
+        <span class="file-hint">Saves arrived_strength in data/arrival.json</span>
+      </div>
     </div>
   </section>
 
@@ -5876,13 +6164,14 @@ footer {
         <div class="table-wrap lo-view-wrap">
           <table class="lo-view-table tc-officials-table roster-table">
             <colgroup>
-              <col class="c-name"><col class="c-pos"><col class="c-mobile">
+              <col class="c-name"><col class="c-pos"><col class="c-lo"><col class="c-mobile">
               <col class="c-date"><col class="c-date"><col class="c-email"><col class="c-act">
             </colgroup>
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Position</th>
+                <th>LO sheet</th>
                 <th>Mobile</th>
                 <th>Arrival</th>
                 <th>Departure</th>
@@ -6033,7 +6322,7 @@ footer {
         <button type="button" class="btn primary ops-chat-send" id="opsChatSend">Send</button>
       </div>
     </div>
-    <div class="ops-chat-static-note" id="opsChatStaticNote" hidden><strong>Read-only</strong> on web export — post on LAN View</div>
+    <div class="ops-chat-static-note" id="opsChatStaticNote" hidden><strong>View only</strong> — post on LAN View, then run push_updates to refresh this page.</div>
   </div>
 </aside>
 
@@ -6081,6 +6370,10 @@ let plSearchQ = '';
 let APP_MODE = 'edit'; // view | edit
 let IS_STATIC = false; // GitHub Pages — read-only data/bundle.json
 let arrFormDirty = false; // user is editing movement — don't clobber pickers
+let arrHeadcountDirty = false;
+let arrReportLoc = 'ALL';
+let arrReportSearch = '';
+let arrReportStatus = 'ALL';
 let arrEditLegIndex = 0; // 0 = primary travel, 1+ = travel_extra
 let saveInFlight = false;
 const AUTH_KEY = 'judo_cluster_auth_v1';
@@ -6159,7 +6452,8 @@ function updateOpsChatChrome(){
   const charEl = document.getElementById('opsChatChar');
   if(countEl) countEl.textContent = `${n} message${n === 1 ? '' : 's'}`;
   if(hint){
-    hint.textContent = isEdit() ? 'Remove entries on Edit server' : 'Cleared by ops on Edit';
+    if(IS_STATIC) hint.textContent = 'Synced from LAN export';
+    else hint.textContent = isEdit() ? 'Remove entries on Edit server' : 'Cleared by ops on Edit';
   }
   if(badge){
     const unread = Math.max(0, n - opsChatSeenCount);
@@ -6194,14 +6488,17 @@ function renderOpsChat(){
   const list = document.getElementById('opsChatList');
   const compose = document.getElementById('opsChatCompose');
   const staticNote = document.getElementById('opsChatStaticNote');
+  const headSub = document.querySelector('.ops-chat-head-sub');
   if(!list) return;
   const msgs = opsChatMessages.slice().sort((a,b)=>(a.at||'').localeCompare(b.at||''));
   if(IS_STATIC){
     if(compose) compose.hidden = true;
     if(staticNote) staticNote.hidden = false;
+    if(headSub) headSub.textContent = 'Synced from LAN · read-only here';
   } else {
     if(compose) compose.hidden = false;
     if(staticNote) staticNote.hidden = true;
+    if(headSub) headSub.textContent = 'Live field updates · anonymous';
   }
   updateOpsChatChrome();
   if(!msgs.length){
@@ -6245,7 +6542,7 @@ async function fetchOpsChat(){
 }
 
 async function postOpsChatMessage(){
-  if(IS_STATIC){ toast('Read-only web export — use LAN View to post'); return; }
+  if(IS_STATIC){ toast('Post on LAN View (:5000), then push_updates'); return; }
   const input = document.getElementById('opsChatInput');
   const text = (input && input.value || '').trim();
   if(!text){ toast('Type a message first'); return; }
@@ -6452,6 +6749,69 @@ function sTotal(u){
   return (s.gos_m||0)+(s.sos_m||0)+(s.ors_m||0)+(s.gos_f||0)+(s.sos_f||0)+(s.ors_f||0);
 }
 
+const STRENGTH_KEYS = ['gos_m','sos_m','ors_m','gos_f','sos_f','ors_f'];
+
+function arrivedTotal(u){
+  const a = (u && u.arrived_strength) || {};
+  return STRENGTH_KEYS.reduce((n, k) => n + (a[k] || 0), 0);
+}
+
+function arrivedStatsForUnits(units){
+  let exp = 0, arr = 0;
+  (units || []).forEach(u => {
+    exp += sTotal(u);
+    arr += arrivedTotal(u);
+  });
+  return { exp, arr };
+}
+
+function formatArrivedLine(u){
+  const exp = sTotal(u);
+  const arr = arrivedTotal(u);
+  if(!exp && !arr) return '';
+  const a = u.arrived_strength || {};
+  const s = u.strength || {};
+  const mArr = (a.gos_m||0)+(a.sos_m||0)+(a.ors_m||0);
+  const mExp = (s.gos_m||0)+(s.sos_m||0)+(s.ors_m||0);
+  const fArr = (a.gos_f||0)+(a.sos_f||0)+(a.ors_f||0);
+  const fExp = (s.gos_f||0)+(s.sos_f||0)+(s.ors_f||0);
+  const cls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : '');
+  return `<div class="arr-arrived-line ${cls}"><strong>${arr}/${exp}</strong> arrived · M ${mArr}/${mExp} · F ${fArr}/${fExp}</div>`;
+}
+
+function formatArrivedPill(u){
+  const exp = sTotal(u);
+  const arr = arrivedTotal(u);
+  if(!exp && !arr) return '';
+  const cls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : '');
+  return `<span class="arr-arrived-pill ${cls}">${arr}/${exp} arrived</span>`;
+}
+
+function arrivalReportStatus(u){
+  const exp = sTotal(u);
+  const arr = arrivedTotal(u);
+  if(!exp && !arr) return 'none';
+  if(exp && arr >= exp) return 'complete';
+  if(arr > 0) return 'partial';
+  return 'none';
+}
+
+function arrivalReportRankCell(u, key){
+  const s = u.strength || {};
+  const a = (u.arrived_strength || {});
+  const exp = s[key] || 0;
+  const arr = a[key] || 0;
+  if(!exp && !arr) return '<td class="rank-cell muted">—</td>';
+  const cls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : 'muted');
+  return `<td class="rank-cell ${cls}">${arr}/${exp}</td>`;
+}
+
+function arrivalReportStatusLabel(status){
+  if(status === 'complete') return '<span class="badge ok">Complete</span>';
+  if(status === 'partial') return '<span class="badge warn">Partial</span>';
+  return '<span class="badge">Not started</span>';
+}
+
 function accTotal(u){
   return sTotal(u) + (u.doctor || 0);
 }
@@ -6513,6 +6873,7 @@ function renderAll(){
   renderAccommodation();
   renderMess();
   renderTravel();
+  renderArrivalReport();
   renderDirectory();
   renderAdmStaff();
   renderLoStaff();
@@ -6532,6 +6893,10 @@ function renderAll(){
     } else {
       refreshArrEditOrgList(arrFormDirty);
     }
+  }
+  const hcPanel = document.getElementById('arrHeadcountPanel');
+  if(hcPanel && hcPanel.classList.contains('open') && !arrHeadcountDirty){
+    fillArrHeadcountForm();
   }
 }
 
@@ -7189,6 +7554,15 @@ function _renderTravel(){
       <div class="arr-kpi"><div class="l">Chase</div><div class="v warn">${awaitedScoped.length}</div><div class="s">no plan yet</div></div>`;
   }
 
+  const gotoReport = document.getElementById('gotoArrivalReport');
+  if(gotoReport){
+    gotoReport.hidden = page !== 'arrival';
+    gotoReport.onclick = e => {
+      e.preventDefault();
+      switchView('arrival-report');
+    };
+  }
+
   const sideTitle = document.getElementById('arrSideTitle');
   const boardTitle = document.getElementById('arrBoardTitle');
   if(sideTitle) sideTitle.textContent = page === 'departure' ? 'Departure chase' : 'Chase list';
@@ -7418,15 +7792,25 @@ function _renderTravel(){
           const phone = (m.phone||'').replace(/\s/g,'');
           const t = page === 'departure' ? (u.travel_departure || {}) : (u.travel || {});
           const note = t.details || (page === 'departure' ? 'No departure plan' : 'No plan received');
+          const hcPill = page === 'arrival' ? formatArrivedPill(u) : '';
+          const hcBtn = page === 'arrival'
+            ? `<button type="button" class="btn arr-chase-edit" data-goto-report="${escHtml(u.org)}">Report</button>`
+            : '';
           return `<li>
             <span class="ao" data-org="${escHtml(u.org)}">${escHtml(u.org)}</span>
-            <span class="am">${escHtml(m.name||'Manager TBA')}${m.rank?' · '+escHtml(m.rank):''}<br>${escHtml(note)}</span>
-            <span class="ap">${phone?`<a href="tel:${phone}">${escHtml(m.phone)}</a>`:'No phone'}</span>
+            <span class="am">${escHtml(m.name||'Manager TBA')}${m.rank?' · '+escHtml(m.rank):''}<br>${escHtml(note)}${hcPill ? '<br>'+hcPill : ''}</span>
+            <span class="ap">${phone?`<a href="tel:${phone}">${escHtml(m.phone)}</a>`:'No phone'}${hcBtn}</span>
           </li>`;
         }).join('')
       : `<li><span class="am">Nothing to chase</span></li>`;
     list.querySelectorAll('.ao[data-org]').forEach(el=>{
       el.onclick = () => openUnit(el.dataset.org);
+    });
+    list.querySelectorAll('[data-goto-report]').forEach(btn=>{
+      btn.onclick = e => {
+        e.stopPropagation();
+        openArrHeadcount(btn.dataset.gotoReport);
+      };
     });
     list.querySelectorAll('.ao[data-tc-id]').forEach(el=>{
       el.onclick = () => openTcArrivalEdit(el.dataset.tcId);
@@ -7439,6 +7823,125 @@ function _renderTravel(){
     });
   }
 }
+
+function renderArrivalReport(){
+  const units = (data.units || []).slice().sort((a, b) => a.org.localeCompare(b.org));
+  const q = arrReportSearch.toLowerCase().trim();
+  const locs = getVenues();
+  let complete = 0, partial = 0, none = 0;
+  units.forEach(u => {
+    const st = arrivalReportStatus(u);
+    if(st === 'complete') complete++;
+    else if(st === 'partial') partial++;
+    else none++;
+  });
+  const allStats = arrivedStatsForUnits(units);
+
+  const meta = document.getElementById('arrReportMeta');
+  if(meta){
+    meta.textContent = `${units.length} teams · ${allStats.arr}/${allStats.exp} arrived · headcount report`;
+  }
+  const tableMeta = document.getElementById('arrReportTableMeta');
+  if(tableMeta){
+    const label = arrReportStatus === 'ALL' ? 'All teams' :
+      arrReportStatus === 'complete' ? 'Fully arrived' :
+      arrReportStatus === 'partial' ? 'Partially arrived' : 'Not started';
+    const locLabel = arrReportLoc === 'ALL' ? 'All venues' : arrReportLoc;
+    tableMeta.textContent = `${locLabel} · ${label}${q ? ' · search' : ''}`;
+  }
+
+  const hero = document.getElementById('arrReportHeroStats');
+  if(hero){
+    hero.innerHTML = `
+      <div class="acc-stat-pill is-accent"><span class="v">${allStats.arr}/${allStats.exp}</span><span class="l">Arrived</span></div>
+      <div class="acc-stat-pill"><span class="v">${complete}</span><span class="l">Complete</span></div>
+      <div class="acc-stat-pill"><span class="v">${partial}</span><span class="l">Partial</span></div>
+      <div class="acc-stat-pill"><span class="v">${none}</span><span class="l">Not started</span></div>`;
+  }
+
+  const strip = document.getElementById('arrReportLocStrip');
+  if(strip){
+    const counts = { ALL: units.length };
+    locs.forEach(loc => {
+      counts[loc] = units.filter(u => u.location === loc).length;
+    });
+    strip.innerHTML = [`ALL`, ...locs].map(loc => {
+      const n = counts[loc] || 0;
+      if(loc === 'ALL'){
+        return `<button type="button" class="acc-loc-pill ${arrReportLoc===loc?'active':''}" data-arr-report-loc="ALL">
+          <span class="loc-tag TGPA">All venues</span>
+          <span class="acc-loc-num">${n}</span>
+          <span class="acc-loc-sub">teams</span>
+        </button>`;
+      }
+      return `<button type="button" class="acc-loc-pill ${arrReportLoc===loc?'active':''}" data-arr-report-loc="${escHtml(loc)}">
+        <span class="loc-tag ${locClass(loc)}">${escHtml(loc)}</span>
+        <span class="acc-loc-num">${n}</span>
+        <span class="acc-loc-sub">teams</span>
+      </button>`;
+    }).join('');
+    strip.querySelectorAll('[data-arr-report-loc]').forEach(btn => {
+      btn.onclick = () => {
+        arrReportLoc = btn.dataset.arrReportLoc;
+        renderArrivalReport();
+      };
+    });
+  }
+
+  const searchEl = document.getElementById('arrReportSearch');
+  if(searchEl && searchEl.value !== arrReportSearch) searchEl.value = arrReportSearch;
+  const statusEl = document.getElementById('arrReportStatus');
+  if(statusEl && statusEl.value !== arrReportStatus) statusEl.value = arrReportStatus;
+
+  let filtered = units.filter(u => {
+    if(arrReportLoc !== 'ALL' && u.location !== arrReportLoc) return false;
+    if(arrReportStatus !== 'ALL' && arrivalReportStatus(u) !== arrReportStatus) return false;
+    if(q && !u.org.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  const body = document.getElementById('arrReportBody');
+  if(!body) return;
+  if(!filtered.length){
+    body.innerHTML = `<tr><td colspan="11" style="text-align:center;padding:24px;color:var(--text-dim)">No teams match these filters</td></tr>`;
+    return;
+  }
+
+  body.innerHTML = filtered.map(u => {
+    const exp = sTotal(u);
+    const arr = arrivedTotal(u);
+    const status = arrivalReportStatus(u);
+    const rowCls = status === 'complete' ? 'row-complete' : (status === 'partial' ? 'row-partial' : '');
+    const totalCls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : 'muted');
+    const editBtn = isEdit()
+      ? `<button type="button" class="btn arr-report-edit" data-report-edit="${escHtml(u.org)}">Edit</button>`
+      : '';
+    return `<tr class="${rowCls}" data-report-org="${escHtml(u.org)}">
+      <td class="org-cell">${escHtml(u.org)}</td>
+      <td class="loc-cell"><span class="loc-tag ${locClass(u.location)}">${escHtml(u.location || '—')}</span></td>
+      <td class="total-cell ${totalCls}">${arr}/${exp}</td>
+      ${STRENGTH_KEYS.map(k => arrivalReportRankCell(u, k)).join('')}
+      <td>${arrivalReportStatusLabel(status)}</td>
+      <td class="edit-only">${editBtn}</td>
+    </tr>`;
+  }).join('');
+
+  body.querySelectorAll('[data-report-edit]').forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      openArrHeadcount(btn.dataset.reportEdit);
+    };
+  });
+  if(isEdit()){
+    body.querySelectorAll('tr[data-report-org]').forEach(tr => {
+      tr.onclick = e => {
+        if(e.target.closest('button,a')) return;
+        openArrHeadcount(tr.dataset.reportOrg);
+      };
+    });
+  }
+}
+
 function modePill(mode){
   return ({rail:'rail', flight:'flight', bus:'bus'})[mode] || 'other';
 }
@@ -7700,6 +8203,7 @@ function renderArrivalCard(e){
   const title = isTc ? escHtml(m.name || e.org) : escHtml(e.org);
   const gameLine = isTc ? `<div class="tc-game">${escHtml(e.tcGame || '')}</div>` : '';
   const paxLabel = isTc ? '1 official' : `${pax} pax`;
+  const arrivedHtml = !isTc && travelPage === 'arrival' ? formatArrivedLine(e.unit) : '';
   const editBtn = isTc && isEdit()
     ? `<button type="button" class="btn arr-card-edit edit-only" data-edit-tc-travel="${escHtml(e.tcId)}">Edit plan</button>`
     : '';
@@ -7718,6 +8222,7 @@ function renderArrivalCard(e){
     </div>
     <div class="side">
       <div class="pax">${paxLabel}</div>
+      ${arrivedHtml}
       <div class="mgr-name">${escHtml(isTc ? (m.name || 'Official') : mgrName)}</div>
       ${phoneHtml}
       ${editBtn}
@@ -7892,8 +8397,15 @@ function tcDisplayPosition(m){
   return (m.role || m.rank || '').trim();
 }
 
+function tcLoStatusLabel(m){
+  const s = (m.lo_status || '').trim();
+  if(s === 'Updated by LO') return { text: 'Updated by LO', yes: true };
+  if(s === 'Not updated by LO') return { text: 'Not updated by LO', yes: false };
+  return { text: '—', yes: false };
+}
+
 function tcSearchHay(m){
-  return `${m.name||''} ${tcDisplayPosition(m)} ${m.arrival||''} ${m.departure||''} ${m.mobile||''} ${m.email||''}`.toLowerCase();
+  return `${m.name||''} ${tcDisplayPosition(m)} ${m.lo_status||''} ${m.arrival||''} ${m.departure||''} ${m.mobile||''} ${m.email||''}`.toLowerCase();
 }
 
 function resetTcMemberForm(){
@@ -8008,6 +8520,10 @@ function renderTechCommittee(){
       ? `<a href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>`
       : '<span class="lo-dash">—</span>';
     const pos = tcDisplayPosition(m);
+    const lo = tcLoStatusLabel(m);
+    const loCell = lo.text === '—'
+      ? '<span class="lo-dash">—</span>'
+      : `<span class="tc-lo-pill ${lo.yes ? 'is-yes' : 'is-no'}">${escHtml(lo.text)}</span>`;
     const acts = isEdit() ? `<td class="acts edit-only">
           <button type="button" class="btn" data-edit-tc="${escHtml(m.id)}">Edit</button>
           <button type="button" class="btn" data-del-tc="${escHtml(m.id)}">Remove</button>
@@ -8018,6 +8534,7 @@ function renderTechCommittee(){
     return `<tr>
       <td class="lo-name" data-label="Name">${escHtml(m.name||'')}</td>
       <td class="tc-pos" data-label="Position">${pos ? escHtml(pos) : '<span class="lo-dash">—</span>'}</td>
+      <td class="tc-lo" data-label="LO sheet">${loCell}</td>
       <td class="lo-mobile" data-label="Mobile">${mobile}</td>
       <td class="tc-date" data-label="Arrival">${m.arrival ? escHtml(m.arrival) : '<span class="lo-dash">—</span>'}</td>
       <td class="tc-date" data-label="Departure">${m.departure ? escHtml(m.departure) : '<span class="lo-dash">—</span>'}</td>
@@ -10038,6 +10555,9 @@ function openUnit(org){
   const m = u.manager || {};
   const t = u.travel || {};
   const td = u.travel_departure || {};
+  const a = u.arrived_strength || {};
+  const arrTot = arrivedTotal(u);
+  const expTot = sTotal(u);
   const travelBlock = (label, x) => {
     if(!x || !(x.arrival || x.details || x.station || x.mode || x.status)) return '';
     return `<dt>${label}</dt><dd><span class="badge ${x.status==='planned'?'ok':'warn'}">${x.status||'awaited'}</span>
@@ -10054,6 +10574,9 @@ function openUnit(org){
       <dt>Strength</dt><dd><strong style="color:var(--orange);font-size:20px">${u.total||sTotal(u)}</strong></dd>
       <dt>Ranks M</dt><dd>GOs ${s.gos_m||0} · SOs ${s.sos_m||0} · ORs ${s.ors_m||0}</dd>
       <dt>Ranks F</dt><dd>GOs ${s.gos_f||0} · SOs ${s.sos_f||0} · ORs ${s.ors_f||0}</dd>
+      <dt>Arrived</dt><dd><strong style="color:${arrTot >= expTot && expTot ? 'var(--success)' : 'var(--orange)'}">${arrTot}/${expTot}</strong>
+        · M ${(a.gos_m||0)+(a.sos_m||0)+(a.ors_m||0)}/${(s.gos_m||0)+(s.sos_m||0)+(s.ors_m||0)}
+        · F ${(a.gos_f||0)+(a.sos_f||0)+(a.ors_f||0)}/${(s.gos_f||0)+(s.sos_f||0)+(s.ors_f||0)}</dd>
       <dt>Dr.</dt><dd>${u.doctor || 0}</dd>
       <dt>Manager</dt><dd>${m.name||'—'} ${m.rank?'('+m.rank+')':''}</dd>
       <dt>Phone</dt><dd>${m.phone ? `<a href="tel:${m.phone.replace(/\s/g,'')}" style="color:var(--cyan)">${m.phone}</a>` : '—'}</dd>
@@ -10091,6 +10614,7 @@ function switchView(name){
     accommodation: 'Accommodation',
     mess: 'Mess',
     arrival: 'Arrival',
+    'arrival-report': 'Arrival Report',
     departure: 'Departure',
     directory: 'Directory',
     adm: 'ADM Staff',
@@ -10111,6 +10635,7 @@ function switchView(name){
   document.body.classList.toggle('on-fleet', name === 'fleet');
   document.body.classList.toggle('on-tc', name === 'tc');
   document.body.classList.toggle('on-teams', name === 'teams');
+  document.body.classList.toggle('on-arr-report', name === 'arrival-report');
   closeNavSearch();
   applyGlobalSearch(document.getElementById('navSearch').value || '');
   if(name === 'arrival' || name === 'departure') {
@@ -10118,6 +10643,7 @@ function switchView(name){
     const panel = document.getElementById('arrEditPanel');
     if(panel && panel.classList.contains('open')) loadArrEditFields();
   }
+  if(name === 'arrival-report') renderArrivalReport();
   if(name === 'adm') renderAdmStaff();
   if(name === 'lo') renderLoStaff();
   if(name === 'senior') renderSeniorOfficials();
@@ -10465,6 +10991,16 @@ document.getElementById('toggleHubEdit').onclick = () => {
   document.getElementById('hubEditPanel').classList.toggle('open');
   fillHubEditFields();
 };
+const arrReportSearchEl = document.getElementById('arrReportSearch');
+if(arrReportSearchEl) arrReportSearchEl.addEventListener('input', e => {
+  arrReportSearch = e.target.value || '';
+  renderArrivalReport();
+});
+const arrReportStatusEl = document.getElementById('arrReportStatus');
+if(arrReportStatusEl) arrReportStatusEl.addEventListener('change', e => {
+  arrReportStatus = e.target.value || 'ALL';
+  renderArrivalReport();
+});
 document.getElementById('arrEditOrg').addEventListener('change', ()=>{
   arrFormDirty = false;
   arrEditLegIndex = 0;
@@ -11024,6 +11560,136 @@ function loadArrEditFields(){
   document.getElementById('arrEditDetails').value = t.details || '';
   arrFormDirty = false;
 }
+
+function refreshArrHeadcountOrgList(preferredOrg){
+  const sel = document.getElementById('arrHeadcountOrg');
+  if(!sel) return;
+  const orgs = (data.units || []).map(u => u.org).sort((a,b)=>a.localeCompare(b));
+  const cur = preferredOrg || sel.value || arrOrg;
+  sel.innerHTML = orgs.map(o => `<option value="${escHtml(o)}">${escHtml(o)}</option>`).join('');
+  if(cur && cur !== 'ALL' && orgs.includes(cur)) sel.value = cur;
+  else if(orgs.length) sel.value = orgs[0];
+}
+
+function updateArrHeadcountPreview(){
+  const u = (data.units || []).find(x => x.org === document.getElementById('arrHeadcountOrg').value);
+  if(!u) return;
+  const s = u.strength || {};
+  let arrSum = 0;
+  STRENGTH_KEYS.forEach(k => {
+    const inp = document.getElementById('arrHc_'+k);
+    const v = inp ? Math.max(0, parseInt(inp.value, 10) || 0) : 0;
+    if(inp) inp.value = String(v);
+    arrSum += v;
+  });
+  const expSum = sTotal(u);
+  const expEl = document.getElementById('arrHcExp_total');
+  const arrEl = document.getElementById('arrHcArr_total');
+  if(expEl) expEl.textContent = String(expSum);
+  if(arrEl) arrEl.textContent = String(arrSum);
+  const summary = document.getElementById('arrHeadcountSummary');
+  if(summary){
+    summary.innerHTML = `Arrived <strong>${arrSum}</strong> / ${expSum} expected`;
+  }
+}
+
+function fillArrHeadcountForm(){
+  const sel = document.getElementById('arrHeadcountOrg');
+  if(!sel) return;
+  const u = (data.units || []).find(x => x.org === sel.value);
+  if(!u) return;
+  const s = u.strength || {};
+  const a = u.arrived_strength || {};
+  STRENGTH_KEYS.forEach(k => {
+    const expCell = document.getElementById('arrHcExp_'+k);
+    if(expCell) expCell.textContent = String(s[k] || 0);
+    const inp = document.getElementById('arrHc_'+k);
+    if(inp) inp.value = String(a[k] || 0);
+  });
+  updateArrHeadcountPreview();
+  arrHeadcountDirty = false;
+}
+
+function openArrHeadcount(org){
+  switchView('arrival-report');
+  arrFormDirty = false;
+  const panel = document.getElementById('arrHeadcountPanel');
+  if(panel) panel.classList.add('open');
+  refreshArrHeadcountOrgList(org);
+  fillArrHeadcountForm();
+  if(panel && panel.scrollIntoView){
+    try{ panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }catch(_){}
+  }
+}
+
+function copyArrHeadcountExpected(){
+  const u = (data.units || []).find(x => x.org === document.getElementById('arrHeadcountOrg').value);
+  if(!u) return;
+  const s = u.strength || {};
+  STRENGTH_KEYS.forEach(k => {
+    const inp = document.getElementById('arrHc_'+k);
+    if(inp) inp.value = String(s[k] || 0);
+  });
+  arrHeadcountDirty = true;
+  updateArrHeadcountPreview();
+}
+
+async function saveArrHeadcount(){
+  if(!isEdit()){
+    toast('Read-only View — open Edit on port 5001');
+    return;
+  }
+  const org = document.getElementById('arrHeadcountOrg').value;
+  if(!org){ toast('Pick an organisation'); return; }
+  const patch = {};
+  STRENGTH_KEYS.forEach(k => {
+    const inp = document.getElementById('arrHc_'+k);
+    patch[k] = inp ? Math.max(0, parseInt(inp.value, 10) || 0) : 0;
+  });
+  const btn = document.getElementById('arrHeadcountSave');
+  btn.disabled = true;
+  saveInFlight = true;
+  try{
+    const res = await apiFetch('/api/arrival/'+encodeURIComponent(org)+'/arrived-strength', {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(patch)
+    });
+    let body = null;
+    try{ body = await res.json(); }catch(e){}
+    if(res.ok){
+      data = body;
+      arrHeadcountDirty = false;
+      toast(org+' headcount saved');
+      renderAll();
+      fillArrHeadcountForm();
+      renderArrivalReport();
+    } else {
+      const err = (body && (body.error || body.hint)) || ('HTTP '+res.status);
+      toast(res.status === 403 ? 'View port is read-only — use http://'+location.hostname+':5001' : ('Save failed: '+err));
+    }
+  }catch(e){
+    toast('Save failed — check Edit server on :5001');
+  }finally{
+    saveInFlight = false;
+    btn.disabled = false;
+  }
+}
+
+const arrHeadcountOrgEl = document.getElementById('arrHeadcountOrg');
+if(arrHeadcountOrgEl) arrHeadcountOrgEl.addEventListener('change', ()=>{
+  arrHeadcountDirty = false;
+  fillArrHeadcountForm();
+});
+STRENGTH_KEYS.forEach(k => {
+  const inp = document.getElementById('arrHc_'+k);
+  if(inp) inp.addEventListener('input', ()=>{
+    arrHeadcountDirty = true;
+    updateArrHeadcountPreview();
+  });
+});
+const arrHeadcountCopyEl = document.getElementById('arrHeadcountCopy');
+if(arrHeadcountCopyEl) arrHeadcountCopyEl.onclick = copyArrHeadcountExpected;
+const arrHeadcountSaveEl = document.getElementById('arrHeadcountSave');
+if(arrHeadcountSaveEl) arrHeadcountSaveEl.onclick = saveArrHeadcount;
 
 function fillHubEditFields(){
   const hubs = getHubs();

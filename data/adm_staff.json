@@ -1029,6 +1029,206 @@
       "mobile": "9908527154",
       "stay": "",
       "room": ""
+    },
+    {
+      "id": "p_bcf60a1e7c",
+      "cisf_no": "140701397",
+      "name": "Salunki Shivaji Dattatray",
+      "rank": "CT/DVR",
+      "unit": "ASG HYDERABAD",
+      "mobile": "",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_cdbf7c3e3c",
+      "cisf_no": "240703426",
+      "name": "Subash Choudhary",
+      "rank": "CT/DVR",
+      "unit": "ASG HYDERABAD",
+      "mobile": "",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_4c0403c4d8",
+      "cisf_no": "150701059",
+      "name": "Sreedhara MS",
+      "rank": "CT/DVR",
+      "unit": "8TH RB Jaipur",
+      "mobile": "",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_56c1788340",
+      "cisf_no": "170739014",
+      "name": "Yeravi Sanjay M",
+      "rank": "CT/DVR",
+      "unit": "9TH RB Deoli",
+      "mobile": "",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_d719e9a04f",
+      "cisf_no": "170739175",
+      "name": "Arun Kumar Paswan",
+      "rank": "CT/DVR",
+      "unit": "9TH RB Deoli",
+      "mobile": "",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_00aba51c65",
+      "cisf_no": "062309431",
+      "name": "Ashok kumar",
+      "rank": "ASI/MT",
+      "unit": "11TH RB Nashik",
+      "mobile": "9568575922",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_d901057e97",
+      "cisf_no": "114390396",
+      "name": "Kailash Kumar Berwal",
+      "rank": "HC/DVR",
+      "unit": "11TH RB NASHIK",
+      "mobile": "9521135729",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_9c4ae771d5",
+      "cisf_no": "120714579",
+      "name": "Kishori Lal Yadav",
+      "rank": "CT/DVR",
+      "unit": "11TH RB Nashik",
+      "mobile": "9079247667",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_560643d0ff",
+      "cisf_no": "150703817",
+      "name": "Rajpal",
+      "rank": "CT/DVR",
+      "unit": "IG MINT",
+      "mobile": "9414571078",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_0060bbd646",
+      "cisf_no": "110700285",
+      "name": "s Dasarath",
+      "rank": "HC/DVR",
+      "unit": "VPA VIZAG",
+      "mobile": "9949224478",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_c2928ac815",
+      "cisf_no": "110701035",
+      "name": "Gudipati Devadasu",
+      "rank": "HC/DVR",
+      "unit": "VPA VIZAG",
+      "mobile": "6303502917",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_86d069f238",
+      "cisf_no": "170740533",
+      "name": "Suresh Kumar",
+      "rank": "CT/DVR",
+      "unit": "HPCL Vizag",
+      "mobile": "9928966704",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_4a1d6e5afa",
+      "cisf_no": "087080098",
+      "name": "M Petchhi Muthu",
+      "rank": "HC/DVR",
+      "unit": "RSTPS",
+      "mobile": "9487627092",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_09f0b442de",
+      "cisf_no": "150704214",
+      "name": "Kanwar Singh",
+      "rank": "CT/DVR",
+      "unit": "RSTPS",
+      "mobile": "7976796891",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_00ae7f4f18",
+      "cisf_no": "150704384",
+      "name": "Monu Kumar",
+      "rank": "CT/DVR",
+      "unit": "Gp HQ Hyderabad",
+      "mobile": "9837338871",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_2d4f8bdac7",
+      "cisf_no": "150703525",
+      "name": "Subhash Chand Jat",
+      "rank": "CT/Dvr",
+      "unit": "SVP-NPA Hyderabad",
+      "mobile": "9461447160",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_1b0985f5ea",
+      "cisf_no": "110700382",
+      "name": "Rambabu Singarapu",
+      "rank": "HC/DVR",
+      "unit": "RTPS Raichur",
+      "mobile": "8511722338",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_24a5e27a34",
+      "cisf_no": "190703381",
+      "name": "Pradeep Kumar",
+      "rank": "CT/DVR",
+      "unit": "BDL Bhanur",
+      "mobile": "7891155374",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_5b3878b44f",
+      "cisf_no": "120721320",
+      "name": "Kora Prakash",
+      "rank": "CT/DVR",
+      "unit": "BDL Kanchanbagh",
+      "mobile": "",
+      "stay": "",
+      "room": ""
+    },
+    {
+      "id": "p_f37de43b77",
+      "cisf_no": "140702369",
+      "name": "Omprakash",
+      "rank": "CT/DVR",
+      "unit": "BBIL Hyderabad",
+      "mobile": "7780615434",
+      "stay": "",
+      "room": ""
     }
   ],
   "tasks": [
@@ -1843,7 +2043,187 @@
       "from_date": "",
       "to_date": "",
       "notes": ""
+    },
+    {
+      "id": "d_aae7a67285",
+      "task_id": "t_429e388fea",
+      "person_id": "p_bcf60a1e7c",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_ac13fa6daa",
+      "task_id": "t_429e388fea",
+      "person_id": "p_48558af63f",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_7047f96482",
+      "task_id": "t_429e388fea",
+      "person_id": "p_4c0403c4d8",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_a450ba7b72",
+      "task_id": "t_429e388fea",
+      "person_id": "p_56c1788340",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_930e2eae95",
+      "task_id": "t_429e388fea",
+      "person_id": "p_d719e9a04f",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_46d6daa308",
+      "task_id": "t_429e388fea",
+      "person_id": "p_00aba51c65",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_ee7c2bfe6e",
+      "task_id": "t_429e388fea",
+      "person_id": "p_d901057e97",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_8a7310373f",
+      "task_id": "t_429e388fea",
+      "person_id": "p_9c4ae771d5",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_7a5d12033a",
+      "task_id": "t_429e388fea",
+      "person_id": "p_560643d0ff",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_60b943b19f",
+      "task_id": "t_429e388fea",
+      "person_id": "p_0060bbd646",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_d30bf9c40e",
+      "task_id": "t_429e388fea",
+      "person_id": "p_c2928ac815",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_3b8341a801",
+      "task_id": "t_429e388fea",
+      "person_id": "p_86d069f238",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_538e885238",
+      "task_id": "t_429e388fea",
+      "person_id": "p_4a1d6e5afa",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_81384b960e",
+      "task_id": "t_429e388fea",
+      "person_id": "p_09f0b442de",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_c3e866c8f2",
+      "task_id": "t_429e388fea",
+      "person_id": "p_00ae7f4f18",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_90105890f1",
+      "task_id": "t_429e388fea",
+      "person_id": "p_2d4f8bdac7",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_c243bd9ec8",
+      "task_id": "t_429e388fea",
+      "person_id": "p_1b0985f5ea",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_75c3f92c02",
+      "task_id": "t_429e388fea",
+      "person_id": "p_24a5e27a34",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_321ef82f5b",
+      "task_id": "t_429e388fea",
+      "person_id": "p_5b3878b44f",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
+    },
+    {
+      "id": "d_bdf9c3f338",
+      "task_id": "t_429e388fea",
+      "person_id": "p_f37de43b77",
+      "role": "",
+      "from_date": "",
+      "to_date": "",
+      "notes": ""
     }
   ],
-  "updated_at": "2026-07-20T19:08:05"
+  "updated_at": "2026-07-21T17:58:01"
 }

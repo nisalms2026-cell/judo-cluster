@@ -132,6 +132,26 @@ DEFAULT_HUBS = {
     ],
 }
 
+STRENGTH_RANK_FIELDS = ("gos_m", "sos_m", "ors_m", "gos_f", "sos_f", "ors_f")
+
+
+def empty_arrived_strength() -> dict:
+    return {k: 0 for k in STRENGTH_RANK_FIELDS}
+
+
+def normalize_arrived_strength(raw: dict | None) -> dict:
+    base = empty_arrived_strength()
+    if not isinstance(raw, dict):
+        return base
+    for k in STRENGTH_RANK_FIELDS:
+        try:
+            base[k] = max(0, int(raw.get(k) or 0))
+        except (TypeError, ValueError):
+            base[k] = 0
+    if raw.get("updated_at"):
+        base["updated_at"] = raw["updated_at"]
+    return base
+
 
 def normalize_hubs(hubs):
     """Merge saved hubs with defaults so new keys always exist."""
@@ -349,6 +369,7 @@ def merge_bundle() -> dict:
             unit["travel_departure"] = tr["travel_departure"]
         if tr.get("travel_departure_extra"):
             unit["travel_departure_extra"] = tr["travel_departure_extra"]
+        unit["arrived_strength"] = normalize_arrived_strength(tr.get("arrived_strength"))
         units.append(unit)
 
     stamps = [
@@ -387,6 +408,7 @@ def merge_bundle() -> dict:
         "updated_at": updated_at,
         "source_file": event_doc.get("source_file", ""),
         "event": event_doc.get("event") or empty_bundle()["event"],
+        "chat_api": (event_doc.get("chat_api") or "").strip(),
         "units": units,
         "venues": venues,
         "hubs": hubs,
@@ -538,6 +560,34 @@ def save_arrival_row(
     # Preserve hubs + any other keys on write
     out = {"hubs": hubs, "rows": rows}
     _write(FILES["arrival"], out)
+    return merge_bundle()
+
+
+def save_arrived_strength(org: str, patch: dict) -> dict:
+    """Update per-team arrived GO/SO/OR headcount (stored on arrival.json row)."""
+    doc = _read(FILES["arrival"], {"rows": [], "hubs": DEFAULT_HUBS})
+    rows = doc.get("rows") or []
+    hubs = normalize_hubs(doc.get("hubs"))
+    row = _find_row_by_org(rows, org)
+    blank = {"station": "", "arrival": "", "details": "", "status": "awaited"}
+    if not row:
+        canonical = _resolve_org_name(org)
+        row = {
+            "org": canonical,
+            "travel": dict(blank),
+            "travel_extra": [],
+        }
+        rows.append(row)
+    cur = normalize_arrived_strength(row.get("arrived_strength"))
+    for k in STRENGTH_RANK_FIELDS:
+        if k in patch:
+            try:
+                cur[k] = max(0, int(patch.get(k) or 0))
+            except (TypeError, ValueError):
+                pass
+    cur["updated_at"] = _now()
+    row["arrived_strength"] = cur
+    _write(FILES["arrival"], {"hubs": hubs, "rows": rows})
     return merge_bundle()
 
 
@@ -1723,6 +1773,9 @@ def validate_tc_member_fields(payload: dict, *, require_all: bool = True) -> dic
         out["sno"] = sno
     if require_all or "gender" in payload:
         out["gender"] = gender
+    lo_status = (payload.get("lo_status") or "").strip()
+    if lo_status or "lo_status" in payload:
+        out["lo_status"] = lo_status
     return out
 
 
@@ -2032,3 +2085,13 @@ def delete_chat_message(message_id: str) -> dict:
     if len(doc["messages"]) == before:
         raise KeyError(message_id)
     return _write_chat(doc)
+
+
+def save_chat_api(url: str) -> dict:
+    raw = (url or "").strip().rstrip("/")
+    if raw and not (raw.startswith("http://") or raw.startswith("https://")):
+        raise ValueError("Chat API URL must start with http:// or https://")
+    doc = _read(FILES["event"], {"event": empty_bundle()["event"], "source_file": ""})
+    doc["chat_api"] = raw
+    _write(FILES["event"], doc)
+    return merge_bundle()
