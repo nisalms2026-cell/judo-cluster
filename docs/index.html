@@ -1287,7 +1287,9 @@ body.on-home #homeHero { display: none; }
   border-radius: var(--radius-card);
   padding: 4px 12px;
   max-height: 560px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   color: var(--text);
   scrollbar-gutter: stable;
   box-shadow: var(--shadow);
@@ -1666,13 +1668,13 @@ body.mode-static #view-adm .adm-pillars-wrap {
 }
 body.on-teams .page-head { display: none; }
 
-/* View / GitHub Pages — let tables grow with the page, no inner scroll boxes */
+/* View / GitHub Pages — page scrolls vertically; horizontal scroll stays on table wrappers */
 body.mode-view .table-wrap,
 body.mode-static .table-wrap,
 body.mode-view .adm-table-wrap,
 body.mode-static .adm-table-wrap {
   max-height: none;
-  overflow: visible;
+  overflow-y: visible;
   scrollbar-gutter: auto;
 }
 
@@ -1681,7 +1683,7 @@ body.mode-static .acc-table-panel .table-wrap,
 body.mode-view .acc-table-panel .adm-table-wrap,
 body.mode-static .acc-table-panel .adm-table-wrap {
   max-height: none;
-  overflow: visible;
+  overflow-y: visible;
 }
 
 body.mode-view .acc-table-panel .adm-table-wrap,
@@ -1707,7 +1709,7 @@ body.mode-static .table-wrap.lo-view-wrap {
 
 body.mode-view .lo-view-wrap,
 body.mode-static .lo-view-wrap {
-  overflow: visible;
+  overflow-y: visible;
   border: none;
   box-shadow: none;
   background: transparent;
@@ -3578,7 +3580,9 @@ body.mode-edit #view-fleet .fleet-edit-block {
   font-weight: 500;
 }
 .adm-table-wrap {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   max-height: min(62vh, 720px);
   background: var(--card);
   border: 1px solid var(--border);
@@ -4449,11 +4453,32 @@ footer {
   }
 
   .table-wrap,
-  .adm-table-wrap {
+  .adm-table-wrap,
+  .arr-report-wrap,
+  .arr-headcount-wrap,
+  .lo-view-wrap {
     max-height: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  body.mode-view .table-wrap,
+  body.mode-static .table-wrap,
+  body.mode-view .adm-table-wrap,
+  body.mode-static .adm-table-wrap,
+  body.mode-view .lo-view-wrap,
+  body.mode-static .lo-view-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+
+  .acc-table-panel {
+    overflow: visible;
+  }
+
+  .acc-table { min-width: 680px; }
 
   .filter-btns button,
   .mode-tabs button,
@@ -4661,6 +4686,8 @@ footer {
 
   .lo-view-bar { flex-direction: column; align-items: stretch; }
   .lo-view-search { max-width: none; width: 100%; }
+  body.mode-edit .table-wrap,
+  body.mode-edit .adm-table-wrap,
   body.mode-edit .lo-view-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -4668,8 +4695,23 @@ footer {
   .lo-view-table { min-width: 520px; }
   .lo-roster-table { min-width: 640px; }
   .so-roster-table { min-width: 760px; }
+  body.mode-view .lo-roster-table,
+  body.mode-static .lo-roster-table,
+  body.mode-view .so-roster-table,
+  body.mode-static .so-roster-table,
+  body.mode-view .pl-roster-table,
+  body.mode-static .pl-roster-table,
+  body.mode-view .tc-officials-table,
+  body.mode-static .tc-officials-table {
+    min-width: 520px;
+    width: auto;
+  }
+  body.mode-view .lo-roster-table,
+  body.mode-static .lo-roster-table { min-width: 640px; }
+  body.mode-view .so-roster-table,
+  body.mode-static .so-roster-table { min-width: 760px; }
   .so-view-head h2 { font-size: 20px; }
-  .tc-officials-table { min-width: 0; }
+  .tc-officials-table { min-width: 520px; }
   .tc-officials-table th,
   .tc-officials-table td { padding: 10px 12px; }
   .tc-officials-table col.c-date { width: 112px; }
@@ -4892,13 +4934,16 @@ footer {
     display: none !important;
   }
 
-  body.mode-view .table-wrap {
+  body.mode-view .table-wrap,
+  body.mode-static .table-wrap {
     background: transparent;
     border: none;
     box-shadow: none;
     padding: 0;
     max-height: none;
-    overflow: visible;
+    overflow-y: visible;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* View mode: mess tag roster as cards */
