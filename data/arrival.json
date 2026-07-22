@@ -53,12 +53,12 @@
       "travel_extra": [],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 1,
+        "ors_m": 17,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0,
-        "updated_at": "2026-07-21T18:59:40"
+        "sos_f": 1,
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -72,7 +72,16 @@
         "team_label": "ARUNACHAL PRADESH",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 14,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "ASSAM POLICE",
@@ -95,7 +104,16 @@
           "team_label": "Assam Police",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 39,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 21,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "ASSAM RIFLES",
@@ -116,7 +134,16 @@
           "status": "planned",
           "team_label": "Assam Rifles"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 54,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 44,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "BIHAR POLICE",
@@ -129,7 +156,16 @@
         "team_label": "Bihar",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 11,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "CHANDIGARH POLICE",
@@ -142,7 +178,16 @@
         "team_label": "CHANDIGARH POLICE",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 8,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "DELHI POLICE",
@@ -164,7 +209,16 @@
           "status": "planned",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 9,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "Gujrat",
@@ -177,7 +231,16 @@
         "team_label": "Gujrat",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 17,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 3,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "HIMACHAL PRADESH POLICE",
@@ -199,7 +262,16 @@
           "status": "planned",
           "team_label": "Himachal Pradesh Police (Half Team)"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 6,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "JAMMU & KASHMIR",
@@ -222,7 +294,16 @@
           "team_label": "J&K (1)",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 35,
+        "gos_f": 1,
+        "sos_f": 0,
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "KARNATAKA POLICE",
@@ -235,7 +316,16 @@
         "team_label": "Karnataka State Police",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 1,
+        "ors_m": 16,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 3,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "MAHARASHTRA POLICE",
@@ -257,7 +347,16 @@
           "status": "planned",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 4,
+        "ors_m": 46,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 36,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "MIZORAM POLICE",
@@ -270,7 +369,16 @@
         "team_label": "Mizoram Police",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 6,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "PUNJAB POLICE",
@@ -302,7 +410,16 @@
           "team_label": "Punjab",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 7,
+        "gos_f": 0,
+        "sos_f": 4,
+        "ors_f": 9,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "RAJASTHAN POLICE",
@@ -315,7 +432,16 @@
         "team_label": "Rajasthan",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 5,
+        "ors_m": 15,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 10,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "UTTARAKHAND POLICE",
@@ -328,7 +454,16 @@
         "team_label": "Uttarakhand",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 19,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 7,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "SIKKIM POLICE",
@@ -341,7 +476,16 @@
         "team_label": "Sikkim (02)",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 1,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "CHATTISGARH",
@@ -354,7 +498,16 @@
         "team_label": "Chhattisgarh",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 19,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "UTTARPRADESH",
@@ -376,7 +529,16 @@
           "status": "planned",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 6,
+        "ors_m": 65,
+        "gos_f": 0,
+        "sos_f": 6,
+        "ors_f": 40,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "HARYANA",
@@ -389,7 +551,16 @@
         "team_label": "Haryana Police",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 3,
+        "ors_m": 2,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 2,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "ITBP",
@@ -421,7 +592,16 @@
           "team_label": "ITBP",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 2,
+        "sos_m": 2,
+        "ors_m": 71,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 40,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "TAMILNADU",
@@ -434,7 +614,16 @@
         "team_label": "TAMIL NADU",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 52,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 20,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "GOA",
@@ -448,7 +637,16 @@
         "bus_role": "alighting",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 7,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "NSG",
@@ -461,7 +659,16 @@
         "mode": "rail",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 0,
+        "ors_m": 1,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "JHARKHAND",
@@ -474,7 +681,16 @@
         "team_label": "JHARKHAND",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 24,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 10,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "BSF",
@@ -497,7 +713,16 @@
           "team_label": "Border Security Force",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 65,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 32,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "CRPF",
@@ -510,7 +735,16 @@
         "team_label": "CRPF",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 4,
+        "ors_m": 54,
+        "gos_f": 2,
+        "sos_f": 1,
+        "ors_f": 30,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "SSB",
@@ -551,7 +785,16 @@
           "team_label": "SSB",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 0,
+        "ors_m": 53,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 47,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "WEST BENGAL POLICE",
@@ -564,7 +807,16 @@
         "team_label": "West Bengal Police",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 10,
+        "ors_m": 43,
+        "gos_f": 0,
+        "sos_f": 1,
+        "ors_f": 14,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "ORISSA POLICE",
@@ -577,7 +829,16 @@
         "team_label": "Odisha",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 1,
+        "ors_m": 10,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 8,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "MADHYA PRADESH POLICE",
@@ -590,7 +851,16 @@
         "team_label": "Madhya Pradesh",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 13,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "MANIPUR POLICE",
@@ -603,7 +873,16 @@
         "team_label": "Manipur Police",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 1,
+        "ors_m": 39,
+        "gos_f": 1,
+        "sos_f": 1,
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "KERALA POLICE",
@@ -616,7 +895,16 @@
         "team_label": "KERALA POLICE",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 32,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 2,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "CISF",
@@ -648,7 +936,16 @@
           "team_label": "CISF",
           "direction": "arrival"
         }
-      ]
+      ],
+      "arrived_strength": {
+        "gos_m": 1,
+        "sos_m": 19,
+        "ors_m": 35,
+        "gos_f": 0,
+        "sos_f": 16,
+        "ors_f": 30,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "TELANGANA POLICE",
@@ -662,7 +959,16 @@
         "bus_role": "alighting",
         "direction": "arrival"
       },
-      "travel_extra": []
+      "travel_extra": [],
+      "arrived_strength": {
+        "gos_m": 0,
+        "sos_m": 2,
+        "ors_m": 23,
+        "gos_f": 0,
+        "sos_f": 0,
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     },
     {
       "org": "RPF",
@@ -675,24 +981,17 @@
         "team_label": "RPF",
         "direction": "arrival"
       },
-      "travel_extra": []
-    },
-    {
-      "org": "Andhra Pradesh/arrived-strength",
-      "travel": {
-        "station": "",
-        "arrival": "",
-        "details": "",
-        "status": "awaited",
+      "travel_extra": [],
+      "arrived_strength": {
         "gos_m": 1,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 9,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
-      },
-      "travel_extra": []
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
+      }
     }
   ],
-  "updated_at": "2026-07-21T19:01:11"
+  "updated_at": "2026-07-22T17:00:13"
 }

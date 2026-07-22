@@ -23,6 +23,8 @@ _ALIASES: dict[str, str] = {
     "ANDHRA PRADESH POLICE": ANDHRA_PRADESH,
     "ANDHRA PRADESH": ANDHRA_PRADESH,
     "Andhra Pradesh": ANDHRA_PRADESH,
+    "UTTAR PRADESH": "UTTARPRADESH",
+    "UTTARPRADESH": "UTTARPRADESH",
 }
 
 _LOOKUP = {k.upper(): v for k, v in _ALIASES.items()}
