@@ -3771,8 +3771,8 @@ body.mode-edit #view-fleet .fleet-edit-block {
   margin-bottom: 0;
 }
 .arr-report-table {
-  table-layout: fixed;
-  width: 100%;
+  table-layout: auto;
+  width: max-content;
   min-width: 920px;
   font-size: 13px;
   border-collapse: collapse;
@@ -4457,11 +4457,16 @@ footer {
   .arr-report-wrap,
   .arr-headcount-wrap,
   .lo-view-wrap {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     max-height: none;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
   }
 
   body.mode-view .table-wrap,
@@ -4470,15 +4475,33 @@ footer {
   body.mode-static .adm-table-wrap,
   body.mode-view .lo-view-wrap,
   body.mode-static .lo-view-wrap {
-    overflow-x: auto;
+    overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
   }
 
   .acc-table-panel {
     overflow: visible;
+    max-width: 100%;
   }
 
-  .acc-table { min-width: 680px; }
+  /* Sticky thead breaks horizontal swipe on iOS inside scroll containers */
+  .table-wrap thead th,
+  .adm-table-wrap thead th,
+  .acc-table-panel .acc-table thead th {
+    position: static;
+    top: auto;
+  }
+
+  .acc-table,
+  .adm-table,
+  .lo-view-table {
+    width: max-content;
+    min-width: 680px;
+    table-layout: auto;
+  }
+
+  .arr-report-table { min-width: 920px; }
 
   .filter-btns button,
   .mode-tabs button,
@@ -4935,15 +4958,21 @@ footer {
   }
 
   body.mode-view .table-wrap,
-  body.mode-static .table-wrap {
+  body.mode-static .table-wrap,
+  body.mode-view .adm-table-wrap,
+  body.mode-static .adm-table-wrap {
     background: transparent;
     border: none;
     box-shadow: none;
     padding: 0;
     max-height: none;
     overflow-y: visible;
-    overflow-x: auto;
+    overflow-x: scroll;
+    display: block;
+    width: 100%;
+    max-width: 100%;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
   }
 
   /* View mode: mess tag roster as cards */
