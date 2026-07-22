@@ -3,9 +3,9 @@
     {
       "org": "Andhra Pradesh",
       "manager": {
-        "name": "K Victor",
-        "rank": "Inspector",
-        "phone": "9866930369"
+        "name": "S. MAHABOOB BASHA",
+        "rank": "Sub Inspector",
+        "phone": "9291421101"
       }
     },
     {
@@ -43,9 +43,9 @@
     {
       "org": "CHANDIGARH POLICE",
       "manager": {
-        "name": "Bhim singh",
-        "rank": "ASI",
-        "phone": "9463881916"
+        "name": "Amit",
+        "rank": "Head Constable",
+        "phone": "9256419184"
       }
     },
     {
@@ -289,5 +289,5 @@
       }
     }
   ],
-  "updated_at": "2026-07-18T20:05:05"
+  "updated_at": "2026-07-22T11:54:44"
 }

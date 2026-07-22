@@ -6376,7 +6376,29 @@ let arrReportSearch = '';
 let arrReportStatus = 'ALL';
 let arrEditLegIndex = 0; // 0 = primary travel, 1+ = travel_extra
 let saveInFlight = false;
+let fetchBlockedUntil = 0; // block poll briefly after local saves (prevents stale overwrite)
 const AUTH_KEY = 'judo_cluster_auth_v1';
+
+function adoptServerData(next, opts){
+  if(!next) return;
+  data = next;
+  if(opts && opts.fromSave){
+    fetchBlockedUntil = Date.now() + 8000;
+  }
+  if(!opts || !opts.skipRender) renderAll();
+}
+
+function shouldIgnoreFetchedData(fresh){
+  if(!data || !fresh) return false;
+  if(Date.now() < fetchBlockedUntil) return true;
+  const curRev = data.revision || 0;
+  const freshRev = fresh.revision || 0;
+  if(freshRev < curRev) return true;
+  const curTs = data.updated_at || '';
+  const freshTs = fresh.updated_at || '';
+  if(freshRev === curRev && curTs && freshTs && freshTs <= curTs) return true;
+  return false;
+}
 
 function detectStaticHost(){
   const q = new URLSearchParams(location.search);
@@ -6836,6 +6858,7 @@ const ACC_STRENGTH_FIELDS = ['gos_m','sos_m','ors_m','gos_f','sos_f','ors_f'];
 
 async function fetchData(){
   if(saveInFlight) return;
+  if(Date.now() < fetchBlockedUntil) return;
   try{
     const url = IS_STATIC
       ? dataUrl('data/bundle.json') + '?t=' + Date.now()
@@ -6848,10 +6871,7 @@ async function fetchData(){
     }
     if(!res.ok) throw new Error('HTTP '+res.status);
     const fresh = await res.json();
-    // Ignore stale responses that would wipe a newer local save
-    if(data && data.updated_at && fresh.updated_at && fresh.updated_at < data.updated_at){
-      return;
-    }
+    if(shouldIgnoreFetchedData(fresh)) return;
     data = fresh;
     renderAll();
     opsChatMessages = getChatFromData();
@@ -8231,6 +8251,12 @@ function renderArrivalCard(e){
   </article>`;
 }
 
+function findDirCard(org){
+  const key = String(org || '').trim();
+  if(!key) return null;
+  return [...document.querySelectorAll('.dir-card')].find(card => (card.getAttribute('data-org') || '').trim() === key) || null;
+}
+
 function renderDirectory(){
   const q = dirSearch.toLowerCase();
   const units = (data.units||[]).filter(u=>{
@@ -8247,19 +8273,25 @@ function renderDirectory(){
     const safe = u.org.replace(/'/g,"\\'");
     const fields = isEdit()
       ? `<div class="dir-fields">
-        <input data-field="name" value="${(m.name||'').replace(/"/g,'&quot;')}" placeholder="Manager name">
-        <input data-field="rank" value="${(m.rank||'').replace(/"/g,'&quot;')}" placeholder="Rank">
-        <input data-field="phone" value="${(m.phone||'').replace(/"/g,'&quot;')}" placeholder="Phone">
-        <button type="button" class="btn primary" onclick="saveDirectory('${safe}')">Save</button>
+        <input data-field="name" value="${escHtml(m.name||'')}" placeholder="Manager name">
+        <input data-field="rank" value="${escHtml(m.rank||'')}" placeholder="Rank">
+        <input data-field="phone" value="${escHtml(m.phone||'')}" placeholder="Phone">
+        <button type="button" class="btn primary" data-save-dir="${escHtml(u.org)}">Save</button>
       </div>`
-      : `<div class="mgr" style="margin-top:10px;">${m.name||'—'} ${m.rank ? '· '+m.rank : ''}</div>`;
-    return `<div class="dir-card" data-org="${u.org}">
-      <h4 class="org-name" onclick="openUnit('${safe}')">${u.org}</h4>
-      <span class="loc-tag ${cls}">${u.location}</span>
-      <div class="phone">${phone ? `<a href="tel:${phone}">${m.phone}</a>` : '—'}</div>
+      : `<div class="mgr" style="margin-top:10px;">${escHtml(m.name||'—')}${m.rank ? ' · '+escHtml(m.rank) : ''}</div>`;
+    const phoneBlock = isEdit()
+      ? ''
+      : `<div class="phone">${phone ? `<a href="tel:${phone}">${escHtml(m.phone)}</a>` : '—'}</div>`;
+    return `<div class="dir-card" data-org="${escHtml(u.org)}">
+      <h4 class="org-name" onclick="openUnit('${safe}')">${escHtml(u.org)}</h4>
+      <span class="loc-tag ${cls}">${escHtml(u.location)}</span>
+      ${phoneBlock}
       ${fields}
     </div>`;
   }).join('');
+  document.querySelectorAll('[data-save-dir]').forEach(btn=>{
+    btn.onclick = () => saveDirectory(btn.getAttribute('data-save-dir'));
+  });
 }
 
 function getAdm(){
@@ -10644,6 +10676,7 @@ function switchView(name){
     if(panel && panel.classList.contains('open')) loadArrEditFields();
   }
   if(name === 'arrival-report') renderArrivalReport();
+  if(name === 'directory') renderDirectory();
   if(name === 'adm') renderAdmStaff();
   if(name === 'lo') renderLoStaff();
   if(name === 'senior') renderSeniorOfficials();
@@ -11102,14 +11135,39 @@ async function saveMess(org){
 }
 
 async function saveDirectory(org){
-  const card = document.querySelector(`.dir-card[data-org="${CSS.escape(org)}"]`);
+  if(!isEdit()){
+    toast('Read-only View — open Edit on port 5001');
+    return;
+  }
+  const card = findDirCard(org);
+  if(!card){
+    toast('Could not find team card — refresh and try again');
+    return;
+  }
   const payload = {};
-  card.querySelectorAll('[data-field]').forEach(inp => { payload[inp.dataset.field] = inp.value; });
-  const res = await apiFetch('/api/directory/'+encodeURIComponent(org), {
-    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
-  });
-  if(res.ok){ data = await res.json(); toast(org+' → directory.json'); renderAll(); }
-  else toast('Directory save failed');
+  card.querySelectorAll('[data-field]').forEach(inp => { payload[inp.dataset.field] = inp.value.trim(); });
+  const btn = card.querySelector('[data-save-dir]');
+  if(btn) btn.disabled = true;
+  saveInFlight = true;
+  try{
+    const res = await apiFetch('/api/directory/'+encodeURIComponent(org), {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+    });
+    let body = null;
+    try{ body = await res.json(); }catch(e){}
+    if(res.ok){
+      adoptServerData(body, {fromSave: true});
+      toast(org+' saved to directory.json');
+    } else {
+      const err = (body && (body.error || body.hint)) || ('HTTP '+res.status);
+      toast(res.status === 403 ? 'View port is read-only — use http://'+location.hostname+':5001' : ('Directory save failed: '+err));
+    }
+  }catch(e){
+    toast('Directory save failed — check Edit server on :5001');
+  }finally{
+    saveInFlight = false;
+    if(btn) btn.disabled = false;
+  }
 }
 
 function pad2(n){ return String(n).padStart(2,'0'); }

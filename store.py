@@ -65,11 +65,20 @@ def _read(path, default):
         return json.load(f)
 
 
-def _write(path, payload):
+def _write(path, payload, *, bump_revision=True):
     ensure_data_dir()
     payload["updated_at"] = _now()
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
+    if bump_revision and path != FILES["event"]:
+        _bump_event_revision()
+
+
+def _bump_event_revision() -> int:
+    doc = _read(FILES["event"], {"event": empty_bundle()["event"], "source_file": ""})
+    doc["revision"] = int(doc.get("revision") or 0) + 1
+    _write(FILES["event"], doc, bump_revision=False)
+    return int(doc["revision"])
 
 
 def _org_key(org: str) -> str:
@@ -184,6 +193,7 @@ def normalize_venues(venues, rows=None):
 def empty_bundle():
     return {
         "updated_at": _now(),
+        "revision": 0,
         "source_file": "",
         "event": {
             "title": "11th All India Police Judo Cluster 2026",
@@ -406,6 +416,7 @@ def merge_bundle() -> dict:
 
     return {
         "updated_at": updated_at,
+        "revision": int(event_doc.get("revision") or 0),
         "source_file": event_doc.get("source_file", ""),
         "event": event_doc.get("event") or empty_bundle()["event"],
         "chat_api": (event_doc.get("chat_api") or "").strip(),
@@ -653,12 +664,13 @@ def save_directory_row(org: str, manager: dict) -> dict:
     doc = _read(FILES["directory"], {"rows": []})
     rows = doc.get("rows") or []
     row = _find_row_by_org(rows, org)
+    mgr = {k: str(manager.get(k) or "").strip() for k in ("name", "rank", "phone") if k in manager}
     if row:
         cur = row.get("manager") or {}
-        cur.update({k: manager[k] for k in ("name", "rank", "phone") if k in manager})
+        cur.update(mgr)
         row["manager"] = cur
     else:
-        rows.append({"org": _resolve_org_name(org), "manager": manager})
+        rows.append({"org": _resolve_org_name(org), "manager": mgr})
     _write(FILES["directory"], {"rows": rows})
     return merge_bundle()
 

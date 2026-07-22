@@ -2,7 +2,7 @@
   "vehicles": [
     {
       "id": "vh_c2a75d01c4",
-      "official_id": "so_9e06ad3cfd",
+      "official_id": "",
       "label": "Safari",
       "reg_no": "TS-08X-5145",
       "type": "car",
@@ -10,11 +10,11 @@
       "driver_name": "",
       "driver_mobile": "",
       "notes": "",
-      "status": "assigned"
+      "status": "available"
     },
     {
       "id": "vh_9bef9fb678",
-      "official_id": "so_04f5f6daa2",
+      "official_id": "",
       "label": "Innova",
       "reg_no": "TS-09A-5599",
       "type": "car",
@@ -22,7 +22,7 @@
       "driver_name": "",
       "driver_mobile": "",
       "notes": "",
-      "status": "assigned"
+      "status": "available"
     },
     {
       "id": "vh_2509751efe",
@@ -121,5 +121,5 @@
       "status": "available"
     }
   ],
-  "updated_at": "2026-07-20T19:52:56"
+  "updated_at": "2026-07-22T16:44:27"
 }

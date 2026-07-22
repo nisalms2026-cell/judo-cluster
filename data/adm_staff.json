@@ -193,7 +193,7 @@
     {
       "id": "p_77cf05efbb",
       "cisf_no": "072810079",
-      "name": "Perdeep Kumar",
+      "name": "Pradeep Kumar",
       "rank": "HC/Dvr",
       "unit": "NFC (H)",
       "mobile": "",
@@ -1043,7 +1043,7 @@
     {
       "id": "p_cdbf7c3e3c",
       "cisf_no": "240703426",
-      "name": "Subash Choudhary",
+      "name": "Subhash Choudhary",
       "rank": "CT/DVR",
       "unit": "ASG HYDERABAD",
       "mobile": "",
@@ -1103,7 +1103,7 @@
     {
       "id": "p_9c4ae771d5",
       "cisf_no": "120714579",
-      "name": "Kishori Lal Yadav",
+      "name": "Kishore Lal Yadav",
       "rank": "CT/DVR",
       "unit": "11TH RB Nashik",
       "mobile": "9079247667",
@@ -2225,5 +2225,5 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-07-21T17:58:01"
+  "updated_at": "2026-07-22T11:51:34"
 }

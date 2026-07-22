@@ -325,7 +325,7 @@ def put_hubs():
 
 
 # ── Directory ──────────────────────────────────────────────
-@app.route("/api/directory/<org>", methods=["PUT"])
+@app.route("/api/directory/<path:org>", methods=["PUT"])
 def put_directory(org):
     payload = request.get_json(force=True)
     mgr = {}
