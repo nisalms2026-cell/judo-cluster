@@ -1239,6 +1239,7 @@ body.on-home #homeHero { display: none; }
 
 .badge.warn { background: rgba(245, 158, 11, 0.14); color: #B45309; }
 .badge.ok { background: rgba(34, 197, 94, 0.14); color: #15803D; }
+.badge.over { background: rgba(124, 58, 237, 0.14); color: #6D28D9; }
 .badge.info { background: rgba(14, 165, 233, 0.14); color: #0369A1; }
 .badge.mess { background: var(--selected); color: var(--primary); }
 
@@ -3706,6 +3707,7 @@ body.mode-edit #view-fleet .fleet-edit-block {
 }
 .arr-arrived-line.ok strong { color: var(--success); }
 .arr-arrived-line.partial strong { color: var(--orange); }
+.arr-arrived-line.over strong { color: #7C3AED; }
 .arr-arrived-pill {
   display: inline-block;
   font-size: 11px;
@@ -3718,6 +3720,7 @@ body.mode-edit #view-fleet .fleet-edit-block {
 }
 .arr-arrived-pill.ok { background: #ECFDF5; color: #059669; }
 .arr-arrived-pill.partial { background: #FFF7ED; color: #EA580C; }
+.arr-arrived-pill.over { background: #F5F3FF; color: #6D28D9; }
 
 /* Arrival Report page */
 #view-arrival-report { padding-bottom: 12px; }
@@ -3806,6 +3809,7 @@ body.mode-edit #view-fleet .fleet-edit-block {
 }
 .arr-report-table .rank-cell.ok { color: var(--success); font-weight: 600; }
 .arr-report-table .rank-cell.partial { color: #EA580C; font-weight: 600; }
+.arr-report-table .rank-cell.over { color: #7C3AED; font-weight: 700; }
 .arr-report-table .rank-cell.muted { color: var(--text-dim); }
 .arr-report-table .total-cell {
   font-weight: 700;
@@ -3814,6 +3818,8 @@ body.mode-edit #view-fleet .fleet-edit-block {
 }
 .arr-report-table tr.row-complete { background: rgba(5, 150, 105, 0.04); }
 .arr-report-table tr.row-partial { background: rgba(234, 88, 12, 0.04); }
+.arr-report-table tr.row-over { background: rgba(124, 58, 237, 0.06); }
+.arr-report-table .total-cell.over { color: #7C3AED; }
 .arr-report-table tbody tr { cursor: default; }
 body.mode-edit .arr-report-table tbody tr { cursor: pointer; }
 body.mode-edit .arr-report-table tbody tr:hover { background: rgba(37, 99, 235, 0.05); }
@@ -5355,6 +5361,7 @@ footer {
           <select class="arr-report-status" id="arrReportStatus" aria-label="Filter by arrival status">
             <option value="ALL">All teams</option>
             <option value="complete">Fully arrived</option>
+            <option value="over">Over-arrived</option>
             <option value="partial">Partially arrived</option>
             <option value="none">Not started</option>
           </select>
@@ -5620,7 +5627,7 @@ footer {
               <table class="adm-table acc-table">
                 <thead>
                   <tr>
-                    <th>Task</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Role</th><th>Period</th><th>Stay</th><th class="edit-only">Actions</th>
+                    <th>Task</th><th>CISF No</th><th>Name</th><th>Rank</th><th>Unit</th><th>Mobile</th><th>Role</th><th>Period</th><th>Stay</th><th class="edit-only">Actions</th>
                   </tr>
                 </thead>
                 <tbody id="admDetailBody"></tbody>
@@ -6376,7 +6383,29 @@ let arrReportSearch = '';
 let arrReportStatus = 'ALL';
 let arrEditLegIndex = 0; // 0 = primary travel, 1+ = travel_extra
 let saveInFlight = false;
+let fetchBlockedUntil = 0; // block poll briefly after local saves (prevents stale overwrite)
 const AUTH_KEY = 'judo_cluster_auth_v1';
+
+function adoptServerData(next, opts){
+  if(!next) return;
+  data = next;
+  if(opts && opts.fromSave){
+    fetchBlockedUntil = Date.now() + 8000;
+  }
+  if(!opts || !opts.skipRender) renderAll();
+}
+
+function shouldIgnoreFetchedData(fresh){
+  if(!data || !fresh) return false;
+  if(Date.now() < fetchBlockedUntil) return true;
+  const curRev = data.revision || 0;
+  const freshRev = fresh.revision || 0;
+  if(freshRev < curRev) return true;
+  const curTs = data.updated_at || '';
+  const freshTs = fresh.updated_at || '';
+  if(freshRev === curRev && curTs && freshTs && freshTs <= curTs) return true;
+  return false;
+}
 
 function detectStaticHost(){
   const q = new URLSearchParams(location.search);
@@ -6765,6 +6794,18 @@ function arrivedStatsForUnits(units){
   return { exp, arr };
 }
 
+function arrivalCountClass(exp, arr){
+  if(exp > 0 && arr > exp) return 'over';
+  if(exp > 0 && arr === exp) return 'ok';
+  if(arr > 0) return 'partial';
+  return 'muted';
+}
+
+function arrivalPillClass(exp, arr){
+  const cls = arrivalCountClass(exp, arr);
+  return cls === 'muted' ? '' : cls;
+}
+
 function formatArrivedLine(u){
   const exp = sTotal(u);
   const arr = arrivedTotal(u);
@@ -6775,7 +6816,7 @@ function formatArrivedLine(u){
   const mExp = (s.gos_m||0)+(s.sos_m||0)+(s.ors_m||0);
   const fArr = (a.gos_f||0)+(a.sos_f||0)+(a.ors_f||0);
   const fExp = (s.gos_f||0)+(s.sos_f||0)+(s.ors_f||0);
-  const cls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : '');
+  const cls = arrivalPillClass(exp, arr);
   return `<div class="arr-arrived-line ${cls}"><strong>${arr}/${exp}</strong> arrived · M ${mArr}/${mExp} · F ${fArr}/${fExp}</div>`;
 }
 
@@ -6783,7 +6824,7 @@ function formatArrivedPill(u){
   const exp = sTotal(u);
   const arr = arrivedTotal(u);
   if(!exp && !arr) return '';
-  const cls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : '');
+  const cls = arrivalPillClass(exp, arr);
   return `<span class="arr-arrived-pill ${cls}">${arr}/${exp} arrived</span>`;
 }
 
@@ -6791,7 +6832,8 @@ function arrivalReportStatus(u){
   const exp = sTotal(u);
   const arr = arrivedTotal(u);
   if(!exp && !arr) return 'none';
-  if(exp && arr >= exp) return 'complete';
+  if(exp > 0 && arr > exp) return 'over';
+  if(exp > 0 && arr === exp) return 'complete';
   if(arr > 0) return 'partial';
   return 'none';
 }
@@ -6802,12 +6844,13 @@ function arrivalReportRankCell(u, key){
   const exp = s[key] || 0;
   const arr = a[key] || 0;
   if(!exp && !arr) return '<td class="rank-cell muted">—</td>';
-  const cls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : 'muted');
+  const cls = arrivalCountClass(exp, arr);
   return `<td class="rank-cell ${cls}">${arr}/${exp}</td>`;
 }
 
 function arrivalReportStatusLabel(status){
   if(status === 'complete') return '<span class="badge ok">Complete</span>';
+  if(status === 'over') return '<span class="badge over">Over-arrived</span>';
   if(status === 'partial') return '<span class="badge warn">Partial</span>';
   return '<span class="badge">Not started</span>';
 }
@@ -6836,6 +6879,7 @@ const ACC_STRENGTH_FIELDS = ['gos_m','sos_m','ors_m','gos_f','sos_f','ors_f'];
 
 async function fetchData(){
   if(saveInFlight) return;
+  if(Date.now() < fetchBlockedUntil) return;
   try{
     const url = IS_STATIC
       ? dataUrl('data/bundle.json') + '?t=' + Date.now()
@@ -6848,10 +6892,7 @@ async function fetchData(){
     }
     if(!res.ok) throw new Error('HTTP '+res.status);
     const fresh = await res.json();
-    // Ignore stale responses that would wipe a newer local save
-    if(data && data.updated_at && fresh.updated_at && fresh.updated_at < data.updated_at){
-      return;
-    }
+    if(shouldIgnoreFetchedData(fresh)) return;
     data = fresh;
     renderAll();
     opsChatMessages = getChatFromData();
@@ -7828,10 +7869,11 @@ function renderArrivalReport(){
   const units = (data.units || []).slice().sort((a, b) => a.org.localeCompare(b.org));
   const q = arrReportSearch.toLowerCase().trim();
   const locs = getVenues();
-  let complete = 0, partial = 0, none = 0;
+  let complete = 0, over = 0, partial = 0, none = 0;
   units.forEach(u => {
     const st = arrivalReportStatus(u);
     if(st === 'complete') complete++;
+    else if(st === 'over') over++;
     else if(st === 'partial') partial++;
     else none++;
   });
@@ -7845,6 +7887,7 @@ function renderArrivalReport(){
   if(tableMeta){
     const label = arrReportStatus === 'ALL' ? 'All teams' :
       arrReportStatus === 'complete' ? 'Fully arrived' :
+      arrReportStatus === 'over' ? 'Over-arrived' :
       arrReportStatus === 'partial' ? 'Partially arrived' : 'Not started';
     const locLabel = arrReportLoc === 'ALL' ? 'All venues' : arrReportLoc;
     tableMeta.textContent = `${locLabel} · ${label}${q ? ' · search' : ''}`;
@@ -7855,6 +7898,7 @@ function renderArrivalReport(){
     hero.innerHTML = `
       <div class="acc-stat-pill is-accent"><span class="v">${allStats.arr}/${allStats.exp}</span><span class="l">Arrived</span></div>
       <div class="acc-stat-pill"><span class="v">${complete}</span><span class="l">Complete</span></div>
+      <div class="acc-stat-pill"><span class="v">${over}</span><span class="l">Over-arrived</span></div>
       <div class="acc-stat-pill"><span class="v">${partial}</span><span class="l">Partial</span></div>
       <div class="acc-stat-pill"><span class="v">${none}</span><span class="l">Not started</span></div>`;
   }
@@ -7911,8 +7955,8 @@ function renderArrivalReport(){
     const exp = sTotal(u);
     const arr = arrivedTotal(u);
     const status = arrivalReportStatus(u);
-    const rowCls = status === 'complete' ? 'row-complete' : (status === 'partial' ? 'row-partial' : '');
-    const totalCls = exp && arr >= exp ? 'ok' : (arr > 0 ? 'partial' : 'muted');
+    const rowCls = status === 'complete' ? 'row-complete' : (status === 'over' ? 'row-over' : (status === 'partial' ? 'row-partial' : ''));
+    const totalCls = arrivalCountClass(exp, arr);
     const editBtn = isEdit()
       ? `<button type="button" class="btn arr-report-edit" data-report-edit="${escHtml(u.org)}">Edit</button>`
       : '';
@@ -8231,6 +8275,12 @@ function renderArrivalCard(e){
   </article>`;
 }
 
+function findDirCard(org){
+  const key = String(org || '').trim();
+  if(!key) return null;
+  return [...document.querySelectorAll('.dir-card')].find(card => (card.getAttribute('data-org') || '').trim() === key) || null;
+}
+
 function renderDirectory(){
   const q = dirSearch.toLowerCase();
   const units = (data.units||[]).filter(u=>{
@@ -8247,19 +8297,25 @@ function renderDirectory(){
     const safe = u.org.replace(/'/g,"\\'");
     const fields = isEdit()
       ? `<div class="dir-fields">
-        <input data-field="name" value="${(m.name||'').replace(/"/g,'&quot;')}" placeholder="Manager name">
-        <input data-field="rank" value="${(m.rank||'').replace(/"/g,'&quot;')}" placeholder="Rank">
-        <input data-field="phone" value="${(m.phone||'').replace(/"/g,'&quot;')}" placeholder="Phone">
-        <button type="button" class="btn primary" onclick="saveDirectory('${safe}')">Save</button>
+        <input data-field="name" value="${escHtml(m.name||'')}" placeholder="Manager name">
+        <input data-field="rank" value="${escHtml(m.rank||'')}" placeholder="Rank">
+        <input data-field="phone" value="${escHtml(m.phone||'')}" placeholder="Phone">
+        <button type="button" class="btn primary" data-save-dir="${escHtml(u.org)}">Save</button>
       </div>`
-      : `<div class="mgr" style="margin-top:10px;">${m.name||'—'} ${m.rank ? '· '+m.rank : ''}</div>`;
-    return `<div class="dir-card" data-org="${u.org}">
-      <h4 class="org-name" onclick="openUnit('${safe}')">${u.org}</h4>
-      <span class="loc-tag ${cls}">${u.location}</span>
-      <div class="phone">${phone ? `<a href="tel:${phone}">${m.phone}</a>` : '—'}</div>
+      : `<div class="mgr" style="margin-top:10px;">${escHtml(m.name||'—')}${m.rank ? ' · '+escHtml(m.rank) : ''}</div>`;
+    const phoneBlock = isEdit()
+      ? ''
+      : `<div class="phone">${phone ? `<a href="tel:${phone}">${escHtml(m.phone)}</a>` : '—'}</div>`;
+    return `<div class="dir-card" data-org="${escHtml(u.org)}">
+      <h4 class="org-name" onclick="openUnit('${safe}')">${escHtml(u.org)}</h4>
+      <span class="loc-tag ${cls}">${escHtml(u.location)}</span>
+      ${phoneBlock}
       ${fields}
     </div>`;
   }).join('');
+  document.querySelectorAll('[data-save-dir]').forEach(btn=>{
+    btn.onclick = () => saveDirectory(btn.getAttribute('data-save-dir'));
+  });
 }
 
 function getAdm(){
@@ -9160,6 +9216,7 @@ function renderAdmStaff(){
           <td class="name-cell">${escHtml(p.name||'')}</td>
           <td>${escHtml(p.rank||'')}</td>
           <td>${escHtml(p.unit||'')}</td>
+          <td class="mono">${p.mobile?`<a href="tel:${escHtml(p.mobile)}">${escHtml(p.mobile)}</a>`:admDash('')}</td>
           <td>${admDash(d.role)}</td>
           <td>${admDash(period)}</td>
           <td>${stay ? `<span class="loc-tag ${locClass(stay)}">${escHtml(stay)}</span>` : admDash('')}</td>
@@ -10644,6 +10701,7 @@ function switchView(name){
     if(panel && panel.classList.contains('open')) loadArrEditFields();
   }
   if(name === 'arrival-report') renderArrivalReport();
+  if(name === 'directory') renderDirectory();
   if(name === 'adm') renderAdmStaff();
   if(name === 'lo') renderLoStaff();
   if(name === 'senior') renderSeniorOfficials();
@@ -11102,14 +11160,39 @@ async function saveMess(org){
 }
 
 async function saveDirectory(org){
-  const card = document.querySelector(`.dir-card[data-org="${CSS.escape(org)}"]`);
+  if(!isEdit()){
+    toast('Read-only View — open Edit on port 5001');
+    return;
+  }
+  const card = findDirCard(org);
+  if(!card){
+    toast('Could not find team card — refresh and try again');
+    return;
+  }
   const payload = {};
-  card.querySelectorAll('[data-field]').forEach(inp => { payload[inp.dataset.field] = inp.value; });
-  const res = await apiFetch('/api/directory/'+encodeURIComponent(org), {
-    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
-  });
-  if(res.ok){ data = await res.json(); toast(org+' → directory.json'); renderAll(); }
-  else toast('Directory save failed');
+  card.querySelectorAll('[data-field]').forEach(inp => { payload[inp.dataset.field] = inp.value.trim(); });
+  const btn = card.querySelector('[data-save-dir]');
+  if(btn) btn.disabled = true;
+  saveInFlight = true;
+  try{
+    const res = await apiFetch('/api/directory/'+encodeURIComponent(org), {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+    });
+    let body = null;
+    try{ body = await res.json(); }catch(e){}
+    if(res.ok){
+      adoptServerData(body, {fromSave: true});
+      toast(org+' saved to directory.json');
+    } else {
+      const err = (body && (body.error || body.hint)) || ('HTTP '+res.status);
+      toast(res.status === 403 ? 'View port is read-only — use http://'+location.hostname+':5001' : ('Directory save failed: '+err));
+    }
+  }catch(e){
+    toast('Directory save failed — check Edit server on :5001');
+  }finally{
+    saveInFlight = false;
+    if(btn) btn.disabled = false;
+  }
 }
 
 function pad2(n){ return String(n).padStart(2,'0'); }

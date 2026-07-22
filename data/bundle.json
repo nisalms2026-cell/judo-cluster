@@ -1,5 +1,6 @@
 {
-  "updated_at": "2026-07-21T19:24:17",
+  "updated_at": "2026-07-22T17:56:03",
+  "revision": 15,
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -13,9 +14,9 @@
       "org": "Andhra Pradesh",
       "location": "TGPA",
       "manager": {
-        "name": "K Victor",
-        "rank": "Inspector",
-        "phone": "9866930369"
+        "name": "S. MAHABOOB BASHA",
+        "rank": "Sub Inspector",
+        "phone": "9291421101"
       },
       "count_gos": {
         "male": 0,
@@ -61,12 +62,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 1,
+        "ors_m": 17,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0,
-        "updated_at": "2026-07-21T18:59:40"
+        "sos_f": 1,
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -120,11 +121,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 3,
+        "ors_m": 14,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -189,11 +191,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 1,
+        "ors_m": 39,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 21,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -256,11 +259,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 54,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 44,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -314,20 +318,21 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 1,
+        "ors_m": 11,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 3,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
       "org": "CHANDIGARH POLICE",
       "location": "TGPA",
       "manager": {
-        "name": "Bhim singh",
-        "rank": "ASI",
-        "phone": "9463881916"
+        "name": "Amit",
+        "rank": "Head Constable",
+        "phone": "9256419184"
       },
       "count_gos": {
         "male": 0,
@@ -373,10 +378,11 @@
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 9,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 8,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -440,11 +446,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 9,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -498,11 +505,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 17,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 3,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -565,12 +573,13 @@
         }
       ],
       "arrived_strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 6,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -635,11 +644,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
-        "gos_f": 0,
+        "sos_m": 1,
+        "ors_m": 35,
+        "gos_f": 1,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -692,12 +702,13 @@
         "direction": "arrival"
       },
       "arrived_strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "gos_m": 1,
+        "sos_m": 1,
+        "ors_m": 16,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 3,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -761,11 +772,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 4,
+        "ors_m": 46,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 36,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -818,12 +830,13 @@
         "direction": "arrival"
       },
       "arrived_strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 6,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -897,11 +910,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 7,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 4,
+        "ors_f": 9,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -955,11 +969,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 5,
+        "ors_m": 15,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 10,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1013,11 +1028,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 1,
+        "ors_m": 19,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 7,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1072,10 +1088,11 @@
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 1,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1130,10 +1147,11 @@
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 19,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1197,11 +1215,12 @@
       ],
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 6,
+        "ors_m": 65,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 6,
+        "ors_f": 40,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1255,11 +1274,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 3,
+        "ors_m": 2,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 2,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1332,12 +1352,13 @@
         }
       ],
       "arrived_strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "gos_m": 2,
+        "sos_m": 2,
+        "ors_m": 71,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 40,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1390,12 +1411,13 @@
         "direction": "arrival"
       },
       "arrived_strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 52,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 20,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1450,11 +1472,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 7,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1509,10 +1532,11 @@
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 1,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1565,12 +1589,13 @@
         "direction": "arrival"
       },
       "arrived_strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 24,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 10,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1634,12 +1659,13 @@
         }
       ],
       "arrived_strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 65,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 32,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1693,11 +1719,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
-        "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_m": 4,
+        "ors_m": 54,
+        "gos_f": 2,
+        "sos_f": 1,
+        "ors_f": 30,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1779,12 +1806,13 @@
         }
       ],
       "arrived_strength": {
-        "gos_m": 0,
+        "gos_m": 1,
         "sos_m": 0,
-        "ors_m": 0,
+        "ors_m": 53,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 47,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1838,11 +1866,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 10,
+        "ors_m": 43,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 1,
+        "ors_f": 14,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1895,12 +1924,13 @@
         "direction": "arrival"
       },
       "arrived_strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "gos_m": 1,
+        "sos_m": 1,
+        "ors_m": 10,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 8,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -1954,11 +1984,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 1,
+        "ors_m": 13,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 4,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -2012,11 +2043,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
-        "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_m": 1,
+        "ors_m": 39,
+        "gos_f": 1,
+        "sos_f": 1,
+        "ors_f": 6,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -2070,11 +2102,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 32,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 2,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -2147,12 +2180,13 @@
         }
       ],
       "arrived_strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "gos_m": 1,
+        "sos_m": 19,
+        "ors_m": 35,
         "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "sos_f": 16,
+        "ors_f": 30,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -2207,11 +2241,12 @@
       },
       "arrived_strength": {
         "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 23,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
       }
     },
     {
@@ -2264,73 +2299,13 @@
         "direction": "arrival"
       },
       "arrived_strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
-        "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
-      }
-    },
-    {
-      "org": "Andhra Pradesh/arrived-strength",
-      "location": "TGPA",
-      "manager": {
-        "name": "",
-        "rank": "",
-        "phone": ""
-      },
-      "count_gos": {
-        "male": 0,
-        "female": 0
-      },
-      "count_sos": {
-        "male": 0,
-        "female": 0
-      },
-      "support": {
-        "male": 0,
-        "female": 0
-      },
-      "coach_male": {
-        "sos": 0,
-        "ors": 0
-      },
-      "coach_female": {
-        "gos": 0,
-        "sos": 0,
-        "ors": 0
-      },
-      "doctor": 0,
-      "strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
-        "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
-      },
-      "total": 0,
-      "mess": "",
-      "travel": {
-        "station": "",
-        "arrival": "",
-        "details": "",
-        "status": "awaited",
         "gos_m": 1,
-        "sos_m": 0,
-        "ors_m": 0,
+        "sos_m": 2,
+        "ors_m": 9,
         "gos_f": 0,
         "sos_f": 0,
-        "ors_f": 0
-      },
-      "arrived_strength": {
-        "gos_m": 0,
-        "sos_m": 0,
-        "ors_m": 0,
-        "gos_f": 0,
-        "sos_f": 0,
-        "ors_f": 0
+        "ors_f": 0,
+        "updated_at": "2026-07-22T17:00:13"
       }
     }
   ],
@@ -2780,7 +2755,7 @@
       {
         "id": "p_77cf05efbb",
         "cisf_no": "072810079",
-        "name": "Perdeep Kumar",
+        "name": "Pradeep Kumar",
         "rank": "HC/Dvr",
         "unit": "NFC (H)",
         "mobile": "",
@@ -3470,7 +3445,7 @@
       {
         "id": "p_867e662fcb",
         "cisf_no": "130719005",
-        "name": "S K Bijloya",
+        "name": "S K Bajroliya",
         "rank": "CT/DVR",
         "unit": "SCL Mohali",
         "mobile": "8949592323",
@@ -3630,7 +3605,7 @@
       {
         "id": "p_cdbf7c3e3c",
         "cisf_no": "240703426",
-        "name": "Subash Choudhary",
+        "name": "Subhash Choudhary",
         "rank": "CT/DVR",
         "unit": "ASG HYDERABAD",
         "mobile": "",
@@ -3690,7 +3665,7 @@
       {
         "id": "p_9c4ae771d5",
         "cisf_no": "120714579",
-        "name": "Kishori Lal Yadav",
+        "name": "Kishore Lal Yadav",
         "rank": "CT/DVR",
         "unit": "11TH RB Nashik",
         "mobile": "9079247667",
@@ -5447,27 +5422,15 @@
     "officials": [
       {
         "id": "so_9e06ad3cfd",
-        "vehicle_id": "vh_c2a75d01c4",
-        "lo_officer_id": "lo_6cc611ef39",
-        "name": "Praveer Ranjan",
-        "rank": "DG",
+        "vehicle_id": "",
+        "lo_officer_id": "",
+        "name": "Padmakar S. Ranpise, IPS",
+        "rank": "ADG",
         "unit": "CISF",
-        "designation": "",
+        "designation": "ADG",
         "mobile": "",
         "cisf_no": "",
-        "driver_adm_person_id": "p_8a9de32e5a"
-      },
-      {
-        "id": "so_04f5f6daa2",
-        "driver_adm_person_id": "p_296eba85f1",
-        "vehicle_id": "vh_9bef9fb678",
-        "lo_officer_id": "lo_ea164ebaf8",
-        "name": "Vijay Prakash",
-        "rank": "ADG/HQ",
-        "unit": "CISF",
-        "designation": "ADG/HQ",
-        "mobile": "",
-        "cisf_no": ""
+        "driver_adm_person_id": ""
       }
     ],
     "assignments": []
@@ -5476,7 +5439,7 @@
     "vehicles": [
       {
         "id": "vh_c2a75d01c4",
-        "official_id": "so_9e06ad3cfd",
+        "official_id": "",
         "label": "Safari",
         "reg_no": "TS-08X-5145",
         "type": "car",
@@ -5484,11 +5447,11 @@
         "driver_name": "",
         "driver_mobile": "",
         "notes": "",
-        "status": "assigned"
+        "status": "available"
       },
       {
         "id": "vh_9bef9fb678",
-        "official_id": "so_04f5f6daa2",
+        "official_id": "",
         "label": "Innova",
         "reg_no": "TS-09A-5599",
         "type": "car",
@@ -5496,7 +5459,7 @@
         "driver_name": "",
         "driver_mobile": "",
         "notes": "",
-        "status": "assigned"
+        "status": "available"
       },
       {
         "id": "vh_2509751efe",
@@ -37114,7 +37077,7 @@
     ]
   },
   "summary": {
-    "teams": 37,
+    "teams": 36,
     "strength": 1646,
     "male": 1115,
     "female": 529,
@@ -37123,7 +37086,7 @@
     "ors": 1496,
     "by_location": {
       "TGPA": {
-        "teams": 26,
+        "teams": 25,
         "strength": 999
       },
       "NITHM": {
@@ -37145,7 +37108,7 @@
       "Unassigned": 146
     },
     "travel_planned": 36,
-    "travel_awaited": 1,
+    "travel_awaited": 0,
     "strength_detail": {
       "gos_m": 13,
       "sos_m": 90,
