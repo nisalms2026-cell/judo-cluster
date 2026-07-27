@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-27T18:17:58",
-  "revision": 17,
+  "updated_at": "2026-07-27T18:55:34",
+  "revision": 18,
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -695,7 +695,7 @@
         "mode": "flight",
         "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
         "arrival": "31.07.2026/1135 hrs",
-        "details": "Flight 6E 6202 · 1 pax (form showed 13/07/26 — corrected to Jul-end departure) · Remarks: Verify dates with team — original form had 13/07/26.",
+        "details": "Dy. SP Anjana · Flight 6E 6202 · RGIA departure · Remarks: Vehicle 09:00 from Senior Officers Mess (Dy. SP). Rest of players pickup from JOM — timing to be conveyed by phone.",
         "status": "planned",
         "direction": "departure",
         "team_label": "JAMMU & KASHMIR"
@@ -705,7 +705,7 @@
           "mode": "rail",
           "station": "Secunderabad Jn",
           "arrival": "31.07.2026/0625 hrs",
-          "details": "Train 12723 · 47 pax (form showed 13/07/26 — corrected to Jul-end departure)",
+          "details": "Train 12723 Telangana Exp · 47 team members",
           "status": "planned",
           "direction": "departure",
           "team_label": "JAMMU & KASHMIR"

@@ -69,23 +69,23 @@ DEPARTURE_PLANS: dict[str, dict] = {
         "remarks": "",
     },
     "JAMMU & KASHMIR": {
-        "manager": "Anjana",
+        "manager": "Anjana (Dy. SP)",
         "phone": "9622089944",
         "primary": leg(
             "flight",
             "Rajiv Gandhi Intl Airport (Shamshabad)",
             "31.07.2026/1135 hrs",
-            "Flight 6E 6202 · 1 pax (form showed 13/07/26 — corrected to Jul-end departure)",
+            "Dy. SP Anjana · Flight 6E 6202 · RGIA departure",
         ),
         "extra": [
             leg(
                 "rail",
                 "Secunderabad Jn",
                 "31.07.2026/0625 hrs",
-                "Train 12723 · 47 pax (form showed 13/07/26 — corrected to Jul-end departure)",
+                "Train 12723 Telangana Exp · 47 team members",
             ),
         ],
-        "remarks": "Verify dates with team — original form had 13/07/26.",
+        "remarks": "Vehicle 09:00 from Senior Officers Mess (Dy. SP). Rest of players pickup from JOM — timing to be conveyed by phone.",
     },
     "MADHYA PRADESH POLICE": {
         "manager": "INSP/Exe Gopikrishna Shridharan",
