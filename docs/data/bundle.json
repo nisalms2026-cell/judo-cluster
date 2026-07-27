@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-27T18:55:34",
-  "revision": 18,
+  "updated_at": "2026-07-27T19:55:41",
+  "revision": 19,
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -1932,9 +1932,9 @@
       ],
       "travel_departure": {
         "mode": "rail",
-        "station": "Charlapalli Rly. Stn.",
-        "arrival": "01.08.2026/1630 hrs",
-        "details": "Train 15645 · SSB Taekwondo team · 17 personnel · Remarks: Also mentioned AGTL / AGRTL / 17031 — details incomplete on form; chase for confirmation.",
+        "station": "Secunderabad Jn",
+        "arrival": "30.07.2026/0710 hrs",
+        "details": "Train 22691 Rajdhani Express · 15 personnel · Remarks: Report at Sports Tower and Athletic Stadium 2 hrs before journey.",
         "status": "planned",
         "direction": "departure",
         "team_label": "SSB"
@@ -1943,8 +1943,26 @@
         {
           "mode": "rail",
           "station": "Secunderabad Jn",
+          "arrival": "31.07.2026/0625 hrs",
+          "details": "Train 12723 Telangana Express · 20 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "flight",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "31.07.2026/1300 hrs",
+          "details": "Flight · RGIA · 1 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
           "arrival": "01.08.2026/0625 hrs",
-          "details": "Train 12723 · part of SSB contingent",
+          "details": "Train 12723 Telangana Express · 10 personnel",
           "status": "planned",
           "direction": "departure",
           "team_label": "SSB"
@@ -1953,7 +1971,43 @@
           "mode": "rail",
           "station": "Secunderabad Jn",
           "arrival": "01.08.2026/0710 hrs",
-          "details": "Train 22691 · SSB total 35 personnel across legs",
+          "details": "Train 22691 Rajdhani SF Express · 25 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "rail",
+          "station": "Charlapalli Rly. Stn.",
+          "arrival": "01.08.2026/1630 hrs",
+          "details": "Train 15645 · CHZ → Rangiya Jn · 17 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "rail",
+          "station": "Hyderabad Rly. Station",
+          "arrival": "01.08.2026/2300 hrs",
+          "details": "Train 12721 Dakshin Express · 18 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "02.08.2026/1250 hrs",
+          "details": "Train 12285 Duronto Express · 5 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "rail",
+          "station": "Charlapalli Rly. Stn.",
+          "arrival": "03.08.2026/1630 hrs",
+          "details": "Train 17031 CHZ–AGTL Express · 7 personnel",
           "status": "planned",
           "direction": "departure",
           "team_label": "SSB"

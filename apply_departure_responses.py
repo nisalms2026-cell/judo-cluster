@@ -221,25 +221,61 @@ DEPARTURE_PLANS: dict[str, dict] = {
         "phone": "9017409009",
         "primary": leg(
             "rail",
-            "Charlapalli Rly. Stn.",
-            "01.08.2026/1630 hrs",
-            "Train 15645 · SSB Taekwondo team · 17 personnel",
+            "Secunderabad Jn",
+            "30.07.2026/0710 hrs",
+            "Train 22691 Rajdhani Express · 15 personnel",
         ),
         "extra": [
             leg(
                 "rail",
                 "Secunderabad Jn",
+                "31.07.2026/0625 hrs",
+                "Train 12723 Telangana Express · 20 personnel",
+            ),
+            leg(
+                "flight",
+                "Rajiv Gandhi Intl Airport (Shamshabad)",
+                "31.07.2026/1300 hrs",
+                "Flight · RGIA · 1 personnel",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
                 "01.08.2026/0625 hrs",
-                "Train 12723 · part of SSB contingent",
+                "Train 12723 Telangana Express · 10 personnel",
             ),
             leg(
                 "rail",
                 "Secunderabad Jn",
                 "01.08.2026/0710 hrs",
-                "Train 22691 · SSB total 35 personnel across legs",
+                "Train 22691 Rajdhani SF Express · 25 personnel",
+            ),
+            leg(
+                "rail",
+                "Charlapalli Rly. Stn.",
+                "01.08.2026/1630 hrs",
+                "Train 15645 · CHZ → Rangiya Jn · 17 personnel",
+            ),
+            leg(
+                "rail",
+                "Hyderabad Rly. Station",
+                "01.08.2026/2300 hrs",
+                "Train 12721 Dakshin Express · 18 personnel",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "02.08.2026/1250 hrs",
+                "Train 12285 Duronto Express · 5 personnel",
+            ),
+            leg(
+                "rail",
+                "Charlapalli Rly. Stn.",
+                "03.08.2026/1630 hrs",
+                "Train 17031 CHZ–AGTL Express · 7 personnel",
             ),
         ],
-        "remarks": "Also mentioned AGTL / AGRTL / 17031 — details incomplete on form; chase for confirmation.",
+        "remarks": "Report at Sports Tower and Athletic Stadium 2 hrs before journey.",
     },
 }
 
