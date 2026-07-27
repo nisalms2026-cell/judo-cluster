@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-22T17:56:03",
-  "revision": 15,
+  "updated_at": "2026-07-27T18:17:58",
+  "revision": 17,
   "source_file": "Total_Team_Final 17.07.2026.xlsx",
   "event": {
     "title": "11th All India Police Judo Cluster 2026",
@@ -316,6 +316,15 @@
         "team_label": "Bihar",
         "direction": "arrival"
       },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "31.07.2026/2100 hrs",
+        "details": "Train 03255",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "BIHAR POLICE"
+      },
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 1,
@@ -375,6 +384,26 @@
         "team_label": "CHANDIGARH POLICE",
         "direction": "arrival"
       },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "30.07.2026/1250 hrs",
+        "details": "Train 12285 Duronto Exp · Secunderabad → Chandigarh · LO Chandigarh Police · Remarks: No flight. Replaces earlier Amit Kumar submission.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "CHANDIGARH POLICE"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "30.07.2026/1250 hrs",
+          "details": "Jan Shatabdi Exp · Delhi → Punjab (connection leg per team form)",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "CHANDIGARH POLICE"
+        }
+      ],
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 0,
@@ -572,6 +601,26 @@
           "team_label": "Himachal Pradesh Police (Half Team)"
         }
       ],
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "31.07.2026/0710 hrs",
+        "details": "Train 22691 Rajdhani Express · 1 DySP",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "HIMACHAL PRADESH POLICE"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Hyderabad Rly. Station",
+          "arrival": "31.07.2026/2325 hrs",
+          "details": "Train 12721 Dakshin Express · 10 police personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "HIMACHAL PRADESH POLICE"
+        }
+      ],
       "arrived_strength": {
         "gos_m": 1,
         "sos_m": 0,
@@ -640,6 +689,26 @@
           "status": "planned",
           "team_label": "J&K (1)",
           "direction": "arrival"
+        }
+      ],
+      "travel_departure": {
+        "mode": "flight",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "31.07.2026/1135 hrs",
+        "details": "Flight 6E 6202 · 1 pax (form showed 13/07/26 — corrected to Jul-end departure) · Remarks: Verify dates with team — original form had 13/07/26.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "JAMMU & KASHMIR"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "31.07.2026/0625 hrs",
+          "details": "Train 12723 · 47 pax (form showed 13/07/26 — corrected to Jul-end departure)",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "JAMMU & KASHMIR"
         }
       ],
       "arrived_strength": {
@@ -770,6 +839,15 @@
           "direction": "arrival"
         }
       ],
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "31.07.2026/1455 hrs",
+        "details": "Train 12702 Hyderabad → Mumbai CSMT · arr 01.08.2026/0455 hrs",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "MAHARASHTRA POLICE"
+      },
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 4,
@@ -1085,6 +1163,15 @@
         "team_label": "Sikkim (02)",
         "direction": "arrival"
       },
+      "travel_departure": {
+        "mode": "flight",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "31.07.2026/0815 hrs",
+        "details": "IndiGo 6E 6872 (A321) · 2 personnel · Remarks: Request vehicle — leave for TGPA at 05:00.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "SIKKIM POLICE"
+      },
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 0,
@@ -1272,6 +1359,15 @@
         "team_label": "Haryana Police",
         "direction": "arrival"
       },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "31.07.2026/0625 hrs",
+        "details": "Telangana Exp Secunderabad → New Delhi · 8 personnel by train",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "HARYANA"
+      },
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 3,
@@ -1409,6 +1505,15 @@
         "status": "planned",
         "team_label": "TAMIL NADU",
         "direction": "arrival"
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "31.07.2026/1725 hrs",
+        "details": "Train 12604 · Charlapalli → Chennai · M 50, F 22 (incl. AC and wife)",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "TAMILNADU"
       },
       "arrived_strength": {
         "gos_m": 1,
@@ -1588,6 +1693,26 @@
         "team_label": "JHARKHAND",
         "direction": "arrival"
       },
+      "travel_departure": {
+        "mode": "flight",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "31.07.2026/0915 hrs",
+        "details": "Flight 6E-421 · 1 personnel",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "JHARKHAND"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Charlapalli Rly. Stn.",
+          "arrival": "31.07.2026/2100 hrs",
+          "details": "Train 03255 · 39 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "JHARKHAND"
+        }
+      ],
       "arrived_strength": {
         "gos_m": 1,
         "sos_m": 0,
@@ -1805,6 +1930,35 @@
           "direction": "arrival"
         }
       ],
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "01.08.2026/1630 hrs",
+        "details": "Train 15645 · SSB Taekwondo team · 17 personnel · Remarks: Also mentioned AGTL / AGRTL / 17031 — details incomplete on form; chase for confirmation.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "SSB"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "01.08.2026/0625 hrs",
+          "details": "Train 12723 · part of SSB contingent",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "01.08.2026/0710 hrs",
+          "details": "Train 22691 · SSB total 35 personnel across legs",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "SSB"
+        }
+      ],
       "arrived_strength": {
         "gos_m": 1,
         "sos_m": 0,
@@ -1982,6 +2136,15 @@
         "team_label": "Madhya Pradesh",
         "direction": "arrival"
       },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Hyderabad Rly. Station",
+        "arrival": "01.08.2026/2300 hrs",
+        "details": "Train 12721 Dakshin SF Ex · Hyderabad Deccan → Bhopal · 16 ORs (11 M, 4 F) + 1 team manager",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "MADHYA PRADESH POLICE"
+      },
       "arrived_strength": {
         "gos_m": 0,
         "sos_m": 1,
@@ -2099,6 +2262,15 @@
         "status": "planned",
         "team_label": "KERALA POLICE",
         "direction": "arrival"
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "01.08.2026/2335 hrs",
+        "details": "Train 07193 Secunderabad · 35 personnel",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "KERALA POLICE"
       },
       "arrived_strength": {
         "gos_m": 0,
