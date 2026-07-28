@@ -63,7 +63,7 @@ def main() -> int:
     os.makedirs(DOCS_ASSETS, exist_ok=True)
     open(os.path.join(DOCS, ".nojekyll"), "a", encoding="utf-8").close()
 
-    for name in ("index.html", "login.html"):
+    for name in ("index.html", "login.html", "departure.html"):
         src = os.path.join(BASE, name)
         if os.path.isfile(src):
             shutil.copy2(src, os.path.join(DOCS, name))

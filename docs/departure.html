@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Team Departure Details — Judo Cluster 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F172A">
+<meta name="description" content="Departure travel plans for 11th All India Police Judo Cluster 2026 teams — verify your date, train, flight, and pickup.">
+<link rel="icon" href="assets/logo-sm.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B1220;
+  --panel: #111827;
+  --panel-2: #1A2436;
+  --line: rgba(255,255,255,0.1);
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --accent: #38BDF8;
+  --accent-dim: rgba(56,189,248,0.12);
+  --ok: #34D399;
+  --ok-dim: rgba(52,211,153,0.12);
+  --warn: #FBBF24;
+  --warn-dim: rgba(251,191,36,0.12);
+  --rail: #A78BFA;
+  --flight: #38BDF8;
+  --bus: #F59E0B;
+  --font: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --display: "Source Serif 4", Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--ink);
+}
+body {
+  background:
+    radial-gradient(1100px 520px at 0% -5%, rgba(56,189,248,0.14), transparent 55%),
+    radial-gradient(900px 480px at 100% 0%, rgba(167,139,250,0.1), transparent 50%),
+    linear-gradient(180deg, #0B1220 0%, #0F172A 100%);
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.top img {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  padding: 4px;
+  flex-shrink: 0;
+}
+.top h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 4vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.top p {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+}
+.stat .n {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.stat .l {
+  margin-top: 4px;
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.stat.ok .n { color: var(--ok); }
+.stat.warn .n { color: var(--warn); }
+
+.search-box {
+  position: sticky;
+  top: max(0px, env(safe-area-inset-top));
+  z-index: 20;
+  margin-bottom: 16px;
+  padding: 10px 0 4px;
+  background: linear-gradient(180deg, var(--ink) 70%, transparent);
+}
+.search-box input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' d='M11 18a7 7 0 100-14 7 7 0 000 14zM21 21l-4.35-4.35'/%3E%3C/svg%3E") 14px center no-repeat;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+.search-box input:focus {
+  border-color: rgba(56,189,248,0.5);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.search-box input::placeholder { color: #64748B; }
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+.team-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  scroll-margin-top: 88px;
+}
+.team-card.is-highlight {
+  border-color: rgba(56,189,248,0.45);
+  box-shadow: 0 0 0 1px rgba(56,189,248,0.2);
+}
+.team-head {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.team-head h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.team-meta {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.team-meta strong { color: var(--text); font-weight: 500; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge.ok { background: var(--ok-dim); color: var(--ok); }
+.badge.warn { background: var(--warn-dim); color: var(--warn); }
+
+.legs { padding: 8px 12px 12px; }
+.leg {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 8px;
+}
+.leg:first-child { margin-top: 0; }
+.leg-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.leg-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.mode.rail { background: rgba(167,139,250,0.15); color: var(--rail); }
+.mode.flight { background: var(--accent-dim); color: var(--flight); }
+.mode.bus { background: rgba(245,158,11,0.15); color: var(--bus); }
+
+.leg-when {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.leg-station {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.leg-details {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #CBD5E1;
+  white-space: pre-wrap;
+}
+
+.empty-team {
+  padding: 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.page-foot {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.loading, .error-box {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--muted);
+}
+.error-box { color: #F87171; }
+
+.no-match {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (min-width: 640px) {
+  .wrap { padding-left: 24px; padding-right: 24px; }
+  .stats { gap: 14px; }
+  .stat { padding: 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="assets/logo-sm.png" alt="Judo Cluster logo" width="52" height="52">
+    <div>
+      <h1>Team Departure Details</h1>
+      <p>11th All India Police Judo Cluster 2026 · Hyderabad<br>Find your team and verify date, mode, station, and pickup.</p>
+    </div>
+  </header>
+
+  <div class="stats" id="stats" hidden>
+    <div class="stat ok"><div class="n" id="statReady">0</div><div class="l">Plan received</div></div>
+    <div class="stat warn"><div class="n" id="statPending">0</div><div class="l">Awaiting</div></div>
+    <div class="stat"><div class="n" id="statTotal">36</div><div class="l">Teams</div></div>
+  </div>
+
+  <div class="search-box">
+    <input type="search" id="search" placeholder="Search your team — e.g. Punjab, ITBP, Mizoram…" autocomplete="off" enterkeyhint="search">
+  </div>
+  <p class="hint">Tap your team name below. If details are wrong or missing, contact your Team Manager or TGPA ops desk.</p>
+
+  <div id="root">
+    <div class="loading">Loading departure plans…</div>
+  </div>
+
+  <footer class="page-foot">
+    <span id="updated">Last updated —</span><br>
+    Full ops dashboard: <a href="./">Judo Cluster dashboard</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const MODE_LABEL = { rail: 'Train', flight: 'Flight', bus: 'Bus' };
+
+  function esc(s){
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function slug(org){
+    return String(org || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  function isStatic(){
+    const h = (location.hostname || '').toLowerCase();
+    return h.endsWith('github.io') || location.protocol === 'file:' ||
+      new URLSearchParams(location.search).has('static');
+  }
+
+  function dataUrl(path){
+    const clean = String(path || '').replace(/^\//, '');
+    if(!isStatic()) return '/' + clean;
+    let dir = location.pathname || '/';
+    if(!dir.endsWith('/')) dir = dir.replace(/\/[^/]*$/, '/');
+    return dir + clean;
+  }
+
+  async function loadBoard(){
+    if(isStatic()){
+      const res = await fetch(dataUrl('data/bundle.json') + '?t=' + Date.now(), { cache: 'no-store' });
+      if(!res.ok) throw new Error('Could not load data');
+      const bundle = await res.json();
+      return {
+        event: bundle.event,
+        updated_at: bundle.updated_at,
+        units: (bundle.units || []).map(u => ({
+          org: u.org,
+          manager: u.manager,
+          travel_departure: u.travel_departure,
+          travel_departure_extra: u.travel_departure_extra || [],
+        })),
+      };
+    }
+    const res = await fetch('/api/departure-board?t=' + Date.now(), { cache: 'no-store' });
+    if(!res.ok) throw new Error('Could not load departure data');
+    return res.json();
+  }
+
+  function parseWhen(raw){
+    const s = String(raw || '').trim();
+    if(!s) return { label: 'Time TBC', sort: '9999' };
+    const m = s.match(/(\d{1,2})\.(\d{1,2})\.(\d{2,4})\/?(\d{4})?\s*\/?\s*(\d{1,2})[.:](\d{2})/);
+    if(m){
+      const dd = m[1].padStart(2,'0'), mm = m[2].padStart(2,'0');
+      const yy = (m[4] || m[3]).slice(-2);
+      const hh = m[5].padStart(2,'0'), mi = m[6];
+      const label = `${dd}/${mm}/20${yy} · ${hh}:${mi} hrs`;
+      return { label, sort: `20${yy}${mm}${dd}${hh}${mi}` };
+    }
+    return { label: s, sort: s };
+  }
+
+  function splitDetails(details){
+    const d = String(details || '').trim();
+    if(!d) return { main: '', remarks: '' };
+    const idx = d.indexOf(' · Remarks: ');
+    if(idx === -1) return { main: d, remarks: '' };
+    return { main: d.slice(0, idx), remarks: d.slice(idx + 12) };
+  }
+
+  function legsForUnit(u){
+    const out = [];
+    if(u.travel_departure && (u.travel_departure.arrival || u.travel_departure.station || u.travel_departure.details || u.travel_departure.mode)){
+      out.push(u.travel_departure);
+    }
+    (u.travel_departure_extra || []).forEach(l => out.push(l));
+    return out;
+  }
+
+  function managerLine(mgr){
+    if(!mgr) return '';
+    const name = mgr.name || mgr.manager_name || '';
+    const phone = mgr.phone || mgr.manager_phone || '';
+    const rank = mgr.rank || mgr.manager_rank || '';
+    if(!name && !phone) return '';
+    const parts = [];
+    if(name) parts.push(rank ? `${name} (${rank})` : name);
+    if(phone) parts.push(`📞 ${phone}`);
+    return parts.join(' · ');
+  }
+
+  function renderLeg(leg, i){
+    const mode = (leg.mode || 'rail').toLowerCase();
+    const when = parseWhen(leg.arrival);
+    const bits = splitDetails(leg.details);
+    const sub = leg.team_label && leg.team_label !== leg.org ? leg.team_label : '';
+    return `<article class="leg">
+      <div class="leg-top">
+        <span class="leg-label">${sub ? esc(sub) : 'Leg ' + (i + 1)}</span>
+        <span class="mode ${esc(mode)}">${esc(MODE_LABEL[mode] || mode)}</span>
+      </div>
+      <div class="leg-when">${esc(when.label)}</div>
+      <div class="leg-station">${esc(leg.station || '—')}</div>
+      ${bits.main ? `<div class="leg-details">${esc(bits.main)}</div>` : ''}
+      ${bits.remarks ? `<div class="leg-details" style="margin-top:8px;color:var(--warn)"><strong>Pickup / note:</strong> ${esc(bits.remarks)}</div>` : ''}
+    </article>`;
+  }
+
+  function renderTeam(u, highlight){
+    const legs = legsForUnit(u);
+    const hasPlan = legs.length > 0;
+    const mgr = managerLine(u.manager);
+    const id = slug(u.org);
+    return `<section class="team-card${highlight ? ' is-highlight' : ''}" id="${esc(id)}" data-org="${esc(u.org)}">
+      <div class="team-head">
+        <h2>${esc(u.org)}</h2>
+        <div class="team-meta">
+          <span class="badge ${hasPlan ? 'ok' : 'warn'}">${hasPlan ? 'Plan received' : 'Awaiting plan'}</span>
+          ${mgr ? `<span><strong>Contact:</strong> ${esc(mgr)}</span>` : ''}
+        </div>
+      </div>
+      ${hasPlan
+        ? `<div class="legs">${legs.map((l, i) => renderLeg(l, i)).join('')}</div>`
+        : `<div class="empty-team">Departure details not yet received. Please submit to TGPA ops or wait for update on this page.</div>`}
+    </section>`;
+  }
+
+  let allUnits = [];
+  let searchTerm = '';
+
+  function render(){
+    const root = document.getElementById('root');
+    const q = searchTerm.trim().toLowerCase();
+    const filtered = allUnits.filter(u => {
+      if(!q) return true;
+      const hay = [
+        u.org,
+        u.manager && u.manager.name,
+        u.manager && u.manager.phone,
+        ...legsForUnit(u).map(l => [l.team_label, l.station, l.details, l.arrival].join(' ')),
+      ].join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+
+    if(!filtered.length){
+      root.innerHTML = `<div class="no-match">No team matches “${esc(searchTerm)}”. Try a shorter name (e.g. “Assam”, “UP”, “West Bengal”).</div>`;
+      return;
+    }
+
+    const hash = (location.hash || '').replace(/^#/, '');
+    root.innerHTML = filtered.map(u => renderTeam(u, hash && slug(u.org) === hash)).join('');
+  }
+
+  function updateStats(){
+    const ready = allUnits.filter(u => legsForUnit(u).length > 0).length;
+    document.getElementById('statReady').textContent = ready;
+    document.getElementById('statPending').textContent = allUnits.length - ready;
+    document.getElementById('statTotal').textContent = allUnits.length;
+    document.getElementById('stats').hidden = false;
+  }
+
+  function formatUpdated(iso){
+    if(!iso) return '—';
+    try {
+      return new Date(iso.replace(' ', 'T')).toLocaleString('en-IN', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', hour12: false,
+      });
+    } catch(e) { return iso; }
+  }
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchTerm = e.target.value;
+    render();
+  });
+
+  loadBoard().then(board => {
+    allUnits = (board.units || []).slice().sort((a, b) => String(a.org).localeCompare(String(b.org)));
+    updateStats();
+    document.getElementById('updated').textContent = 'Last updated: ' + formatUpdated(board.updated_at);
+    const params = new URLSearchParams(location.search);
+    const teamQ = params.get('team') || params.get('q') || '';
+    if(teamQ){
+      searchTerm = teamQ;
+      document.getElementById('search').value = teamQ;
+    }
+    render();
+    if(location.hash){
+      const el = document.getElementById(location.hash.slice(1));
+      if(el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+    }
+  }).catch(err => {
+    document.getElementById('root').innerHTML = `<div class="error-box">Could not load departure data.<br>${esc(err.message || err)}</div>`;
+  });
+})();
+</script>
+</body>
+</html>

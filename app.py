@@ -45,9 +45,12 @@ WRITE_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
 PUBLIC_PATHS = {
     "/login",
     "/login.html",
+    "/departure",
+    "/departure.html",
     "/api/login",
     "/api/auth/status",
     "/api/config",
+    "/api/departure-board",
 }
 
 
@@ -118,6 +121,33 @@ def login_page():
     resp = send_from_directory(BASE, "login.html")
     resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
     return resp
+
+
+@app.route("/departure")
+@app.route("/departure.html")
+def departure_page():
+    resp = send_from_directory(BASE, "departure.html")
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    return resp
+
+
+@app.route("/api/departure-board", methods=["GET"])
+def api_departure_board():
+    """Public read-only departure plans for team verification (no login)."""
+    bundle = store.merge_bundle()
+    units = []
+    for u in bundle.get("units") or []:
+        units.append({
+            "org": u.get("org"),
+            "manager": u.get("manager"),
+            "travel_departure": u.get("travel_departure"),
+            "travel_departure_extra": u.get("travel_departure_extra") or [],
+        })
+    return jsonify({
+        "event": bundle.get("event"),
+        "updated_at": bundle.get("updated_at"),
+        "units": units,
+    })
 
 
 @app.route("/assets/<path:filename>")
