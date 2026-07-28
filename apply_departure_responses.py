@@ -26,6 +26,16 @@ ORG_ALIASES = {
     "MAHARASHTRA POLICE": "MAHARASHTRA POLICE",
     "TAMILNADU": "TAMILNADU",
     "SSB": "SSB",
+    "WEST BENGAL POLICE": "WEST BENGAL POLICE",
+    "PUNJAB POLICE": "PUNJAB POLICE",
+    "MANIPUR POLICE": "MANIPUR POLICE",
+    "ANDHRA PRADESH": "Andhra Pradesh",
+    "ANDHRA PRADESH POLICE": "Andhra Pradesh",
+    "RPF": "RPF",
+    "MIZORAM POLICE": "MIZORAM POLICE",
+    "UTTAR PRADESH POLICE": "UTTARPRADESH",
+    "UP POLICE": "UTTARPRADESH",
+    "UTTARPRADESH": "UTTARPRADESH",
 }
 
 
@@ -43,8 +53,9 @@ def leg(
     details: str,
     *,
     status: str = "planned",
+    team_label: str | None = None,
 ) -> dict:
-    return {
+    out = {
         "mode": mode,
         "station": station,
         "arrival": when,
@@ -52,6 +63,9 @@ def leg(
         "status": status,
         "direction": "departure",
     }
+    if team_label:
+        out["team_label"] = team_label
+    return out
 
 
 # Parsed from received departure sheet (Jul 2026). Dates/times normalised to dashboard format.
@@ -148,18 +162,11 @@ DEPARTURE_PLANS: dict[str, dict] = {
         "primary": leg(
             "rail",
             "Secunderabad Jn",
-            "30.07.2026/1250 hrs",
-            "Train 12285 Duronto Exp · Secunderabad → Chandigarh · LO Chandigarh Police",
+            "02.08.2026/0030 hrs",
+            "Train 12214 Duronto Ex · 17 personnel (9 M, 8 F)",
         ),
-        "extra": [
-            leg(
-                "rail",
-                "Secunderabad Jn",
-                "30.07.2026/1250 hrs",
-                "Jan Shatabdi Exp · Delhi → Punjab (connection leg per team form)",
-            ),
-        ],
-        "remarks": "No flight. Replaces earlier Amit Kumar submission.",
+        "extra": [],
+        "remarks": "Form showed 22/7/26 night 12:30 — confirm date/time with team.",
     },
     "HIMACHAL PRADESH POLICE": {
         "manager": "Kamal Kishore DySP",
@@ -277,13 +284,180 @@ DEPARTURE_PLANS: dict[str, dict] = {
         ],
         "remarks": "Report at Sports Tower and Athletic Stadium 2 hrs before journey.",
     },
+    "WEST BENGAL POLICE": {
+        "manager": "Goutam Chakraborty",
+        "phone": "9433803233",
+        "primary": leg(
+            "rail",
+            "Sikandrabad Jn",
+            "31.07.2026/0830 hrs",
+            "Train 07046 Nahar Lagum Special (Summer Special) · 69 personnel",
+        ),
+        "extra": [],
+        "remarks": "Transport required to Sikandrabad Jn. Pickup 04:30 Sports Tower Gachibowli (69 personnel); Team Manager at TGPA JOM 06:00.",
+    },
+    "PUNJAB POLICE": {
+        "manager": "Rajwinder Kaur",
+        "phone": "8146577701",
+        "primary": leg(
+            "rail",
+            "Secunderabad Jn",
+            "31.07.2026/0600 hrs",
+            "Train 12723 Telangana Exp · 8 personnel",
+        ),
+        "extra": [],
+        "remarks": "Pickup at TGPA.",
+    },
+    "MANIPUR POLICE": {
+        "manager": "",
+        "phone": "",
+        "primary": leg(
+            "flight",
+            "Rajiv Gandhi Intl Airport (Shamshabad)",
+            "04.08.2026/0520 hrs",
+            "RGIA → Imphal · Batch A · 16 personnel",
+        ),
+        "extra": [
+            leg(
+                "flight",
+                "Rajiv Gandhi Intl Airport (Shamshabad)",
+                "04.08.2026/0815 hrs",
+                "RGIA → Imphal · Batch B · 22 personnel",
+            ),
+            leg(
+                "flight",
+                "Rajiv Gandhi Intl Airport (Shamshabad)",
+                "04.08.2026/1920 hrs",
+                "RGIA → Imphal · Batch C · 6 personnel",
+            ),
+        ],
+        "remarks": "All 44 personnel depart by air RGIA → Imphal on 04.08.2026.",
+    },
+    "Andhra Pradesh": {
+        "manager": "",
+        "phone": "",
+        "primary": leg(
+            "bus",
+            "Bus Boarding Point",
+            "30.07.2026/2100 hrs",
+            "MGBS (Mahatma Gandhi Bus Station) · 24 personnel",
+        ),
+        "extra": [],
+        "remarks": "",
+    },
+    "ITBP": {
+        "manager": "",
+        "phone": "",
+        "primary": leg(
+            "rail",
+            "Secunderabad Jn",
+            "30.07.2026/2325 hrs",
+            "Train 12721 Dakshin SF Ex · → H Nizamuddin arr 01.08.2026/2325 hrs · 46 personnel (30 M, 16 F)",
+            team_label="ITBP Judo / Pencak Silat",
+        ),
+        "extra": [
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "30.07.2026/2325 hrs",
+                "Train 12721 Dakshin SF Ex · → H Nizamuddin arr 01.08.2026/2325 hrs · 31 personnel (17 M, 14 F)",
+                team_label="ITBP Wushu",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "30.07.2026/2325 hrs",
+                "Train 12721 Dakshin SF Ex · → H Nizamuddin arr 01.08.2026/2325 hrs · 20 personnel (16 M, 4 F)",
+                team_label="ITBP Taekwondo",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "02.08.2026/1250 hrs",
+                "Train 12285 Duronto Ex · 17 personnel (11 M, 6 F)",
+                team_label="ITBP Karate",
+            ),
+        ],
+        "remarks": "",
+    },
+    "RPF": {
+        "manager": "Sanjit Sarkar",
+        "phone": "9862153714",
+        "primary": leg(
+            "rail",
+            "Charlapalli Rly. Stn.",
+            "01.08.2026/0400 hrs",
+            "Train 07221 CHZ → Santragachi · RPF team proceeding to Guwahati",
+        ),
+        "extra": [],
+        "remarks": "Pickup RPF Training School, Moulali at 04:00 on 01.08.2026.",
+    },
+    "MIZORAM POLICE": {
+        "manager": "F. Lalhmingliana MPS",
+        "phone": "9436142704",
+        "primary": leg(
+            "rail",
+            "Charlapalli Rly. Stn.",
+            "01.08.2026/1625 hrs",
+            "Train 15645 CHZ SCL Express · 6 personnel",
+            team_label="Mizoram Team",
+        ),
+        "extra": [
+            leg(
+                "flight",
+                "Rajiv Gandhi Intl Airport (Shamshabad)",
+                "01.08.2026/1730 hrs",
+                "Flight QP-1407 Akasa Air · Manager only · RGIA",
+                team_label="Mizoram Manager",
+            ),
+        ],
+        "remarks": "Separate transport required. Manager pickup IOM Room 124 TGPA; team pickup SOTC Mess TGPA.",
+    },
+    "UTTARPRADESH": {
+        "manager": "Anand Kumar (DySP)",
+        "phone": "9953523571",
+        "primary": leg(
+            "flight",
+            "Rajiv Gandhi Intl Airport (Shamshabad)",
+            "31.07.2026/1615 hrs",
+            "IndiGo 6E-501 · DySP Anand Kumar",
+        ),
+        "extra": [
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "30.07.2026/2325 hrs",
+                "Train 12721 · 19 personnel",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "31.07.2026/0600 hrs",
+                "Train 12723 · 25 personnel",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "31.07.2026/0915 hrs",
+                "Train 15024 · 16 personnel",
+            ),
+            leg(
+                "rail",
+                "Secunderabad Jn",
+                "31.07.2026/2100 hrs",
+                "Train 07075 · 50 personnel",
+            ),
+        ],
+        "remarks": "Pickup at TGPA as per train timings. 7 personnel travel details not yet received.",
+    },
 }
 
 
 def apply_plan(row: dict, plan: dict) -> None:
     org = row["org"]
     primary = dict(plan["primary"])
-    primary["team_label"] = org
+    if not primary.get("team_label"):
+        primary["team_label"] = org
     if plan.get("remarks"):
         primary["details"] = (primary.get("details") or "").strip()
         if primary["details"]:
@@ -294,7 +468,8 @@ def apply_plan(row: dict, plan: dict) -> None:
     extras = []
     for x in plan.get("extra") or []:
         e = dict(x)
-        e["team_label"] = org
+        if not e.get("team_label"):
+            e["team_label"] = org
         e["direction"] = "departure"
         extras.append(e)
     row["travel_departure_extra"] = extras

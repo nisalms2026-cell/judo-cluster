@@ -59,7 +59,17 @@
         "sos_f": 1,
         "ors_f": 4,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "bus",
+        "station": "Bus Boarding Point",
+        "arrival": "30.07.2026/2100 hrs",
+        "details": "MGBS (Mahatma Gandhi Bus Station) · 24 personnel",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "Andhra Pradesh"
+      },
+      "travel_departure_extra": []
     },
     {
       "org": "ARUNACHAL PRADESH",
@@ -201,23 +211,13 @@
       "travel_departure": {
         "mode": "rail",
         "station": "Secunderabad Jn",
-        "arrival": "30.07.2026/1250 hrs",
-        "details": "Train 12285 Duronto Exp · Secunderabad → Chandigarh · LO Chandigarh Police · Remarks: No flight. Replaces earlier Amit Kumar submission.",
+        "arrival": "02.08.2026/0030 hrs",
+        "details": "Train 12214 Duronto Ex · 17 personnel (9 M, 8 F) · Remarks: Form showed 22/7/26 night 12:30 — confirm date/time with team.",
         "status": "planned",
         "direction": "departure",
         "team_label": "CHANDIGARH POLICE"
       },
-      "travel_departure_extra": [
-        {
-          "mode": "rail",
-          "station": "Secunderabad Jn",
-          "arrival": "30.07.2026/1250 hrs",
-          "details": "Jan Shatabdi Exp · Delhi → Punjab (connection leg per team form)",
-          "status": "planned",
-          "direction": "departure",
-          "team_label": "CHANDIGARH POLICE"
-        }
-      ]
+      "travel_departure_extra": []
     },
     {
       "org": "DELHI POLICE",
@@ -458,7 +458,27 @@
         "sos_f": 0,
         "ors_f": 0,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "01.08.2026/1625 hrs",
+        "details": "Train 15645 CHZ SCL Express · 6 personnel · Remarks: Separate transport required. Manager pickup IOM Room 124 TGPA; team pickup SOTC Mess TGPA.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "Mizoram Team"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "flight",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "01.08.2026/1730 hrs",
+          "details": "Flight QP-1407 Akasa Air · Manager only · RGIA",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "Mizoram Manager"
+        }
+      ]
     },
     {
       "org": "PUNJAB POLICE",
@@ -499,7 +519,17 @@
         "sos_f": 4,
         "ors_f": 9,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "31.07.2026/0600 hrs",
+        "details": "Train 12723 Telangana Exp · 8 personnel · Remarks: Pickup at TGPA.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "PUNJAB POLICE"
+      },
+      "travel_departure_extra": []
     },
     {
       "org": "RAJASTHAN POLICE",
@@ -628,7 +658,54 @@
         "sos_f": 6,
         "ors_f": 40,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "flight",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "31.07.2026/1615 hrs",
+        "details": "IndiGo 6E-501 · DySP Anand Kumar · Remarks: Pickup at TGPA as per train timings. 7 personnel travel details not yet received.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "UTTARPRADESH"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "30.07.2026/2325 hrs",
+          "details": "Train 12721 · 19 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "UTTARPRADESH"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "31.07.2026/0600 hrs",
+          "details": "Train 12723 · 25 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "UTTARPRADESH"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "31.07.2026/0915 hrs",
+          "details": "Train 15024 · 16 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "UTTARPRADESH"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "31.07.2026/2100 hrs",
+          "details": "Train 07075 · 50 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "UTTARPRADESH"
+        }
+      ]
     },
     {
       "org": "HARYANA",
@@ -701,7 +778,45 @@
         "sos_f": 0,
         "ors_f": 40,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Secunderabad Jn",
+        "arrival": "30.07.2026/2325 hrs",
+        "details": "Train 12721 Dakshin SF Ex · → H Nizamuddin arr 01.08.2026/2325 hrs · 46 personnel (30 M, 16 F)",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "ITBP Judo / Pencak Silat"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "30.07.2026/2325 hrs",
+          "details": "Train 12721 Dakshin SF Ex · → H Nizamuddin arr 01.08.2026/2325 hrs · 31 personnel (17 M, 14 F)",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "ITBP Wushu"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "30.07.2026/2325 hrs",
+          "details": "Train 12721 Dakshin SF Ex · → H Nizamuddin arr 01.08.2026/2325 hrs · 20 personnel (16 M, 4 F)",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "ITBP Taekwondo"
+        },
+        {
+          "mode": "rail",
+          "station": "Secunderabad Jn",
+          "arrival": "02.08.2026/1250 hrs",
+          "details": "Train 12285 Duronto Ex · 17 personnel (11 M, 6 F)",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "ITBP Karate"
+        }
+      ]
     },
     {
       "org": "TAMILNADU",
@@ -1029,7 +1144,17 @@
         "sos_f": 1,
         "ors_f": 14,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Sikandrabad Jn",
+        "arrival": "31.07.2026/0830 hrs",
+        "details": "Train 07046 Nahar Lagum Special (Summer Special) · 69 personnel · Remarks: Transport required to Sikandrabad Jn. Pickup 04:30 Sports Tower Gachibowli (69 personnel); Team Manager at TGPA JOM 06:00.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "WEST BENGAL POLICE"
+      },
+      "travel_departure_extra": []
     },
     {
       "org": "ORISSA POLICE",
@@ -1105,7 +1230,36 @@
         "sos_f": 1,
         "ors_f": 6,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "flight",
+        "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+        "arrival": "04.08.2026/0520 hrs",
+        "details": "RGIA → Imphal · Batch A · 16 personnel · Remarks: All 44 personnel depart by air RGIA → Imphal on 04.08.2026.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "MANIPUR POLICE"
+      },
+      "travel_departure_extra": [
+        {
+          "mode": "flight",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "04.08.2026/0815 hrs",
+          "details": "RGIA → Imphal · Batch B · 22 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "MANIPUR POLICE"
+        },
+        {
+          "mode": "flight",
+          "station": "Rajiv Gandhi Intl Airport (Shamshabad)",
+          "arrival": "04.08.2026/1920 hrs",
+          "details": "RGIA → Imphal · Batch C · 6 personnel",
+          "status": "planned",
+          "direction": "departure",
+          "team_label": "MANIPUR POLICE"
+        }
+      ]
     },
     {
       "org": "KERALA POLICE",
@@ -1223,8 +1377,18 @@
         "sos_f": 0,
         "ors_f": 0,
         "updated_at": "2026-07-22T17:00:13"
-      }
+      },
+      "travel_departure": {
+        "mode": "rail",
+        "station": "Charlapalli Rly. Stn.",
+        "arrival": "01.08.2026/0400 hrs",
+        "details": "Train 07221 CHZ → Santragachi · RPF team proceeding to Guwahati · Remarks: Pickup RPF Training School, Moulali at 04:00 on 01.08.2026.",
+        "status": "planned",
+        "direction": "departure",
+        "team_label": "RPF"
+      },
+      "travel_departure_extra": []
     }
   ],
-  "updated_at": "2026-07-27T19:55:41"
+  "updated_at": "2026-07-28T16:56:28"
 }
